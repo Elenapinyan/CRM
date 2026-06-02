@@ -1,0 +1,95 @@
+@if (isOpen()) {
+  <div class="segment-filter-picker" role="dialog" aria-label="Add filter">
+    <div class="segment-filter-picker__search">
+      <i class="ds-icon ds-icon-control-search segment-filter-picker__search-icon" aria-hidden="true"></i>
+      <input
+        type="search"
+        class="segment-filter-picker__search-input"
+        placeholder="Search by filter name"
+        aria-label="Search by filter name"
+        [value]="searchQuery()"
+        (input)="onSearchInput($event)"
+      />
+    </div>
+
+    <div class="segment-filter-picker__table">
+      <nav class="segment-filter-picker__sidebar" aria-label="Filter categories">
+        @for (cat of categories; track cat.id) {
+          <button
+            type="button"
+            class="segment-filter-picker__cat"
+            [class.segment-filter-picker__cat--active]="activeCategory() === cat.id"
+            [attr.aria-pressed]="activeCategory() === cat.id"
+            (click)="setCategory(cat.id)"
+          >
+            {{ cat.label }}
+          </button>
+        }
+      </nav>
+
+      <div class="segment-filter-picker__panels" (mouseleave)="onPanelsLeave($event)">
+        <div class="segment-filter-picker__main">
+          <div class="segment-filter-picker__menu-title">{{ listTitleCount() }} filters</div>
+          <ul class="segment-filter-picker__list" role="listbox" aria-label="Filters">
+            @for (block of visibleBlocks(); track block.kind === 'subsection' ? 's-' + block.key : 'r-' + block.item.id) {
+              @if (block.kind === 'subsection') {
+                <li class="segment-filter-picker__subsection" role="presentation">
+                  <div class="segment-filter-picker__subsection-head">
+                    <span
+                      class="segment-filter-picker__subsection-icon"
+                      [class]="subsectionIconTone(block.categoryId)"
+                      aria-hidden="true"
+                    >
+                      <i class="ds-icon" [class]="subsectionIcon(block.categoryId, block.group)"></i>
+                    </span>
+                    <span class="segment-filter-picker__subsection-title">{{ block.title }}</span>
+                  </div>
+                </li>
+              } @else {
+                <li role="option" [attr.aria-selected]="hoveredItem()?.id === block.item.id">
+                  <button
+                    type="button"
+                    class="segment-filter-picker__row"
+                    [class.segment-filter-picker__row--hovered]="hoveredItem()?.id === block.item.id"
+                    (mouseenter)="onRowEnter(block.item)"
+                    (click)="selectItem(block.item)"
+                  >
+                    {{ block.item.label }}
+                  </button>
+                </li>
+              }
+            } @empty {
+              <li class="segment-filter-picker__empty">No filters match your search.</li>
+            }
+          </ul>
+        </div>
+
+        <aside class="segment-filter-picker__description" aria-live="polite">
+          @if (hoveredItem(); as item) {
+            <div class="segment-filter-picker__description-header">
+              <h3 class="segment-filter-picker__description-title">{{ item.label }}</h3>
+              <p class="segment-filter-picker__description-category">{{ hoveredCategoryLabel() }}</p>
+            </div>
+            <div class="segment-filter-picker__description-body">
+              @if (hoveredDescriptionRich(); as rich) {
+                @for (paragraph of rich.paragraphs; track $index) {
+                  <p class="segment-filter-picker__description-paragraph">
+                    @for (segment of paragraph.segments; track $index) {
+                      @if (isUnderlineSegment(segment)) {
+                        <span class="segment-filter-picker__description-em">{{ segment.underline }}</span>
+                      } @else {
+                        {{ segment }}
+                      }
+                    }
+                  </p>
+                }
+              } @else {
+                <p class="segment-filter-picker__description-paragraph">{{ hoveredDescriptionContent() }}</p>
+              }
+            </div>
+          }
+        </aside>
+      </div>
+    </div>
+  </div>
+}

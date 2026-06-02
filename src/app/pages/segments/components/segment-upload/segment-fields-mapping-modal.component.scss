@@ -1,0 +1,173 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+
+.segment-fields-mapping-modal__shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+
+.segment-fields-mapping-modal__esc-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
+  padding: 2px 5px;
+  border: 1px solid var(--brd-neutral-200-700, #e4e4e7);
+  border-radius: var(--radius-6, 6px);
+  background: var(--brd-neutral-100-800, #f4f4f5);
+  font-size: var(--spr-font-size-12, 12px);
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--brd-neutral-800-100, #27272a);
+}
+
+.segment-fields-mapping-modal__body {
+  flex: 1;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.segment-fields-mapping-modal__content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  height: 100%;
+  padding: 0 16px;
+}
+
+.segment-fields-mapping-modal__tabs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--brd-neutral-200-700, #e4e4e7);
+}
+
+.segment-fields-mapping-modal__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 4px 8px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--brd-neutral-1000-0, #18181b);
+  font-size: var(--spr-font-size-16, 16px);
+  font-weight: 500;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.segment-fields-mapping-modal__tab--active {
+  border-bottom-color: var(--brd-neutral-1000-0, #18181b);
+}
+
+.segment-fields-mapping-modal__tab-icon {
+  font-size: 20px;
+}
+
+.segment-fields-mapping-modal__tab-icon--valid {
+  color: var(--brd-accent-green-500-500, #22c55e);
+}
+
+.segment-fields-mapping-modal__tab-icon--warning {
+  color: var(--brd-accent-amber-500-500, #f59e0b);
+}
+
+.segment-fields-mapping-modal__grid-wrap {
+  flex: 1;
+  min-height: 0;
+  padding: 4px;
+  border-radius: var(--radius-16, 16px);
+  background: var(--brd-neutral-050-900, #fafafa);
+  overflow: visible;
+}
+
+.segment-fields-mapping-modal__grid-wrap ::ng-deep {
+  .ag-root-wrapper,
+  .ag-header,
+  .ag-header-viewport,
+  .ag-header-container,
+  .ag-header-row,
+  .ag-header-cell,
+  .ag-header-cell-comp-wrapper {
+    overflow: visible;
+  }
+
+  .ag-header-cell {
+    padding-inline: 12px;
+  }
+
+  .ag-header-cell:hover {
+    background: var(--brd-neutral-050-900, #fafafa);
+  }
+}
+
+.segment-fields-mapping-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+  height: 64px;
+  padding: 0 16px;
+  border-top: 1px solid var(--brd-neutral-150-750, #efeff0);
+}
+
+.segment-fields-mapping-modal__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 8px 10px;
+  border-radius: var(--radius-8, 8px);
+  font-size: var(--spr-font-size-14, 14px);
+  font-weight: 500;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.segment-fields-mapping-modal__btn--secondary {
+  border: 1px solid var(--brd-neutral-150-750, #efeff0);
+  background: var(--brd-neutral-0-800, #fff);
+  color: var(--brd-neutral-1000-0, #18181b);
+  box-shadow: 0 0 2px var(--brd-alpha-bb-008-024, rgba(24, 24, 27, 0.08));
+}
+
+.segment-fields-mapping-modal__btn--primary {
+  border: 1px solid var(--brd-neutral-1000-700, #18181b);
+  background: var(--brd-neutral-800-600, #27272a);
+  color: var(--brd-neutral-0-0, #fff);
+  box-shadow:
+    0 0 2px var(--brd-alpha-bb-040-024, rgba(24, 24, 27, 0.4)),
+    inset 0 2px 0 var(--brd-alpha-ww-024-010, rgba(255, 255, 255, 0.24));
+}
+
+.segment-fields-mapping-modal__btn--primary:disabled {
+  border-color: var(--brd-neutral-100-800, #f4f4f5);
+  background: var(--brd-neutral-100-800, #f4f4f5);
+  color: var(--brd-neutral-400-600, #a0a0a7);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.segment-fields-mapping-modal__grid-wrap ag-grid-angular {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+}
+
+.segment-fields-mapping-modal__grid {
+  width: 100%;
+  height: 100%;
+}

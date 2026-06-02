@@ -1,0 +1,103 @@
+<div class="segments-list">
+  <header class="segments-list__header">
+    <h1 class="segments-list__title">Segments</h1>
+    <ds-button type="button" variant="main" size="lg" (click)="createSegment()">Create segment</ds-button>
+  </header>
+
+  <div class="segments-list__toolbar">
+    <div class="segments-list__search">
+      <span class="segments-list__search-addon" aria-hidden="true">
+        <i class="ds-icon ds-icon-control-search"></i>
+      </span>
+      <input
+        type="search"
+        class="segments-list__search-input"
+        placeholder="Search by ID, Name, and Creator"
+        aria-label="Search segments"
+        (input)="onSearchInput($event)"
+      />
+    </div>
+    <div class="segments-list__toolbar-actions" #columnAnchor>
+      <app-clear-filters-button [gridApi]="gridApiRef()" />
+      <button
+        type="button"
+        class="segments-list__columns-btn"
+        aria-label="Column visibility"
+        [attr.aria-expanded]="columnsPanelOpen()"
+        [class.segments-list__columns-btn--open]="columnsPanelOpen()"
+        (click)="toggleColumnsPanel($event)"
+      >
+        <i class="ds-icon ds-icon-control-align-vertically" aria-hidden="true"></i>
+      </button>
+
+      @if (columnsPanelOpen()) {
+        <div
+          class="segments-list__col-panel"
+          role="dialog"
+          aria-label="Column visibility"
+          (click)="$event.stopPropagation()"
+        >
+          <div class="segments-list__col-panel-search">
+            <input
+              type="search"
+              class="segments-list__col-panel-search-input"
+              placeholder="Search columns"
+              aria-label="Search columns"
+              [value]="columnPanelSearch()"
+              (input)="onColumnPanelSearchInput($event)"
+            />
+          </div>
+          <ul class="segments-list__col-panel-list">
+            @for (item of filteredPanelColumns(); track item.colId) {
+              <li class="segments-list__col-panel-row">
+                <label class="segments-list__col-panel-label" [class.segments-list__col-panel-label--locked]="item.locked">
+                  <input
+                    type="checkbox"
+                    class="segments-list__col-panel-checkbox"
+                    [checked]="isColumnVisible(item.colId)"
+                    [disabled]="item.locked"
+                    (change)="onColumnCheckboxChange(item.colId, item.locked, $any($event.target).checked)"
+                  />
+                  <span>{{ item.label }}</span>
+                </label>
+              </li>
+            }
+          </ul>
+          <div class="segments-list__col-panel-footer">
+            <button type="button" class="segments-list__col-panel-btn segments-list__col-panel-btn--secondary" (click)="revertColumnsToDefault()">
+              <i class="ds-icon ds-icon-control-undo" aria-hidden="true"></i>
+              Revert to default
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="segments-list__grid-wrap ag-grid-component__content ag-grid-size-md">
+    <ag-grid-angular
+      [rowData]="rowData()"
+      [columnDefs]="columnDefs"
+      [gridOptions]="gridOptions"
+      (gridReady)="onGridReady($event)"
+    />
+  </div>
+
+  <footer class="segments-list__footer">
+    <span class="segments-list__footer-updated">Last updated on {{ lastUpdatedLabel() }}</span>
+    <div class="segments-list__footer-stats">
+      <span class="segments-list__footer-chip segments-list__footer-chip--static">
+        <i class="ds-icon ds-icon-general-anchor" aria-hidden="true"></i>
+        {{ footerStats().staticPlayers.toLocaleString() }}
+      </span>
+      <span class="segments-list__footer-chip segments-list__footer-chip--dynamic">
+        <i class="ds-icon ds-icon-general-wave" aria-hidden="true"></i>
+        {{ footerStats().dynamicPlayers.toLocaleString() }}
+      </span>
+      <span class="segments-list__footer-chip segments-list__footer-chip--uploaded">
+        <i class="ds-icon ds-icon-control-upload" aria-hidden="true"></i>
+        {{ footerStats().uploadedPlayers.toLocaleString() }}
+      </span>
+    </div>
+  </footer>
+</div>

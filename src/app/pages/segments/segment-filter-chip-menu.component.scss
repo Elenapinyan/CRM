@@ -1,0 +1,74 @@
+// Figma 716:15544 — Condition menu (dark popover under chip)
+.segment-filter-chip-menu {
+  display: flex;
+  flex-direction: column;
+  min-width: 168px;
+  max-height: 280px;
+  padding: 4px;
+  overflow-y: auto;
+  border: 1px solid var(--ds-neutral-700-700, #3b3b40);
+  border-radius: var(--radius-8, 8px);
+  background: var(--ds-neutral-900-900, #212124);
+  box-shadow: 0 1px 6px 0 var(--ds-alpha-bb-006-056, rgba(24, 24, 27, 0.06));
+}
+
+.segment-filter-chip-menu__search-wrap {
+  flex-shrink: 0;
+  padding-bottom: 4px;
+}
+
+.segment-filter-chip-menu__search {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 32px;
+  padding: 6px 8px;
+  border: 1px solid var(--ds-neutral-700-700, #3b3b40);
+  border-radius: 6px;
+  background: var(--ds-neutral-800-800, #2a2a2e);
+  color: var(--ds-neutral-0-0, #fff);
+  font: inherit;
+  font-size: var(--ds-font-size-14, 14px);
+  line-height: 20px;
+
+  &::placeholder {
+    color: var(--ds-neutral-400-400, #9f9fa6);
+  }
+
+  &:focus {
+    outline: 2px solid var(--ds-primary-500-500, #6366f1);
+    outline-offset: 0;
+  }
+}
+
+.segment-filter-chip-menu__empty {
+  padding: 8px;
+  color: var(--ds-neutral-400-400, #9f9fa6);
+  font-size: var(--ds-font-size-14, 14px);
+  line-height: 20px;
+}
+
+.segment-filter-chip-menu__item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 32px;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 6px;
+  background: var(--ds-neutral-900-900, #212124);
+  color: var(--ds-neutral-0-0, #fff);
+  font: inherit;
+  font-size: var(--ds-font-size-14, 14px);
+  line-height: 20px;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--ds-neutral-750-750, #3b3b40);
+  }
+
+  &--selected {
+    background: var(--ds-neutral-750-750, #3b3b40);
+  }
+}

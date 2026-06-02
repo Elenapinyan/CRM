@@ -1,0 +1,41 @@
+@if (open()) {
+  <aside class="cohort-users-sidebar" role="complementary" aria-label="Cohort players">
+    <header class="cohort-users-sidebar__header">
+      <div class="cohort-users-sidebar__title-block">
+        <h2 class="cohort-users-sidebar__title">Players</h2>
+        @if (cell(); as c) {
+          <p class="cohort-users-sidebar__meta">
+            {{ periodLabel() }} · {{ intervalLabel() }} · {{ c.retentionPct }}% ·
+            {{ c.playerCount.toLocaleString() }} players
+          </p>
+        }
+      </div>
+      <button type="button" class="cohort-users-sidebar__close" aria-label="Close panel" (click)="onClose()">
+        <i class="ds-icon ds-icon-control-cross" aria-hidden="true"></i>
+      </button>
+    </header>
+
+    <div class="cohort-users-sidebar__body">
+      <table class="cohort-users-sidebar__table">
+        <thead>
+          <tr>
+            <th scope="col">Player ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Last activity</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (player of players(); track player.id) {
+            <tr>
+              <td>{{ player.id }}</td>
+              <td>{{ player.username }}</td>
+              <td>{{ player.email }}</td>
+              <td>{{ player.lastActivity }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </aside>
+}

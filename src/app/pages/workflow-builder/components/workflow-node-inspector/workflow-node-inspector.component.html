@@ -1,0 +1,54 @@
+<div class="wf-inspector" (click)="$event.stopPropagation()">
+  @switch (nodeType()) {
+    @case ('segment') {
+      <div class="wf-inspector__header">
+        <h3 class="wf-inspector__title">Segment</h3>
+      </div>
+      <p class="wf-inspector__hint">Choose which player segment enters this workflow.</p>
+      <label class="wf-inspector__label">
+        Segment name
+        <input type="text" class="wf-inspector__input" placeholder="Search segments…" />
+      </label>
+    }
+    @case ('trigger') {
+      <div class="wf-inspector__header">
+        <h3 class="wf-inspector__title">Trigger</h3>
+      </div>
+      <p class="wf-inspector__hint">Define when players in the segment should enter the flow.</p>
+      <label class="wf-inspector__label">
+        Trigger event
+        <select class="wf-inspector__input">
+          <option>Player registers</option>
+          <option>First deposit</option>
+          <option>Custom event</option>
+        </select>
+      </label>
+    }
+    @case ('bonus') {
+      <div class="wf-inspector__header">
+        <h3 class="wf-inspector__title">Bonus</h3>
+      </div>
+      @if (nodeData()?.bonusId) {
+        <dl class="wf-inspector__details">
+          <div>
+            <dt>Name</dt>
+            <dd>{{ nodeData()?.bonusName }}</dd>
+          </div>
+          <div>
+            <dt>ID</dt>
+            <dd>{{ nodeData()?.bonusId }}</dd>
+          </div>
+        </dl>
+        <button type="button" class="wf-inspector__btn" (click)="openBonusPicker()">Change bonus</button>
+      } @else {
+        <p class="wf-inspector__hint">Select a bonus before configuring this step.</p>
+        <button type="button" class="wf-inspector__btn wf-inspector__btn--main" (click)="openBonusPicker()">
+          Select bonus
+        </button>
+      }
+    }
+    @default {
+      <p class="wf-inspector__hint">Select a node on the canvas to edit its settings.</p>
+    }
+  }
+</div>

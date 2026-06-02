@@ -1,0 +1,103 @@
+<div class="crm-list">
+  <header class="crm-list__header">
+    <h1 class="crm-list__title">Workflows</h1>
+    <div class="crm-list__header-actions">
+      <ds-button type="button" variant="secondary" size="lg">Error logs</ds-button>
+      <ds-button type="button" variant="main" size="lg" (click)="createWorkflow()">Create workflow</ds-button>
+    </div>
+  </header>
+
+  <div class="crm-list__toolbar">
+    <div class="crm-list__search">
+      <span class="crm-list__search-addon" aria-hidden="true">
+        <i class="ds-icon ds-icon-control-search"></i>
+      </span>
+      <input
+        type="search"
+        class="crm-list__search-input"
+        placeholder="Search by ID, Name, and Creator"
+        aria-label="Search workflows"
+        (input)="onSearchInput($event)"
+      />
+    </div>
+    <div class="crm-list__toolbar-actions" #columnAnchor>
+      <app-clear-filters-button [gridApi]="gridApiRef()" />
+      <button
+        type="button"
+        class="crm-list__columns-btn"
+        aria-label="Column visibility"
+        [attr.aria-expanded]="columnsPanelOpen()"
+        [class.crm-list__columns-btn--open]="columnsPanelOpen()"
+        (click)="toggleColumnsPanel($event)"
+      >
+        <i class="ds-icon ds-icon-control-align-vertically" aria-hidden="true"></i>
+      </button>
+
+      @if (columnsPanelOpen()) {
+        <div
+          class="crm-list__col-panel"
+          role="dialog"
+          aria-label="Column visibility"
+          (click)="$event.stopPropagation()"
+        >
+          <div class="crm-list__col-panel-search">
+            <input
+              type="search"
+              class="crm-list__col-panel-search-input"
+              placeholder="Search columns"
+              aria-label="Search columns"
+              [value]="columnPanelSearch()"
+              (input)="onColumnPanelSearchInput($event)"
+            />
+          </div>
+          <ul class="crm-list__col-panel-list">
+            @for (item of filteredPanelColumns(); track item.colId) {
+              <li class="crm-list__col-panel-row">
+                <label class="crm-list__col-panel-label" [class.crm-list__col-panel-label--locked]="item.locked">
+                  <input
+                    type="checkbox"
+                    class="crm-list__col-panel-checkbox"
+                    [checked]="isColumnVisible(item.colId)"
+                    [disabled]="item.locked"
+                    (change)="onColumnCheckboxChange(item.colId, item.locked, $any($event.target).checked)"
+                  />
+                  <span>{{ item.label }}</span>
+                </label>
+              </li>
+            }
+          </ul>
+          <div class="crm-list__col-panel-footer">
+            <button type="button" class="crm-list__col-panel-btn crm-list__col-panel-btn--secondary" (click)="revertColumnsToDefault()">
+              <i class="ds-icon ds-icon-control-undo" aria-hidden="true"></i>
+              Revert to default
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="crm-list__grid-wrap ag-grid-component__content ag-grid-size-md">
+    <ag-grid-angular
+      [rowData]="rowData()"
+      [columnDefs]="columnDefs"
+      [gridOptions]="gridOptions"
+      (gridReady)="onGridReady($event)"
+    />
+  </div>
+
+  <footer class="crm-list__footer">
+    <span class="crm-list__footer-updated">Last updated on {{ lastUpdatedLabel() }}</span>
+    <div class="crm-list__footer-right">
+      <span class="crm-list__footer-stats-label">Workflows:</span>
+      <div class="crm-list__footer-stats">
+        @for (status of footerStatusOrder; track status) {
+          <span [class]="'crm-list__footer-chip ' + workflowStatusMeta[status].footerChipClass">
+            <i [class]="workflowStatusMeta[status].iconClass" aria-hidden="true"></i>
+            {{ footerStats()[status].toLocaleString() }}
+          </span>
+        }
+      </div>
+    </div>
+  </footer>
+</div>

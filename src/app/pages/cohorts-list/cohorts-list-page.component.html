@@ -1,0 +1,90 @@
+<div class="crm-list">
+  <header class="crm-list__header">
+    <div class="crm-list__header-title-block">
+      <h1 class="crm-list__title">Cohort</h1>
+    </div>
+    <div class="crm-list__header-actions">
+      <ds-button type="button" variant="main" size="lg" (click)="createCohort()">Create cohort</ds-button>
+    </div>
+  </header>
+
+  <div class="crm-list__toolbar">
+    <div class="crm-list__search">
+      <span class="crm-list__search-addon" aria-hidden="true">
+        <i class="ds-icon ds-icon-control-search"></i>
+      </span>
+      <input
+        type="search"
+        class="crm-list__search-input"
+        placeholder="Search by ID, Name, and Creator"
+        aria-label="Search cohorts"
+        (input)="onSearchInput($event)"
+      />
+    </div>
+    <div class="crm-list__toolbar-actions" #columnAnchor>
+      <app-clear-filters-button [gridApi]="gridApiRef()" />
+      <button
+        type="button"
+        class="crm-list__columns-btn"
+        aria-label="Column visibility"
+        [attr.aria-expanded]="columnsPanelOpen()"
+        [class.crm-list__columns-btn--open]="columnsPanelOpen()"
+        (click)="toggleColumnsPanel($event)"
+      >
+        <i class="ds-icon ds-icon-control-align-vertically" aria-hidden="true"></i>
+      </button>
+
+      @if (columnsPanelOpen()) {
+        <div
+          class="crm-list__col-panel"
+          role="dialog"
+          aria-label="Column visibility"
+          (click)="$event.stopPropagation()"
+        >
+          <div class="crm-list__col-panel-search">
+            <input
+              type="search"
+              class="crm-list__col-panel-search-input"
+              placeholder="Search columns"
+              aria-label="Search columns"
+              [value]="columnPanelSearch()"
+              (input)="onColumnPanelSearchInput($event)"
+            />
+          </div>
+          <ul class="crm-list__col-panel-list">
+            @for (item of filteredPanelColumns(); track item.colId) {
+              <li class="crm-list__col-panel-row">
+                <label class="crm-list__col-panel-label" [class.crm-list__col-panel-label--locked]="item.locked">
+                  <input
+                    type="checkbox"
+                    class="crm-list__col-panel-checkbox"
+                    [checked]="isColumnVisible(item.colId)"
+                    [disabled]="item.locked"
+                    (change)="onColumnCheckboxChange(item.colId, item.locked, $any($event.target).checked)"
+                  />
+                  <span>{{ item.label }}</span>
+                </label>
+              </li>
+            }
+          </ul>
+          <button type="button" class="crm-list__col-panel-revert" (click)="revertColumnsToDefault()">
+            Revert to default
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="crm-list__grid-wrap ag-grid-component__content ag-grid-size-md">
+    <ag-grid-angular
+      [rowData]="rowData()"
+      [columnDefs]="columnDefs"
+      [gridOptions]="gridOptions"
+      (gridReady)="onGridReady($event)"
+    />
+  </div>
+
+  <footer class="crm-list__footer">
+    <span>Last updated on {{ lastUpdatedLabel() }}</span>
+  </footer>
+</div>

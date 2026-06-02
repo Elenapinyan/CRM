@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+:host ::ng-deep ds-form-field,
+:host ::ng-deep .control-field,
+:host ::ng-deep .datepicker-open-button,
+:host ::ng-deep .control-field__input {
+  pointer-events: auto;
+}

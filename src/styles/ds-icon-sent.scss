@@ -1,0 +1,12 @@
+/* Figma Assets "Sent" — bundled in @platform-workspace/bo-icons >= 1.0.6 as ds-icon-sent.
+   Fallback for bo-icons 1.0.5 until the dependency is upgraded. */
+.ds-icon.ds-icon-sent::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  font-family: inherit !important;
+  background-color: currentColor;
+  mask: url('/icons/sent.svg') no-repeat center / contain;
+  -webkit-mask: url('/icons/sent.svg') no-repeat center / contain;
+}

@@ -1,0 +1,36 @@
+<article class="dashboard-metric-widget">
+  <app-dashboard-widget-header
+    [label]="label()"
+    [periodLabel]="data().isOnlyLifetime ? 'Lifetime' : periodLabel()"
+    [isCustomizing]="isCustomizing()"
+    [showInfo]="!data().isOnlyLifetime"
+    (dragStart)="dragStart.emit($event)"
+    (deleteWidget)="deleteWidget.emit()"
+  />
+
+  <div class="dashboard-metric-widget__body">
+    @if (isPair()) {
+      <p class="dashboard-metric-widget__value dashboard-metric-widget__value--pair">
+        <span>{{ data().pairValues?.[0] }}</span>
+        <span class="dashboard-metric-widget__pair-sep">/</span>
+        <span>{{ data().pairValues?.[1] }}</span>
+      </p>
+    } @else {
+      <p class="dashboard-metric-widget__value">{{ data().value }}</p>
+    }
+  </div>
+
+  <footer class="dashboard-metric-widget__footer">
+    @if (data().isOnlyLifetime) {
+      <span class="dashboard-metric-widget__lifetime">Lifetime</span>
+    } @else if (data().difference) {
+      <span
+        class="dashboard-metric-widget__delta"
+        [class.dashboard-metric-widget__delta--up]="isPositiveDelta()"
+        [class.dashboard-metric-widget__delta--down]="!isPositiveDelta()"
+      >
+        {{ data().difference }}
+      </span>
+    }
+  </footer>
+</article>

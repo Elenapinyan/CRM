@@ -1,0 +1,310 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+  background: var(--brd-neutral-0-900, #fff);
+}
+
+.net-deposit-expand-modal__shell {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: min(1304px, calc(100vh - 24px));
+  min-height: 0;
+  overflow: hidden;
+  background: var(--brd-neutral-0-900, #fff);
+}
+
+.net-deposit-expand-modal__shell .modal-header {
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.net-deposit-expand-modal__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.net-deposit-expand-modal__esc-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 2px 5px;
+  box-sizing: border-box;
+  border-radius: var(--radius-6, 6px);
+  border: 1px solid var(--brd-neutral-200-700, #e4e4e7);
+  background: var(--brd-neutral-100-800, #f4f4f5);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--brd-neutral-800-100, #27272a);
+}
+
+.net-deposit-expand-modal__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 16px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.net-deposit-expand-modal__chart-block {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.net-deposit-expand-modal__period-field {
+  position: relative;
+  z-index: 2;
+  width: 368px;
+  max-width: 100%;
+}
+
+.net-deposit-expand-modal__period-field app-dashboard-period-datepicker,
+.net-deposit-expand-modal__period-field ::ng-deep ds-datepicker-range {
+  display: block;
+  width: 100%;
+}
+
+.net-deposit-expand-modal__period-field ::ng-deep .form-field__label {
+  display: none;
+}
+
+.net-deposit-expand-modal__period-field ::ng-deep ds-form-field,
+.net-deposit-expand-modal__period-field ::ng-deep .control-field,
+.net-deposit-expand-modal__period-field ::ng-deep .datepicker-open-button,
+.net-deposit-expand-modal__period-field ::ng-deep .control-field__input {
+  pointer-events: auto;
+}
+
+.net-deposit-expand-modal__period-field ::ng-deep ds-form-field,
+.net-deposit-expand-modal__period-field ::ng-deep .control-field {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Figma chart+data — #fafafa shell, 4px padding, 16px radius */
+.net-deposit-expand-modal__chart-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px;
+  border-radius: var(--radius-16, 16px);
+  background: var(--brd-neutral-050-900, #fafafa);
+  overflow: hidden;
+}
+
+.net-deposit-expand-modal__summary {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-height: 56px;
+}
+
+.net-deposit-expand-modal__summary-item {
+  flex: 0 0 auto;
+  width: 190px;
+  max-width: 33.33%;
+  padding: 8px 16px;
+  box-sizing: border-box;
+}
+
+.net-deposit-expand-modal__summary-divider {
+  flex-shrink: 0;
+  align-self: center;
+  width: 1px;
+  height: 48px;
+  background: var(--brd-neutral-200-700, #e4e4e7);
+}
+
+.net-deposit-expand-modal__summary-legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 16px;
+  margin-bottom: 4px;
+}
+
+.net-deposit-expand-modal__summary-marker {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.net-deposit-expand-modal__summary-marker--deposits {
+  background: #f8f88c;
+}
+
+.net-deposit-expand-modal__summary-marker--withdrawals {
+  background: #9be9e1;
+}
+
+.net-deposit-expand-modal__summary-marker--net-deposit {
+  box-sizing: border-box;
+  background: transparent;
+  border: 2px solid #fc87d5;
+}
+
+.net-deposit-expand-modal__summary-label {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--brd-neutral-800-100, #27272a);
+}
+
+.net-deposit-expand-modal__summary-info {
+  display: grid;
+  place-items: center;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--brd-neutral-500-400, #76767f);
+  cursor: pointer;
+}
+
+.net-deposit-expand-modal__summary-info .ds-icon {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.net-deposit-expand-modal__summary-values {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.net-deposit-expand-modal__summary-value {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--brd-neutral-1000-0, #18181b);
+}
+
+.net-deposit-expand-modal__summary-delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.net-deposit-expand-modal__summary-delta--up {
+  color: var(--brd-accent-green-700-500, #219768);
+}
+
+.net-deposit-expand-modal__summary-delta--down {
+  color: var(--brd-accent-red-700-500, #e53e3e);
+}
+
+.net-deposit-expand-modal__summary-delta .ds-icon {
+  font-size: 10px;
+  line-height: 1;
+}
+
+.net-deposit-expand-modal__chart-plot {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 364px;
+  padding: 12px 12px 8px;
+  box-sizing: border-box;
+  border: 1px solid var(--brd-neutral-150-750, #efeff0);
+  border-radius: var(--radius-12, 12px);
+  background: var(--brd-neutral-0-900, #fff);
+  overflow: hidden;
+}
+
+.net-deposit-expand-modal__chart-y-label {
+  margin: 0 0 16px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--brd-neutral-800-100, #27272a);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.net-deposit-expand-modal__chart-host {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 280px;
+}
+
+.net-deposit-expand-modal__table-block {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  padding: 4px;
+  border-radius: var(--radius-16, 16px);
+  background: var(--brd-neutral-050-900, #fafafa);
+  overflow: hidden;
+}
+
+.net-deposit-expand-modal__tabs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  padding: 8px 4px 4px;
+}
+
+.net-deposit-expand-modal__tab {
+  margin: 0;
+  padding: 4px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: var(--radius-4, 4px) var(--radius-4, 4px) 0 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--brd-neutral-1000-0, #18181b);
+  cursor: pointer;
+}
+
+.net-deposit-expand-modal__tab--active {
+  border-bottom-color: var(--brd-neutral-1000-0, #18181b);
+}
+
+.net-deposit-expand-modal__grid-wrap {
+  flex: 1 1 auto;
+  height: 280px;
+  min-height: 280px;
+  margin-top: 4px;
+  border-radius: var(--radius-12, 12px);
+  overflow: hidden;
+  background: var(--brd-neutral-0-900, #fff);
+}
+
+.net-deposit-expand-modal__grid-wrap ag-grid-angular {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+:host ::ng-deep .net-deposit-expand-modal__username-link {
+  color: var(--brd-accent-blue-600-400, #2563eb);
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+:host ::ng-deep .net-deposit-expand-modal__username-link:hover {
+  text-decoration: underline;
+}

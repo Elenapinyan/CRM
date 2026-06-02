@@ -1,0 +1,16 @@
+@use '../../shared/crm-list/crm-list-layout';
+
+.crm-list__header-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.crm-list__section-label {
+  margin: 0;
+  font-size: var(--spr-font-size-12, 12px);
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--brd-neutral-500-400, #76767f);
+}

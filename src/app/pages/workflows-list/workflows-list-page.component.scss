@@ -1,0 +1,45 @@
+@use '../../shared/crm-list/crm-list-layout';
+
+:host ::ng-deep {
+  .crm-list__grid-chip--wf-in-progress,
+  .crm-list__footer-chip--wf-in-progress {
+    background: var(--brd-accent-green-050-950, #eefbf6);
+    border-color: var(--brd-accent-green-200-800, #bcf0db);
+    color: var(--brd-accent-green-900-100, #12543a);
+  }
+
+  .crm-list__grid-chip--wf-completed,
+  .crm-list__footer-chip--wf-completed {
+    background: var(--brd-accent-blue-050-950, #ecf2fe);
+    border-color: var(--brd-accent-blue-200-800, #b2cafa);
+    color: var(--brd-accent-blue-900-100, #062460);
+  }
+
+  .crm-list__grid-chip--wf-scheduled,
+  .crm-list__footer-chip--wf-scheduled {
+    background: var(--brd-accent-cyan-050-950, #eefbfa);
+    border-color: var(--brd-accent-cyan-200-800, #bcf0eb);
+    color: var(--brd-accent-cyan-900-100, #12544d);
+  }
+
+  .crm-list__grid-chip--wf-draft,
+  .crm-list__footer-chip--wf-draft {
+    background: var(--brd-neutral-100-800, #f4f4f5);
+    border-color: var(--brd-neutral-200-700, #e4e4e7);
+    color: var(--brd-neutral-800-100, #27272a);
+  }
+
+  .crm-list__grid-chip--wf-paused,
+  .crm-list__footer-chip--wf-paused {
+    background: var(--brd-accent-yellow-050-950, #fefeee);
+    border-color: var(--brd-accent-yellow-200-800, #fafab2);
+    color: var(--brd-accent-yellow-900-100, #606006);
+  }
+
+  .crm-list__grid-chip--wf-canceled,
+  .crm-list__footer-chip--wf-canceled {
+    background: var(--brd-accent-orange-050-950, #fef4ee);
+    border-color: var(--brd-accent-orange-200-800, #fccfb1);
+    color: var(--brd-accent-orange-900-100, #622a04);
+  }
+}

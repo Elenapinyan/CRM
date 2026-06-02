@@ -1,0 +1,33 @@
+<div class="segment-filter-list-popover" (click)="$event.stopPropagation()">
+  <div class="segment-filter-list-popover__search-wrap">
+    <input
+      type="search"
+      class="segment-filter-list-popover__search"
+      placeholder="Search"
+      aria-label="Search options"
+      [value]="searchQuery()"
+      (input)="onSearchInput($any($event.target).value)"
+      (click)="$event.stopPropagation()"
+    />
+  </div>
+  <ul class="segment-filter-list-popover__list" role="listbox" aria-multiselectable="true">
+    @for (option of filteredOptions(); track option.key) {
+      <li>
+        <div
+          class="segment-filter-list-popover__item"
+          role="option"
+          [attr.aria-selected]="isSelected(option.key)"
+          (click)="onItemClick(option.key)"
+        >
+          <ds-checkbox
+            class="segment-filter-list-popover__checkbox"
+            [ngModel]="isSelected(option.key)"
+          />
+          <span class="segment-filter-list-popover__label">{{ option.label }}</span>
+        </div>
+      </li>
+    } @empty {
+      <li class="segment-filter-list-popover__empty">No matches</li>
+    }
+  </ul>
+</div>

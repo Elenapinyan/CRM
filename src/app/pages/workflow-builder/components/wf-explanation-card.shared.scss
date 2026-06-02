@@ -1,0 +1,118 @@
+// Shared “explanation” flyout card — Figma nodes 936:42355, 454:23003, 936:41207
+
+.wf-explanation-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 295px;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid var(--brd-neutral-100-800, #f4f4f5);
+  border-radius: var(--radius-16, 16px);
+  background: var(--brd-neutral-0-900, #fff);
+  box-shadow:
+    0 4px 8px var(--brd-alpha-bb-008-024, rgba(24, 24, 27, 0.08)),
+    0 8px 16px var(--brd-alpha-bb-004-040, rgba(24, 24, 27, 0.04));
+}
+
+.wf-explanation-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.wf-explanation-card__title {
+  font-size: var(--spr-font-size-20, 20px);
+  font-weight: 600;
+  line-height: var(--spr-line-height-24, 24px);
+  color: var(--brd-neutral-1000-0, #18181b);
+}
+
+.wf-explanation-card__chevron {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  color: var(--brd-neutral-600-300, #53535a);
+}
+
+.wf-explanation-card__chevron .ds-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.wf-explanation-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wf-explanation-card__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: var(--radius-12, 12px);
+  background: var(--brd-neutral-050-900, #fafafa);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.wf-explanation-card__row:hover {
+  background: var(--brd-neutral-100-800, #f4f4f5);
+}
+
+.wf-explanation-card__row:disabled,
+.wf-explanation-card__row--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.wf-explanation-card__row-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+}
+
+.wf-explanation-card__row-title {
+  font-size: var(--spr-font-size-14, 14px);
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--brd-neutral-1000-0, #18181b);
+}
+
+.wf-explanation-card__row-subtitle {
+  font-size: var(--spr-font-size-12, 12px);
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--brd-neutral-500-500, #76767f);
+}
+
+.wf-explanation-card__row-icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  color: var(--brd-neutral-600-300, #53535a);
+}
+
+.wf-explanation-card__row-icon .ds-icon {
+  font-size: 16px;
+  line-height: 1;
+}

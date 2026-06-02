@@ -1,0 +1,98 @@
+<div class="sms-editor">
+  <header class="sms-editor__header">
+    <div class="sms-editor__header-top">
+      <div class="sms-editor__title-block">
+        <h1 class="sms-editor__title">{{ templateTitle() }}</h1>
+        <span class="sms-editor__type-pill">
+          <i class="ds-icon ds-icon-general-message" aria-hidden="true"></i>
+          SMS
+        </span>
+      </div>
+      <div class="sms-editor__header-actions">
+        <button type="button" class="sms-editor__btn sms-editor__btn--secondary">Test</button>
+        <button type="button" class="sms-editor__btn sms-editor__btn--main" disabled>Save</button>
+      </div>
+    </div>
+    <div class="sms-editor__breadcrumb-row">
+      <nav class="sms-editor__breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/communication" class="sms-editor__breadcrumb-link">Communication Hub</a>
+        <span class="sms-editor__breadcrumb-sep" aria-hidden="true">/</span>
+        <span class="sms-editor__breadcrumb-current">{{ templateTitle() }}</span>
+      </nav>
+      @if (templateDescription()) {
+        <p class="sms-editor__description">{{ templateDescription() }}</p>
+      }
+    </div>
+  </header>
+
+  <div class="sms-editor__workspace">
+    <section class="sms-editor__preview-pane" aria-label="SMS preview">
+      <div class="sms-editor__preview-main">
+        <div class="sms-editor__stats">
+          <div class="sms-editor__stat-chip">
+            <span class="sms-editor__stat-label">Limit per SMS</span>
+            <span class="sms-editor__stat-value">{{ limitPerSms }}</span>
+          </div>
+          <div class="sms-editor__stat-chip">
+            <span class="sms-editor__stat-label">Characters</span>
+            <span class="sms-editor__stat-value">{{ smsStats().characters }}</span>
+          </div>
+          <div class="sms-editor__stat-chip">
+            <span class="sms-editor__stat-label">SMS count</span>
+            <span class="sms-editor__stat-value">{{ smsStats().smsCount }}</span>
+          </div>
+        </div>
+        <div class="sms-editor__phone" aria-hidden="true">
+          <div class="sms-editor__phone-screen">
+            @if (message().trim()) {
+              <p class="sms-editor__phone-message">{{ message() }}</p>
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="sms-editor__composer" aria-label="SMS message composer">
+      <div class="sms-editor__language-tabs" role="tablist" aria-label="Language">
+        @for (language of languages; track language.id) {
+          <button
+            type="button"
+            class="sms-editor__language-tab"
+            role="tab"
+            [class.sms-editor__language-tab--active]="selectedLanguageId() === language.id"
+            [attr.aria-selected]="selectedLanguageId() === language.id"
+            (click)="selectLanguage(language.id)"
+          >
+            {{ language.label }}
+          </button>
+        }
+      </div>
+
+      <div class="sms-editor__variables">
+        <p class="sms-editor__section-label">Variables</p>
+        <div class="sms-editor__variable-list">
+          @for (variable of variables; track variable) {
+            <button
+              type="button"
+              class="sms-editor__variable-chip"
+              (click)="insertVariable(variable)"
+            >
+              {{ variable }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <div class="sms-editor__message-field">
+        <label class="sms-editor__section-label" for="sms-template-message">Message</label>
+        <textarea
+          id="sms-template-message"
+          class="sms-editor__message-input"
+          placeholder=""
+          [value]="message()"
+          (input)="onMessageInput($event)"
+        ></textarea>
+      </div>
+    </aside>
+  </div>
+</div>

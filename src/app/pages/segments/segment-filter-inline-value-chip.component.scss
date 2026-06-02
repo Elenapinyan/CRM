@@ -1,0 +1,54 @@
+// Matches `.segments-filter-preview__chip` in segment-filter-preview-row.component.scss
+:host {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.segment-inline-value-chip {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  min-height: 24px;
+  max-height: 24px;
+  margin: 0;
+  padding: 2px 5px;
+  border-radius: var(--radius-6, 6px);
+  border: 1px solid var(--brd-neutral-200-700, #e4e4e7);
+  background: var(--brd-neutral-100-800, #f4f4f5);
+  font: inherit;
+  font-size: var(--spr-font-size-12, 12px);
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--brd-neutral-800-100, #27272a);
+  vertical-align: middle;
+}
+
+.segment-inline-value-chip--editable {
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--brd-neutral-300-600, #d4d4d8);
+    background: var(--brd-neutral-50-850, #fafafa);
+  }
+}
+
+.segment-inline-value-chip--editing,
+.segment-inline-value-chip--open {
+  cursor: text;
+  min-width: 24px;
+  border-color: var(--brd-neutral-400-500, #a1a1aa);
+  background: var(--brd-neutral-50-850, #fafafa);
+  outline: none;
+  text-align: center;
+  appearance: none;
+  -webkit-appearance: none;
+
+  &:focus {
+    border-color: var(--brd-neutral-400-500, #a1a1aa);
+    box-shadow: 0 0 0 1px var(--brd-neutral-400-500, #a1a1aa);
+  }
+}

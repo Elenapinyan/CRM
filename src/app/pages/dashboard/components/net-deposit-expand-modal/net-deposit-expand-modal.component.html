@@ -1,0 +1,109 @@
+<div class="net-deposit-expand-modal__shell">
+  <header class="modal-header">
+    <div class="modal-header__row">
+      <h4 class="modal-header__title" id="net-deposit-expand-title">Net deposit</h4>
+      <div class="modal-header__actions">
+        @if (modalSettings?.keyboard) {
+          <span class="net-deposit-expand-modal__esc-badge" aria-hidden="true">Esc</span>
+        }
+        <button
+          type="button"
+          class="close-modal-button"
+          aria-label="Close"
+          aria-describedby="net-deposit-expand-title"
+          (click)="onClose()">
+          <i class="ds-icon ds-icon-control-cross" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="modal-body net-deposit-expand-modal__body">
+    <div class="net-deposit-expand-modal__content">
+      <section class="net-deposit-expand-modal__chart-block">
+        <div class="net-deposit-expand-modal__period-field">
+          <app-dashboard-period-datepicker
+            [dateRangeControl]="dateRangeControl"
+            [selectedPeriod]="selectedPeriod()"
+            (selectedPeriodChange)="onSelectedPeriodChange($event)"
+            (rangeConfirmed)="onDateRangeConfirmed($event)"
+          />
+        </div>
+
+        <div class="net-deposit-expand-modal__chart-card">
+          <div class="net-deposit-expand-modal__summary" role="list">
+            @for (metric of summaryMetrics(); track metric.label; let last = $last) {
+              <div class="net-deposit-expand-modal__summary-item" role="listitem">
+                <div class="net-deposit-expand-modal__summary-legend">
+                  <span
+                    class="net-deposit-expand-modal__summary-marker"
+                    [class.net-deposit-expand-modal__summary-marker--deposits]="metric.markerClass === 'deposits'"
+                    [class.net-deposit-expand-modal__summary-marker--withdrawals]="metric.markerClass === 'withdrawals'"
+                    [class.net-deposit-expand-modal__summary-marker--net-deposit]="metric.markerClass === 'net-deposit'"
+                    aria-hidden="true"></span>
+                  <span class="net-deposit-expand-modal__summary-label">{{ metric.label }}</span>
+                  <button type="button" class="net-deposit-expand-modal__summary-info" aria-label="More information">
+                    <i class="ds-icon ds-icon-general-info" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div class="net-deposit-expand-modal__summary-values">
+                  <span class="net-deposit-expand-modal__summary-value">{{ metric.value }}</span>
+                  <span
+                    class="net-deposit-expand-modal__summary-delta"
+                    [class.net-deposit-expand-modal__summary-delta--up]="metric.deltaPositive"
+                    [class.net-deposit-expand-modal__summary-delta--down]="!metric.deltaPositive">
+                    <i
+                      class="ds-icon"
+                      [class.ds-icon-arrows-chevron-up]="metric.deltaPositive"
+                      [class.ds-icon-arrows-chevron-down]="!metric.deltaPositive"
+                      aria-hidden="true"></i>
+                    {{ metric.delta }}
+                  </span>
+                </div>
+              </div>
+              @if (!last) {
+                <span class="net-deposit-expand-modal__summary-divider" aria-hidden="true"></span>
+              }
+            }
+          </div>
+
+          <div class="net-deposit-expand-modal__chart-plot">
+            <p class="net-deposit-expand-modal__chart-y-label">{{ chartYAxisLabel }}</p>
+            <div #chartHost class="net-deposit-expand-modal__chart-host"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="net-deposit-expand-modal__table-block">
+        <div class="net-deposit-expand-modal__tabs" role="tablist" aria-label="Transaction type">
+          <button
+            type="button"
+            role="tab"
+            class="net-deposit-expand-modal__tab"
+            [class.net-deposit-expand-modal__tab--active]="activeTab() === 'deposits'"
+            [attr.aria-selected]="activeTab() === 'deposits'"
+            (click)="selectTab('deposits')">
+            Deposits
+          </button>
+          <button
+            type="button"
+            role="tab"
+            class="net-deposit-expand-modal__tab"
+            [class.net-deposit-expand-modal__tab--active]="activeTab() === 'withdrawals'"
+            [attr.aria-selected]="activeTab() === 'withdrawals'"
+            (click)="selectTab('withdrawals')">
+            Withdrawals
+          </button>
+        </div>
+
+        <div class="net-deposit-expand-modal__grid-wrap ag-grid-component__content ag-grid-size-md">
+          <ag-grid-angular
+            class="net-deposit-expand-modal__grid"
+            [rowData]="rowData()"
+            [columnDefs]="columnDefs()"
+            [gridOptions]="gridOptions" />
+        </div>
+      </section>
+    </div>
+  </main>
+</div>

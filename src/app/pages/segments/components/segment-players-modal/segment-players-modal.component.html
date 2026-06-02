@@ -1,0 +1,116 @@
+<div class="segment-players-modal__shell">
+  <header class="modal-header">
+    <div class="modal-header__row">
+      <h4 class="modal-header__title" id="segment-players-modal-title">{{ title() }}</h4>
+      <div class="modal-header__actions">
+        @if (modalSettings?.keyboard) {
+          <span class="segment-players-modal__esc-badge" aria-hidden="true">Esc</span>
+        }
+        <button
+          type="button"
+          class="close-modal-button"
+          aria-label="Close"
+          aria-describedby="segment-players-modal-title"
+          (click)="onClose()"
+        >
+          <i class="ds-icon ds-icon-control-cross" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="modal-body segment-players-modal__body">
+    <div class="segment-players-modal__content">
+    <div class="segment-players-modal__toolbar">
+      <div class="segment-players-modal__search">
+        <span class="segment-players-modal__search-addon" aria-hidden="true">
+          <i class="ds-icon ds-icon-control-search"></i>
+        </span>
+        <input
+          type="search"
+          class="segment-players-modal__search-input"
+          placeholder="Search by ID, Name, and Creator"
+          aria-label="Search players"
+          (input)="onSearchInput($event)"
+        />
+      </div>
+
+      <div class="segment-players-modal__toolbar-actions" #columnAnchor>
+        <app-clear-filters-button [gridApi]="gridApiRef()" />
+        <button type="button" class="segment-players-modal__icon-btn" aria-label="Download players" disabled>
+          <i class="ds-icon ds-icon-control-download" aria-hidden="true"></i>
+        </button>
+        <button
+          type="button"
+          class="segment-players-modal__icon-btn segment-players-modal__icon-btn--outline"
+          aria-label="Column visibility"
+          [attr.aria-expanded]="columnsPanelOpen()"
+          [class.segment-players-modal__icon-btn--open]="columnsPanelOpen()"
+          (click)="toggleColumnsPanel($event)"
+        >
+          <i class="ds-icon ds-icon-control-align-vertically" aria-hidden="true"></i>
+        </button>
+
+        @if (columnsPanelOpen()) {
+          <div
+            class="segment-players-modal__col-panel"
+            role="dialog"
+            aria-label="Column visibility"
+            (click)="$event.stopPropagation()"
+          >
+            <div class="segment-players-modal__col-panel-search">
+              <input
+                type="search"
+                class="segment-players-modal__col-panel-search-input"
+                placeholder="Search columns"
+                aria-label="Search columns"
+                [value]="columnPanelSearch()"
+                (input)="onColumnPanelSearchInput($event)"
+              />
+            </div>
+            <ul class="segment-players-modal__col-panel-list">
+              @for (item of filteredPanelColumns(); track item.colId) {
+                <li class="segment-players-modal__col-panel-row">
+                  <label
+                    class="segment-players-modal__col-panel-label"
+                    [class.segment-players-modal__col-panel-label--locked]="item.locked"
+                  >
+                    <input
+                      type="checkbox"
+                      class="segment-players-modal__col-panel-checkbox"
+                      [checked]="isColumnVisible(item.colId)"
+                      [disabled]="item.locked"
+                      (change)="onColumnCheckboxChange(item.colId, item.locked, $any($event.target).checked)"
+                    />
+                    <span>{{ item.label }}</span>
+                  </label>
+                </li>
+              }
+            </ul>
+            <div class="segment-players-modal__col-panel-footer">
+              <button
+                type="button"
+                class="segment-players-modal__col-panel-btn segment-players-modal__col-panel-btn--secondary"
+                (click)="revertColumnsToDefault()"
+              >
+                <i class="ds-icon ds-icon-control-undo" aria-hidden="true"></i>
+                Revert to default
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="segment-players-modal__grid-wrap ag-grid-size-md">
+      <ag-grid-angular
+        class="segment-players-modal__grid"
+        [rowData]="rowData()"
+        [columnDefs]="columnDefs"
+        [gridOptions]="gridOptions"
+        (gridReady)="onGridReady($event)"
+      />
+    </div>
+    </div>
+  </main>
+</div>

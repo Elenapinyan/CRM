@@ -1,0 +1,45 @@
+<div class="wf-explanation-card" (click)="$event.stopPropagation()">
+  <button
+    type="button"
+    class="wf-explanation-card__header"
+    [attr.aria-expanded]="!collapsed()"
+    (click)="toggleCollapsed($event)"
+  >
+    <span class="wf-explanation-card__title">Build</span>
+    <span class="wf-explanation-card__chevron" aria-hidden="true">
+      @if (collapsed()) {
+        <i class="ds-icon ds-icon-arrows-chevron-up"></i>
+      } @else {
+        <i class="ds-icon ds-icon-arrows-chevron-down"></i>
+      }
+    </span>
+  </button>
+
+  @if (!collapsed()) {
+    <div class="wf-explanation-card__body">
+      @for (row of rows; track row.id) {
+        <button
+          type="button"
+          class="wf-explanation-card__row"
+          [class.wf-explanation-card__row--disabled]="!row.draggable"
+          [attr.draggable]="row.draggable ? true : null"
+          [disabled]="!row.draggable"
+          (dragstart)="onDragStart($event, row)"
+          (dragend)="onDragEnd()"
+        >
+          <span class="wf-explanation-card__row-text">
+            <span class="wf-explanation-card__row-title">{{ row.title }}</span>
+            <span class="wf-explanation-card__row-subtitle">{{ row.subtitle }}</span>
+          </span>
+          <span class="wf-explanation-card__row-icon" aria-hidden="true">
+            <i class="ds-icon" [class]="row.iconClass"></i>
+          </span>
+        </button>
+      }
+
+      <p class="wf-explanation-card__hint">
+        Click to set as a next block or drag and drop block directly into canvas
+      </p>
+    </div>
+  }
+</div>

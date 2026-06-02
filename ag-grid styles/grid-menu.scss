@@ -1,0 +1,30 @@
+.grid-menu {
+  position: fixed;
+  z-index: 99;
+  min-width: 200px;
+  border-radius: var(--radius-8, 8px);
+  border: 1px solid var(--ds-neutral-700-700, #3b3b40);
+  background: var(--ds-neutral-900-900, #212124);
+  box-shadow: 0 1px 6px 0 var(--ds-alpha-bb-006-056, rgba(24, 24, 27, 0.56));
+  padding: 4px;
+  animation: fadeIn 0.1s ease-out;
+
+  &--item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+    padding: 8px;
+    cursor: pointer;
+    color: var(--ds-neutral-0-0, #fff);
+    font-size: var(--font-size-14, 14px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--font-line-height-20, 20px); /* 142.857% */
+    border-radius: var(--radius-6, 6px);
+
+    &:hover {
+      background: var(--ds-neutral-750-750, #313135);
+    }
+  }
+}

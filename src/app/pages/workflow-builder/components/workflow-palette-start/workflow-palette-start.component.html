@@ -1,0 +1,65 @@
+<div class="wf-explanation-card" (click)="$event.stopPropagation()">
+  <button
+    type="button"
+    class="wf-explanation-card__header"
+    [attr.aria-expanded]="!collapsed()"
+    (click)="toggleCollapsed($event)"
+  >
+    <span class="wf-explanation-card__title">Start</span>
+    <span class="wf-explanation-card__chevron" aria-hidden="true">
+      @if (collapsed()) {
+        <i class="ds-icon ds-icon-arrows-chevron-up"></i>
+      } @else {
+        <i class="ds-icon ds-icon-arrows-chevron-down"></i>
+      }
+    </span>
+  </button>
+
+  @if (!collapsed()) {
+    <div class="wf-explanation-card__body">
+      <button
+        type="button"
+        class="wf-explanation-card__row"
+        draggable="true"
+        [disabled]="!state.canDropNodeType('segment')"
+        (dragstart)="onDragStart($event, 'segment')"
+        (dragend)="onDragEnd()"
+      >
+        <span class="wf-explanation-card__row-text">
+          <span class="wf-explanation-card__row-title">Select segment</span>
+          <span class="wf-explanation-card__row-subtitle">Choose the player segment to target</span>
+        </span>
+        <span class="wf-explanation-card__row-icon" aria-hidden="true">
+          <i class="ds-icon ds-icon-general-target"></i>
+        </span>
+      </button>
+
+      <button
+        type="button"
+        class="wf-explanation-card__row"
+        draggable="true"
+        [disabled]="!state.canDropNodeType('trigger')"
+        (dragstart)="onDragStart($event, 'trigger')"
+        (dragend)="onDragEnd()"
+      >
+        <span class="wf-explanation-card__row-text">
+          <span class="wf-explanation-card__row-title">Set trigger</span>
+          <span class="wf-explanation-card__row-subtitle">Define the action that starts this workflow</span>
+        </span>
+        <span class="wf-explanation-card__row-icon" aria-hidden="true">
+          <i class="ds-icon ds-icon-general-pointer"></i>
+        </span>
+      </button>
+
+      <button type="button" class="wf-explanation-card__row wf-explanation-card__row--disabled" disabled>
+        <span class="wf-explanation-card__row-text">
+          <span class="wf-explanation-card__row-title">Describe workflow</span>
+          <span class="wf-explanation-card__row-subtitle">Convert text into a workflow</span>
+        </span>
+        <span class="wf-explanation-card__row-icon" aria-hidden="true">
+          <i class="ds-icon ds-icon-general-sparkles"></i>
+        </span>
+      </button>
+    </div>
+  }
+</div>

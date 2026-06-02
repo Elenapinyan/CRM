@@ -1,0 +1,72 @@
+.dashboard-widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 12px 4px;
+  box-sizing: border-box;
+}
+
+.dashboard-widget-header__title-block {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.dashboard-widget-header__title {
+  font-size: var(--spr-font-size-14, 14px);
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--brd-neutral-1000-0, #18181b);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dashboard-widget-header__drag,
+.dashboard-widget-header__info,
+.dashboard-widget-header__remove {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-4, 4px);
+  background: transparent;
+  color: var(--brd-neutral-500-400, #76767f);
+  cursor: pointer;
+}
+
+.dashboard-widget-header__drag {
+  cursor: grab;
+}
+
+.dashboard-widget-header__info .ds-icon,
+.dashboard-widget-header__remove .ds-icon,
+.dashboard-widget-header__drag .ds-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.dashboard-widget-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.dashboard-widget-header__badge {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: var(--radius-100, 100px);
+  background: var(--brd-neutral-100-800, #f4f4f5);
+  font-size: var(--spr-font-size-12, 12px);
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--brd-neutral-800-100, #27272a);
+}

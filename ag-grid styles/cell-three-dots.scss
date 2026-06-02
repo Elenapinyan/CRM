@@ -1,0 +1,18 @@
+.three-dots-cell {
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 51px;
+  cursor: pointer;
+
+  i {
+    font-size: 20px;
+  }
+}
+
+.ag-row-hover {
+  .three-dots-cell {
+    visibility: visible;
+  }
+}

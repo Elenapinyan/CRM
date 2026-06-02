@@ -1,0 +1,27 @@
+<div class="segment-upload-file-row" role="listitem">
+  <div class="segment-upload-file-row__stripe" aria-hidden="true"></div>
+  <div class="segment-upload-file-row__content">
+    <p class="segment-upload-file-row__title">{{ file().fileName }}</p>
+    <div class="segment-upload-file-row__actions">
+      @if (file().playerCount > 0) {
+        <button
+          type="button"
+          class="segment-upload-file-row__players-badge"
+          [attr.aria-label]="'View ' + formatPlayersLabel(file().playerCount)"
+          (click)="onPlayersClick()"
+        >
+          <i class="ds-icon ds-icon-general-users" aria-hidden="true"></i>
+          <span>{{ formatPlayersLabel(file().playerCount) }}</span>
+        </button>
+      } @else {
+        <span class="segment-upload-file-row__players-badge segment-upload-file-row__players-badge--empty">
+          <i class="ds-icon ds-icon-general-users" aria-hidden="true"></i>
+          <span>{{ formatPlayersLabel(file().playerCount) }}</span>
+        </span>
+      }
+      <button type="button" class="segment-upload-file-row__delete-btn" aria-label="Remove file" (click)="onRemove()">
+        <i class="ds-icon ds-icon-control-delete" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</div>

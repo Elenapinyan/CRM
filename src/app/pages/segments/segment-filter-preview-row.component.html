@@ -1,0 +1,102 @@
+<div class="segments-filter-preview" role="listitem">
+  <div
+    class="segments-filter-preview__stripe"
+    [class]="'segments-filter-preview__stripe segments-filter-preview__stripe--' + tone()"
+  ></div>
+  <div class="segments-filter-preview__content">
+    <div
+      class="segments-filter-preview__icon-wrap"
+      [class]="'segments-filter-preview__icon-wrap segments-filter-preview__icon-wrap--' + tone()"
+      aria-hidden="true"
+    >
+      <i class="ds-icon" [class]="iconClass()"></i>
+    </div>
+    <div class="segments-filter-preview__body">
+      @for (part of row().tokens; track $index) {
+        @if (part.kind === 'text') {
+          <span class="segments-filter-preview__text" [class.segments-filter-preview__text--emphasis]="part.emphasis">{{ part.text }}</span>
+        } @else if (isEditableChip(part)) {
+          <span class="segments-filter-preview__chip-wrap">
+            @if (usesInlineValueEditor(part)) {
+              <app-segment-filter-inline-value-chip
+                [value]="inlineValueText(part)"
+                [active]="isChipMenuOpen($index)"
+                (activate)="onChipClick(part, $index, $event)"
+                (confirm)="onCustomValueConfirm(part, $index, $event)"
+                (cancel)="openChipIndex.set(null)"
+              />
+            } @else {
+              <button
+                type="button"
+                class="segments-filter-preview__chip segments-filter-preview__chip--editable"
+                [class.segments-filter-preview__chip--open]="isChipMenuOpen($index)"
+                [attr.aria-expanded]="isChipMenuOpen($index)"
+                [attr.aria-haspopup]="usesMenu(part) ? 'listbox' : 'dialog'"
+                (click)="onChipClick(part, $index, $event)"
+              >
+                {{ chipDisplayText(part) }}
+              </button>
+            }
+            @if (isChipMenuOpen($index)) {
+              @if (usesMenu(part)) {
+                <app-segment-filter-chip-menu
+                  class="segments-filter-preview__chip-menu"
+                  [options]="menuOptions(part)"
+                  [selectedValue]="part.text"
+                  [withSearch]="menuWithSearch(part)"
+                  (pick)="onMenuPick(part, $index, $event)"
+                />
+              } @else if (usesStaticPicker(part)) {
+                <app-segment-filter-static-datetime-popover
+                  class="segments-filter-preview__chip-menu"
+                  [value]="staticDateValue(part)"
+                  (confirm)="onStaticDateConfirm(part, $index, $event)"
+                />
+              } @else if (usesCustomValueEditor(part) && !usesInlineValueEditor(part)) {
+                <app-segment-filter-custom-value-popover
+                  class="segments-filter-preview__chip-menu"
+                  [value]="part.text === '…' ? '' : part.text"
+                  [inputMode]="customValueInputMode(part)"
+                  (confirm)="onCustomValueConfirm(part, $index, $event)"
+                />
+              } @else if (usesListPopover(part)) {
+                <app-segment-filter-list-popover
+                  class="segments-filter-preview__chip-menu"
+                  [options]="listOptions(part)"
+                  [selectedKeys]="listSelectedKeys()"
+                  (confirm)="onListConfirm(part, $index, $event)"
+                />
+              }
+            }
+          </span>
+        } @else {
+          <span class="segments-filter-preview__chip">{{ part.text }}</span>
+        }
+      }
+    </div>
+    <div class="segments-filter-preview__actions">
+      @if (row().playerCount > 0) {
+        <button
+          type="button"
+          class="segments-player-badge segments-player-badge--row segments-player-badge--clickable"
+          [attr.aria-label]="'View ' + formatPlayersLabel(row().playerCount)"
+          (click)="onPlayersBadgeClick()"
+        >
+          <i class="ds-icon ds-icon-general-users" aria-hidden="true"></i>
+          <span>{{ formatPlayersLabel(row().playerCount) }}</span>
+        </button>
+      } @else {
+        <div class="segments-player-badge segments-player-badge--row segments-player-badge--neutral">
+          <i class="ds-icon ds-icon-general-users" aria-hidden="true"></i>
+          <span>{{ formatPlayersLabel(row().playerCount) }}</span>
+        </div>
+      }
+      <button type="button" class="segments-icon-btn segments-icon-btn--row" (click)="duplicate.emit()" aria-label="Duplicate filter">
+        <i class="ds-icon ds-icon-control-copy"></i>
+      </button>
+      <button type="button" class="segments-icon-btn segments-icon-btn--row" (click)="remove.emit()" aria-label="Remove filter">
+        <i class="ds-icon ds-icon-control-delete"></i>
+      </button>
+    </div>
+  </div>
+</div>

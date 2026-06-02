@@ -1,0 +1,29 @@
+<aside class="dashboard-sidebar">
+  <h2 class="dashboard-sidebar__title">Customize dashboard</h2>
+  <p class="dashboard-sidebar__hint">Drag widgets onto the grid or use + to add them.</p>
+
+  <label class="dashboard-sidebar__search">
+    <span class="visually-hidden">Search widgets</span>
+    <i class="ds-icon ds-icon-control-search" aria-hidden="true"></i>
+    <input type="search" [formControl]="quickSearchControl" placeholder="Search widgets" />
+  </label>
+
+  @if (!isLoaded()) {
+    <div class="dashboard-sidebar__loading" aria-busy="true">Loading widgets…</div>
+  } @else if (groupedWidgets().length === 0) {
+    <p class="dashboard-sidebar__empty">All widgets are already on the dashboard.</p>
+  } @else {
+    @for (group of groupedWidgets(); track group.categoryLabel) {
+      <section class="dashboard-sidebar__group">
+        <h3 class="dashboard-sidebar__group-title">{{ group.categoryLabel }}</h3>
+        @for (widget of group.widgets; track widget.meta.label) {
+          <app-dashboard-sidebar-widget-card
+            [widget]="widget"
+            (plusClick)="onPlusClick($event)"
+            (dragStart)="dragStart.emit($event)"
+          />
+        }
+      </section>
+    }
+  }
+</aside>

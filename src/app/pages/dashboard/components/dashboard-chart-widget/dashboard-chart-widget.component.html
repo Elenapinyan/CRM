@@ -1,0 +1,10 @@
+<article class="dashboard-chart-widget">
+  <app-dashboard-widget-header
+    [label]="label()"
+    [periodLabel]="periodLabel()"
+    [isCustomizing]="isCustomizing()"
+    (dragStart)="dragStart.emit($event)"
+    (deleteWidget)="deleteWidget.emit()"
+  />
+  <div class="dashboard-chart-widget__chart" echarts [options]="chartOptions()"></div>
+</article>

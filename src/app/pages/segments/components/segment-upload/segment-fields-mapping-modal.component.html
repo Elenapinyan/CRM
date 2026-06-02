@@ -1,0 +1,79 @@
+<div class="segment-fields-mapping-modal__shell">
+  <header class="modal-header">
+    <div class="modal-header__row">
+      <h4 class="modal-header__title" id="segment-fields-mapping-modal-title">Fields mapping</h4>
+      <div class="modal-header__actions">
+        @if (modalSettings?.keyboard) {
+          <span class="segment-fields-mapping-modal__esc-badge" aria-hidden="true">Esc</span>
+        }
+        <button
+          type="button"
+          class="close-modal-button"
+          aria-label="Close"
+          aria-describedby="segment-fields-mapping-modal-title"
+          (click)="onClose()"
+        >
+          <i class="ds-icon ds-icon-control-cross" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="modal-body segment-fields-mapping-modal__body">
+    <div class="segment-fields-mapping-modal__content">
+      <div class="segment-fields-mapping-modal__tabs" role="tablist" aria-label="Uploaded files">
+        @for (file of files(); track file.id) {
+          <button
+            type="button"
+            class="segment-fields-mapping-modal__tab"
+            role="tab"
+            [class.segment-fields-mapping-modal__tab--active]="activeFileId() === file.id"
+            [attr.aria-selected]="activeFileId() === file.id"
+            (click)="selectFile(file.id)"
+          >
+            @if (isFileValid(file)) {
+              <i
+                class="ds-icon ds-icon-control-check segment-fields-mapping-modal__tab-icon segment-fields-mapping-modal__tab-icon--valid"
+                aria-hidden="true"
+              ></i>
+            } @else {
+              <i
+                class="ds-icon ds-icon-general-alert-octagon segment-fields-mapping-modal__tab-icon segment-fields-mapping-modal__tab-icon--warning"
+                aria-hidden="true"
+              ></i>
+            }
+            <span>{{ file.fileName }}</span>
+          </button>
+        }
+      </div>
+
+      <div class="segment-fields-mapping-modal__grid-wrap ag-grid-component__content ag-grid-size-md">
+        @for (renderKey of [gridRenderKey()]; track renderKey) {
+          <ag-grid-angular
+            class="segment-fields-mapping-modal__grid"
+            [rowData]="activeRowData()"
+            [columnDefs]="columnDefs()"
+            [gridOptions]="gridOptions"
+          />
+        }
+      </div>
+    </div>
+  </main>
+
+  <footer class="segment-fields-mapping-modal__footer">
+    <button type="button" class="segment-fields-mapping-modal__btn segment-fields-mapping-modal__btn--secondary" (click)="onClose()">
+      Cancel
+    </button>
+    <button type="button" class="segment-fields-mapping-modal__btn segment-fields-mapping-modal__btn--secondary" (click)="onSkip()">
+      Skip mapping
+    </button>
+    <button
+      type="button"
+      class="segment-fields-mapping-modal__btn segment-fields-mapping-modal__btn--primary"
+      [disabled]="!canConfirm()"
+      (click)="onConfirm()"
+    >
+      Confirm mapping
+    </button>
+  </footer>
+</div>

@@ -1,0 +1,33 @@
+<div class="wf-explanation-card" (click)="$event.stopPropagation()">
+  <button
+    type="button"
+    class="wf-explanation-card__header"
+    [attr.aria-expanded]="!collapsed()"
+    (click)="toggleCollapsed($event)"
+  >
+    <span class="wf-explanation-card__title">Workflow</span>
+    <span class="wf-explanation-card__chevron" aria-hidden="true">
+      @if (collapsed()) {
+        <i class="ds-icon ds-icon-arrows-chevron-up"></i>
+      } @else {
+        <i class="ds-icon ds-icon-arrows-chevron-down"></i>
+      }
+    </span>
+  </button>
+
+  @if (!collapsed()) {
+    <div class="wf-explanation-card__body">
+      @for (row of rows; track row.id) {
+        <button type="button" class="wf-explanation-card__row" (click)="openSettings(row.id, $event)">
+          <span class="wf-explanation-card__row-text">
+            <span class="wf-explanation-card__row-title">{{ row.label }}</span>
+            <span class="wf-explanation-card__row-subtitle">{{ subtitles()[row.id] }}</span>
+          </span>
+          <span class="wf-explanation-card__row-icon" aria-hidden="true">
+            <i class="ds-icon" [class]="row.iconClass"></i>
+          </span>
+        </button>
+      }
+    </div>
+  }
+</div>

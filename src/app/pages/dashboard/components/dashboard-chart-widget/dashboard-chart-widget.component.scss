@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard-chart-widget {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--brd-neutral-200-700, #e4e4e7);
+  border-radius: var(--radius-8, 8px);
+  background: var(--brd-neutral-0-900, #fff);
+  box-shadow: 0 1px 6px var(--brd-alpha-bb-006-056, rgba(24, 24, 27, 0.06));
+  overflow: hidden;
+}
+
+.dashboard-chart-widget__chart {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  padding: 0 4px 8px;
+}

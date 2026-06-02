@@ -1,0 +1,28 @@
+<div class="dashboard-widget-header">
+  <div class="dashboard-widget-header__title-block">
+    @if (isCustomizing()) {
+      <button
+        type="button"
+        class="dashboard-widget-header__drag"
+        aria-label="Drag widget"
+        (mousedown)="dragStart.emit($event)"
+      >
+        <i class="ds-icon ds-icon-control-drag-vertical" aria-hidden="true"></i>
+      </button>
+    }
+    <span class="dashboard-widget-header__title">{{ label() }}</span>
+    @if (showInfo()) {
+      <button type="button" class="dashboard-widget-header__info" aria-label="More information">
+        <i class="ds-icon ds-icon-general-info" aria-hidden="true"></i>
+      </button>
+    }
+  </div>
+  <div class="dashboard-widget-header__actions">
+    <span class="dashboard-widget-header__badge">{{ periodLabel() }}</span>
+    @if (isCustomizing()) {
+      <button type="button" class="dashboard-widget-header__remove" aria-label="Remove widget" (click)="deleteWidget.emit()">
+        <i class="ds-icon ds-icon-control-cross" aria-hidden="true"></i>
+      </button>
+    }
+  </div>
+</div>

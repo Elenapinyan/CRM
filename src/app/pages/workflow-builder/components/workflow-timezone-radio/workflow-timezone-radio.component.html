@@ -1,0 +1,13 @@
+<label
+  class="wf-timezone-card"
+  [class.wf-timezone-card--selected]="isSelected()"
+  [attr.for]="inputId"
+>
+  <div class="wf-timezone-card__content">
+    <div class="wf-timezone-card__text">
+      <span class="wf-timezone-card__title">{{ option().title }}</span>
+      <span class="wf-timezone-card__desc">{{ option().description }}</span>
+    </div>
+    <ng-container #radioHost />
+  </div>
+</label>

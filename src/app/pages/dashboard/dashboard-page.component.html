@@ -1,0 +1,102 @@
+<div class="dashboard-page">
+  <section class="dashboard-page__toolbar">
+    <h1 class="dashboard-page__title">Dashboard</h1>
+    <div class="dashboard-page__period">
+      <app-dashboard-period-datepicker
+        [dateRangeControl]="dateRangeControl"
+        [selectedPeriod]="selectedPeriod()"
+        (selectedPeriodChange)="onSelectedPeriodChange($event)"
+        (rangeConfirmed)="onDateRangeConfirmed($event)"
+      />
+    </div>
+    <div class="dashboard-page__actions">
+      <button
+        type="button"
+        class="dashboard-page__toolbar-icon-btn"
+        [class.dashboard-page__toolbar-icon-btn--active]="!isResetDisabled()"
+        [class.dashboard-page__action--hidden]="isCustomizing()"
+        [disabled]="isResetDisabled()"
+        aria-label="Reset filters"
+        (click)="resetFilters()">
+        <i class="ds-icon ds-icon-general-broom" aria-hidden="true"></i>
+      </button>
+      <button
+        type="button"
+        class="dashboard-page__toolbar-icon-btn dashboard-page__toolbar-icon-btn--active"
+        [class.dashboard-page__action--hidden]="isCustomizing()"
+        [disabled]="isLoading()"
+        aria-label="Customize dashboard"
+        (click)="startCustomize()">
+        <i class="ds-icon ds-icon-control-settings" aria-hidden="true"></i>
+      </button>
+      <button
+        type="button"
+        class="dashboard-page__outline-btn"
+        [class.dashboard-page__action--hidden]="!isCustomizing()"
+        [disabled]="isSaving()"
+        (click)="cancelCustomize()">
+        Cancel
+      </button>
+      <button
+        type="button"
+        class="dashboard-page__main-btn"
+        [class.dashboard-page__action--hidden]="!isCustomizing()"
+        [disabled]="!layoutWasUpdated() || isSaving()"
+        (click)="saveCustomize()">
+        Save
+      </button>
+    </div>
+  </section>
+
+  <div
+    class="dashboard-page__grid-wrap"
+    #gridWrap
+    (dragenter)="onGridDragEnter($event)"
+    (dragover)="onGridDragOver($event)"
+    (dragleave)="onGridDragLeave($event)"
+    (drop)="onGridDrop($event)">
+    <div class="dashboard-page__loading" [class.dashboard-page__loading--hidden]="!isLoading()" aria-busy="true">
+      Loading dashboard…
+    </div>
+
+    <ktd-grid
+      #gridContainer
+      [cols]="gridCols()"
+      [rowHeight]="rowHeight()"
+      [gap]="gridGap"
+      [compactType]="'vertical'"
+      [layout]="layout()"
+      (dragStarted)="ktdGridOnDragStart($event)"
+      (dragEnded)="ktdGridOnDragEnd($event)">
+      @for (item of layout(); track item.id) {
+        <ktd-grid-item
+          #gridItem
+          [id]="item.id"
+          [resizable]="false"
+          [draggable]="isCustomizing() && !item.isPlaceholder">
+          @if (!item.isPlaceholder) {
+            <app-dashboard-widget
+              [widgetInfo]="widgetsInfo.get(item.id)"
+              [isCustomizing]="isCustomizing()"
+              [periodLabel]="periodLabel()"
+              [periodRange]="dashboardDateRange()"
+              [selectedPeriod]="selectedPeriod()"
+              (dragStart)="onWidgetDragStart($event, gridItem)"
+              (widgetDelete)="onWidgetDelete($event)"
+              (innerError)="onWidgetFailure($event)" />
+          } @else {
+            <div class="dashboard-page__placeholder" aria-hidden="true"></div>
+          }
+        </ktd-grid-item>
+      }
+    </ktd-grid>
+  </div>
+
+  @if (isCustomizing()) {
+    <app-dashboard-sidebar
+      class="dashboard-page__sidebar"
+      [displayedWidgets$]="displayedWidgets$"
+      (plusClick)="onWidgetAdd($event)"
+      (dragStart)="handleWidgetDragStart($event)" />
+  }
+</div>

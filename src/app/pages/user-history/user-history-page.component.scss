@@ -1,0 +1,43 @@
+@use '../../shared/crm-list/crm-list-layout';
+
+:host ::ng-deep {
+  .crm-list__grid-chip--act-created {
+    background: var(--brd-accent-green-050-950, #eefbf6);
+    border-color: var(--brd-accent-green-200-800, #bcf0db);
+    color: var(--brd-accent-green-900-100, #12543a);
+  }
+
+  .crm-list__grid-chip--act-modified {
+    background: var(--brd-accent-orange-050-950, #fef4ee);
+    border-color: var(--brd-accent-orange-200-800, #fccfb1);
+    color: var(--brd-accent-orange-900-100, #622a04);
+  }
+
+  .crm-list__grid-chip--ent-segment,
+  .crm-list__footer-chip--ent-segment {
+    background: var(--brd-accent-blue-050-950, #ecf2fe);
+    border-color: var(--brd-accent-blue-200-800, #b2cafa);
+    color: var(--brd-accent-blue-900-100, #062460);
+  }
+
+  .crm-list__grid-chip--ent-cohort,
+  .crm-list__footer-chip--ent-cohort {
+    background: var(--brd-accent-cyan-050-950, #eefbfa);
+    border-color: var(--brd-accent-cyan-200-800, #bcf0eb);
+    color: var(--brd-accent-cyan-900-100, #12544d);
+  }
+
+  .crm-list__grid-chip--ent-workflow,
+  .crm-list__footer-chip--ent-workflow {
+    background: var(--brd-accent-olive-050-950, #f7fbee);
+    border-color: var(--brd-accent-olive-200-800, #dff0bc);
+    color: var(--brd-accent-olive-900-100, #3e5412);
+  }
+
+  .crm-list__grid-chip--ent-template,
+  .crm-list__footer-chip--ent-template {
+    background: var(--brd-accent-pink-050-950, #feecf8);
+    border-color: var(--brd-accent-pink-200-800, #fab2e2);
+    color: var(--brd-accent-pink-900-100, #600642);
+  }
+}

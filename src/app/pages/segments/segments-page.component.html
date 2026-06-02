@@ -1,0 +1,375 @@
+<div class="segments-editor" [class.segments-editor--bria]="briaOpen()">
+  <div class="segments-editor__main">
+    <div class="segments-main__header">
+      <div class="segments-main__title-row">
+        <div class="segments-main__title-block">
+          <h1 class="segments-main__title">{{ segmentTitle() }}</h1>
+          <span [class]="'segments-pill ' + segmentTypePillClass()">
+            <i [class]="segmentTypeIconClass()" aria-hidden="true"></i>
+            {{ segmentTypeLabel() }}
+          </span>
+        </div>
+        <div class="segments-main__actions">
+          <div class="segments-main__stat-badges">
+            <span class="segments-pill segments-pill--neutral">
+              <i class="ds-icon ds-icon-general-flowchart" aria-hidden="true"></i>
+              0 workflow
+            </span>
+            @if (segmentPlayerCount() > 0) {
+              <button
+                type="button"
+                class="segments-player-badge segments-player-badge--row segments-player-badge--clickable"
+                [attr.aria-label]="'View ' + segmentPlayersLabel()"
+                (click)="openSegmentPlayersModal()"
+              >
+                <i class="ds-icon ds-icon-general-users" aria-hidden="true"></i>
+                {{ segmentPlayersLabel() }}
+              </button>
+            } @else {
+              <span class="segments-player-badge segments-player-badge--row segments-player-badge--neutral">
+                <i class="ds-icon ds-icon-general-users" aria-hidden="true"></i>
+                {{ segmentPlayersLabel() }}
+              </span>
+            }
+          </div>
+          <button type="button" class="segments-save-btn" [disabled]="isUploadedSegment() ? !canSaveUploadedSegment() : true">Save</button>
+        </div>
+      </div>
+
+      <div class="segments-main__breadcrumb-row">
+        <div class="segments-breadcrumb">
+          <a routerLink="/segments" class="segments-breadcrumb__link">Segments</a>
+          <span class="segments-breadcrumb__sep">/</span>
+          <span class="segments-breadcrumb__current">{{ breadcrumbCurrent() }}</span>
+        </div>
+        <p class="segments-main__hint">{{ segmentHint() }}</p>
+      </div>
+    </div>
+
+    <div class="segments-main__body">
+      @if (!isUploadedSegment()) {
+      <div class="segments-toolbar">
+        <div class="segments-segmented" role="group" aria-label="Segment logic">
+          <button
+            type="button"
+            class="segments-segmented__btn"
+            [class.segments-segmented__btn--active]="logic() === 'and'"
+            [attr.aria-pressed]="logic() === 'and'"
+            (click)="setLogic('and')"
+          >
+            AND
+          </button>
+          <button
+            type="button"
+            class="segments-segmented__btn"
+            [class.segments-segmented__btn--active]="logic() === 'or'"
+            [attr.aria-pressed]="logic() === 'or'"
+            (click)="setLogic('or')"
+          >
+            OR
+          </button>
+        </div>
+        <div class="segments-toolbar__cluster">
+          <div class="segments-toolbar__icons">
+            <button
+              type="button"
+              class="segments-icon-btn"
+              [class.segments-icon-btn--active]="briaOpen()"
+              [attr.aria-pressed]="briaOpen()"
+              (click)="toggleBria()"
+              aria-label="Toggle BRIA assistant"
+            >
+              <i class="ds-icon ds-icon-general-sparkles"></i>
+            </button>
+            <button
+              type="button"
+              class="segments-icon-btn"
+              [class.segments-icon-btn--active]="filterPickerOpen()"
+              [attr.aria-pressed]="filterPickerOpen()"
+              [attr.aria-expanded]="filterPickerOpen()"
+              aria-label="Add filter"
+              (click)="toggleFilterPicker($event)"
+            >
+              <i class="ds-icon ds-icon-control-plus"></i>
+            </button>
+            <button type="button" class="segments-icon-btn" aria-label="Add new group">
+              <i class="ds-icon ds-icon-general-plus-group"></i>
+            </button>
+            @if (filterRows().length > 0) {
+              <button type="button" class="segments-icon-btn" aria-label="Clear all filters" (click)="clearFilters()">
+                <i class="ds-icon ds-icon-control-delete"></i>
+              </button>
+            }
+          </div>
+          <app-segment-filter-picker
+            [isOpen]="filterPickerOpen()"
+            (pick)="onCatalogFilterPicked($event)"
+            (dismissed)="closeFilterPicker()"
+          />
+        </div>
+      </div>
+
+      @if (filterRows().length === 0) {
+        <div class="segments-cards-connector" aria-hidden="true">
+          <img
+            class="segments-cards-connector__arrow segments-cards-connector__arrow--left"
+            src="/segments/connector-arrow-left.svg"
+            alt=""
+            width="77"
+            height="75"
+          />
+          <img
+            class="segments-cards-connector__arrow segments-cards-connector__arrow--right"
+            src="/segments/connector-arrow-right.svg"
+            alt=""
+            width="77"
+            height="75"
+          />
+        </div>
+      }
+      }
+
+      <div class="segments-main__scroll">
+        @if (isUploadedSegment()) {
+          <div class="segments-upload-panel" [class.segments-upload-panel--filled]="hasUploadedFiles()">
+            @if (!hasUploadedFiles()) {
+              <div class="segments-upload-panel__stage">
+                <div class="segments-upload-panel__explanation-wrap">
+                  <div class="segments-upload-panel__explanation">
+                    <div class="segments-upload-panel__explanation-header">
+                      <h2 class="segments-upload-panel__explanation-title">Drop up to 10 files 50 MB in total</h2>
+                    </div>
+                    <div class="segments-upload-panel__info-card">
+                      <p class="segments-upload-panel__info-title">Only existing players</p>
+                      <p class="segments-upload-panel__info-text">The data should align with the existing player database.</p>
+                    </div>
+                    <div class="segments-upload-panel__info-card">
+                      <p class="segments-upload-panel__info-title">Match by an ID, username, phone, or email</p>
+                      <p class="segments-upload-panel__info-text">
+                        One of the row must include at least one of these column names, with corresponding data.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <img
+                  class="segments-upload-panel__connector"
+                  src="/segments/connector-arrow-left.svg"
+                  alt=""
+                  width="77"
+                  height="75"
+                  aria-hidden="true"
+                />
+
+                <div class="segments-upload-panel__upload-area">
+                  <button
+                    type="button"
+                    class="segments-upload-panel__dropzone"
+                    aria-label="Upload segment files"
+                    (click)="onUploadAreaClick($event)"
+                    (keydown)="onUploadAreaKeydown($event)"
+                  >
+                    <i class="ds-icon ds-icon-control-upload segments-upload-panel__icon" aria-hidden="true"></i>
+                    <p class="segments-upload-panel__title">
+                      Drag and drop files here or
+                      <span class="segments-upload-panel__link">click to upload</span>
+                    </p>
+                    <p class="segments-upload-panel__hint">All .csv, .xlsx, and .xls file types are supported.</p>
+                  </button>
+                </div>
+              </div>
+            } @else {
+              <div class="segments-upload-panel__body">
+                <div class="segments-upload-panel__files" role="list">
+                  @for (file of uploadedFiles(); track file.id) {
+                    <app-segment-upload-file-row
+                      [file]="file"
+                      (playersClick)="openUploadedFilePlayersModal($event)"
+                      (remove)="removeUploadedFile($event)"
+                    />
+                  }
+                </div>
+
+                <div class="segments-upload-panel__upload-area segments-upload-panel__upload-area--filled">
+                  <button
+                    type="button"
+                    class="segments-upload-panel__dropzone"
+                    aria-label="Upload segment files"
+                    (click)="onUploadAreaClick($event)"
+                    (keydown)="onUploadAreaKeydown($event)"
+                  >
+                    <i class="ds-icon ds-icon-control-upload segments-upload-panel__icon" aria-hidden="true"></i>
+                    <p class="segments-upload-panel__title">
+                      Drag and drop files here or
+                      <span class="segments-upload-panel__link">click to upload</span>
+                    </p>
+                    <p class="segments-upload-panel__hint">All .csv, .xlsx, and .xls file types are supported.</p>
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
+        } @else if (filterRows().length > 0) {
+          <div class="segments-filter-list" role="list">
+            @for (row of filterRows(); track row.id) {
+              <app-segment-filter-preview-row
+                [row]="row"
+                [iconClass]="filterRowIconClass(row)"
+                [tone]="filterRowTone(row)"
+                (chipEdit)="onFilterChipEdit($event)"
+                (duplicate)="duplicateFilterRow(row.id)"
+                (remove)="removeFilterRow(row.id)"
+                (playersClick)="openFilterPlayersModal(row)"
+              />
+            }
+          </div>
+        } @else {
+          <div class="segments-cards">
+            <div class="segments-card-stack">
+              <h2 class="segments-card-stack__title">Choose segment logic</h2>
+              <button
+                type="button"
+                class="segments-info-card"
+                [class.segments-info-card--selected]="logic() === 'and'"
+                [attr.aria-pressed]="logic() === 'and'"
+                (click)="setLogic('and')"
+              >
+                <p class="segments-info-card__title">AND</p>
+                <p class="segments-info-card__desc">Use when all conditions must match</p>
+              </button>
+              <button
+                type="button"
+                class="segments-info-card"
+                [class.segments-info-card--selected]="logic() === 'or'"
+                [attr.aria-pressed]="logic() === 'or'"
+                (click)="setLogic('or')"
+              >
+                <p class="segments-info-card__title">OR</p>
+                <p class="segments-info-card__desc">Use when at least one condition must match</p>
+              </button>
+            </div>
+
+            <div class="segments-card-stack">
+              <h2 class="segments-card-stack__title">Build your segment</h2>
+              <button type="button" class="segments-action-row" (click)="openFilterPickerFromCard($event)">
+                <div class="segments-action-row__text">
+                  <p class="segments-info-card__title">Add filter</p>
+                  <p class="segments-info-card__desc">Add a new filter to define your segment</p>
+                </div>
+                <span class="segments-action-row__icon" aria-hidden="true">
+                  <i class="ds-icon ds-icon-control-plus"></i>
+                </span>
+              </button>
+              <button type="button" class="segments-action-row">
+                <div class="segments-action-row__text">
+                  <p class="segments-info-card__title">Add group</p>
+                  <p class="segments-info-card__desc">Combine multiple filters</p>
+                </div>
+                <span class="segments-action-row__icon" aria-hidden="true">
+                  <i class="ds-icon ds-icon-general-plus-group"></i>
+                </span>
+              </button>
+              <button type="button" class="segments-action-row" (click)="openBriaForDescribe()">
+                <div class="segments-action-row__text">
+                  <p class="segments-info-card__title">Describe segment</p>
+                  <p class="segments-info-card__desc">Convert your text into filters with BRIA</p>
+                </div>
+                <span class="segments-action-row__icon" aria-hidden="true">
+                  <i class="ds-icon ds-icon-general-sparkles"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  @if (briaOpen()) {
+    <aside class="segments-bria" aria-label="BRIA — Broadway AI assistant">
+      <div class="segments-bria__header">
+        <div class="segments-bria__brand">BRIA</div>
+        <div class="segments-bria__header-actions">
+          <button type="button" class="segments-bria__header-btn" disabled aria-label="Chat history">
+            <i class="ds-icon ds-icon-general-history" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="segments-bria__header-btn" aria-label="Close BRIA assistant" (click)="closeBria()">
+            <i class="ds-icon ds-icon-control-cross" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="segments-bria__scroll">
+        @if (briaPhase() === 'initial') {
+          <p class="segments-bria__headline">Your Broadway AI Assistant</p>
+        } @else {
+          <div class="segments-bria__thread">
+            <div class="segments-bria__bubble segments-bria__bubble--user">
+              <p>Show me players with the highest GGR in the last 7 days</p>
+            </div>
+            <div class="segments-bria__answer">
+              <p>I can help you set up that segment!</p>
+              <p>
+                To give you some helpful context,
+                <strong>the average GGR per active player</strong>
+                in your casino over a 7-day period is currently
+                <strong>42.50 EUR</strong>.
+              </p>
+              <p>I will populate the necessary filters in your workspace on the right:</p>
+              <ul class="segments-bria__list">
+                <li>
+                  <strong>Bet date</strong>
+                  : Set to dynamically capture the last 7 days.
+                </li>
+                <li>
+                  <strong>Total GGR</strong>
+                  : Set to greater than 42.50 EUR so you isolate players above the casino average. Uses the “exact” match type for cross-currency comparison.
+                </li>
+              </ul>
+              <div class="segments-bria__apply-row">
+                <button type="button" class="segments-bria__apply" (click)="applyBriaToWorkspace()">Apply to workspace</button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      @if (briaPhase() === 'initial') {
+        <div class="segments-bria__starters">
+          <button type="button" class="segments-bria__starter-chip" (click)="useSuggestedPrompt('Show me players with the highest GGR in the last 7 days')">
+            Show me players with the highest GGR in the last 7 days
+          </button>
+          <button type="button" class="segments-bria__starter-chip" (click)="useSuggestedPrompt('Identify players at risk of churn')">
+            Identify players at risk of churn
+          </button>
+          <button type="button" class="segments-bria__starter-chip" (click)="useSuggestedPrompt('Show users eligible for a reactivation bonus')">
+            Show users eligible for a reactivation bonus
+          </button>
+        </div>
+      }
+
+      <div class="segments-bria__composer">
+        <div class="segments-bria__composer-inner">
+          <div class="segments-bria__composer-icon" aria-hidden="true">
+            <i class="ds-icon ds-icon-general-sparkles"></i>
+          </div>
+          <input
+            type="text"
+            class="segments-bria__input"
+            placeholder="Describe your segment…"
+            [value]="briaDraft()"
+            (input)="briaDraft.set(($any($event.target).value))"
+            (keydown.enter)="sendBriaPrompt(); $event.preventDefault()"
+          />
+          <button type="button" class="segments-bria__send" aria-label="Send message" (click)="sendBriaPrompt()">
+            <i class="ds-icon ds-icon-sent" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <p class="segments-bria__disclaimer">
+        BROADWAY AI ASSISTANT can make mistakes and only uses our internal documentation — ask questions about this content and double-check important answers.
+      </p>
+    </aside>
+  }
+</div>

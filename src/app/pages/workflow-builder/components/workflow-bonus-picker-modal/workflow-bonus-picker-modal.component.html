@@ -1,0 +1,31 @@
+<header class="wf-bonus-modal__header">
+  <h4 class="wf-bonus-modal__title">Select bonus</h4>
+  <button type="button" class="wf-bonus-modal__close" aria-label="Close" (click)="onCancel()">
+    <i class="ds-icon ds-icon-control-cross" aria-hidden="true"></i>
+  </button>
+</header>
+
+<div class="wf-bonus-modal__search">
+  <i class="ds-icon ds-icon-control-search wf-bonus-modal__search-icon" aria-hidden="true"></i>
+  <input
+    type="search"
+    class="wf-bonus-modal__search-input"
+    placeholder="Search by name, type, or ID"
+    [value]="search()"
+    (input)="onSearchInput($event)"
+  />
+</div>
+
+<ul class="wf-bonus-modal__list">
+  @for (bonus of filteredOptions(); track bonus.id) {
+    <li>
+      <button type="button" class="wf-bonus-modal__row" (click)="selectBonus(bonus)">
+        <span class="wf-bonus-modal__name">{{ bonus.name }}</span>
+        <span class="wf-bonus-modal__meta">{{ bonus.type }} · {{ bonus.status }}</span>
+        <span class="wf-bonus-modal__id">{{ bonus.id }}</span>
+      </button>
+    </li>
+  } @empty {
+    <li class="wf-bonus-modal__empty">No bonuses match your search.</li>
+  }
+</ul>

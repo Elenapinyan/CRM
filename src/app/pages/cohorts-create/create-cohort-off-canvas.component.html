@@ -1,0 +1,58 @@
+<header class="create-cohort-panel__header">
+  <div class="create-cohort-panel__header-row">
+    <h4 class="create-cohort-panel__title" id="create-cohort-off-canvas-title">Create new cohort</h4>
+    <div class="create-cohort-panel__header-actions">
+      @if (canvasOptions?.keyboard) {
+        <span class="create-cohort-panel__esc-badge" aria-hidden="true">Esc</span>
+      }
+      <button type="button" class="create-cohort-panel__close" aria-label="Close" (click)="onCancel()">
+        <i class="ds-icon ds-icon-control-cross" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="create-cohort-panel__body">
+  <div class="create-cohort-panel__form">
+    <div class="create-cohort-panel__field">
+      <label class="create-cohort-panel__field-label" for="create-cohort-name">Name</label>
+      <div class="create-cohort-panel__field-gap" aria-hidden="true"></div>
+      <input
+        id="create-cohort-name"
+        type="text"
+        class="create-cohort-panel__input"
+        placeholder="Enter name for a new cohort"
+        [value]="name()"
+        (input)="onNameInput($event)"
+      />
+    </div>
+
+    <div class="create-cohort-panel__field create-cohort-panel__field--textarea">
+      <label class="create-cohort-panel__field-label" for="create-cohort-description">Description</label>
+      <div class="create-cohort-panel__field-gap" aria-hidden="true"></div>
+      <textarea
+        id="create-cohort-description"
+        class="create-cohort-panel__textarea"
+        placeholder="Enter a description for a new cohort"
+        [value]="description()"
+        (input)="onDescriptionInput($event)"
+      ></textarea>
+    </div>
+  </div>
+</main>
+
+<footer class="create-cohort-panel__footer">
+  <div class="create-cohort-panel__footer-actions">
+    <button type="button" class="create-cohort-panel__btn create-cohort-panel__btn--secondary" (click)="onCancel()">
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="create-cohort-panel__btn create-cohort-panel__btn--main"
+      [disabled]="!canCreate()"
+      (click)="onCreate()"
+    >
+      Create cohort
+    </button>
+  </div>
+</footer>

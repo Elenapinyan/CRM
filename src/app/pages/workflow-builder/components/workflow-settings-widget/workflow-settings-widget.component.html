@@ -1,0 +1,34 @@
+<div class="wf-settings-widget" (click)="$event.stopPropagation()">
+  <button type="button" class="wf-settings-widget__header" (click)="toggleCollapsed($event)">
+    <span class="wf-settings-widget__title">Workflow settings</span>
+    @if (collapsed()) {
+      <i class="ds-icon ds-icon-arrows-chevron-up wf-settings-widget__chevron" aria-hidden="true"></i>
+    } @else {
+      <i class="ds-icon ds-icon-arrows-chevron-down wf-settings-widget__chevron" aria-hidden="true"></i>
+    }
+  </button>
+  @if (!collapsed()) {
+    <div class="wf-settings-widget__body">
+      <button type="button" class="wf-settings-widget__row" (click)="openSettings('scheduler', $event)">
+        <i class="ds-icon ds-icon-general-time wf-settings-widget__icon" aria-hidden="true"></i>
+        <span>Scheduler</span>
+        <i class="ds-icon ds-icon-control-chevron-right wf-settings-widget__arrow" aria-hidden="true"></i>
+      </button>
+      <button type="button" class="wf-settings-widget__row" (click)="openSettings('frequency', $event)">
+        <i class="ds-icon ds-icon-general-repeat wf-settings-widget__icon" aria-hidden="true"></i>
+        <span>Frequency</span>
+        <i class="ds-icon ds-icon-control-chevron-right wf-settings-widget__arrow" aria-hidden="true"></i>
+      </button>
+      <button type="button" class="wf-settings-widget__row" (click)="openSettings('goal', $event)">
+        <i class="ds-icon ds-icon-tag-star wf-settings-widget__icon" aria-hidden="true"></i>
+        <span>Goal</span>
+        <i class="ds-icon ds-icon-control-chevron-right wf-settings-widget__arrow" aria-hidden="true"></i>
+      </button>
+      <button type="button" class="wf-settings-widget__row" (click)="openSettings('limits', $event)">
+        <i class="ds-icon ds-icon-arrows-chevron-up-down wf-settings-widget__icon" aria-hidden="true"></i>
+        <span>Limits</span>
+        <i class="ds-icon ds-icon-control-chevron-right wf-settings-widget__arrow" aria-hidden="true"></i>
+      </button>
+    </div>
+  }
+</div>

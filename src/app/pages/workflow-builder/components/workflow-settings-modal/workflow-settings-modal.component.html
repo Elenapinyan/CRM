@@ -1,0 +1,161 @@
+<header class="modal-header modal-header--bordered">
+  <div class="modal-header__row">
+    <h4 class="modal-header__title" id="workflow-settings-title">Workflow</h4>
+    <div class="modal-header__actions">
+      @if (modalSettings?.keyboard) {
+        <span class="wf-settings-modal__esc-badge" aria-hidden="true">Esc</span>
+      }
+      <button
+        type="button"
+        class="close-modal-button"
+        aria-label="Close"
+        aria-describedby="workflow-settings-title"
+        (click)="onCancel()"
+      >
+        <i class="ds-icon ds-icon-control-cross" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="modal-body">
+  <div class="wf-settings-modal__content">
+    <div class="wf-settings-modal__meta">
+      <p class="wf-settings-modal__workflow-name">{{ modalData.workflowName }}</p>
+      <p class="wf-settings-modal__workflow-id">ID: {{ modalData.workflowId }}</p>
+    </div>
+
+    <nav class="wf-settings-modal__tabs" aria-label="Settings sections">
+      @for (tab of tabs; track tab.id) {
+        <button
+          type="button"
+          class="wf-settings-modal__tab"
+          [class.wf-settings-modal__tab--active]="activeTab() === tab.id"
+          (click)="selectTab(tab.id)"
+        >
+          {{ tab.label }}
+        </button>
+      }
+    </nav>
+
+    <div class="wf-settings-modal__panel">
+      @switch (activeTab()) {
+        @case ('scheduler') {
+          <div class="wf-settings-modal__section">
+            <div class="wf-settings-modal__timezone-row">
+              @for (option of timezoneOptions; track option.id) {
+                <app-workflow-timezone-radio
+                  [option]="option"
+                  [groupControl]="timezoneModeControl"
+                />
+              }
+            </div>
+
+            <div class="wf-settings-modal__fields">
+              <div class="wf-settings-modal__datetime-row">
+              <app-workflow-datetime-picker
+                class="wf-settings-modal__datepicker"
+                label="Start date time"
+                [isColored]="true"
+                [control]="startDateTimeControl"
+                (valueChange)="onStartDateTimeChange($event)"
+              />
+              <app-workflow-datetime-picker
+                class="wf-settings-modal__datepicker"
+                label="End date time"
+                [isDeselectAllowed]="true"
+                placeholder="Not selected"
+                [control]="endDateTimeControl"
+                (valueChange)="onEndDateTimeChange($event)"
+              />
+              </div>
+
+              <app-workflow-starts-immediately-checkbox
+              [control]="startsImmediatelyControl"
+              (valueChange)="onStartsImmediatelyChange($event)"
+            />
+
+              <app-workflow-recurrence-dropdown
+                class="wf-settings-modal__recurrence"
+                [control]="recurrenceControl"
+                (valueChange)="onRecurrenceChange($event)"
+              />
+            </div>
+
+            <app-workflow-inline-tip [message]="schedulerInfoText()" />
+          </div>
+        }
+        @case ('frequency') {
+          <div class="wf-settings-modal__section">
+            <p class="wf-settings-modal__hint">How often should this workflow run?</p>
+            <div class="wf-settings-modal__radio-group">
+              @for (option of recurrenceOptions; track option.value) {
+                <label class="wf-settings-modal__radio">
+                  <input
+                    type="radio"
+                    name="frequency-pattern"
+                    [value]="option.value"
+                    [checked]="draft().frequency.pattern === option.value"
+                    (change)="onFrequencyPattern($any(option.value))"
+                  />
+                  <span>{{ option.text }}</span>
+                </label>
+              }
+            </div>
+          </div>
+        }
+        @case ('goal') {
+          <div class="wf-settings-modal__section">
+            <label class="wf-settings-modal__label">
+              Goal metric
+              <input
+                type="text"
+                class="wf-settings-modal__input"
+                [ngModel]="draft().goal.metric"
+                (ngModelChange)="onGoalField('metric', $event)"
+              />
+            </label>
+            <label class="wf-settings-modal__label">
+              Target value
+              <input
+                type="number"
+                class="wf-settings-modal__input"
+                [ngModel]="draft().goal.target"
+                (ngModelChange)="onGoalField('target', +$event)"
+              />
+            </label>
+          </div>
+        }
+        @case ('limits') {
+          <div class="wf-settings-modal__section">
+            <label class="wf-settings-modal__label">
+              Max players
+              <input
+                type="number"
+                class="wf-settings-modal__input"
+                [ngModel]="draft().limits.maxPlayers"
+                (ngModelChange)="onLimitsField('maxPlayers', +$event)"
+              />
+            </label>
+            <label class="wf-settings-modal__label">
+              Max runs
+              <input
+                type="number"
+                class="wf-settings-modal__input"
+                [ngModel]="draft().limits.maxRuns"
+                (ngModelChange)="onLimitsField('maxRuns', +$event)"
+              />
+            </label>
+          </div>
+        }
+      }
+    </div>
+  </div>
+</main>
+
+<footer class="modal-footer modal-footer--bordered">
+  <div class="modal-footer__items-group">
+    <ds-button type="button" variant="secondary" size="lg" (click)="onCancel()">Cancel</ds-button>
+    <ds-button type="button" variant="main" size="lg" (click)="onSave()">Save</ds-button>
+  </div>
+</footer>

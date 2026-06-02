@@ -1,0 +1,30 @@
+.ag-grid-loading-cell {
+  display: block;
+  width: 100%;
+  height: 24px;
+  border-radius: var(--radius-6, 6px);
+  background: var(--ds-neutral-100-600, #f4f4f5);
+}
+
+.ag-filter-body-wrapper {
+  border-radius: var(--radius-16, 16px);
+  border: 1px solid var(--ds-neutral-150-750, #efeff0);
+  background: var(--ds-neutral-0-900, #fff);
+  box-shadow:
+    0 4px 8px 0 var(--ds-alpha-bb-008-024, rgba(24, 24, 27, 0.08)),
+    0 8px 16px 0 var(--ds-alpha-bb-004-040, rgba(24, 24, 27, 0.04));
+}
+
+.ag-filter-active::after {
+  top: -2px;
+  right: -2px;
+  background-color: var(--ds-neutral-800-100, #f4f4f5);
+}
+
+.ag-cell.ag-cell-first-right-pinned:not(
+    .ag-cell-range-left,
+    .ag-cell-range-single-cell,
+    .ag-cell-focus:not(.ag-cell-range-selected):focus-within
+  ) {
+  border-left: none !important;
+}

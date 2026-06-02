@@ -1,0 +1,24 @@
+@if (active()) {
+  <input
+    #input
+    type="text"
+    inputmode="decimal"
+    class="segment-inline-value-chip segment-inline-value-chip--editing segment-inline-value-chip--open"
+    [attr.size]="inputSize()"
+    [value]="draft()"
+    aria-label="Edit value"
+    (input)="onInput($event)"
+    (keydown)="onKeydown($event)"
+    (blur)="commit()"
+    (click)="$event.stopPropagation()"
+  />
+} @else {
+  <button
+    type="button"
+    class="segment-inline-value-chip segment-inline-value-chip--editable"
+    [attr.aria-expanded]="false"
+    (click)="startEdit($event)"
+  >
+    {{ displayValue() }}
+  </button>
+}

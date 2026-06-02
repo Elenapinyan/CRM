@@ -1,0 +1,9 @@
+@use '../wf-explanation-card.shared' as *;
+
+.wf-explanation-card__row[draggable='true']:not(:disabled) {
+  cursor: grab;
+}
+
+.wf-explanation-card__row[draggable='true']:not(:disabled):active {
+  cursor: grabbing;
+}

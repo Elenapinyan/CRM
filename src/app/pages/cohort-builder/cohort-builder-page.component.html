@@ -1,0 +1,175 @@
+<div class="cohort-builder" [class.cohort-builder--sidebar]="usersSidebarOpen()">
+  <div class="cohort-builder__main">
+    <header class="cohort-builder__header">
+      <div class="cohort-builder__title-row">
+        <div class="cohort-builder__title-block">
+          <h1 class="cohort-builder__title">{{ cohortTitle() }}</h1>
+        </div>
+        <div class="cohort-builder__header-actions">
+          @if (cohortBuilt()) {
+            <ds-button type="button" variant="secondary" size="lg" (click)="editSetup()">Edit events</ds-button>
+          }
+          <ds-button type="button" variant="main" size="lg" [disabled]="!canBuild() || cohortBuilt()" (click)="buildCohort()">
+            Build cohort
+          </ds-button>
+        </div>
+      </div>
+
+      <div class="cohort-builder__breadcrumb-row">
+        <nav class="cohort-builder__breadcrumb" aria-label="Breadcrumb">
+          <a routerLink="/analytics/cohorts" class="cohort-builder__breadcrumb-link">Analytics</a>
+          <span class="cohort-builder__breadcrumb-sep">/</span>
+          <a routerLink="/analytics/cohorts" class="cohort-builder__breadcrumb-link">Cohort</a>
+          <span class="cohort-builder__breadcrumb-sep">/</span>
+          <span class="cohort-builder__breadcrumb-current">{{ breadcrumbCurrent() }}</span>
+        </nav>
+        <p class="cohort-builder__hint">{{ cohortHint() }}</p>
+      </div>
+    </header>
+
+    @if (!cohortBuilt()) {
+      <div class="cohort-builder__setup">
+        <section class="cohort-event-section">
+          <div class="cohort-event-section__head">
+            <h2 class="cohort-event-section__title">Start event</h2>
+            <p class="cohort-event-section__hint">Events that define when a player enters the cohort.</p>
+          </div>
+          <div class="cohort-event-section__toolbar">
+            <button
+              type="button"
+              class="cohort-event-section__add"
+              aria-label="Add start event"
+              [attr.aria-expanded]="isPickerOpen('start')"
+              (click)="openPicker('start', $event)"
+            >
+              <i class="ds-icon ds-icon-control-plus" aria-hidden="true"></i>
+            </button>
+            <app-segment-filter-picker
+              [isOpen]="isPickerOpen('start')"
+              (pick)="onEventPicked('start', $event)"
+              (dismissed)="closePicker()"
+            />
+          </div>
+          @if (startEvents().length === 0) {
+            <div class="cohort-event-section__empty">
+              <p>Add at least one start event using the picker above.</p>
+            </div>
+          } @else {
+            <ul class="cohort-event-list">
+              @for (event of startEvents(); track event.id) {
+                <li class="cohort-event-card">
+                  <span class="cohort-event-card__stripe" aria-hidden="true"></span>
+                  <div class="cohort-event-card__body">
+                    <span class="cohort-event-card__label">{{ event.label }}</span>
+                    <span class="cohort-event-card__group">{{ event.group }}</span>
+                  </div>
+                  <button
+                    type="button"
+                    class="cohort-event-card__remove"
+                    aria-label="Remove start event"
+                    (click)="removeEvent('start', event.id)"
+                  >
+                    <i class="ds-icon ds-icon-control-cross" aria-hidden="true"></i>
+                  </button>
+                </li>
+              }
+            </ul>
+          }
+        </section>
+
+        <section class="cohort-event-section">
+          <div class="cohort-event-section__head">
+            <h2 class="cohort-event-section__title">Return event</h2>
+            <p class="cohort-event-section__hint">Events that count as a return after the start event.</p>
+          </div>
+          <div class="cohort-event-section__toolbar">
+            <button
+              type="button"
+              class="cohort-event-section__add"
+              aria-label="Add return event"
+              [attr.aria-expanded]="isPickerOpen('return')"
+              (click)="openPicker('return', $event)"
+            >
+              <i class="ds-icon ds-icon-control-plus" aria-hidden="true"></i>
+            </button>
+            <app-segment-filter-picker
+              [isOpen]="isPickerOpen('return')"
+              (pick)="onEventPicked('return', $event)"
+              (dismissed)="closePicker()"
+            />
+          </div>
+          @if (returnEvents().length === 0) {
+            <div class="cohort-event-section__empty">
+              <p>Add at least one return event using the picker above.</p>
+            </div>
+          } @else {
+            <ul class="cohort-event-list">
+              @for (event of returnEvents(); track event.id) {
+                <li class="cohort-event-card cohort-event-card--return">
+                  <span class="cohort-event-card__stripe cohort-event-card__stripe--blue" aria-hidden="true"></span>
+                  <div class="cohort-event-card__body">
+                    <span class="cohort-event-card__label">{{ event.label }}</span>
+                    <span class="cohort-event-card__group">{{ event.group }}</span>
+                  </div>
+                  <button
+                    type="button"
+                    class="cohort-event-card__remove"
+                    aria-label="Remove return event"
+                    (click)="removeEvent('return', event.id)"
+                  >
+                    <i class="ds-icon ds-icon-control-cross" aria-hidden="true"></i>
+                  </button>
+                </li>
+              }
+            </ul>
+          }
+        </section>
+      </div>
+    } @else {
+      @if (matrix(); as m) {
+      <div class="cohort-builder__matrix-wrap">
+        <div
+          class="cohort-matrix"
+          [style.--cohort-cols]="m.periodLabels.length"
+          role="grid"
+          aria-label="Cohort retention matrix"
+        >
+          <div class="cohort-matrix__corner" aria-hidden="true"></div>
+          @for (label of m.periodLabels; track label) {
+            <div class="cohort-matrix__col-head" role="columnheader">{{ label }}</div>
+          }
+          @for (intervalLabel of m.intervalLabels; track intervalLabel; let rowIndex = $index) {
+            <div class="cohort-matrix__row-head" role="rowheader">{{ intervalLabel }}</div>
+            @for (periodLabel of m.periodLabels; track periodLabel; let colIndex = $index) {
+              @if (matrixCell(m, colIndex, rowIndex); as cell) {
+                <button
+                  type="button"
+                  class="cohort-matrix__cell-btn"
+                  [class]="cellClass(cell)"
+                  [class.cohort-matrix__cell--selected]="isCellSelected(cell)"
+                  [disabled]="cell.heat === 'empty' || cell.playerCount === 0"
+                  role="gridcell"
+                  [attr.aria-label]="intervalLabel + ', ' + periodLabel + ', ' + cell.retentionPct + ' percent'"
+                  (click)="onCellClick(colIndex, rowIndex)"
+                >
+                  <span class="cohort-matrix__pct">{{ cell.retentionPct }}%</span>
+                  <span class="cohort-matrix__count">{{ cell.playerCount.toLocaleString() }}</span>
+                </button>
+              }
+            }
+          }
+        </div>
+      </div>
+      }
+    }
+  </div>
+
+  <app-cohort-users-sidebar
+    [open]="usersSidebarOpen()"
+    [cell]="selectedCell()"
+    [periodLabel]="selectedPeriodLabel()"
+    [intervalLabel]="selectedIntervalLabel()"
+    [players]="sidebarPlayers()"
+    (closed)="closeUsersSidebar()"
+  />
+</div>

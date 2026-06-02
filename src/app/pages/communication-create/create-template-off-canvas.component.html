@@ -1,0 +1,81 @@
+<header class="create-template-panel__header">
+  <div class="create-template-panel__header-row">
+    <h4 class="create-template-panel__title" id="create-template-off-canvas-title">Create new template</h4>
+    <div class="create-template-panel__header-actions">
+      @if (canvasOptions?.keyboard) {
+        <span class="create-template-panel__esc-badge" aria-hidden="true">Esc</span>
+      }
+      <button type="button" class="create-template-panel__close" aria-label="Close" (click)="onCancel()">
+        <i class="ds-icon ds-icon-control-cross" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="create-template-panel__body">
+  <div class="create-template-panel__form">
+    <div class="create-template-panel__channels" role="radiogroup" aria-label="Template channel">
+      @for (channel of channels; track channel) {
+        <button
+          type="button"
+          [class]="
+            'create-template-panel__channel ' +
+            channelMeta[channel].iconAreaClass +
+            (selectedChannel() === channel ? ' create-template-panel__channel--selected' : '')
+          "
+          [attr.aria-pressed]="selectedChannel() === channel"
+          [attr.aria-label]="channelMeta[channel].label"
+          (click)="selectChannel(channel)"
+        >
+          <span class="create-template-panel__icon-area">
+            <i [class]="channelMeta[channel].iconClass" aria-hidden="true"></i>
+            <span class="create-template-panel__channel-text">{{ channelMeta[channel].label }}</span>
+          </span>
+        </button>
+      }
+    </div>
+
+    <div class="create-template-panel__fields">
+      <div class="create-template-panel__field">
+        <label class="create-template-panel__field-label" for="create-template-name">Name</label>
+        <div class="create-template-panel__field-gap" aria-hidden="true"></div>
+        <input
+          id="create-template-name"
+          type="text"
+          class="create-template-panel__input"
+          placeholder="Enter name for a new template"
+          (input)="onNameInput($event)"
+          (blur)="onNameInput($event)"
+        />
+      </div>
+
+      <div class="create-template-panel__field create-template-panel__field--textarea">
+        <label class="create-template-panel__field-label" for="create-template-description">Description</label>
+        <div class="create-template-panel__field-gap" aria-hidden="true"></div>
+        <textarea
+          id="create-template-description"
+          class="create-template-panel__textarea"
+          placeholder="Enter a description for a new template"
+          (input)="onDescriptionInput($event)"
+          (blur)="onDescriptionInput($event)"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="create-template-panel__footer">
+  <div class="create-template-panel__footer-actions">
+    <button type="button" class="create-template-panel__btn create-template-panel__btn--secondary" (click)="onCancel()">
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="create-template-panel__btn create-template-panel__btn--main"
+      [disabled]="isCreateDisabled()"
+      (click)="onCreate()"
+    >
+      Create template
+    </button>
+  </div>
+</footer>

@@ -1,0 +1,20 @@
+.ag-checkbox-input-wrapper {
+  height: 18px;
+  width: 18px;
+  border-radius: var(--radius-4, 4px);
+  border: 1px solid var(--ds-neutral-200-750, #e4e4e7);
+  background: var(--ds-neutral-050-700, #fafafa);
+
+  &.ag-checked {
+    border: 1px solid var(--ds-neutral-1000-600, #18181b);
+    background: var(--ds-neutral-800-600, #27272a);
+    box-shadow:
+      0 2px 0 0 var(--ds-alpha-ww-024-010, rgba(255, 255, 255, 0.24)) inset,
+      0 1px 2px 0 var(--ds-alpha-bb-012-040, rgba(24, 24, 27, 0.12));
+  }
+}
+
+.row-disabled .ag-selection-checkbox {
+  pointer-events: none;
+  opacity: 0.5;
+}

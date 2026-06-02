@@ -1,0 +1,58 @@
+<header class="create-workflow-panel__header">
+  <div class="create-workflow-panel__header-row">
+    <h4 class="create-workflow-panel__title" id="create-workflow-off-canvas-title">Create new workflow</h4>
+    <div class="create-workflow-panel__header-actions">
+      @if (canvasOptions?.keyboard) {
+        <span class="create-workflow-panel__esc-badge" aria-hidden="true">Esc</span>
+      }
+      <button type="button" class="create-workflow-panel__close" aria-label="Close" (click)="onCancel()">
+        <i class="ds-icon ds-icon-control-cross" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="create-workflow-panel__body">
+  <div class="create-workflow-panel__form">
+    <div class="create-workflow-panel__field">
+      <label class="create-workflow-panel__field-label" for="create-workflow-name">Name</label>
+      <div class="create-workflow-panel__field-gap" aria-hidden="true"></div>
+      <input
+        id="create-workflow-name"
+        type="text"
+        class="create-workflow-panel__input"
+        placeholder="Enter name for a new workflow"
+        [value]="name()"
+        (input)="onNameInput($event)"
+      />
+    </div>
+
+    <div class="create-workflow-panel__field create-workflow-panel__field--textarea">
+      <label class="create-workflow-panel__field-label" for="create-workflow-description">Description</label>
+      <div class="create-workflow-panel__field-gap" aria-hidden="true"></div>
+      <textarea
+        id="create-workflow-description"
+        class="create-workflow-panel__textarea"
+        placeholder="Enter a description for a new workflow"
+        [value]="description()"
+        (input)="onDescriptionInput($event)"
+      ></textarea>
+    </div>
+  </div>
+</main>
+
+<footer class="create-workflow-panel__footer">
+  <div class="create-workflow-panel__footer-actions">
+    <button type="button" class="create-workflow-panel__btn create-workflow-panel__btn--secondary" (click)="onCancel()">
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="create-workflow-panel__btn create-workflow-panel__btn--main"
+      [disabled]="!canCreate()"
+      (click)="onCreate()"
+    >
+      Create workflow
+    </button>
+  </div>
+</footer>

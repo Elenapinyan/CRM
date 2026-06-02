@@ -1,0 +1,83 @@
+<header class="create-segment-panel__header">
+  <div class="create-segment-panel__header-row">
+    <h4 class="create-segment-panel__title" id="create-segment-off-canvas-title">Create new segment</h4>
+    <div class="create-segment-panel__header-actions">
+      @if (canvasOptions?.keyboard) {
+        <span class="create-segment-panel__esc-badge" aria-hidden="true">Esc</span>
+      }
+      <button type="button" class="create-segment-panel__close" aria-label="Close" (click)="onCancel()">
+        <i class="ds-icon ds-icon-control-cross" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="create-segment-panel__body">
+  <div class="create-segment-panel__form">
+    <div class="create-segment-panel__type-block">
+      <div class="create-segment-panel__field-label" id="create-segment-type-label">Type</div>
+      <div class="create-segment-panel__field-gap" aria-hidden="true"></div>
+      <div class="create-segment-panel__type-toggle" role="group" aria-labelledby="create-segment-type-label">
+        @for (type of segmentTypes; track type) {
+          <button
+            type="button"
+            class="create-segment-panel__type-btn"
+            [class.create-segment-panel__type-btn--active]="selectedType() === type"
+            [attr.aria-pressed]="selectedType() === type"
+            (click)="selectType(type)"
+          >
+            {{ typeLabels[type] }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="create-segment-panel__info" role="note">
+      <div class="create-segment-panel__info-indicator-wrap" aria-hidden="true">
+        <span class="create-segment-panel__info-indicator"></span>
+      </div>
+      <div class="create-segment-panel__info-text">{{ typeInfo[selectedType()] }}</div>
+    </div>
+
+    <div class="create-segment-panel__field">
+      <label class="create-segment-panel__field-label" for="create-segment-name">Name</label>
+      <div class="create-segment-panel__field-gap" aria-hidden="true"></div>
+      <input
+        id="create-segment-name"
+        type="text"
+        class="create-segment-panel__input"
+        placeholder="Enter name for a new segment"
+        [value]="name()"
+        (input)="onNameInput($event)"
+      />
+    </div>
+
+    <div class="create-segment-panel__field create-segment-panel__field--textarea">
+      <label class="create-segment-panel__field-label" for="create-segment-description">Description</label>
+      <div class="create-segment-panel__field-gap" aria-hidden="true"></div>
+      <textarea
+        id="create-segment-description"
+        class="create-segment-panel__textarea"
+        placeholder="Enter a description for a new segment"
+        [value]="description()"
+        (input)="onDescriptionInput($event)"
+      ></textarea>
+    </div>
+  </div>
+</main>
+
+<footer class="create-segment-panel__footer">
+  <div class="create-segment-panel__footer-actions">
+    <button type="button" class="create-segment-panel__btn create-segment-panel__btn--secondary" (click)="onCancel()">
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="create-segment-panel__btn create-segment-panel__btn--main"
+      [disabled]="!canCreate()"
+      (click)="onCreate()"
+    >
+      Create segment
+    </button>
+  </div>
+</footer>

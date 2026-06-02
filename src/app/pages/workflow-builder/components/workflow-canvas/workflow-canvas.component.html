@@ -1,0 +1,106 @@
+<div class="workflow-canvas" (click)="onCanvasClick()">
+  <div
+    #scrollSurface
+    class="workflow-canvas__scroll"
+    (dragover)="onDragOver($event)"
+    (drop)="onDrop($event)"
+  >
+    <div
+      class="workflow-canvas__surface"
+      [style.width.px]="state.canvasWidth"
+      [style.height.px]="state.canvasHeight"
+    >
+      <vflow
+        class="workflow-canvas__vflow"
+        [view]="[state.canvasWidth, state.canvasHeight]"
+        [background]="canvasBackground"
+        [connection]="workflowConnection"
+        [nodes]="state.nodes()"
+        [edges]="state.edges()"
+        [minZoom]="0.4"
+        [maxZoom]="1"
+        (click)="$event.stopPropagation()"
+      />
+    </div>
+  </div>
+
+  @if (state.nodeContextMenu(); as menu) {
+    <div
+      class="wf-node-context-menu wf-node-context-menu--floating"
+      role="menu"
+      [style.left.px]="menu.x"
+      [style.top.px]="menu.y"
+      (click)="$event.stopPropagation()"
+    >
+      <button
+        type="button"
+        class="wf-node-context-menu__item"
+        role="menuitem"
+        (click)="onSegmentMenuAction('select', $event)"
+      >
+        <i class="ds-icon ds-icon-control-link-external" aria-hidden="true"></i>
+        <span>Select segment</span>
+      </button>
+      <button
+        type="button"
+        class="wf-node-context-menu__item"
+        role="menuitem"
+        (click)="onSegmentMenuAction('clear', $event)"
+      >
+        <i class="ds-icon ds-icon-general-broom" aria-hidden="true"></i>
+        <span>Clear segment</span>
+      </button>
+      <button
+        type="button"
+        class="wf-node-context-menu__item"
+        role="menuitem"
+        (click)="onSegmentMenuAction('rename', $event)"
+      >
+        <i class="ds-icon ds-icon-general-edit-square" aria-hidden="true"></i>
+        <span>Rename block</span>
+      </button>
+      <button
+        type="button"
+        class="wf-node-context-menu__item"
+        role="menuitem"
+        (click)="onSegmentMenuAction('remove', $event)"
+      >
+        <i class="ds-icon ds-icon-control-delete" aria-hidden="true"></i>
+        <span>Remove workflow</span>
+      </button>
+    </div>
+  }
+
+  @if (state.paletteDrag(); as drag) {
+    <div
+      class="workflow-canvas__drag-ghost"
+      aria-hidden="true"
+      [style.left.px]="drag.x"
+      [style.top.px]="drag.y"
+    >
+      @if (drag.type === 'segment') {
+        <div class="workflow-canvas__drag-ghost-row">
+          <span class="workflow-canvas__drag-ghost-row-text">
+            <span class="workflow-canvas__drag-ghost-row-title">Select segment</span>
+            <span class="workflow-canvas__drag-ghost-row-subtitle">Choose the player segment to target</span>
+          </span>
+          <span class="workflow-canvas__drag-ghost-row-icon" aria-hidden="true">
+            <i class="ds-icon ds-icon-general-target"></i>
+          </span>
+        </div>
+      }
+    </div>
+  }
+
+  <app-workflow-palette-workflow class="workflow-canvas__palette workflow-canvas__palette--workflow" />
+  @if (!state.selectedNodeId()) {
+    <app-workflow-palette-start class="workflow-canvas__palette workflow-canvas__palette--start" />
+    @if (state.showBuildPalette()) {
+      <app-workflow-palette-build class="workflow-canvas__palette workflow-canvas__palette--build" />
+    }
+  } @else if (state.showBuildPaletteForSelectedNode()) {
+    <app-workflow-palette-build class="workflow-canvas__palette workflow-canvas__palette--inspector" />
+  } @else {
+    <app-workflow-node-inspector class="workflow-canvas__palette workflow-canvas__palette--inspector" />
+  }
+</div>

@@ -1,0 +1,30 @@
+import type { SegmentFilterMenuOption } from './segments-filter-shared';
+
+/** Prototype tenant currencies (ng-crm FilterMeta.config.currencies). */
+export const MONEY_CURRENCY_OPTIONS: readonly SegmentFilterMenuOption[] = [
+  { value: 'EUR', label: 'EUR' },
+  { value: 'USD', label: 'USD' },
+  { value: 'GBP', label: 'GBP' },
+  { value: 'CAD', label: 'CAD' },
+  { value: 'AUD', label: 'AUD' },
+  { value: 'NZD', label: 'NZD' },
+  { value: 'CHF', label: 'CHF' },
+  { value: 'SEK', label: 'SEK' },
+  { value: 'NOK', label: 'NOK' },
+  { value: 'DKK', label: 'DKK' },
+  { value: 'PLN', label: 'PLN' },
+  { value: 'CZK', label: 'CZK' },
+  { value: 'HUF', label: 'HUF' },
+  { value: 'RON', label: 'RON' },
+  { value: 'BGN', label: 'BGN' },
+  { value: 'HRK', label: 'HRK' },
+  { value: 'RUB', label: 'RUB' },
+  { value: 'TRY', label: 'TRY' },
+  { value: 'BRL', label: 'BRL' },
+  { value: 'MXN', label: 'MXN' },
+  { value: 'JPY', label: 'JPY' },
+  { value: 'CNY', label: 'CNY' },
+  { value: 'INR', label: 'INR' },
+  { value: 'BTC', label: 'BTC' },
+  { value: 'ETH', label: 'ETH' },
+] as const;

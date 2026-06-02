@@ -1,0 +1,33 @@
+<div
+  class="wf-node wf-node--segment"
+  [class.wf-node--selected]="selected()"
+  role="button"
+  tabindex="0"
+  (click)="onSelect($event)"
+  (keydown.enter)="onSelect($event)"
+  (keydown.space)="onSelect($event); $event.preventDefault()"
+>
+  <button
+    #menuTrigger
+    type="button"
+    class="wf-node-segment__menu-trigger"
+    [attr.aria-expanded]="menuOpen()"
+    aria-haspopup="menu"
+    aria-label="Segment block actions"
+    (click)="toggleMenu($event)"
+  >
+    <i class="ds-icon ds-icon-control-more" aria-hidden="true"></i>
+  </button>
+
+  <div class="wf-node-segment__body">
+    <span class="wf-node-segment__icon" aria-hidden="true">
+      <i class="ds-icon ds-icon-general-target"></i>
+    </span>
+    <span class="wf-node-segment__label">Segment</span>
+    @if (data()?.segmentName) {
+      <span class="wf-node-segment__segment-name">{{ data()?.segmentName }}</span>
+    }
+  </div>
+
+  <handle type="source" position="bottom" />
+</div>

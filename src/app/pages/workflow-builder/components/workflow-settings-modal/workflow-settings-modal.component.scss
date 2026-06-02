@@ -1,0 +1,147 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  max-height: min(80vh, 720px);
+}
+
+.wf-settings-modal__esc-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 2px 5px;
+  box-sizing: border-box;
+  border-radius: var(--radius-6, 6px);
+  border: 1px solid var(--brd-neutral-200-700, #e4e4e7);
+  background: var(--brd-neutral-100-800, #f4f4f5);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--brd-neutral-800-100, #27272a);
+}
+
+.wf-settings-modal__content {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0 16px;
+}
+
+.wf-settings-modal__meta {
+  padding: 8px 0;
+}
+
+.wf-settings-modal__workflow-name {
+  margin: 0;
+  font-size: var(--spr-font-size-16, 16px);
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.wf-settings-modal__workflow-id {
+  margin: 4px 0 0;
+  font-size: var(--spr-font-size-14, 14px);
+  line-height: 20px;
+  color: var(--brd-neutral-600-300, #53535a);
+}
+
+.wf-settings-modal__tabs {
+  display: flex;
+  gap: 24px;
+  padding: 8px 0 0;
+  border-bottom: 1px solid var(--brd-neutral-200-700, #e4e4e7);
+}
+
+.wf-settings-modal__panel {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 8px 0 16px;
+}
+
+.wf-settings-modal__tab {
+  margin: 0;
+  padding: 4px 4px 8px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  font: inherit;
+  font-size: var(--spr-font-size-14, 14px);
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--brd-neutral-900-050, #212124);
+  cursor: pointer;
+}
+
+.wf-settings-modal__tab--active {
+  border-bottom-color: var(--brd-neutral-900-050, #212124);
+}
+
+.wf-settings-modal__section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.wf-settings-modal__timezone-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.wf-settings-modal__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wf-settings-modal__datetime-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.wf-settings-modal__datepicker,
+.wf-settings-modal__recurrence {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.wf-settings-modal__hint {
+  margin: 0 0 8px;
+  font-size: var(--spr-font-size-14, 14px);
+  color: var(--brd-neutral-600-300, #53535a);
+}
+
+.wf-settings-modal__radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wf-settings-modal__radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--spr-font-size-14, 14px);
+}
+
+.wf-settings-modal__label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: var(--spr-font-size-14, 14px);
+  font-weight: 600;
+}
+
+.wf-settings-modal__input {
+  height: 36px;
+  padding: 7px 8px;
+  border: 1px solid var(--brd-neutral-200-700, #e4e4e7);
+  border-radius: var(--radius-6, 6px);
+  font: inherit;
+}

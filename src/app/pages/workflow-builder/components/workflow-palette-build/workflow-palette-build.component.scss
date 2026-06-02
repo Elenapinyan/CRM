@@ -1,0 +1,19 @@
+@use '../wf-explanation-card.shared' as *;
+
+.wf-explanation-card__row[draggable='true']:not(:disabled) {
+  cursor: grab;
+}
+
+.wf-explanation-card__row[draggable='true']:not(:disabled):active {
+  cursor: grabbing;
+}
+
+.wf-explanation-card__hint {
+  margin: 0;
+  padding: 0 8px;
+  min-height: 32px;
+  font-size: var(--spr-font-size-12, 12px);
+  line-height: 16px;
+  text-align: center;
+  color: var(--brd-neutral-500-400, #76767f);
+}

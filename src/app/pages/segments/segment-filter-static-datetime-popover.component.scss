@@ -1,0 +1,14 @@
+.segment-filter-static-datetime-popover {
+  padding: 8px;
+  border: 1px solid var(--ds-neutral-700-700, #3b3b40);
+  border-radius: var(--radius-8, 8px);
+  background: var(--ds-neutral-900-900, #212124);
+  box-shadow: 0 1px 6px 0 var(--ds-alpha-bb-006-056, rgba(24, 24, 27, 0.06));
+}
+
+.segment-filter-static-datetime-popover ::ng-deep ds-form-field,
+.segment-filter-static-datetime-popover ::ng-deep .control-field,
+.segment-filter-static-datetime-popover ::ng-deep .datepicker-open-button,
+.segment-filter-static-datetime-popover ::ng-deep .control-field__input {
+  pointer-events: auto;
+}

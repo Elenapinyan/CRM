@@ -1,0 +1,87 @@
+.cohort-users-sidebar {
+  flex-shrink: 0;
+  width: min(420px, 42vw);
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--brd-neutral-150-750, #efeff0);
+  background: var(--brd-neutral-0-900, #fff);
+  box-shadow: -4px 0 16px var(--brd-alpha-bb-004-040, rgba(24, 24, 27, 0.04));
+}
+
+.cohort-users-sidebar__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid var(--brd-neutral-150-750, #efeff0);
+}
+
+.cohort-users-sidebar__title-block {
+  min-width: 0;
+}
+
+.cohort-users-sidebar__title {
+  margin: 0;
+  font-size: var(--spr-font-size-18, 18px);
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--brd-neutral-1000-0, #18181b);
+}
+
+.cohort-users-sidebar__meta {
+  margin: 4px 0 0;
+  font-size: var(--spr-font-size-12, 12px);
+  line-height: 16px;
+  color: var(--brd-neutral-500-400, #76767f);
+}
+
+.cohort-users-sidebar__close {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: var(--radius-6, 6px);
+  background: transparent;
+  color: var(--brd-neutral-600-400, #53535a);
+  cursor: pointer;
+}
+
+.cohort-users-sidebar__close:hover {
+  background: var(--brd-neutral-050-900, #fafafa);
+}
+
+.cohort-users-sidebar__body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 0 8px 16px;
+}
+
+.cohort-users-sidebar__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--spr-font-size-12, 12px);
+  line-height: 16px;
+}
+
+.cohort-users-sidebar__table th {
+  position: sticky;
+  top: 0;
+  padding: 10px 8px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--brd-neutral-600-400, #53535a);
+  background: var(--brd-neutral-050-900, #fafafa);
+  border-bottom: 1px solid var(--brd-neutral-150-750, #efeff0);
+}
+
+.cohort-users-sidebar__table td {
+  padding: 10px 8px;
+  color: var(--brd-neutral-1000-0, #18181b);
+  border-bottom: 1px solid var(--brd-neutral-100-800, #f4f4f5);
+  vertical-align: top;
+}

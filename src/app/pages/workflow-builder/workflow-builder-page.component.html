@@ -1,0 +1,24 @@
+<div class="workflow-builder">
+  <header class="workflow-builder__header">
+    <div class="workflow-builder__title-row">
+      <div class="workflow-builder__title-block">
+        <h1 class="workflow-builder__title">{{ workflowTitle() }}</h1>
+      </div>
+    </div>
+
+    <div class="workflow-builder__breadcrumb-row">
+      <nav class="workflow-builder__breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/workflows" class="workflow-builder__breadcrumb-link">Workflows</a>
+        <span class="workflow-builder__breadcrumb-sep">/</span>
+        <span class="workflow-builder__breadcrumb-current">{{ breadcrumbCurrent() }}</span>
+      </nav>
+      <p class="workflow-builder__hint">{{ workflowHint() }}</p>
+    </div>
+  </header>
+
+  <app-workflow-builder-tabs [isNewDraft]="isNewWorkflow()" />
+
+  <section class="workflow-builder__canvas-area" aria-label="Workflow builder canvas">
+    <app-workflow-canvas />
+  </section>
+</div>

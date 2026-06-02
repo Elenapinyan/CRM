@@ -1,0 +1,200 @@
+@import '@platform-workspace/design-system-v2/styles/index';
+@import './styles/ds-icon-sent.scss';
+@import '@platform-workspace/grid/styles/ag-grid.scss';
+/* Header filter hover only — do not import full `ag-grid styles/index` here: its :root sets
+   --ag-text-color to #fff (dark menus), which makes column headers invisible on light theme. */
+@import '../ag-grid styles/header';
+
+body {
+  margin: 0;
+}
+
+/* Create segment off-canvas — Figma popup width md (788px), not full 50% on wide screens */
+.offcanvas.create-segment-offcanvas-panel.ds-component {
+  width: min(var(--ds-popup-width-md, 788px), 100vw);
+  max-width: 100%;
+}
+
+.offcanvas.create-cohort-offcanvas-panel.ds-component {
+  width: min(var(--ds-popup-width-md, 788px), 100vw);
+  max-width: 100%;
+}
+
+.offcanvas.create-workflow-offcanvas-panel.ds-component {
+  width: min(var(--ds-popup-width-md, 788px), 100vw);
+  max-width: 100%;
+}
+
+.offcanvas.create-template-offcanvas-panel.ds-component {
+  width: min(var(--ds-popup-width-md, 788px), 100vw);
+  max-width: 100%;
+}
+
+/* Datepicker popover is attached to body; keep it above DS modal (backdrop 1050 / window 1055). */
+body > ngb-datepicker.dropdown-menu,
+ngb-datepicker.dropdown-menu.show,
+body > .dropdown-menu.datepicker,
+body > .dropdown-menu.show.datepicker {
+  z-index: 1070 !important;
+}
+
+ngb-modal-window.ds-component.workflow-settings-modal .modal-dialog,
+ngb-modal-window.ds-component.workflow-bonus-picker-modal .modal-dialog {
+  max-width: min(var(--ds-popup-width-md, 788px), calc(100vw - 32px));
+}
+
+ngb-modal-window.ds-component.workflow-settings-modal .modal-content {
+  border-radius: var(--radius-16, 16px);
+}
+
+/* Net deposit expand modal — Figma 1058×1304 (node 938:19768) */
+ngb-modal-window.ds-component.net-deposit-expand-modal {
+  &.modal {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .modal-dialog.modal-xl {
+    width: min(var(--ds-popup-width-lg, 1058px), calc(100vw - 24px));
+    max-width: min(var(--ds-popup-width-lg, 1058px), calc(100vw - 24px));
+    height: auto;
+    max-height: min(1304px, calc(100vh - 24px));
+    margin: 0;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    max-height: min(1304px, calc(100vh - 24px));
+    min-height: 0;
+    overflow: hidden;
+    background: var(--ds-neutral-0-900, #fff);
+  }
+
+  /* Override DS rule that forces host to height:100% inside a full-viewport dialog */
+  .modal-content > * {
+    display: flex !important;
+    flex-direction: column;
+    width: 100%;
+    height: auto !important;
+    max-height: min(1304px, calc(100vh - 24px));
+    min-height: 0;
+  }
+}
+
+/* Segment players modal — Figma node 654:38928 */
+ngb-modal-window.ds-component.segment-players-modal {
+  --ds-modal-header-padding-inline: 16px;
+  --ds-modal-header-padding-block: 14px;
+
+  &.modal {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .modal-dialog.modal-xl {
+    width: min(var(--ds-popup-width-lg, 1058px), calc(100vw - 24px));
+    max-width: min(var(--ds-popup-width-lg, 1058px), calc(100vw - 24px));
+    height: auto;
+    max-height: min(900px, calc(100vh - 24px));
+    margin: 0;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    max-height: min(900px, calc(100vh - 24px));
+    min-height: 0;
+    overflow: hidden;
+    background: var(--ds-neutral-0-900, #fff);
+    border-radius: var(--radius-16, 16px);
+  }
+
+  .modal-content > * {
+    display: flex !important;
+    flex-direction: column;
+    width: 100%;
+    height: auto !important;
+    max-height: min(900px, calc(100vh - 24px));
+    min-height: 0;
+  }
+
+  .modal-body.segment-players-modal__body {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .modal-header__row {
+    min-height: 0;
+  }
+}
+
+/* Fields mapping modal — Figma node 806:14185 / 815:40722 */
+ngb-modal-window.ds-component.segment-fields-mapping-modal {
+  --ds-modal-header-padding-inline: 16px;
+  --ds-modal-header-padding-block: 14px;
+
+  &.modal {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .modal-dialog.modal-xl {
+    width: min(var(--ds-popup-width-lg, 1058px), calc(100vw - 24px));
+    max-width: min(var(--ds-popup-width-lg, 1058px), calc(100vw - 24px));
+    height: auto;
+    max-height: min(720px, calc(100vh - 24px));
+    margin: 0;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    max-height: min(720px, calc(100vh - 24px));
+    min-height: 0;
+    overflow: hidden;
+    background: var(--ds-neutral-0-900, #fff);
+    border-radius: var(--radius-16, 16px);
+  }
+
+  .modal-content > * {
+    display: flex !important;
+    flex-direction: column;
+    width: 100%;
+    height: auto !important;
+    max-height: min(720px, calc(100vh - 24px));
+    min-height: 0;
+  }
+
+  .modal-body.segment-fields-mapping-modal__body {
+    padding: 0;
+    overflow: hidden;
+  }
+}

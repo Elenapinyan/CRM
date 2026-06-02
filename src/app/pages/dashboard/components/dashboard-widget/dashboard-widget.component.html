@@ -1,0 +1,102 @@
+@if (widgetInfo()) {
+  <article
+    class="dashboard-widget__panel"
+    [class.dashboard-widget__panel--compliance]="isComplianceMetric()"
+    [class.dashboard-widget__panel--net-deposit]="isNetDepositChart()"
+    [class.dashboard-widget__panel--chart]="isChartWidget()">
+    <div class="dashboard-widget__loading" [class.dashboard-widget__loading--hidden]="isLoaded()" aria-busy="true">
+      <span class="dashboard-widget__spinner"></span>
+    </div>
+
+    <header
+      class="dashboard-widget__header"
+      [class.dashboard-widget__header--compliance]="isComplianceMetric()"
+      [class.dashboard-widget__header--net-deposit]="isNetDepositChart()"
+      [class.dashboard-widget__header--hidden]="!isLoaded()">
+      <div class="dashboard-widget__header-title">
+        @if (isCustomizing()) {
+          <button type="button" class="dashboard-widget__icon-btn" aria-label="Drag widget" (mousedown)="dragStart.emit($event)">
+            <i class="ds-icon ds-icon-control-drag-vertical" aria-hidden="true"></i>
+          </button>
+        }
+        <span>{{ displayLabel() }}</span>
+        @if (isNetDepositChart() || isComplianceMetric() || (!isChartWidget() && !metricData()?.isOnlyLifetime)) {
+          <button type="button" class="dashboard-widget__info-btn" aria-label="More information">
+            <i class="ds-icon ds-icon-general-info" aria-hidden="true"></i>
+          </button>
+        }
+      </div>
+      <div class="dashboard-widget__header-actions">
+        @if (isNetDepositChart()) {
+          <button type="button" class="dashboard-widget__toolbar-icon" aria-label="Select period">
+            <i class="ds-icon ds-icon-control-calendar" aria-hidden="true"></i>
+          </button>
+          <button
+            type="button"
+            class="dashboard-widget__toolbar-icon"
+            aria-label="Expand widget"
+            (click)="onExpandNetDeposit()">
+            <i class="ds-icon ds-icon-control-expand" aria-hidden="true"></i>
+          </button>
+        } @else if (isComplianceMetric()) {
+          <span class="dashboard-widget__lifetime-badge">Lifetime</span>
+        } @else {
+          <span class="dashboard-widget__badge">{{ isChartWidget() ? periodLabel() : metricPeriodLabel() }}</span>
+        }
+        @if (isCustomizing()) {
+          <button type="button" class="dashboard-widget__icon-btn" aria-label="Remove widget" (click)="onDelete()">
+            <i class="ds-icon ds-icon-control-cross" aria-hidden="true"></i>
+          </button>
+        }
+      </div>
+    </header>
+
+    @if (isChartWidget()) {
+      @if (isNetDepositChart()) {
+        <div class="dashboard-widget__chart-area dashboard-widget__chart-area--net-deposit">
+          <p class="dashboard-widget__chart-y-label">{{ netDepositYAxisLabel() }}</p>
+          <div
+            #chartHost
+            class="dashboard-widget__chart-host dashboard-widget__chart-host--net-deposit"
+            [class.dashboard-widget__chart-host--hidden]="!isLoaded()"></div>
+        </div>
+      } @else {
+        <div
+          #chartHost
+          class="dashboard-widget__chart-host"
+          [class.dashboard-widget__chart-host--hidden]="!isLoaded()"></div>
+      }
+    } @else {
+      <div
+        class="dashboard-widget__metric-body"
+        [class.dashboard-widget__metric-body--compliance]="isComplianceMetric()"
+        [class.dashboard-widget__metric-body--hidden]="!isLoaded()">
+        <p
+          class="dashboard-widget__metric-value"
+          [class.dashboard-widget__metric-value--compliance]="isComplianceMetric()"
+          [class.dashboard-widget__metric-value--pair]="isPairMetric()">
+          @if (isPairMetric()) {
+            <span>{{ metricData()?.pairValues?.[0] }}</span><span class="dashboard-widget__pair-sep">/</span><span>{{ metricData()?.pairValues?.[1] }}</span>
+          } @else {
+            {{ metricData()?.value ?? '—' }}
+          }
+        </p>
+      </div>
+
+      <footer
+        class="dashboard-widget__metric-footer"
+        [class.dashboard-widget__metric-footer--hidden]="
+          isComplianceMetric() || !isLoaded() || (!metricData()?.difference && !metricData()?.isOnlyLifetime)
+        ">
+        <span class="dashboard-widget__lifetime" [class.dashboard-widget__lifetime--hidden]="!metricData()?.isOnlyLifetime">Lifetime</span>
+        <span
+          class="dashboard-widget__delta"
+          [class.dashboard-widget__delta--hidden]="!metricData()?.difference || metricData()?.isOnlyLifetime"
+          [class.dashboard-widget__delta--up]="isPositiveDelta()"
+          [class.dashboard-widget__delta--down]="!isPositiveDelta()">
+          {{ metricData()?.difference }}
+        </span>
+      </footer>
+    }
+  </article>
+}

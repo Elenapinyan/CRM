@@ -1,0 +1,13 @@
+<nav class="wf-builder-tabs" aria-label="Workflow sections">
+  @for (tab of tabs; track tab.id) {
+    <button
+      type="button"
+      class="wf-builder-tabs__tab"
+      [class.wf-builder-tabs__tab--active]="activeTab() === tab.id"
+      [class.wf-builder-tabs__tab--disabled]="isDisabled(tab.id)"
+      [disabled]="isDisabled(tab.id)"
+    >
+      {{ tab.label }}
+    </button>
+  }
+</nav>

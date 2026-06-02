@@ -1,0 +1,79 @@
+/* CRM table header (Figma): exact #FAFAFA fill + 24px-tall column dividers. Loaded after platform
+   `ag-grid.scss` so these beat `--ag-header-background-color: var(--brd-neutral-050-900, ...)`. */
+ag-grid-angular,
+ag-grid-angular[class*='ag-theme-params'] {
+  --ag-header-background-color: #fafafa;
+  --ag-header-column-border-height: 24px;
+  --ag-header-column-border: 1px solid var(--brd-neutral-200-700, #e4e4e7);
+  --ag-border-radius: 0;
+  --ag-wrapper-border-radius: 0;
+  /* Figma table cells: 1px bottom divider (#E4E4E7). Theme params inherit cycle leaves --ag-row-border empty. */
+  --ag-row-border: 1px solid var(--brd-neutral-200-700, #e4e4e7);
+}
+
+/* Flat header strip (Figma): override platform `ag-grid.scss` `.ag-header { border-radius: 12px }`. */
+.ag-header,
+.ag-header-viewport,
+.ag-header-container,
+.ag-header-row,
+.ag-header-cell {
+  border-radius: 0;
+}
+
+.header-common {
+  background: var(--ds-neutral-050-900, #fafafa);
+  overflow: hidden;
+  color: var(--ds-neutral-1000-0, #18181b);
+  text-overflow: ellipsis;
+  font-size: var(--font-size-14, 14px);
+  font-style: normal;
+  font-weight: 500;
+  line-height: var(--font-line-height-20, 20px); /* 142.857% */
+}
+
+/* Column filter control: show on header hover / keyboard focus / applied filter (Figma CRM table headers). */
+.ag-header-cell .ag-header-cell-filter-button {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.ag-header-cell:hover .ag-header-cell-filter-button,
+.ag-header-cell.ag-header-active .ag-header-cell-filter-button,
+.ag-header-cell:focus-within .ag-header-cell-filter-button,
+.ag-header-cell .ag-header-cell-filter-button.ag-filter-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.checkbox-header {
+  padding: 0;
+  .ag-header-cell-comp-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.header-align-right {
+  .ag-header-cell-label {
+    justify-content: flex-end;
+    text-align: right;
+  }
+}
+
+.ag-pinned-right-header {
+  border-left: none;
+}
+
+.ag-cell-last-left-pinned {
+  border: none !important;
+}
+
+.ag-pinned-left-header {
+  border: none;
+
+  .ag-header-cell-resize {
+    cursor: default;
+  }
+}

@@ -1,0 +1,13 @@
+<button
+  type="button"
+  class="clear-filters-btn"
+  [class.clear-filters-btn--active]="activeFilterCount() > 0"
+  [disabled]="activeFilterCount() === 0"
+  [attr.aria-label]="ariaLabel()"
+  (click)="onClear()"
+>
+  <i class="ds-icon ds-icon-general-broom" aria-hidden="true"></i>
+  @if (activeFilterCount() > 0) {
+    <span class="clear-filters-btn__badge" aria-hidden="true">{{ activeFilterCount() }}</span>
+  }
+</button>

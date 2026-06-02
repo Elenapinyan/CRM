@@ -1,0 +1,6 @@
+// Figma Light/Elevation/flyout — filter avoids foreignObject box-shadow clipping
+@mixin wf-node-flyout-shadow {
+  filter:
+    drop-shadow(0 4px 8px var(--brd-alpha-bb-008-024, rgba(24, 24, 27, 0.08)))
+    drop-shadow(0 8px 16px var(--brd-alpha-bb-004-040, rgba(24, 24, 27, 0.04)));
+}
