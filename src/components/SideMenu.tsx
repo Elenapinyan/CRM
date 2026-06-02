@@ -1,9 +1,9 @@
 import './SideMenu.css';
 
 const NAV_ITEMS = [
-  { label: 'Dashboard',         icon: <DashboardIcon />,  active: false },
+  { label: 'Dashboard',         icon: <DashboardIcon />,  active: true  },
   { label: 'Analytics',         icon: <AnalyticsIcon />,  active: false },
-  { label: 'Segments',          icon: <SegmentsIcon />,   active: true  },
+  { label: 'Segments',          icon: <SegmentsIcon />,   active: false },
   { label: 'Workflows',         icon: <WorkflowsIcon />,  active: false },
   { label: 'Communication Hub', icon: <CommsIcon />,      active: false },
   { label: 'Player 360',        icon: <PlayerIcon />,     active: false },

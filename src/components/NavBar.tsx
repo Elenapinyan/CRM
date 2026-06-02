@@ -18,10 +18,10 @@ export default function NavBar() {
           </svg>
           <span className="navbar-badge" />
         </button>
+        <span className="navbar-username">Sophia Davis</span>
         <button className="navbar-avatar" aria-label="User menu">
           <span>SD</span>
         </button>
-        <span className="navbar-username">Sophia Davis</span>
       </div>
     </header>
   );
