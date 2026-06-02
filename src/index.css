@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --neutral-0:   #ffffff;
+  --neutral-50:  #fafafa;
+  --neutral-100: #f4f4f5;
+  --neutral-150: #efeff0;
+  --neutral-200: #e4e4e7;
+  --neutral-500: #76767f;
+  --neutral-800: #27272a;
+  --neutral-900: #18181b;
+  --neutral-1000:#18181b;
+
+  --green-50:  #f0fdf4;
+  --green-200: #bbf7d0;
+  --green-600: #16a34a;
+  --green-900: #14532d;
+
+  --yellow-50:  #fefeee;
+  --yellow-200: #fafab2;
+  --yellow-900: #606006;
+
+  --cyan-50:  #eefbfa;
+  --cyan-200: #bcf0eb;
+  --cyan-900: #12544d;
+
+  --pink-50:  #fdf2f8;
+  --pink-200: #fbcfe8;
+  --pink-900: #831843;
+
+  --blue-link: #2563eb;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--neutral-1000);
+  background: var(--neutral-100);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+button, input {
+  font-family: var(--font);
+}
+
+p { margin: 0; }

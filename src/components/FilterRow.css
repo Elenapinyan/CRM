@@ -1,0 +1,192 @@
+.filter-row {
+  display: flex;
+  align-items: stretch;
+  background: var(--neutral-0);
+  border-bottom: 1px solid var(--neutral-200);
+  min-height: 52px;
+  position: relative;
+}
+
+.filter-row:hover {
+  background: var(--neutral-50);
+}
+
+.filter-row-stripe {
+  width: 3px;
+  flex-shrink: 0;
+  border-radius: 0;
+}
+
+.filter-row-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  gap: 12px;
+  min-width: 0;
+}
+
+.filter-row-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.filter-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--neutral-1000);
+  white-space: nowrap;
+}
+
+.filter-is {
+  font-size: 14px;
+  color: var(--neutral-1000);
+}
+
+.filter-kw {
+  font-size: 14px;
+  color: var(--neutral-1000);
+  white-space: nowrap;
+}
+
+/* Chips */
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 26px;
+  padding: 0 8px;
+  background: var(--neutral-100);
+  border: 1px solid var(--neutral-200);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--neutral-1000);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.1s;
+  font-family: var(--font);
+}
+
+.filter-chip:hover {
+  background: var(--neutral-200);
+}
+
+.filter-chip.no-arrow {
+  cursor: default;
+  pointer-events: none;
+}
+
+.filter-chip-input {
+  height: 26px;
+  padding: 0 8px;
+  background: var(--neutral-100);
+  border: 1px solid var(--neutral-200);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: var(--font);
+  color: var(--neutral-1000);
+  outline: none;
+  transition: border-color 0.1s;
+}
+
+.filter-chip-input:focus {
+  border-color: var(--neutral-500);
+  background: var(--neutral-0);
+}
+
+/* Dropdown */
+.filter-drop-wrap {
+  position: relative;
+}
+
+.filter-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 500;
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 160px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
+.filter-dropdown.dark {
+  background: var(--neutral-800);
+}
+
+.fd-item {
+  display: block;
+  width: 100%;
+  padding: 8px 14px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.1s;
+  font-family: var(--font);
+  white-space: nowrap;
+}
+
+.fd-item:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.fd-item.active {
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Right side */
+.filter-row-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.filter-player-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 28px;
+  padding: 0 10px;
+  background: var(--neutral-800);
+  color: rgba(255,255,255,0.9);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.filter-icon-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--neutral-500);
+  transition: background 0.1s, color 0.1s;
+}
+
+.filter-icon-btn:hover {
+  background: var(--neutral-100);
+  color: var(--neutral-900);
+}
+
+.filter-icon-btn.danger:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
