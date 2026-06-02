@@ -1,0 +1,90 @@
+<div
+  #filterWrapper
+  (click)="menu.open()"
+  class="filter">
+  @if (customToggle()) {
+    <ng-content select="[toggle]" />
+  } @else if (variant() === 'default') {
+    <div
+      class="filter__wrapper"
+      [class.filter__wrapper--active]="menu.isOpened()"
+      tabindex="0">
+      <div class="filter__value-container">
+        <div class="filter__label">{{ label() }}</div>
+        <div class="filter__value">
+          @if (value(); as value) {
+            <div data-testid="value">{{ value }}</div>
+          } @else {
+            <div data-testid="value-not-selected">Not Selected</div>
+          }
+        </div>
+      </div>
+
+      <div
+        (click)="value() && $event.stopImmediatePropagation(); resetValue()"
+        class="filter__toggle"
+        [class.separator-left]="value()">
+        <i
+          data-testid="toggle-icon"
+          class="ds-icon"
+          [class.ds-icon-control-cross]="value()"
+          [class.ds-icon-arrows-chevron-down]="!value()"></i>
+      </div>
+    </div>
+  } @else if (variant() === 'short') {
+    <ds-button
+      size="lg"
+      variant="secondary">
+      @if (isArrayFilterValue() && pureValue()?.length) {
+        <ds-badge
+          variant="neutral"
+          [content]="pureValue()?.length?.toString()" />
+      } @else {
+        <i class="ds-icon ds-icon-control-filter"></i>
+      }
+      {{ label() }}
+    </ds-button>
+  }
+</div>
+
+<ng-template
+  sprMenu
+  position="bottom"
+  closeTrigger="backdrop"
+  [backdrop]="true"
+  [host]="filterWrapper"
+  #menu="sprMenu">
+  <div class="filter__menu-wrapper">
+    @if (innerHeader()) {
+      <div class="filter__menu-inner-header">
+        <ng-content select="[innerHeader]" />
+      </div>
+    }
+
+    @if (header()) {
+      <ng-content select="ds-filter-inner-header" />
+    }
+
+    <div>
+      <ng-content />
+    </div>
+
+    @if (footer() && !customFooterImplementation()) {
+      <div
+        data-testid="footer"
+        class="filter__footer">
+        <ds-button
+          size="md"
+          variant="secondary"
+          (click)="resetValue(); menu.close()">
+          {{ translations()[translationsKeys.RESET] }}
+        </ds-button>
+        <ds-button
+          (click)="apply(); menu.close()"
+          size="md">
+          {{ translations()[translationsKeys.APPLY] }}
+        </ds-button>
+      </div>
+    }
+  </div>
+</ng-template>

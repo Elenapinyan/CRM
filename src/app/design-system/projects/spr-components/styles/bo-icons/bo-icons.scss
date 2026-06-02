@@ -1,0 +1,970 @@
+$bo-icons-font: 'bo-icons';
+
+@font-face {
+  font-family: $bo-icons-font;
+  src: url('./bo-icons.ttf?28bad335fc1ee6facd10d4a8c27a6545') format('truetype');
+}
+
+i[class^='bo-icon-']:before,
+i[class*=' bo-icon-']:before {
+  font-family: bo-icons !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+$bo-icons-map: (
+  'tag-thumbs-up': '\f101',
+  'tag-star': '\f102',
+  'tag-fire': '\f103',
+  'products-sports': '\f104',
+  'products-slots': '\f105',
+  'products-live-casino': '\f106',
+  'products-igames': '\f107',
+  'chat-smile': '\f108',
+  'chat-send': '\f109',
+  'chat-heart': '\f10a',
+  'chat-gif': '\f10b',
+  'chips-wave-fill': '\f10c',
+  'chips-wafe-fill': '\f10d',
+  'chips-user-rectangle-fill': '\f10e',
+  'chips-time-fill': '\f10f',
+  'chips-sports-fill': '\f110',
+  'chips-plus-circle-fill': '\f111',
+  'chips-play-fill': '\f112',
+  'chips-new-fill': '\f113',
+  'chips-mail-fill': '\f114',
+  'chips-list-check-fill': '\f115',
+  'chips-igames-fill': '\f116',
+  'chips-check-double-fill': '\f117',
+  'chips-check-circle-fill': '\f118',
+  'chips-boat-fill': '\f119',
+  'chips-anchor-fill': '\f11a',
+  'control-upload': '\f11b',
+  'control-unpin': '\f11c',
+  'control-undo': '\f11d',
+  'control-underline': '\f11e',
+  'control-type': '\f11f',
+  'control-sun': '\f120',
+  'control-strikethrough': '\f121',
+  'control-settings': '\f122',
+  'control-search': '\f123',
+  'control-resize-textarea': '\f124',
+  'control-redo': '\f125',
+  'control-plus': '\f126',
+  'control-plus-square': '\f127',
+  'control-plus-circle': '\f128',
+  'control-pinned': '\f129',
+  'control-pin': '\f12a',
+  'control-online': '\f12b',
+  'control-move': '\f12c',
+  'control-more': '\f12d',
+  'control-moon': '\f12e',
+  'control-minus': '\f12f',
+  'control-minus-square': '\f130',
+  'control-loader': '\f131',
+  'control-link': '\f132',
+  'control-link-external': '\f133',
+  'control-filter': '\f134',
+  'control-filter-plus': '\f135',
+  'control-eye-on': '\f136',
+  'control-eye-off': '\f137',
+  'control-expand': '\f138',
+  'control-edit': '\f139',
+  'control-drag': '\f13a',
+  'control-drag-vertical': '\f13b',
+  'control-drag-horizontal': '\f13c',
+  'control-download': '\f13d',
+  'control-delete': '\f13e',
+  'control-cross': '\f13f',
+  'control-cross-shield': '\f140',
+  'control-cross-circle': '\f141',
+  'control-copy': '\f142',
+  'control-clipboard': '\f143',
+  'control-check': '\f144',
+  'control-check-double': '\f145',
+  'control-check-circle': '\f146',
+  'control-calendar': '\f147',
+  'control-align-right': '\f148',
+  'control-align-left': '\f149',
+  'control-align-justify': '\f14a',
+  'control-align-center': '\f14b',
+  'general-zap': '\f14c',
+  'general-workspace': '\f14d',
+  'general-wave': '\f14e',
+  'general-warning': '\f14f',
+  'general-wallet': '\f150',
+  'general-vendor': '\f151',
+  'general-users': '\f152',
+  'general-user': '\f153',
+  'general-user-rectangle': '\f154',
+  'general-user-plus': '\f155',
+  'general-user-minus': '\f156',
+  'general-user-cross': '\f157',
+  'general-user-circle': '\f158',
+  'general-user-check': '\f159',
+  'general-unmute': '\f15a',
+  'general-unlock': '\f15b',
+  'general-trophy': '\f15c',
+  'general-track': '\f15d',
+  'general-tool': '\f15e',
+  'general-toggle-right': '\f15f',
+  'general-toggle-left': '\f160',
+  'general-time': '\f161',
+  'general-ticket': '\f162',
+  'general-thumbs-down': '\f163',
+  'general-target': '\f164',
+  'general-tag': '\f165',
+  'general-stop': '\f166',
+  'general-star-fill': '\f167',
+  'general-star-circle': '\f168',
+  'general-split': '\f169',
+  'general-sparkles': '\f16a',
+  'general-spade': '\f16b',
+  'general-smile-3': '\f16c',
+  'general-smile-2': '\f16d',
+  'general-smile-1': '\f16e',
+  'general-sand-clock': '\f16f',
+  'general-repeat': '\f170',
+  'general-refresh': '\f171',
+  'general-receipt': '\f172',
+  'general-ranks': '\f173',
+  'general-provider': '\f174',
+  'general-pointer': '\f175',
+  'general-plus-group': '\f176',
+  'general-play': '\f177',
+  'general-placeholder': '\f178',
+  'general-percent': '\f179',
+  'general-pending': '\f17a',
+  'general-pen-tool': '\f17b',
+  'general-pause': '\f17c',
+  'general-password': '\f17d',
+  'general-page': '\f17e',
+  'general-operator': '\f17f',
+  'general-new': '\f180',
+  'general-mute': '\f181',
+  'general-multimedia': '\f182',
+  'general-move': '\f183',
+  'general-money': '\f184',
+  'general-money-up': '\f185',
+  'general-money-stack': '\f186',
+  'general-money-down': '\f187',
+  'general-mobile': '\f188',
+  'general-messages': '\f189',
+  'general-message': '\f18a',
+  'general-market': '\f18b',
+  'general-mail': '\f18c',
+  'general-log-out': '\f18d',
+  'general-log-in': '\f18e',
+  'general-lock': '\f18f',
+  'general-location': '\f190',
+  'general-list-dot': '\f191',
+  'general-list-check': '\f192',
+  'general-list-arrow-up': '\f193',
+  'general-list-arrow-down': '\f194',
+  'general-light': '\f195',
+  'general-layout': '\f196',
+  'general-layers': '\f197',
+  'general-key': '\f198',
+  'general-italic': '\f199',
+  'general-info': '\f19a',
+  'general-inbox': '\f19b',
+  'general-image': '\f19c',
+  'general-image-plus': '\f19d',
+  'general-history': '\f19e',
+  'general-hash': '\f19f',
+  'general-grid': '\f1a0',
+  'general-globe': '\f1a1',
+  'general-gift': '\f1a2',
+  'general-gamepad': '\f1a3',
+  'general-full-screen': '\f1a4',
+  'general-free-spins': '\f1a5',
+  'general-folder': '\f1a6',
+  'general-folder-plus': '\f1a7',
+  'general-flowchart': '\f1a8',
+  'general-flag': '\f1a9',
+  'general-file': '\f1aa',
+  'general-feedback': '\f1ab',
+  'general-exchange': '\f1ac',
+  'general-error': '\f1ad',
+  'general-egypt': '\f1ae',
+  'general-edit-square': '\f1af',
+  'general-dollar': '\f1b0',
+  'general-dollar-sign': '\f1b1',
+  'general-diamond': '\f1b2',
+  'general-desktop': '\f1b3',
+  'general-deposit-bonus': '\f1b4',
+  'general-database': '\f1b5',
+  'general-columns': '\f1b6',
+  'general-coins': '\f1b7',
+  'general-code': '\f1b8',
+  'general-cloud-download': '\f1b9',
+  'general-circle': '\f1ba',
+  'general-check-shield': '\f1bb',
+  'general-chart': '\f1bc',
+  'general-cash-out': '\f1bd',
+  'general-card': '\f1be',
+  'general-card-up': '\f1bf',
+  'general-card-down': '\f1c0',
+  'general-calculator': '\f1c1',
+  'general-broom': '\f1c2',
+  'general-branding': '\f1c3',
+  'general-boat': '\f1c4',
+  'general-blocked': '\f1c5',
+  'general-bell': '\f1c6',
+  'general-auto': '\f1c7',
+  'general-archive': '\f1c8',
+  'general-anchor': '\f1c9',
+  'general-alert-octagon': '\f1ca',
+  'category-turbo-games': '\f1cb',
+  'category-table-games': '\f1cc',
+  'category-roulette': '\f1cd',
+  'category-live-shows': '\f1ce',
+  'category-jackpots': '\f1cf',
+  'category-game-shows': '\f1d0',
+  'category-crash-games': '\f1d1',
+  'category-bonus-buy': '\f1d2',
+  'category-blackjack': '\f1d3',
+  'category-black-jack': '\f1d4',
+  'category-baccarat': '\f1d5',
+  'arrows-corner-up-right': '\f1d6',
+  'arrows-corner-up-left': '\f1d7',
+  'arrows-corner-down-right': '\f1d8',
+  'arrows-corner-down-left': '\f1d9',
+  'arrows-chevron-up': '\f1da',
+  'arrows-chevron-right': '\f1db',
+  'arrows-chevron-mini-up': '\f1dc',
+  'arrows-chevron-mini-right': '\f1dd',
+  'arrows-chevron-mini-left': '\f1de',
+  'arrows-chevron-mini-down': '\f1df',
+  'arrows-chevron-left': '\f1e0',
+  'arrows-chevron-down': '\f1e1',
+  'arrows-chevron-double-up': '\f1e2',
+  'arrows-chevron-double-right': '\f1e3',
+  'arrows-chevron-double-left': '\f1e4',
+  'arrows-chevron-double-down': '\f1e5',
+  'arrows-arrow-up': '\f1e6',
+  'arrows-arrow-right': '\f1e7',
+  'arrows-arrow-left': '\f1e8',
+  'arrows-arrow-down': '\f1e9',
+  'arrows-arrow-circle-up': '\f1ea',
+  'arrows-arrow-circle-right': '\f1eb',
+  'arrows-arrow-circle-left': '\f1ec',
+  'arrows-arrow-circle-down': '\f1ed',
+);
+
+.bo-icon-tag-thumbs-up:before {
+  content: map-get($bo-icons-map, 'tag-thumbs-up');
+}
+.bo-icon-tag-star:before {
+  content: map-get($bo-icons-map, 'tag-star');
+}
+.bo-icon-tag-fire:before {
+  content: map-get($bo-icons-map, 'tag-fire');
+}
+.bo-icon-products-sports:before {
+  content: map-get($bo-icons-map, 'products-sports');
+}
+.bo-icon-products-slots:before {
+  content: map-get($bo-icons-map, 'products-slots');
+}
+.bo-icon-products-live-casino:before {
+  content: map-get($bo-icons-map, 'products-live-casino');
+}
+.bo-icon-products-igames:before {
+  content: map-get($bo-icons-map, 'products-igames');
+}
+.bo-icon-chat-smile:before {
+  content: map-get($bo-icons-map, 'chat-smile');
+}
+.bo-icon-chat-send:before {
+  content: map-get($bo-icons-map, 'chat-send');
+}
+.bo-icon-chat-heart:before {
+  content: map-get($bo-icons-map, 'chat-heart');
+}
+.bo-icon-chat-gif:before {
+  content: map-get($bo-icons-map, 'chat-gif');
+}
+.bo-icon-chips-wave-fill:before {
+  content: map-get($bo-icons-map, 'chips-wave-fill');
+}
+.bo-icon-chips-wafe-fill:before {
+  content: map-get($bo-icons-map, 'chips-wafe-fill');
+}
+.bo-icon-chips-user-rectangle-fill:before {
+  content: map-get($bo-icons-map, 'chips-user-rectangle-fill');
+}
+.bo-icon-chips-time-fill:before {
+  content: map-get($bo-icons-map, 'chips-time-fill');
+}
+.bo-icon-chips-sports-fill:before {
+  content: map-get($bo-icons-map, 'chips-sports-fill');
+}
+.bo-icon-chips-plus-circle-fill:before {
+  content: map-get($bo-icons-map, 'chips-plus-circle-fill');
+}
+.bo-icon-chips-play-fill:before {
+  content: map-get($bo-icons-map, 'chips-play-fill');
+}
+.bo-icon-chips-new-fill:before {
+  content: map-get($bo-icons-map, 'chips-new-fill');
+}
+.bo-icon-chips-mail-fill:before {
+  content: map-get($bo-icons-map, 'chips-mail-fill');
+}
+.bo-icon-chips-list-check-fill:before {
+  content: map-get($bo-icons-map, 'chips-list-check-fill');
+}
+.bo-icon-chips-igames-fill:before {
+  content: map-get($bo-icons-map, 'chips-igames-fill');
+}
+.bo-icon-chips-check-double-fill:before {
+  content: map-get($bo-icons-map, 'chips-check-double-fill');
+}
+.bo-icon-chips-check-circle-fill:before {
+  content: map-get($bo-icons-map, 'chips-check-circle-fill');
+}
+.bo-icon-chips-boat-fill:before {
+  content: map-get($bo-icons-map, 'chips-boat-fill');
+}
+.bo-icon-chips-anchor-fill:before {
+  content: map-get($bo-icons-map, 'chips-anchor-fill');
+}
+.bo-icon-control-upload:before {
+  content: map-get($bo-icons-map, 'control-upload');
+}
+.bo-icon-control-unpin:before {
+  content: map-get($bo-icons-map, 'control-unpin');
+}
+.bo-icon-control-undo:before {
+  content: map-get($bo-icons-map, 'control-undo');
+}
+.bo-icon-control-underline:before {
+  content: map-get($bo-icons-map, 'control-underline');
+}
+.bo-icon-control-type:before {
+  content: map-get($bo-icons-map, 'control-type');
+}
+.bo-icon-control-sun:before {
+  content: map-get($bo-icons-map, 'control-sun');
+}
+.bo-icon-control-strikethrough:before {
+  content: map-get($bo-icons-map, 'control-strikethrough');
+}
+.bo-icon-control-settings:before {
+  content: map-get($bo-icons-map, 'control-settings');
+}
+.bo-icon-control-search:before {
+  content: map-get($bo-icons-map, 'control-search');
+}
+.bo-icon-control-resize-textarea:before {
+  content: map-get($bo-icons-map, 'control-resize-textarea');
+}
+.bo-icon-control-redo:before {
+  content: map-get($bo-icons-map, 'control-redo');
+}
+.bo-icon-control-plus:before {
+  content: map-get($bo-icons-map, 'control-plus');
+}
+.bo-icon-control-plus-square:before {
+  content: map-get($bo-icons-map, 'control-plus-square');
+}
+.bo-icon-control-plus-circle:before {
+  content: map-get($bo-icons-map, 'control-plus-circle');
+}
+.bo-icon-control-pinned:before {
+  content: map-get($bo-icons-map, 'control-pinned');
+}
+.bo-icon-control-pin:before {
+  content: map-get($bo-icons-map, 'control-pin');
+}
+.bo-icon-control-online:before {
+  content: map-get($bo-icons-map, 'control-online');
+}
+.bo-icon-control-move:before {
+  content: map-get($bo-icons-map, 'control-move');
+}
+.bo-icon-control-more:before {
+  content: map-get($bo-icons-map, 'control-more');
+}
+.bo-icon-control-moon:before {
+  content: map-get($bo-icons-map, 'control-moon');
+}
+.bo-icon-control-minus:before {
+  content: map-get($bo-icons-map, 'control-minus');
+}
+.bo-icon-control-minus-square:before {
+  content: map-get($bo-icons-map, 'control-minus-square');
+}
+.bo-icon-control-loader:before {
+  content: map-get($bo-icons-map, 'control-loader');
+}
+.bo-icon-control-link:before {
+  content: map-get($bo-icons-map, 'control-link');
+}
+.bo-icon-control-link-external:before {
+  content: map-get($bo-icons-map, 'control-link-external');
+}
+.bo-icon-control-filter:before {
+  content: map-get($bo-icons-map, 'control-filter');
+}
+.bo-icon-control-filter-plus:before {
+  content: map-get($bo-icons-map, 'control-filter-plus');
+}
+.bo-icon-control-eye-on:before {
+  content: map-get($bo-icons-map, 'control-eye-on');
+}
+.bo-icon-control-eye-off:before {
+  content: map-get($bo-icons-map, 'control-eye-off');
+}
+.bo-icon-control-expand:before {
+  content: map-get($bo-icons-map, 'control-expand');
+}
+.bo-icon-control-edit:before {
+  content: map-get($bo-icons-map, 'control-edit');
+}
+.bo-icon-control-drag:before {
+  content: map-get($bo-icons-map, 'control-drag');
+}
+.bo-icon-control-drag-vertical:before {
+  content: map-get($bo-icons-map, 'control-drag-vertical');
+}
+.bo-icon-control-drag-horizontal:before {
+  content: map-get($bo-icons-map, 'control-drag-horizontal');
+}
+.bo-icon-control-download:before {
+  content: map-get($bo-icons-map, 'control-download');
+}
+.bo-icon-control-delete:before {
+  content: map-get($bo-icons-map, 'control-delete');
+}
+.bo-icon-control-cross:before {
+  content: map-get($bo-icons-map, 'control-cross');
+}
+.bo-icon-control-cross-shield:before {
+  content: map-get($bo-icons-map, 'control-cross-shield');
+}
+.bo-icon-control-cross-circle:before {
+  content: map-get($bo-icons-map, 'control-cross-circle');
+}
+.bo-icon-control-copy:before {
+  content: map-get($bo-icons-map, 'control-copy');
+}
+.bo-icon-control-clipboard:before {
+  content: map-get($bo-icons-map, 'control-clipboard');
+}
+.bo-icon-control-check:before {
+  content: map-get($bo-icons-map, 'control-check');
+}
+.bo-icon-control-check-double:before {
+  content: map-get($bo-icons-map, 'control-check-double');
+}
+.bo-icon-control-check-circle:before {
+  content: map-get($bo-icons-map, 'control-check-circle');
+}
+.bo-icon-control-calendar:before {
+  content: map-get($bo-icons-map, 'control-calendar');
+}
+.bo-icon-control-align-right:before {
+  content: map-get($bo-icons-map, 'control-align-right');
+}
+.bo-icon-control-align-left:before {
+  content: map-get($bo-icons-map, 'control-align-left');
+}
+.bo-icon-control-align-justify:before {
+  content: map-get($bo-icons-map, 'control-align-justify');
+}
+.bo-icon-control-align-center:before {
+  content: map-get($bo-icons-map, 'control-align-center');
+}
+.bo-icon-general-zap:before {
+  content: map-get($bo-icons-map, 'general-zap');
+}
+.bo-icon-general-workspace:before {
+  content: map-get($bo-icons-map, 'general-workspace');
+}
+.bo-icon-general-wave:before {
+  content: map-get($bo-icons-map, 'general-wave');
+}
+.bo-icon-general-warning:before {
+  content: map-get($bo-icons-map, 'general-warning');
+}
+.bo-icon-general-wallet:before {
+  content: map-get($bo-icons-map, 'general-wallet');
+}
+.bo-icon-general-vendor:before {
+  content: map-get($bo-icons-map, 'general-vendor');
+}
+.bo-icon-general-users:before {
+  content: map-get($bo-icons-map, 'general-users');
+}
+.bo-icon-general-user:before {
+  content: map-get($bo-icons-map, 'general-user');
+}
+.bo-icon-general-user-rectangle:before {
+  content: map-get($bo-icons-map, 'general-user-rectangle');
+}
+.bo-icon-general-user-plus:before {
+  content: map-get($bo-icons-map, 'general-user-plus');
+}
+.bo-icon-general-user-minus:before {
+  content: map-get($bo-icons-map, 'general-user-minus');
+}
+.bo-icon-general-user-cross:before {
+  content: map-get($bo-icons-map, 'general-user-cross');
+}
+.bo-icon-general-user-circle:before {
+  content: map-get($bo-icons-map, 'general-user-circle');
+}
+.bo-icon-general-user-check:before {
+  content: map-get($bo-icons-map, 'general-user-check');
+}
+.bo-icon-general-unmute:before {
+  content: map-get($bo-icons-map, 'general-unmute');
+}
+.bo-icon-general-unlock:before {
+  content: map-get($bo-icons-map, 'general-unlock');
+}
+.bo-icon-general-trophy:before {
+  content: map-get($bo-icons-map, 'general-trophy');
+}
+.bo-icon-general-track:before {
+  content: map-get($bo-icons-map, 'general-track');
+}
+.bo-icon-general-tool:before {
+  content: map-get($bo-icons-map, 'general-tool');
+}
+.bo-icon-general-toggle-right:before {
+  content: map-get($bo-icons-map, 'general-toggle-right');
+}
+.bo-icon-general-toggle-left:before {
+  content: map-get($bo-icons-map, 'general-toggle-left');
+}
+.bo-icon-general-time:before {
+  content: map-get($bo-icons-map, 'general-time');
+}
+.bo-icon-general-ticket:before {
+  content: map-get($bo-icons-map, 'general-ticket');
+}
+.bo-icon-general-thumbs-down:before {
+  content: map-get($bo-icons-map, 'general-thumbs-down');
+}
+.bo-icon-general-target:before {
+  content: map-get($bo-icons-map, 'general-target');
+}
+.bo-icon-general-tag:before {
+  content: map-get($bo-icons-map, 'general-tag');
+}
+.bo-icon-general-stop:before {
+  content: map-get($bo-icons-map, 'general-stop');
+}
+.bo-icon-general-star-fill:before {
+  content: map-get($bo-icons-map, 'general-star-fill');
+}
+.bo-icon-general-star-circle:before {
+  content: map-get($bo-icons-map, 'general-star-circle');
+}
+.bo-icon-general-split:before {
+  content: map-get($bo-icons-map, 'general-split');
+}
+.bo-icon-general-sparkles:before {
+  content: map-get($bo-icons-map, 'general-sparkles');
+}
+.bo-icon-general-spade:before {
+  content: map-get($bo-icons-map, 'general-spade');
+}
+.bo-icon-general-smile-3:before {
+  content: map-get($bo-icons-map, 'general-smile-3');
+}
+.bo-icon-general-smile-2:before {
+  content: map-get($bo-icons-map, 'general-smile-2');
+}
+.bo-icon-general-smile-1:before {
+  content: map-get($bo-icons-map, 'general-smile-1');
+}
+.bo-icon-general-sand-clock:before {
+  content: map-get($bo-icons-map, 'general-sand-clock');
+}
+.bo-icon-general-repeat:before {
+  content: map-get($bo-icons-map, 'general-repeat');
+}
+.bo-icon-general-refresh:before {
+  content: map-get($bo-icons-map, 'general-refresh');
+}
+.bo-icon-general-receipt:before {
+  content: map-get($bo-icons-map, 'general-receipt');
+}
+.bo-icon-general-ranks:before {
+  content: map-get($bo-icons-map, 'general-ranks');
+}
+.bo-icon-general-provider:before {
+  content: map-get($bo-icons-map, 'general-provider');
+}
+.bo-icon-general-pointer:before {
+  content: map-get($bo-icons-map, 'general-pointer');
+}
+.bo-icon-general-plus-group:before {
+  content: map-get($bo-icons-map, 'general-plus-group');
+}
+.bo-icon-general-play:before {
+  content: map-get($bo-icons-map, 'general-play');
+}
+.bo-icon-general-placeholder:before {
+  content: map-get($bo-icons-map, 'general-placeholder');
+}
+.bo-icon-general-percent:before {
+  content: map-get($bo-icons-map, 'general-percent');
+}
+.bo-icon-general-pending:before {
+  content: map-get($bo-icons-map, 'general-pending');
+}
+.bo-icon-general-pen-tool:before {
+  content: map-get($bo-icons-map, 'general-pen-tool');
+}
+.bo-icon-general-pause:before {
+  content: map-get($bo-icons-map, 'general-pause');
+}
+.bo-icon-general-password:before {
+  content: map-get($bo-icons-map, 'general-password');
+}
+.bo-icon-general-page:before {
+  content: map-get($bo-icons-map, 'general-page');
+}
+.bo-icon-general-operator:before {
+  content: map-get($bo-icons-map, 'general-operator');
+}
+.bo-icon-general-new:before {
+  content: map-get($bo-icons-map, 'general-new');
+}
+.bo-icon-general-mute:before {
+  content: map-get($bo-icons-map, 'general-mute');
+}
+.bo-icon-general-multimedia:before {
+  content: map-get($bo-icons-map, 'general-multimedia');
+}
+.bo-icon-general-move:before {
+  content: map-get($bo-icons-map, 'general-move');
+}
+.bo-icon-general-money:before {
+  content: map-get($bo-icons-map, 'general-money');
+}
+.bo-icon-general-money-up:before {
+  content: map-get($bo-icons-map, 'general-money-up');
+}
+.bo-icon-general-money-stack:before {
+  content: map-get($bo-icons-map, 'general-money-stack');
+}
+.bo-icon-general-money-down:before {
+  content: map-get($bo-icons-map, 'general-money-down');
+}
+.bo-icon-general-mobile:before {
+  content: map-get($bo-icons-map, 'general-mobile');
+}
+.bo-icon-general-messages:before {
+  content: map-get($bo-icons-map, 'general-messages');
+}
+.bo-icon-general-message:before {
+  content: map-get($bo-icons-map, 'general-message');
+}
+.bo-icon-general-market:before {
+  content: map-get($bo-icons-map, 'general-market');
+}
+.bo-icon-general-mail:before {
+  content: map-get($bo-icons-map, 'general-mail');
+}
+.bo-icon-general-log-out:before {
+  content: map-get($bo-icons-map, 'general-log-out');
+}
+.bo-icon-general-log-in:before {
+  content: map-get($bo-icons-map, 'general-log-in');
+}
+.bo-icon-general-lock:before {
+  content: map-get($bo-icons-map, 'general-lock');
+}
+.bo-icon-general-location:before {
+  content: map-get($bo-icons-map, 'general-location');
+}
+.bo-icon-general-list-dot:before {
+  content: map-get($bo-icons-map, 'general-list-dot');
+}
+.bo-icon-general-list-check:before {
+  content: map-get($bo-icons-map, 'general-list-check');
+}
+.bo-icon-general-list-arrow-up:before {
+  content: map-get($bo-icons-map, 'general-list-arrow-up');
+}
+.bo-icon-general-list-arrow-down:before {
+  content: map-get($bo-icons-map, 'general-list-arrow-down');
+}
+.bo-icon-general-light:before {
+  content: map-get($bo-icons-map, 'general-light');
+}
+.bo-icon-general-layout:before {
+  content: map-get($bo-icons-map, 'general-layout');
+}
+.bo-icon-general-layers:before {
+  content: map-get($bo-icons-map, 'general-layers');
+}
+.bo-icon-general-key:before {
+  content: map-get($bo-icons-map, 'general-key');
+}
+.bo-icon-general-italic:before {
+  content: map-get($bo-icons-map, 'general-italic');
+}
+.bo-icon-general-info:before {
+  content: map-get($bo-icons-map, 'general-info');
+}
+.bo-icon-general-inbox:before {
+  content: map-get($bo-icons-map, 'general-inbox');
+}
+.bo-icon-general-image:before {
+  content: map-get($bo-icons-map, 'general-image');
+}
+.bo-icon-general-image-plus:before {
+  content: map-get($bo-icons-map, 'general-image-plus');
+}
+.bo-icon-general-history:before {
+  content: map-get($bo-icons-map, 'general-history');
+}
+.bo-icon-general-hash:before {
+  content: map-get($bo-icons-map, 'general-hash');
+}
+.bo-icon-general-grid:before {
+  content: map-get($bo-icons-map, 'general-grid');
+}
+.bo-icon-general-globe:before {
+  content: map-get($bo-icons-map, 'general-globe');
+}
+.bo-icon-general-gift:before {
+  content: map-get($bo-icons-map, 'general-gift');
+}
+.bo-icon-general-gamepad:before {
+  content: map-get($bo-icons-map, 'general-gamepad');
+}
+.bo-icon-general-full-screen:before {
+  content: map-get($bo-icons-map, 'general-full-screen');
+}
+.bo-icon-general-free-spins:before {
+  content: map-get($bo-icons-map, 'general-free-spins');
+}
+.bo-icon-general-folder:before {
+  content: map-get($bo-icons-map, 'general-folder');
+}
+.bo-icon-general-folder-plus:before {
+  content: map-get($bo-icons-map, 'general-folder-plus');
+}
+.bo-icon-general-flowchart:before {
+  content: map-get($bo-icons-map, 'general-flowchart');
+}
+.bo-icon-general-flag:before {
+  content: map-get($bo-icons-map, 'general-flag');
+}
+.bo-icon-general-file:before {
+  content: map-get($bo-icons-map, 'general-file');
+}
+.bo-icon-general-feedback:before {
+  content: map-get($bo-icons-map, 'general-feedback');
+}
+.bo-icon-general-exchange:before {
+  content: map-get($bo-icons-map, 'general-exchange');
+}
+.bo-icon-general-error:before {
+  content: map-get($bo-icons-map, 'general-error');
+}
+.bo-icon-general-egypt:before {
+  content: map-get($bo-icons-map, 'general-egypt');
+}
+.bo-icon-general-edit-square:before {
+  content: map-get($bo-icons-map, 'general-edit-square');
+}
+.bo-icon-general-dollar:before {
+  content: map-get($bo-icons-map, 'general-dollar');
+}
+.bo-icon-general-dollar-sign:before {
+  content: map-get($bo-icons-map, 'general-dollar-sign');
+}
+.bo-icon-general-diamond:before {
+  content: map-get($bo-icons-map, 'general-diamond');
+}
+.bo-icon-general-desktop:before {
+  content: map-get($bo-icons-map, 'general-desktop');
+}
+.bo-icon-general-deposit-bonus:before {
+  content: map-get($bo-icons-map, 'general-deposit-bonus');
+}
+.bo-icon-general-database:before {
+  content: map-get($bo-icons-map, 'general-database');
+}
+.bo-icon-general-columns:before {
+  content: map-get($bo-icons-map, 'general-columns');
+}
+.bo-icon-general-coins:before {
+  content: map-get($bo-icons-map, 'general-coins');
+}
+.bo-icon-general-code:before {
+  content: map-get($bo-icons-map, 'general-code');
+}
+.bo-icon-general-cloud-download:before {
+  content: map-get($bo-icons-map, 'general-cloud-download');
+}
+.bo-icon-general-circle:before {
+  content: map-get($bo-icons-map, 'general-circle');
+}
+.bo-icon-general-check-shield:before {
+  content: map-get($bo-icons-map, 'general-check-shield');
+}
+.bo-icon-general-chart:before {
+  content: map-get($bo-icons-map, 'general-chart');
+}
+.bo-icon-general-cash-out:before {
+  content: map-get($bo-icons-map, 'general-cash-out');
+}
+.bo-icon-general-card:before {
+  content: map-get($bo-icons-map, 'general-card');
+}
+.bo-icon-general-card-up:before {
+  content: map-get($bo-icons-map, 'general-card-up');
+}
+.bo-icon-general-card-down:before {
+  content: map-get($bo-icons-map, 'general-card-down');
+}
+.bo-icon-general-calculator:before {
+  content: map-get($bo-icons-map, 'general-calculator');
+}
+.bo-icon-general-broom:before {
+  content: map-get($bo-icons-map, 'general-broom');
+}
+.bo-icon-general-branding:before {
+  content: map-get($bo-icons-map, 'general-branding');
+}
+.bo-icon-general-boat:before {
+  content: map-get($bo-icons-map, 'general-boat');
+}
+.bo-icon-general-blocked:before {
+  content: map-get($bo-icons-map, 'general-blocked');
+}
+.bo-icon-general-bell:before {
+  content: map-get($bo-icons-map, 'general-bell');
+}
+.bo-icon-general-auto:before {
+  content: map-get($bo-icons-map, 'general-auto');
+}
+.bo-icon-general-archive:before {
+  content: map-get($bo-icons-map, 'general-archive');
+}
+.bo-icon-general-anchor:before {
+  content: map-get($bo-icons-map, 'general-anchor');
+}
+.bo-icon-general-alert-octagon:before {
+  content: map-get($bo-icons-map, 'general-alert-octagon');
+}
+.bo-icon-category-turbo-games:before {
+  content: map-get($bo-icons-map, 'category-turbo-games');
+}
+.bo-icon-category-table-games:before {
+  content: map-get($bo-icons-map, 'category-table-games');
+}
+.bo-icon-category-roulette:before {
+  content: map-get($bo-icons-map, 'category-roulette');
+}
+.bo-icon-category-live-shows:before {
+  content: map-get($bo-icons-map, 'category-live-shows');
+}
+.bo-icon-category-jackpots:before {
+  content: map-get($bo-icons-map, 'category-jackpots');
+}
+.bo-icon-category-game-shows:before {
+  content: map-get($bo-icons-map, 'category-game-shows');
+}
+.bo-icon-category-crash-games:before {
+  content: map-get($bo-icons-map, 'category-crash-games');
+}
+.bo-icon-category-bonus-buy:before {
+  content: map-get($bo-icons-map, 'category-bonus-buy');
+}
+.bo-icon-category-blackjack:before {
+  content: map-get($bo-icons-map, 'category-blackjack');
+}
+.bo-icon-category-black-jack:before {
+  content: map-get($bo-icons-map, 'category-black-jack');
+}
+.bo-icon-category-baccarat:before {
+  content: map-get($bo-icons-map, 'category-baccarat');
+}
+.bo-icon-arrows-corner-up-right:before {
+  content: map-get($bo-icons-map, 'arrows-corner-up-right');
+}
+.bo-icon-arrows-corner-up-left:before {
+  content: map-get($bo-icons-map, 'arrows-corner-up-left');
+}
+.bo-icon-arrows-corner-down-right:before {
+  content: map-get($bo-icons-map, 'arrows-corner-down-right');
+}
+.bo-icon-arrows-corner-down-left:before {
+  content: map-get($bo-icons-map, 'arrows-corner-down-left');
+}
+.bo-icon-arrows-chevron-up:before {
+  content: map-get($bo-icons-map, 'arrows-chevron-up');
+}
+.bo-icon-arrows-chevron-right:before {
+  content: map-get($bo-icons-map, 'arrows-chevron-right');
+}
+.bo-icon-arrows-chevron-mini-up:before {
+  content: map-get($bo-icons-map, 'arrows-chevron-mini-up');
+}
+.bo-icon-arrows-chevron-mini-right:before {
+  content: map-get($bo-icons-map, 'arrows-chevron-mini-right');
+}
+.bo-icon-arrows-chevron-mini-left:before {
+  content: map-get($bo-icons-map, 'arrows-chevron-mini-left');
+}
+.bo-icon-arrows-chevron-mini-down:before {
+  content: map-get($bo-icons-map, 'arrows-chevron-mini-down');
+}
+.bo-icon-arrows-chevron-left:before {
+  content: map-get($bo-icons-map, 'arrows-chevron-left');
+}
+.bo-icon-arrows-chevron-down:before {
+  content: map-get($bo-icons-map, 'arrows-chevron-down');
+}
+.bo-icon-arrows-chevron-double-up:before {
+  content: map-get($bo-icons-map, 'arrows-chevron-double-up');
+}
+.bo-icon-arrows-chevron-double-right:before {
+  content: map-get($bo-icons-map, 'arrows-chevron-double-right');
+}
+.bo-icon-arrows-chevron-double-left:before {
+  content: map-get($bo-icons-map, 'arrows-chevron-double-left');
+}
+.bo-icon-arrows-chevron-double-down:before {
+  content: map-get($bo-icons-map, 'arrows-chevron-double-down');
+}
+.bo-icon-arrows-arrow-up:before {
+  content: map-get($bo-icons-map, 'arrows-arrow-up');
+}
+.bo-icon-arrows-arrow-right:before {
+  content: map-get($bo-icons-map, 'arrows-arrow-right');
+}
+.bo-icon-arrows-arrow-left:before {
+  content: map-get($bo-icons-map, 'arrows-arrow-left');
+}
+.bo-icon-arrows-arrow-down:before {
+  content: map-get($bo-icons-map, 'arrows-arrow-down');
+}
+.bo-icon-arrows-arrow-circle-up:before {
+  content: map-get($bo-icons-map, 'arrows-arrow-circle-up');
+}
+.bo-icon-arrows-arrow-circle-right:before {
+  content: map-get($bo-icons-map, 'arrows-arrow-circle-right');
+}
+.bo-icon-arrows-arrow-circle-left:before {
+  content: map-get($bo-icons-map, 'arrows-arrow-circle-left');
+}
+.bo-icon-arrows-arrow-circle-down:before {
+  content: map-get($bo-icons-map, 'arrows-arrow-circle-down');
+}

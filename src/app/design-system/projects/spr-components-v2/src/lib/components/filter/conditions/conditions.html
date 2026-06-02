@@ -1,0 +1,40 @@
+<ng-container [formGroup]="form">
+  <ds-dropdown
+    [withSearch]="false"
+    [options]="conditionOptions()"
+    controlSize="sm"
+    formControlName="condition" />
+
+  @switch (form.getRawValue().condition) {
+    @case (conditions.EQUALS) {
+      <ds-conditions-filter-equals
+        data-testid="condition-equals"
+        [type]="type()"
+        [translations]="translations()"
+        formControlName="conditionValue" />
+    }
+
+    @case (conditions.CONTAINS) {
+      <ds-input
+        data-testid="condition-contains"
+        formControlName="conditionValue"
+        controlSize="sm"
+        [placeholder]="translations()[placeholderKeys.FILTER]" />
+    }
+
+    @case (conditions.BETWEEN) {
+      <ds-conditions-filter-between
+        data-testid="condition-between"
+        [translations]="translations()"
+        formControlName="conditionValue" />
+    }
+
+    @case (conditions.BLANK) {
+      <ds-conditions-filter-blank
+        data-testid="condition-blank"
+        [type]="type()"
+        [translations]="translations()"
+        formControlName="conditionValue" />
+    }
+  }
+</ng-container>

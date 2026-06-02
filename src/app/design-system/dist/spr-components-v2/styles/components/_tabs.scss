@@ -1,0 +1,84 @@
+.tab-content > .tab-pane {
+  display: none;
+}
+
+.tab-content > .active {
+  display: block;
+}
+
+@mixin tab-level-3 {
+  --ds-tab-level-3-list-bg: rgb(var(--ds-gray-100));
+  --ds-tab-level-3-list-border-color: rgb(var(--ds-gray-300));
+  --ds-tab-level-3-list-border-radius: var(--ds-border-radius-pill);
+
+  // Default
+  --ds-tab-level-3-item-color: rgb(var(--ds-gray-700));
+  --ds-tab-level-3-item-font-weight: 400;
+  --ds-tab-level-3-item-border-radius: 18px;
+
+  // Hover
+  --ds-tab-level-3-item-hover-bg: rgb(var(--ds-gray-200));
+  --ds-tab-level-3-item-hover-color: rgb(var(--ds-gray-800));
+
+  // Focus
+  --ds-tab-level-3-item-focus-color: rgb(var(--ds-gray-600));
+
+  // Active
+  --ds-tab-level-3-item-active-color: rgb(var(--ds-gray-800));
+  --ds-tab-level-3-item-active-bg: rgb(var(--ds-white));
+
+  // Error
+  --ds-tab-level-3-item-error-color: rgb(var(--ds-red-600));
+  --ds-tab-level-3-item-error-bg: rgb(var(--ds-white));
+
+  // Disabled
+  --ds-tab-level-3-item-disabled-color: rgb(var(--ds-gray-500));
+
+  display: var(--ds-tab-level-3-list-display, flex);
+
+  .tab-level-3-list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-color: var(--ds-tab-level-3-list-bg);
+    border: 1px solid var(--ds-tab-level-3-list-border-color);
+    border-radius: var(--ds-tab-level-3-list-border-radius);
+  }
+
+  .tab-level-3-list__item {
+    min-width: 60px;
+    padding: 4px 12px;
+    text-align: center;
+    list-style: none;
+    color: var(--ds-tab-level-3-item-color);
+    font-weight: var(--ds-tab-level-3-item-font-weight);
+    border-radius: var(--ds-tab-level-3-item-border-radius);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--ds-tab-level-3-item-hover-color);
+      background: var(--ds-tab-level-3-item-hover-bg);
+    }
+
+    &:focus {
+      color: var(--ds-tab-level-3-item-focus-color);
+    }
+
+    &.tab-level-3-list__item--active {
+      color: var(--ds-tab-level-3-item-active-color);
+      background-color: var(--ds-tab-level-3-item-active-bg);
+    }
+
+    &.tab-level-3-list__item--error {
+      color: var(--ds-tab-level-3-item-error-color);
+      background-color: var(--ds-tab-level-3-item-error-bg);
+    }
+
+    &[disabled],
+    &.tab-level-3-list__item--disabled {
+      color: var(--ds-tab-level-3-item-disabled-color);
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}

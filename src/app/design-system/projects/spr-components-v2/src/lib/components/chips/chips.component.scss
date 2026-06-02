@@ -1,0 +1,349 @@
+:host {
+  display: block;
+}
+
+.chips {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: var(--ds-chips-padding-block, 6px) var(--ds-chips-padding-inline, 12px);
+  width: fit-content;
+  min-width: var(--ds-chips-custom-width, 60px);
+  max-height: var(--ds-chips-max-height, 32px);
+  font-size: var(--ds-chips-font-size, var(--ds-font-size-14));
+  line-height: var(--ds-chips-line-height, var(--ds-line-height-20));
+  font-weight: var(--ds-font-weight-regular);
+  color: var(--ds-chips-color, inherit);
+  background: var(--ds-chips-background, transparent);
+  border: 1px solid var(--ds-chips-border-color, transparent);
+  border-radius: var(--radius-100);
+  box-shadow: var(--ds-chips-box-shadow, none);
+  white-space: nowrap;
+  transition:
+    background var(--ds-transition-time) ease,
+    box-shadow var(--ds-transition-time) ease,
+    border-color var(--ds-transition-time) ease;
+
+  &:focus-visible {
+    --ds-chips-box-shadow: var(--ds-chips-box-shadow-focus);
+    --ds-chips-border-color: transparent;
+
+    outline: none;
+  }
+
+  &:disabled {
+    --ds-chips-color: var(--ds-chips-color-disabled, var(--ds-neutral-500-500));
+    --ds-chips-border-color: var(--ds-chips-border-color-disabled, transparent);
+
+    pointer-events: none;
+  }
+
+  &--selected {
+    --ds-chips-background: var(--ds-chips-background-selected, transparent);
+  }
+}
+
+// chips sizes
+.chips--sm {
+  --ds-chips-padding-block: 3px;
+  --ds-chips-padding-inline: 7px;
+  --ds-chips-font-size: var(--ds-font-size-12);
+  --ds-chips-line-height: var(--ds-line-height-16);
+  --ds-chips-max-height: 24px;
+  --ds-icon-font-size: var(--ds-font-size-12);
+}
+
+.chips--md {
+  --ds-chips-padding-block: 5px;
+  --ds-chips-padding-inline: 11px;
+  --ds-chips-font-size: var(--ds-font-size-14);
+  --ds-chips-line-height: var(--ds-line-height-20);
+  --ds-chips-max-height: 32px;
+  --ds-icon-font-size: var(--ds-font-size-16);
+}
+
+// chips styles
+.chips--filled {
+  --ds-chips-border-color: var(--ds-chips-filled-border-color);
+  --ds-chips-background: var(--ds-chips-filled-background);
+}
+
+.chips--outline {
+  --ds-chips-border-color: var(--ds-chips-outline-border-color);
+  --ds-chips-background: var(--ds-chips-outline-background);
+}
+
+button.chips {
+  &.chips--filled.chips--selected,
+  &.chips--outline.chips--selected {
+    --ds-chips-border-color: transparent;
+    --ds-chips-box-shadow: 0 0 0 2px var(--ds-chips-border-color-selected);
+  }
+
+  &.chips--filled {
+    &:not(.chips--selected):hover {
+      --ds-chips-background: var(--ds-chips-filled-background-hover);
+
+      box-shadow:
+        0 0 1px 0 var(--ds-alpha-bb-006-056),
+        1px 2px 4px 0 var(--ds-alpha-bb-006-056);
+    }
+
+    &:active,
+    &:focus-visible {
+      --ds-chips-background: var(--ds-chips-filled-background-active);
+    }
+
+    &:disabled {
+      --ds-chips-background: var(--ds-chips-filled-background-disabled);
+    }
+
+    &.chips--selected {
+      --ds-chips-background: var(--ds-chips-filled-background-selected);
+    }
+  }
+
+  &.chips--outline {
+    &:not(.chips--selected):hover {
+      --ds-chips-background: var(--ds-chips-outline-background-hover);
+      --ds-chips-outline-border-color: var(--ds-chips-outline-border-color-hover);
+
+      box-shadow:
+        0 0 1px 0 var(--ds-alpha-bb-006-056),
+        1px 2px 4px 0 var(--ds-alpha-bb-006-056);
+    }
+
+    &:active,
+    &:focus-visible {
+      --ds-chips-background: var(--ds-chips-outline-background-active);
+    }
+
+    &:disabled {
+      --ds-chips-border-color: var(--ds-chips-outline-border-color-disabled);
+    }
+
+    &.chips--selected {
+      --ds-chips-background: var(--ds-chips-outline-background-selected);
+    }
+  }
+}
+
+// chips variants
+.chips--gray {
+  --ds-chips-color: var(--ds-neutral-1000-0);
+  --ds-chips-filled-border-color: transparent;
+  --ds-chips-filled-background: var(--ds-neutral-050-900);
+  --ds-chips-filled-background-hover: var(--ds-neutral-100-800);
+  --ds-chips-filled-background-active: var(--ds-chips-filled-background-hover);
+  --ds-chips-filled-background-disabled: var(--ds-chips-filled-background);
+  --ds-chips-filled-background-selected: var(--ds-chips-filled-background-hover);
+  --ds-chips-outline-border-color: var(--ds-neutral-300-500);
+  --ds-chips-outline-border-color-hover: var(--ds-neutral-250-600);
+  --ds-chips-outline-border-color-disabled: var(--ds-neutral-200-700);
+  --ds-chips-outline-background: transparent;
+  --ds-chips-outline-background-hover: var(--ds-neutral-0-1000);
+  --ds-chips-outline-background-active: var(--ds-chips-outline-background-hover);
+  --ds-chips-outline-background-selected: var(--ds-chips-outline-background-hover);
+  --ds-chips-border-color-selected: var(--ds-chips-outline-border-color-hover);
+}
+
+.chips--olive {
+  --ds-chips-color: var(--ds-accent-olive-950-050);
+  --ds-chips-filled-border-color: transparent;
+  --ds-chips-filled-border-color-selected: var(--ds-accent-olive-250-700);
+  --ds-chips-filled-background: var(--ds-accent-olive-050-950);
+  --ds-chips-filled-background-hover: var(--ds-accent-olive-100-900);
+  --ds-chips-filled-background-active: var(--ds-chips-filled-background-hover);
+  --ds-chips-filled-background-disabled: var(--ds-chips-filled-background);
+  --ds-chips-filled-background-selected: var(--ds-chips-filled-background-hover);
+  --ds-chips-outline-border-color: var(--ds-accent-olive-300-600);
+  --ds-chips-outline-border-color-hover: var(--ds-accent-olive-250-700);
+  --ds-chips-outline-border-color-disabled: var(--ds-accent-olive-200-800);
+  --ds-chips-outline-border-color-selected: var(--ds-chips-outline-border-color-hover);
+  --ds-chips-outline-background: transparent;
+  --ds-chips-outline-background-hover: var(--ds-neutral-0-1000);
+  --ds-chips-outline-background-active: var(--ds-chips-outline-background-hover);
+  --ds-chips-outline-background-selected: var(--ds-alpha-wb-016-016);
+  --ds-chips-border-color-selected: var(--ds-chips-outline-border-color-hover);
+}
+
+.chips--green {
+  --ds-chips-color: var(--ds-accent-green-950-050);
+  --ds-chips-filled-border-color: transparent;
+  --ds-chips-filled-border-color-selected: var(--ds-accent-green-250-700);
+  --ds-chips-filled-background: var(--ds-accent-green-050-950);
+  --ds-chips-filled-background-hover: var(--ds-accent-green-100-900);
+  --ds-chips-filled-background-active: var(--ds-chips-filled-background-hover);
+  --ds-chips-filled-background-disabled: var(--ds-chips-filled-background);
+  --ds-chips-filled-background-selected: var(--ds-chips-filled-background-hover);
+  --ds-chips-outline-border-color: var(--ds-accent-green-300-600);
+  --ds-chips-outline-border-color-hover: var(--ds-accent-green-250-700);
+  --ds-chips-outline-border-color-disabled: var(--ds-accent-green-200-800);
+  --ds-chips-outline-border-color-selected: var(--ds-chips-outline-border-color-hover);
+  --ds-chips-outline-background: transparent;
+  --ds-chips-outline-background-hover: var(--ds-neutral-0-1000);
+  --ds-chips-outline-background-active: var(--ds-chips-outline-background-hover);
+  --ds-chips-outline-background-selected: var(--ds-alpha-wb-016-016);
+  --ds-chips-border-color-selected: var(--ds-chips-outline-border-color-hover);
+}
+
+.chips--purple {
+  --ds-chips-color: var(--ds-accent-purple-950-050);
+  --ds-chips-filled-border-color: transparent;
+  --ds-chips-filled-border-color-selected: var(--ds-accent-purple-250-700);
+  --ds-chips-filled-background: var(--ds-accent-purple-050-950);
+  --ds-chips-filled-background-hover: var(--ds-accent-purple-100-900);
+  --ds-chips-filled-background-active: var(--ds-chips-filled-background-hover);
+  --ds-chips-filled-background-disabled: var(--ds-chips-filled-background);
+  --ds-chips-filled-background-selected: var(--ds-chips-filled-background-hover);
+  --ds-chips-outline-border-color: var(--ds-accent-purple-300-600);
+  --ds-chips-outline-border-color-hover: var(--ds-accent-purple-250-700);
+  --ds-chips-outline-border-color-disabled: var(--ds-accent-purple-200-800);
+  --ds-chips-outline-border-color-selected: var(--ds-chips-outline-border-color-hover);
+  --ds-chips-outline-background: transparent;
+  --ds-chips-outline-background-hover: var(--ds-neutral-0-1000);
+  --ds-chips-outline-background-active: var(--ds-chips-outline-background-hover);
+  --ds-chips-outline-background-selected: var(--ds-alpha-wb-016-016);
+  --ds-chips-border-color-selected: var(--ds-chips-outline-border-color-hover);
+}
+
+.chips--blue {
+  --ds-chips-color: var(--ds-accent-blue-950-050);
+  --ds-chips-filled-border-color: transparent;
+  --ds-chips-filled-border-color-selected: var(--ds-accent-blue-250-700);
+  --ds-chips-filled-background: var(--ds-accent-blue-050-950);
+  --ds-chips-filled-background-hover: var(--ds-accent-blue-100-900);
+  --ds-chips-filled-background-active: var(--ds-chips-filled-background-hover);
+  --ds-chips-filled-background-disabled: var(--ds-chips-filled-background);
+  --ds-chips-filled-background-selected: var(--ds-chips-filled-background-hover);
+  --ds-chips-outline-border-color: var(--ds-accent-blue-300-600);
+  --ds-chips-outline-border-color-hover: var(--ds-accent-blue-250-700);
+  --ds-chips-outline-border-color-disabled: var(--ds-accent-blue-200-800);
+  --ds-chips-outline-border-color-selected: var(--ds-chips-outline-border-color-hover);
+  --ds-chips-outline-background: transparent;
+  --ds-chips-outline-background-hover: var(--ds-neutral-0-1000);
+  --ds-chips-outline-background-active: var(--ds-chips-outline-background-hover);
+  --ds-chips-outline-background-selected: var(--ds-alpha-wb-016-016);
+  --ds-chips-border-color-selected: var(--ds-chips-outline-border-color-hover);
+}
+
+.chips--gold {
+  --ds-chips-color: var(--ds-accent-amber-950-050);
+  --ds-chips-filled-border-color: transparent;
+  --ds-chips-filled-border-color-selected: var(--ds-accent-amber-250-700);
+  --ds-chips-filled-background: var(--ds-accent-amber-050-950);
+  --ds-chips-filled-background-hover: var(--ds-accent-amber-100-900);
+  --ds-chips-filled-background-active: var(--ds-chips-filled-background-hover);
+  --ds-chips-filled-background-disabled: var(--ds-chips-filled-background);
+  --ds-chips-filled-background-selected: var(--ds-chips-filled-background-hover);
+  --ds-chips-outline-border-color: var(--ds-accent-amber-300-600);
+  --ds-chips-outline-border-color-hover: var(--ds-accent-amber-250-700);
+  --ds-chips-outline-border-color-disabled: var(--ds-accent-amber-200-800);
+  --ds-chips-outline-border-color-selected: var(--ds-chips-outline-border-color-hover);
+  --ds-chips-outline-background: transparent;
+  --ds-chips-outline-background-hover: var(--ds-neutral-0-1000);
+  --ds-chips-outline-background-active: var(--ds-chips-outline-background-hover);
+  --ds-chips-outline-background-selected: var(--ds-alpha-wb-016-016);
+  --ds-chips-border-color-selected: var(--ds-chips-outline-border-color-hover);
+}
+
+.chips--red {
+  --ds-chips-color: var(--ds-accent-red-950-050);
+  --ds-chips-filled-border-color: transparent;
+  --ds-chips-filled-border-color-selected: var(--ds-accent-red-250-700);
+  --ds-chips-filled-background: var(--ds-accent-red-050-950);
+  --ds-chips-filled-background-hover: var(--ds-accent-red-100-900);
+  --ds-chips-filled-background-active: var(--ds-chips-filled-background-hover);
+  --ds-chips-filled-background-disabled: var(--ds-chips-filled-background);
+  --ds-chips-filled-background-selected: var(--ds-chips-filled-background-hover);
+  --ds-chips-outline-border-color: var(--ds-accent-red-300-600);
+  --ds-chips-outline-border-color-hover: var(--ds-accent-red-250-700);
+  --ds-chips-outline-border-color-disabled: var(--ds-accent-red-200-800);
+  --ds-chips-outline-border-color-selected: var(--ds-chips-outline-border-color-hover);
+  --ds-chips-outline-background: transparent;
+  --ds-chips-outline-background-hover: var(--ds-neutral-0-1000);
+  --ds-chips-outline-background-active: var(--ds-chips-outline-background-hover);
+  --ds-chips-outline-background-selected: var(--ds-alpha-wb-016-016);
+  --ds-chips-border-color-selected: var(--ds-chips-outline-border-color-hover);
+}
+
+.chips--cyan {
+  --ds-chips-color: var(--ds-accent-cyan-950-050);
+  --ds-chips-filled-border-color: transparent;
+  --ds-chips-filled-border-color-selected: var(--ds-accent-cyan-250-700);
+  --ds-chips-filled-background: var(--ds-accent-cyan-050-950);
+  --ds-chips-filled-background-hover: var(--ds-accent-cyan-100-900);
+  --ds-chips-filled-background-active: var(--ds-chips-filled-background-hover);
+  --ds-chips-filled-background-disabled: var(--ds-chips-filled-background);
+  --ds-chips-filled-background-selected: var(--ds-chips-filled-background-hover);
+  --ds-chips-outline-border-color: var(--ds-accent-cyan-300-600);
+  --ds-chips-outline-border-color-hover: var(--ds-accent-cyan-250-700);
+  --ds-chips-outline-border-color-disabled: var(--ds-accent-cyan-200-800);
+  --ds-chips-outline-border-color-selected: var(--ds-chips-outline-border-color-hover);
+  --ds-chips-outline-background: transparent;
+  --ds-chips-outline-background-hover: var(--ds-neutral-0-1000);
+  --ds-chips-outline-background-active: var(--ds-chips-outline-background-hover);
+  --ds-chips-outline-background-selected: var(--ds-alpha-wb-016-016);
+  --ds-chips-border-color-selected: var(--ds-chips-outline-border-color-hover);
+}
+
+.chips--orange {
+  --ds-chips-color: var(--ds-accent-orange-950-050);
+  --ds-chips-filled-border-color: transparent;
+  --ds-chips-filled-border-color-selected: var(--ds-accent-orange-250-700);
+  --ds-chips-filled-background: var(--ds-accent-orange-050-950);
+  --ds-chips-filled-background-hover: var(--ds-accent-orange-100-900);
+  --ds-chips-filled-background-active: var(--ds-chips-filled-background-hover);
+  --ds-chips-filled-background-disabled: var(--ds-chips-filled-background);
+  --ds-chips-filled-background-selected: var(--ds-chips-filled-background-hover);
+  --ds-chips-outline-border-color: var(--ds-accent-orange-300-600);
+  --ds-chips-outline-border-color-hover: var(--ds-accent-orange-250-700);
+  --ds-chips-outline-border-color-disabled: var(--ds-accent-orange-200-800);
+  --ds-chips-outline-border-color-selected: var(--ds-chips-outline-border-color-hover);
+  --ds-chips-outline-background: transparent;
+  --ds-chips-outline-background-hover: var(--ds-neutral-0-1000);
+  --ds-chips-outline-background-active: var(--ds-chips-outline-background-hover);
+  --ds-chips-outline-background-selected: var(--ds-alpha-wb-016-016);
+  --ds-chips-border-color-selected: var(--ds-chips-outline-border-color-hover);
+}
+
+.chips--magenta {
+  --ds-chips-color: var(--ds-accent-pink-950-050);
+  --ds-chips-filled-border-color: transparent;
+  --ds-chips-filled-border-color-selected: var(--ds-accent-pink-250-700);
+  --ds-chips-filled-background: var(--ds-accent-pink-050-950);
+  --ds-chips-filled-background-hover: var(--ds-accent-pink-100-900);
+  --ds-chips-filled-background-active: var(--ds-chips-filled-background-hover);
+  --ds-chips-filled-background-disabled: var(--ds-chips-filled-background);
+  --ds-chips-filled-background-selected: var(--ds-chips-filled-background-hover);
+  --ds-chips-outline-border-color: var(--ds-accent-pink-300-600);
+  --ds-chips-outline-border-color-hover: var(--ds-accent-pink-250-700);
+  --ds-chips-outline-border-color-disabled: var(--ds-accent-pink-200-800);
+  --ds-chips-outline-border-color-selected: var(--ds-chips-outline-border-color-hover);
+  --ds-chips-outline-background: transparent;
+  --ds-chips-outline-background-hover: var(--ds-neutral-0-1000);
+  --ds-chips-outline-background-active: var(--ds-chips-outline-background-hover);
+  --ds-chips-outline-background-selected: var(--ds-alpha-wb-016-016);
+  --ds-chips-border-color-selected: var(--ds-chips-outline-border-color-hover);
+}
+
+.chips--yellow {
+  --ds-chips-color: var(--ds-accent-yellow-950-050);
+  --ds-chips-filled-border-color: transparent;
+  --ds-chips-filled-border-color-selected: var(--ds-accent-yellow-250-700);
+  --ds-chips-filled-background: var(--ds-accent-yellow-050-950);
+  --ds-chips-filled-background-hover: var(--ds-accent-yellow-100-900);
+  --ds-chips-filled-background-active: var(--ds-chips-filled-background-hover);
+  --ds-chips-filled-background-disabled: var(--ds-chips-filled-background);
+  --ds-chips-filled-background-selected: var(--ds-chips-filled-background-hover);
+  --ds-chips-outline-border-color: var(--ds-accent-yellow-300-600);
+  --ds-chips-outline-border-color-hover: var(--ds-accent-yellow-250-700);
+  --ds-chips-outline-border-color-disabled: var(--ds-accent-yellow-200-800);
+  --ds-chips-outline-border-color-selected: var(--ds-chips-outline-border-color-hover);
+  --ds-chips-outline-background: transparent;
+  --ds-chips-outline-background-hover: var(--ds-neutral-0-1000);
+  --ds-chips-outline-background-active: var(--ds-chips-outline-background-hover);
+  --ds-chips-outline-background-selected: var(--ds-alpha-wb-016-016);
+  --ds-chips-border-color-selected: var(--ds-chips-outline-border-color-hover);
+}

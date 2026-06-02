@@ -1,0 +1,84 @@
+.tab-content > .tab-pane {
+  display: none;
+}
+
+.tab-content > .active {
+  display: block;
+}
+
+@mixin tab-level-3 {
+  --brd-tab-level-3-list-bg: rgb(var(--brd-gray-100));
+  --brd-tab-level-3-list-border-color: rgb(var(--brd-gray-300));
+  --brd-tab-level-3-list-border-radius: var(--spr-border-radius-pill);
+
+  // Default
+  --brd-tab-level-3-item-color: rgb(var(--brd-gray-700));
+  --brd-tab-level-3-item-font-weight: 400;
+  --brd-tab-level-3-item-border-radius: 18px;
+
+  // Hover
+  --brd-tab-level-3-item-hover-bg: rgb(var(--brd-gray-200));
+  --brd-tab-level-3-item-hover-color: rgb(var(--brd-gray-800));
+
+  // Focus
+  --brd-tab-level-3-item-focus-color: rgb(var(--brd-gray-600));
+
+  // Active
+  --brd-tab-level-3-item-active-color: rgb(var(--brd-gray-800));
+  --brd-tab-level-3-item-active-bg: rgb(var(--brd-white));
+
+  // Error
+  --brd-tab-level-3-item-error-color: rgb(var(--brd-red-600));
+  --brd-tab-level-3-item-error-bg: rgb(var(--brd-white));
+
+  // Disabled
+  --brd-tab-level-3-item-disabled-color: rgb(var(--brd-gray-500));
+
+  display: var(--brd-tab-level-3-list-display, flex);
+
+  .tab-level-3-list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-color: var(--brd-tab-level-3-list-bg);
+    border: 1px solid var(--brd-tab-level-3-list-border-color);
+    border-radius: var(--brd-tab-level-3-list-border-radius);
+  }
+
+  .tab-level-3-list__item {
+    min-width: 60px;
+    padding: 4px 12px;
+    text-align: center;
+    list-style: none;
+    color: var(--brd-tab-level-3-item-color);
+    font-weight: var(--brd-tab-level-3-item-font-weight);
+    border-radius: var(--brd-tab-level-3-item-border-radius);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--brd-tab-level-3-item-hover-color);
+      background: var(--brd-tab-level-3-item-hover-bg);
+    }
+
+    &:focus {
+      color: var(--brd-tab-level-3-item-focus-color);
+    }
+
+    &.tab-level-3-list__item--active {
+      color: var(--brd-tab-level-3-item-active-color);
+      background-color: var(--brd-tab-level-3-item-active-bg);
+    }
+
+    &.tab-level-3-list__item--error {
+      color: var(--brd-tab-level-3-item-error-color);
+      background-color: var(--brd-tab-level-3-item-error-bg);
+    }
+
+    &[disabled],
+    &.tab-level-3-list__item--disabled {
+      color: var(--brd-tab-level-3-item-disabled-color);
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}

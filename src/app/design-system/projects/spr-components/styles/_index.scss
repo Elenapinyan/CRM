@@ -1,0 +1,18 @@
+@import './variables';
+@import './reboot';
+@import 'commons/index';
+
+@import './theme-default';
+
+@import './bo-icons/bo-icons';
+@import './bo-icons/bo-icons-override';
+@import '@platform-workspace/bo-icons/v1/v1';
+
+@import './typography/index';
+
+// Elements
+@import './elements/index';
+@import './form-elements/index';
+
+// Components shared styles
+@import './components/index';

@@ -1,0 +1,32 @@
+<ds-selection
+  [ngModel]="value()"
+  (ngModelChange)="updateSelectedValue($event)"
+  [options]="options()"
+  [multiselect]="multiselect()"
+  [widthByContent]="widthByContent()"
+  [translations]="translations()"
+  (optionsSelected)="selectedOptions.set($event)" />
+
+@if (filter?.footer()) {
+  <div
+    data-testid="footer"
+    class="filter__footer">
+    @if (multiselect()) {
+      <ds-button
+        size="md"
+        variant="secondary"
+        (click)="resetValue()">
+        {{ filter?.translations()?.[translationKeys.RESET] }}
+      </ds-button>
+    }
+    <ds-button
+      (click)="apply()"
+      size="md">
+      {{ filter?.translations()?.[translationKeys.APPLY] }}
+
+      @if (selectedOptions().length && multiselect()) {
+        ({{ selectedOptions().length }})
+      }
+    </ds-button>
+  </div>
+}

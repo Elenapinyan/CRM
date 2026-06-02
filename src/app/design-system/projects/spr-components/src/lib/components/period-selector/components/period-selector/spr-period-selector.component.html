@@ -1,0 +1,184 @@
+<div
+  [class.is-open]="datepicker.isOpen()"
+  class="form-dropdown">
+  <spr-label
+    [label]="label"
+    [inputId]="inputId()"
+    [tooltip]="tooltip"
+    [tooltipClassForLabel]="tooltipClassForLabel" />
+
+  <div class="display-hidden position-absolute">
+    <div class="input-group">
+      <input
+        #datepicker="ngbDatepicker"
+        (dateSelect)="onDateSelection($event, true)"
+        (closed)="onClose(datepicker)"
+        (navigate)="onNavigate($event)"
+        [autoClose]="'outside'"
+        [class.is-invalid]="isInvalidControl"
+        [dayTemplate]="t"
+        [disabled]="control.disabled"
+        [displayMonths]="2"
+        [id]="inputId()"
+        [maxDate]="maxDate"
+        [startDate]="control.value.dateFrom || startDate"
+        [markDisabled]="markDisabledFn()"
+        [footerTemplate]="footerTemplate"
+        class="control-form control-form--hidden-input"
+        container="body"
+        name="datepicker"
+        ngbDatepicker
+        outsideDays="hidden"
+        tabindex="-1" />
+      <ng-template
+        #t
+        let-date
+        let-focused="focused">
+        <span
+          (mouseenter)="hoveredDate = date"
+          (mouseleave)="hoveredDate = null"
+          [class.disabled-date]="date | isDisabledDate: maxDate"
+          [class.faded]="(date | isHovered: $any(control.value) : hoveredDate) || (date | isInside: $any(control.value))"
+          [class.focused]="focused"
+          [class.range]="date | isRange: $any(control.value) : hoveredDate"
+          class="btn-light">
+          {{ date.day }}
+        </span>
+      </ng-template>
+    </div>
+  </div>
+  <div class="input-group input-group--with-select">
+    <div class="input-container">
+      <input
+        (click)="datepicker.toggle()"
+        [sprControlSize]="controlSize"
+        [value]="$any(control.value) | getDisplayedDate"
+        class="form-datepicker-control"
+        [ngClass]="{ 'form-datepicker-control--full-rounded': !selectOptionList.length }"
+        [placeholder]="selectedDateRange.value === PeriodVariants.NotSelected ? inputPlaceholder() : ''"
+        readonly />
+      @if (isDeselectAllowed() && control.value.dateFrom) {
+        <button
+          (click)="deselectDate()"
+          [disabled]="control.disabled"
+          class="btn btn-deselect"
+          type="button">
+          <i
+            class="bo-icon-control-cross"
+            style="font-size: 20px"></i>
+        </button>
+      } @else {
+        <button
+          [disabled]="control.disabled"
+          class="btn btn-calendar"
+          type="button">
+          <i
+            class="bo-icon-control-calendar"
+            style="font-size: 16px"></i>
+        </button>
+      }
+    </div>
+    @if (selectOptionList.length) {
+      <div class="input-group-append">
+        <div
+          #dropdown="ngbDropdown"
+          [class.is-open]="dropdown.isOpen()"
+          class="dropdown-block"
+          ngbDropdown
+          container="body"
+          placement="bottom-right">
+          <button
+            [sprControlSize]="controlSize"
+            [disabled]="control.disabled"
+            [ngbTooltip]="selectedDateRange.text"
+            class="form-datepicker-period-control"
+            ngbDropdownToggle
+            type="button"
+            tooltipClass="form-help-text__body">
+            <span class="text-for-measurement">{{ optionWithLongestText.text }}</span>
+            <span class="text-for-view">{{ selectedDateRange.text }}</span>
+            <i
+              class="bo-icon-arrows-chevron-down form-datepicker-period-control__icon form-datepicker-period-control__icon--right"
+              style="font-size: 16px"></i>
+          </button>
+
+          <div ngbDropdownMenu>
+            @for (option of selectOptionList; track option.value) {
+              <button
+                (click)="selectOption(option)"
+                ngbDropdownItem
+                type="button">
+                {{ option.text }}
+              </button>
+            }
+
+            <button
+              (click)="datepicker.toggle()"
+              ngbDropdownItem
+              type="button">
+              {{ 'Custom' }}
+            </button>
+
+            @if (isDeselectAllowed()) {
+              <button
+                (click)="deselectDate()"
+                ngbDropdownItem
+                type="button">
+                {{ dropdownNotSelectedText() }}
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <ng-template #footerTemplate>
+    @if (fullFooterSettings.showFooter) {
+      @if (fullFooterSettings.templateRef) {
+        <ng-container [ngTemplateOutlet]="fullFooterSettings.templateRef"></ng-container>
+      } @else {
+        @let isCancelDisabled =
+          Boolean(
+            !control.value.dateFrom ||
+              (control.value.dateFrom?.equals(alreadyAppliedDateForNgbDatePicker?.dateFrom) &&
+                control.value.dateTo?.equals(alreadyAppliedDateForNgbDatePicker?.dateTo))
+          );
+
+        <div
+          [class.left-footer-position]="fullFooterSettings.position === 'left'"
+          class="default-period-selector-footer-actions">
+          <spr-button
+            variant="outline"
+            size="sm"
+            [disabled]="isCancelDisabled"
+            (click)="onClose(datepicker, true)">
+            {{ fullFooterSettings.cancelButtonText }}
+          </spr-button>
+
+          <spr-button
+            size="sm"
+            (click)="onApply(); onClose(datepicker, true)"
+            >{{ fullFooterSettings.applyButtonText }}</spr-button
+          >
+        </div>
+      }
+    }
+  </ng-template>
+</div>
+
+@if (description || isInvalidControl) {
+  <div class="form-field-description">
+    @if (description && !isInvalidControl) {
+      <spr-field-description>
+        {{ description }}
+      </spr-field-description>
+    }
+
+    @if (isInvalidControl) {
+      <spr-error>
+        {{ ngControl?.control?.errors | getControlErrorMessage: errorMessagesConfig }}
+      </spr-error>
+    }
+  </div>
+}

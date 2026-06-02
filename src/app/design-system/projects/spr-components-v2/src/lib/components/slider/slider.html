@@ -1,0 +1,98 @@
+@if (configurationError(); as configurationError) {
+  <span
+    class="configuration-error"
+    data-testid="configuration-error"
+    >{{ configurationError }}</span
+  >
+} @else {
+  <!-- Inputs -->
+  <!-- end input -->
+  <div
+    #slider
+    class="slider">
+    <input
+      #input
+      sprSliderThumb
+      class="slider__input"
+      [class.slider__input--priority]="mouseOverPart() === 'end'"
+      [(rangeValue)]="endValue"
+      [value]="endValue()"
+      [disabled]="disabled()"
+      [max]="max()"
+      [min]="endMin()"
+      [attr.max]="max()"
+      [attr.min]="min()"
+      [attr.step]="step()"
+      data-testid="end-input" />
+
+    <!-- start input for range slider -->
+    @if (isRange()) {
+      <input
+        sprSliderThumb
+        class="slider__input"
+        [class.slider__input--priority]="mouseOverPart() === 'start'"
+        [(rangeValue)]="startValue"
+        [value]="startValue()"
+        #input
+        #startInput
+        [disabled]="disabled()"
+        [max]="endValue()"
+        [min]="min()"
+        [attr.max]="max()"
+        [attr.min]="min()"
+        [attr.step]="step()"
+        data-testid="start-input" />
+    }
+
+    <!-- Track -->
+    <div class="track">
+      <div class="track__inactive"></div>
+
+      <div class="track__active">
+        <div
+          #trackActive
+          [style]="activeTrackStyles()"
+          class="track__active-fill"></div>
+      </div>
+
+      @if (showTickMarks()) {
+        <div
+          data-testid="tick-marks"
+          class="tick-marks"
+          #tickMarkContainer>
+          @for (tickMark of tickMarks(); track i; let i = $index) {
+            <div
+              [class.tick-mark__active]="tickMark"
+              [class.tick-mark__inactive]="!tickMark"></div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Thumbs -->
+    <ds-visual-thumb
+      [isHovered]="mouseOverPart() === 'end'"
+      [style]="endThumbStyles()"
+      [sliderInputs]="inputs()"
+      [valueIndicatorText]="endValueIndicatorText()">
+    </ds-visual-thumb>
+
+    @if (isRange()) {
+      <ds-visual-thumb
+        [isHovered]="mouseOverPart() === 'start'"
+        [style]="startThumbStyles()"
+        [sliderInputs]="inputs()"
+        [valueIndicatorText]="startValueIndicatorText()">
+      </ds-visual-thumb>
+    }
+  </div>
+
+  @if (showMinMaxLabels()) {
+    <div
+      class="min-max-labels"
+      data-testid="min-max-labels">
+      <span class="min-max-labels__min-value">{{ min() }}</span>
+      <span class="min-max-labels__max-value">{{ max() }}</span>
+    </div>
+  }
+}

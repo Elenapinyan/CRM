@@ -1,0 +1,42 @@
+@use '../../../../styles/mixins' as mixins;
+@use '../../../../styles/typography/heading.scss' as heading-text;
+
+:host {
+  @include mixins.scroll-style;
+
+  grid-column: sidebar;
+  display: block;
+  overflow: hidden auto;
+  width: var(--spr-sidebar-width);
+  height: 100%;
+  padding: 0 8px 8px;
+  background: var(--brd-fill-default-50);
+}
+
+.sidebar {
+  display: block;
+  width: 100%;
+}
+
+.sidebar__container {
+  min-height: 100%;
+}
+
+.sidebar__title {
+  @include heading-text.heading-font-config('xxs');
+
+  margin: 0;
+  padding: 16px;
+  color: var(--brd-text-secondary-500);
+  letter-spacing: 1.04px;
+}
+
+.sidebar__nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar__item {
+  cursor: pointer;
+}

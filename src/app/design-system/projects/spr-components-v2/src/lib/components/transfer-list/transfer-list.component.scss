@@ -1,0 +1,79 @@
+@use '../../../../styles/mixins/mixins' as mixins;
+@use '../../../../styles/typography/heading.scss' as heading-text;
+@use '../../../../styles/typography/body.scss' as body-text;
+
+:host {
+  --ds-transfer-list-controls-title-color: var(--ds-neutral-1000-0);
+  --ds-transfer-list-controls-background: var(--ds-neutral-0-900);
+  --ds-transfer-list-data-background: var(--ds-neutral-0-900);
+  --ds-transfer-list-search-container-background: var(--ds-neutral-0-900);
+  --ds-transfer-list-border-color: var(--ds-neutral-200-700);
+  --ds-button-form-width: 36px;
+  --ds-button-form-height: 36px;
+
+  display: block;
+}
+
+.inline-container {
+  @include mixins.inline-container($gap: 8px);
+}
+
+.transfer-list {
+  border: 1px solid var(--ds-transfer-list-custom-border-color, var(--brd-transfer-list-border-color));
+  border-radius: var(--radius-6);
+  overflow: hidden;
+}
+
+.transfer-list__controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--ds-transfer-list-controls-background);
+  border-bottom: 1px solid var(--ds-transfer-list-border-color);
+}
+
+.transfer-list__controls-title {
+  @include heading-text.heading-font-config('xs');
+
+  margin: 0;
+  color: var(--ds-transfer-list-controls-title-color);
+  letter-spacing: 0.72px;
+}
+
+.transfer-list__sources,
+.transfer-list__targets {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px;
+}
+
+.transfer-list__sources {
+  border-right: 1px solid var(--ds-transfer-list-border-color);
+}
+
+.transfer-list__search-container {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--ds-transfer-list-border-color);
+  background: var(--ds-transfer-list-search-container-background);
+}
+
+.transfer-list__data {
+  @include body-text.body-font-config('l');
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--ds-transfer-list-data-background);
+}
+
+.transfer-list__data-source,
+.transfer-list__data-target {
+  @include mixins.scroll-style;
+
+  height: 252px;
+  overflow: hidden auto;
+}
+
+.transfer-list__data-source {
+  border-right: 1px solid var(--ds-transfer-list-border-color);
+}

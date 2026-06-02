@@ -1,0 +1,50 @@
+@use '../../../../styles/mixins/mixins' as mixins;
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  --ds-pagination-bar-background: var(--ds-neutral-050-900);
+  --ds-paginator-icon-color: var(--ds-neutral-1000-0);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--ds-pagination-bar-custom-background, var(--ds-pagination-bar-background));
+  padding-inline: var(--ds-pagination-bar-custom-padding-inline, 24px);
+  padding-block: var(--ds-pagination-bar-custom-padding-block, 8px);
+}
+
+.paginator-section {
+  @include mixins.inline-container($gap: 8px);
+  @include body-text.body-font-config('s');
+}
+
+.paginator-section__item {
+  @include mixins.inline-container($gap: 4px, $display: flex);
+
+  color: var(--ds-paginator-section-custom-color, var(--ds-neutral-700-200));
+}
+
+.paginator-section__item-secondary {
+  color: var(--ds-paginator-section-item-secondary-custom-color, var(--ds-neutral-400-600));
+}
+
+.paginator-section__item-menu {
+  &:focus-visible {
+    box-shadow:
+      0 0 1px 1px var(--ds-alpha-bb-006-040),
+      0 2px 2px 0 var(--ds-alpha-bb-004-040),
+      0 0 0 2px var(--ds-neutral-0-900),
+      0 0 0 4px var(--ds-alpha-blue-060-080);
+    border-radius: var(--radius-4);
+    outline: none;
+  }
+}
+
+.paginator-section__item-menu-holder {
+  @include mixins.inline-container($gap: 4px);
+}
+
+.paginator-toggle {
+  font-size: var(--ds-font-size-18);
+  color: var(--ds-paginator-custom-icon-color, var(--ds-paginator-icon-color));
+}

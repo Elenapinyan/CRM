@@ -1,0 +1,43 @@
+<div
+  [dsLabel]="label"
+  dsLabelPosition="start"
+  [tooltip]="tooltip"
+  [tooltipClassForLabel]="tooltipClassForLabel"
+  [inputId]="inputId()"
+  [class.control-field--colored]="isColored"
+  [class.control-field--invalid]="isInvalidControl"
+  [class.control-field--disabled]="ngControl?.disabled"
+  class="control-field control-field--middle">
+  <textarea
+    data-testid="textarea-element"
+    #textareaElement
+    (blur)="onBlur($event)"
+    [placeholder]="placeholder"
+    [formControl]="control"
+    [id]="inputId()"
+    [name]="inputId()"
+    [rows]="rowsCount"
+    autocomplete="off"
+    class="control-field__input"></textarea>
+</div>
+
+<div class="form-field-description">
+  <div class="form-field-description__container">
+    <ds-field-description
+      data-testid="textarea-description"
+      *ngIf="description && !isInvalidControl">
+      {{ description }}
+    </ds-field-description>
+
+    <ds-error *ngIf="isInvalidControl">
+      {{ ngControl?.control?.errors | getControlErrorMessage: errorMessagesConfig }}
+    </ds-error>
+  </div>
+
+  <span
+    data-testid="textarea-counter"
+    *ngIf="maxTextareaLength"
+    class="control-field__textarea-count"
+    >{{ (control.value?.length || 0) + '/' + maxTextareaLength }}</span
+  >
+</div>

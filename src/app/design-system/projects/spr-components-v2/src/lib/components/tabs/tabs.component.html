@@ -1,0 +1,70 @@
+<div
+  class="tabs"
+  [ngClass]="{ 'sticky-tabs': isSticky && variant === 'tabs--level-first' }">
+  <ul
+    ngbNav
+    data-testid="tabs-nav-list"
+    #mainNav="ngbNav"
+    [destroyOnHide]="destroyOnHide"
+    [orientation]="orientation"
+    [animation]="animation"
+    [ngClass]="variant"
+    [activeId]="activeId"
+    class="tabs-nav"
+    (activeIdChange)="onSetSelectedTab($event)">
+    <ng-container *ngFor="let tabConfig of tabsConfig">
+      <li
+        [destroyOnHide]="tabConfig.destroyOnHide"
+        [ngbNavItem]="tabConfig.tabKey"
+        class="nav-item">
+        <!-- HEADER DEFINITION -->
+        <a ngbNavLink>
+          <ng-container
+            [ngTemplateOutlet]="(tabConfig.tabKey | tabHeaderByTabKey: tabHeaderTemplates) ?? defaultHeaderTemplate"
+            [ngTemplateOutletContext]="{ $implicit: tabConfig | getTypedContext: mainNav.activeId === tabConfig.tabKey }"></ng-container>
+        </a>
+
+        <!-- CONTENT DEFINITION -->
+        <ng-template ngbNavContent>
+          <ng-container
+            [ngTemplateOutlet]="(tabConfig.tabKey | tabContentByTabKey: tabContentTemplates) ?? defaultContentTemplate"
+            [ngTemplateOutletContext]="{ $implicit: tabConfig | getTypedContext: mainNav.activeId === tabConfig.tabKey }"></ng-container>
+        </ng-template>
+      </li>
+    </ng-container>
+  </ul>
+</div>
+
+<!--
+  Changed to fix a strange bug, if [ngbNavOutlet] is inside the ng-template,
+  then tabContent is not displaying on init and requires click on different tab to show the content.
+-->
+<div
+  data-testid="nav-outlet-container"
+  [class.tab-content--transparent]="isTransparentBg"
+  [hidden]="type === 'withRouting'"
+  [ngbNavOutlet]="mainNav"></div>
+
+<!--CONTAINER WHERE CONTENT INSERTS-->
+<div
+  data-testid="router-outlet-container"
+  *ngIf="type === 'withRouting'"
+  [class.tab-content--transparent]="isTransparentBg"
+  class="tab-content">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- TEMPLATES -->
+<ng-template
+  #defaultHeaderTemplate
+  let-tabConfig>
+  <ds-tab-header [isActive]="tabConfig.isActive">
+    {{ tabConfig.text }}
+  </ds-tab-header>
+</ng-template>
+
+<ng-template
+  #defaultContentTemplate
+  let-tabConfig>
+  <span>Template by tabKey: '{{ tabConfig.tabKey }}' has not been found!</span>
+</ng-template>

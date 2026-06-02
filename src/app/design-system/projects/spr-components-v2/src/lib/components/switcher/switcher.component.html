@@ -1,0 +1,38 @@
+<input
+  class="control-action__input control-action__input--switcher"
+  type="checkbox"
+  [formControl]="control"
+  (blur)="cvaOnTouched()"
+  [dsControlSize]="controlSize"
+  dsLabelContainer
+  dsLabelDefaultClass="control-action__label"
+  [dsLabelPosition]="isLabelReverse ? 'start' : 'end'"
+  ngDefaultControl
+  [attr.name]="inputId()"
+  [attr.id]="inputId()" />
+
+<!--
+<div
+  class="switcher-control"
+  [class.disabled]="control.disabled"
+  [class.switcher-control--decorated]="isDecorated">
+  <div
+    class="switcher-control__holder"
+    dsLabelContainer
+    dsLabelDefaultClass="switcher-control__label"
+    [dsLabelDefaultPosition]="isLabelReverse ? 'inside-start' : 'inside-end'"
+    [dsLabel]="secondLabel"
+    dsLabelPosition="end"
+    [tooltip]="tooltip"
+    [tooltipClassForLabel]="tooltipClassForLabel"
+    [inputId]="inputId()">
+    <input
+      class="form-switcher"
+      type="checkbox"
+      [formControl]="control"
+      (blur)="cvaOnTouched()"
+      ngDefaultControl
+      [attr.name]="inputId()"
+      [attr.id]="inputId()" />
+  </div>
+</div> -->

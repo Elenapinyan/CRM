@@ -1,0 +1,11 @@
+<ng-container [formGroup]="form">
+  <ds-numeric-input
+    controlSize="sm"
+    [placeholder]="translations()[placeholderKeys.FROM]"
+    formControlName="from" />
+
+  <ds-numeric-input
+    controlSize="sm"
+    [placeholder]="translations()[placeholderKeys.TO]"
+    formControlName="to" />
+</ng-container>

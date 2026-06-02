@@ -1,0 +1,38 @@
+<ng-container [ngSwitch]="type">
+  <ngb-alert
+    *ngSwitchCase="'info'"
+    type="info"
+    [dismissible]="dismissible">
+    <i
+      class="bo-icon"
+      [ngClass]="icon ? icon : 'bo-icon-general-info'"></i>
+    <span [innerHTML]="message"></span>
+  </ngb-alert>
+  <ngb-alert
+    *ngSwitchCase="'danger'"
+    type="danger"
+    [dismissible]="dismissible">
+    <i
+      class="bo-icon"
+      [ngClass]="icon ? icon : 'bo-icon-general-blocked'"></i>
+    <span [innerHTML]="message"></span>
+  </ngb-alert>
+  <ngb-alert
+    *ngSwitchCase="'warning'"
+    type="warning"
+    [dismissible]="dismissible">
+    <i
+      class="bo-icon"
+      [ngClass]="icon ? icon : 'bo-icon-general-warning'"></i>
+    <span [innerHTML]="message"></span>
+  </ngb-alert>
+  <ngb-alert
+    *ngSwitchCase="'success'"
+    type="success"
+    [dismissible]="dismissible">
+    <i
+      class="bo-icon"
+      [ngClass]="icon ? icon : 'bo-icon-control-check-circle'"></i>
+    <span [innerHTML]="message"></span>
+  </ngb-alert>
+</ng-container>

@@ -1,0 +1,35 @@
+import { ComponentRef, QueryList } from '@angular/core';
+import { MenuPlacement, SubMenuPlacement } from '../../interfaces/open-menu.interface';
+import { DsOpenMenuComponent } from '../../open-menu.component';
+import { DsOpenMenuExtensionDirective } from '../open-menu-extension';
+import { DsOpenMenuTitleDirective } from '../open-menu-title';
+import { DsOpenMenuFooterDirective } from '../open-menu-footer';
+import { DsOpenSubMenuDirective } from '../open-sub-menu';
+import { FormControl } from '@angular/forms';
+import { NgClassDirectiveAllowedTypes } from '../../../../shared/interfaces/ng-class.interface';
+import * as i0 from "@angular/core";
+export declare class DsOpenMenuDirective extends DsOpenMenuExtensionDirective {
+    title?: DsOpenMenuTitleDirective;
+    subMenusComponents?: QueryList<DsOpenSubMenuDirective>;
+    menuPlacement: import("@angular/core").InputSignal<SubMenuPlacement | MenuPlacement[]>;
+    autoClose: import("@angular/core").InputSignal<boolean | "outside" | "inside">;
+    withSubMenu: import("@angular/core").InputSignal<boolean>;
+    closeOnClick: import("@angular/core").InputSignal<boolean>;
+    menuContainer: import("@angular/core").InputSignal<"body" | null>;
+    withSearch: import("@angular/core").InputSignal<boolean>;
+    searchPlaceholder: import("@angular/core").InputSignal<string>;
+    resetSearchOnClose: import("@angular/core").InputSignal<boolean>;
+    isEnabled: import("@angular/core").InputSignalWithTransform<boolean, unknown>;
+    menuExtraClasses: import("@angular/core").InputSignal<NgClassDirectiveAllowedTypes>;
+    menuSize: import("@angular/core").InputSignal<"md" | "auto">;
+    footer: DsOpenMenuFooterDirective | null;
+    searchControl: FormControl<string>;
+    readonly searchValue$: import("rxjs").Observable<string>;
+    searchValue: import("@angular/core").Signal<string | undefined>;
+    dismiss(): void;
+    clickListener(): void;
+    setOpenMenuComponentInputParams(componentRef: ComponentRef<DsOpenMenuComponent>): void;
+    private subscribeToScroll;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DsOpenMenuDirective, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<DsOpenMenuDirective, "[dsOpenMenu]", never, { "menuPlacement": { "alias": "menuPlacement"; "required": false; "isSignal": true; }; "autoClose": { "alias": "autoClose"; "required": false; "isSignal": true; }; "withSubMenu": { "alias": "withSubMenu"; "required": false; "isSignal": true; }; "closeOnClick": { "alias": "closeOnClick"; "required": false; "isSignal": true; }; "menuContainer": { "alias": "menuContainer"; "required": false; "isSignal": true; }; "withSearch": { "alias": "withSearch"; "required": false; "isSignal": true; }; "searchPlaceholder": { "alias": "searchPlaceholder"; "required": false; "isSignal": true; }; "resetSearchOnClose": { "alias": "resetSearchOnClose"; "required": false; "isSignal": true; }; "isEnabled": { "alias": "dsOpenMenu"; "required": false; "isSignal": true; }; "menuExtraClasses": { "alias": "menuExtraClasses"; "required": false; "isSignal": true; }; "menuSize": { "alias": "menuSize"; "required": false; "isSignal": true; }; }, {}, ["title", "subMenusComponents"], never, true, never>;
+}

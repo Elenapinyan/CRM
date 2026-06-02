@@ -1,0 +1,11 @@
+export declare const NO_SPACES_REGEX: RegExp;
+export declare const DEFAULT_NAME: RegExp;
+export declare const NUMBER_REGEX: RegExp;
+export declare const RESTRICTED_NUMBER_INPUT_REGEX: RegExp;
+export declare const COMMA_REGEX: RegExp;
+export declare const POINT_REGEX: RegExp;
+export declare const VALID_EMAIL_REGEX: RegExp;
+export declare const ONLY_NUMBERS_DOTS_HYPHENS: RegExp;
+export declare const FORBIDDEN_SYMBOLS_WITH_NO_SPACES_REGEX: RegExp;
+export declare const FORBIDDEN_SYMBOLS_WITH_SPACES_REGEX: RegExp;
+export declare const FORBIDDEN_SYMBOLS_WITH_NO_NUMBERS_REGEX: RegExp;

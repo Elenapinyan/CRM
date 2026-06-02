@@ -1,0 +1,36 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "paths": {
+      "spr-components": ["projects/spr-components"],
+      "spr-components-v2": ["projects/spr-components-v2"],
+      "spr-grid": ["projects/spr-grid"]
+    },
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "lib": ["ES2023", "dom"],
+    "resolveJsonModule": true
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  },
+  "include": ["projects/**/*", "projects/spr-components/.storybook/**/*.ts", "projects/spr-components-v2/.storybook/**/*.ts"]
+}

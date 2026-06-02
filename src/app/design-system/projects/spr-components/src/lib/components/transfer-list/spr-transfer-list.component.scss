@@ -1,0 +1,94 @@
+@use '../../../../styles/mixins' as mixins;
+@use '../../../../styles/typography/heading.scss' as heading-text;
+@use '../../../../styles/typography/body.scss' as body-text;
+
+:host {
+  display: block;
+}
+
+.transfer-list-icon-md {
+  font-size: var(--spr-font-size-18);
+}
+
+.transfer-list-icon-sm {
+  font-size: var(--spr-font-size-16);
+}
+
+.inline-container {
+  @include mixins.inline-container($gap: 8px);
+}
+
+.transfer-list {
+  --spr-inner-header-background: var(--brd-fill-default-100);
+  --spr-transfer-list-controls-title-color: var(--brd-text-secondary-600);
+  --spr-transfer-list-controls-background: var(--brd-fill-default-0);
+  --spr-transfer-list-data-background: var(--brd-fill-default-0);
+  --spr-transfer-list-search-container-background: var(--brd-fill-default-200);
+  --spr-transfer-list-item-background-hover: var(--brd-fill-hover-100);
+  --spr-transfer-list-border-color: var(--brd-border-default-200);
+  --spr-transfer-list-controls-border-color: var(--brd-border-divider-300);
+  --spr-transfer-list-sources-border-color: var(--brd-border-divider-300);
+  --spr-transfer-list-data-source-border-color: var(--brd-border-default-200);
+  --spr-button-form-width: 36px;
+  --spr-button-form-height: 36px;
+
+  border: 1px solid var(--spr-transfer-list-border-color);
+  border-radius: var(--spr-border-radius-m);
+  overflow: hidden;
+}
+
+.transfer-list__controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--spr-transfer-list-controls-background);
+  border-bottom: 1px solid var(--spr-transfer-list-controls-border-color);
+}
+
+.transfer-list__controls-title {
+  @include heading-text.heading-font-config('xxxs');
+
+  margin: 0;
+  color: var(--spr-transfer-list-controls-title-color);
+  letter-spacing: 0.72px;
+}
+
+.transfer-list__sources,
+.transfer-list__targets {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.transfer-list__sources {
+  padding: 8px 4px 8px 16px;
+  border-right: 1px solid var(--spr-transfer-list-sources-border-color);
+}
+
+.transfer-list__targets {
+  padding: 8px 16px 8px 4px;
+}
+
+.transfer-list__search-container {
+  padding: 8px;
+  background: var(--spr-transfer-list-search-container-background);
+}
+
+.transfer-list__data {
+  @include body-text.body-font-config('l');
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--spr-transfer-list-data-background);
+}
+
+.transfer-list__data-source,
+.transfer-list__data-target {
+  height: 252px;
+  overflow: hidden auto;
+  @include mixins.scroll-style;
+}
+
+.transfer-list__data-source {
+  border-right: 1px solid var(--spr-transfer-list-data-source-border-color);
+}

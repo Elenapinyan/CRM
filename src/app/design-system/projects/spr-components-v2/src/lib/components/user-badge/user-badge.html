@@ -1,0 +1,21 @@
+<div
+  class="user-badge__content"
+  data-testid="user-badge-content">
+  {{ content() }}
+</div>
+
+<div class="user-badge__image">
+  @if (imageSrc()) {
+    <img
+      data-testid="user-badge-avatar"
+      class="user-badge__avatar"
+      [src]="imageSrc()"
+      alt="user avatar" />
+  } @else {
+    <span
+      class="user-badge__sign"
+      data-testid="user-badge-initials"
+      >{{ initials() }}</span
+    >
+  }
+</div>

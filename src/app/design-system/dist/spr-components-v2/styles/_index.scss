@@ -1,0 +1,17 @@
+@import './variables';
+@import './reboot';
+@import 'commons/index';
+
+@import './theme-default';
+
+@import './ds-icons/ds-icons-override';
+@import '@platform-workspace/bo-icons/v2/v2.scss'; /* stylelint-disable-line */
+
+@import './typography/index';
+
+// Elements
+@import './elements/index';
+@import './form-elements/index';
+
+// Components shared styles
+@import './components/index';

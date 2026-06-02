@@ -1,0 +1,19 @@
+<header
+  class="canvas-header"
+  [class]="'canvas-header--' + headerVariant()">
+  <ng-content select="[header]"></ng-content>
+</header>
+
+<div class="canvas-body">
+  <ng-content select="[body]"></ng-content>
+</div>
+
+<footer
+  class="canvas-footer"
+  [class]="'canvas-footer--' + footerVariant()">
+  <ng-content select="[footer]"></ng-content>
+</footer>
+
+<div class="backdrop-area">
+  <ng-content select="[backdrop]"></ng-content>
+</div>

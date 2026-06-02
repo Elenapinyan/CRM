@@ -1,0 +1,147 @@
+<div
+  ngbDropdown
+  [container]="container"
+  class="form-dropdown"
+  (openChange)="onOpenChange($event)">
+  <spr-label
+    [label]="label"
+    [tooltip]="tooltip"
+    [tooltipClassForLabel]="tooltipClassForLabel" />
+
+  <div
+    ngbDropdownToggle
+    tabindex="1"
+    class="form-dropdown__control"
+    [sprControlSize]="controlSize"
+    [class.form-dropdown__control--disabled]="ngControl?.disabled">
+    <div
+      *ngIf="addonStart"
+      class="form-dropdown__addon">
+      <i
+        *ngIf="iconAddonTypeGuard(addonStart)"
+        [ngClass]="addonStart.icon"></i>
+      <span
+        *ngIf="textAddonTypeGuard(addonStart)"
+        class="addon-text"
+        >{{ addonStart.text }}</span
+      >
+    </div>
+
+    <div
+      class="form-dropdown__inner"
+      tabindex="2"
+      [class.form-dropdown__inner--addon-start]="addonStart"
+      [class.form-dropdown__inner--addon-end]="addonEnd"
+      [class.form-dropdown__inner-invalid]="isInvalidControl">
+      <span
+        *ngIf="control.value?.icon"
+        class="form-dropdown__prepend"
+        [class.form-dropdown__prepend--disabled]="ngControl?.disabled">
+        <i
+          [ngClass]="control.value!.icon"
+          class="bo-icon"></i>
+      </span>
+
+      <div class="form-dropdown__input-container">
+        <input
+          [class.addon-start]="addonStart"
+          [class.addon-end]="addonEnd"
+          [class.prepend]="control.value?.icon"
+          [class.is-invalid]="isInvalidControl"
+          [sprControlSize]="controlSize"
+          [placeholder]="inputPlaceholder"
+          [disabled]="control.disabled"
+          [value]="dropdownPlaceholder && !control.value?.value ? dropdownPlaceholder : control.value?.text"
+          [id]="inputId()"
+          class="form-select-control"
+          readonly
+          type="text" />
+        <i class="bo-icon-arrows-chevron-down form-dropdown__icon form-dropdown__icon--right"></i>
+      </div>
+
+      <div
+        class="dropdown-list-container"
+        [attr.aria-labelledby]="inputId()"
+        [style.min-width.px]="minWidth"
+        ngbDropdownMenu>
+        <div
+          *ngIf="withSearch"
+          class="dropdown-list-container-header">
+          <spr-input
+            [formControl]="searchControl"
+            [placeholder]="placeholder" />
+        </div>
+
+        <cdk-virtual-scroll-viewport
+          *ngIf="isOpen"
+          class="dropdown-list-container-body"
+          [itemSize]="dropdownItemHeight"
+          [maxBufferPx]="bufferPxSize"
+          [minBufferPx]="bufferPxSize"
+          [style.min-height.px]="bufferPxSize"
+          (scrolledIndexChange)="onScrolledIndexChange($event)">
+          <ng-container [ngSwitch]="filterStrategy">
+            <ng-container *ngSwitchCase="'local'">
+              <ng-container *cdkVirtualFor="let option of withSearch ? (options | filterOptions: searchControl.value) : options">
+                <ng-container *ngTemplateOutlet="dropdownItem; context: { $implicit: option }"></ng-container>
+              </ng-container>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'api'">
+              <ng-container *cdkVirtualFor="let option of options">
+                <ng-container *ngTemplateOutlet="dropdownItem; context: { $implicit: option }"></ng-container>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </cdk-virtual-scroll-viewport>
+
+        <spr-spinner *ngIf="isLoading"></spr-spinner>
+      </div>
+    </div>
+
+    <div
+      *ngIf="addonEnd"
+      class="form-dropdown__addon">
+      <i
+        *ngIf="iconAddonTypeGuard(addonEnd)"
+        [ngClass]="addonEnd.icon"></i>
+      <span
+        *ngIf="addonEnd && textAddonTypeGuard(addonEnd)"
+        class="addon-text"
+        >{{ addonEnd.text }}</span
+      >
+    </div>
+  </div>
+
+  @if (description || isInvalidControl) {
+    <div class="form-field-description">
+      @if (description && !isInvalidControl) {
+        <spr-field-description>
+          {{ description }}
+        </spr-field-description>
+      }
+
+      @if (isInvalidControl) {
+        <spr-error>
+          {{ ngControl?.control?.errors | getControlErrorMessage: errorMessagesConfig }}
+        </spr-error>
+      }
+    </div>
+  }
+</div>
+
+<ng-template
+  #dropdownItem
+  let-option>
+  <div
+    [class]="`dropdown-item ${option.class ?? ''}`"
+    [class.disabled]="option?.isDisabled"
+    [class.selected]="control.value === option"
+    (click)="select(option)">
+    <i
+      *ngIf="option.icon"
+      [ngClass]="option.icon"
+      class="bo-icon"></i>
+    <span>{{ option.text }}</span>
+  </div>
+</ng-template>

@@ -1,0 +1,89 @@
+<div class="transfer-list">
+  <div class="transfer-list__controls">
+    <div class="transfer-list__sources">
+      <div class="transfer-list__controls-title">
+        <div class="inline-container">
+          <div data-testid="source-header">
+            {{ sourceColumnHeader() }}
+          </div>
+
+          <ds-monochrome-badge>
+            {{ filteredSourceList().length.toString() }}
+          </ds-monochrome-badge>
+        </div>
+      </div>
+      <ng-template
+        [ngTemplateOutlet]="sourceMoveAllTemplate() ?? defaultSourceMoveAllButton"
+        [ngTemplateOutletContext]="{ move: moveToTarget.bind(this), moveAll: moveAllToTarget.bind(this) }" />
+
+      <ng-template #defaultSourceMoveAllButton>
+        <ds-button
+          variant="secondary"
+          size="sm"
+          (click)="moveAllToTarget()">
+          <i class="ds-icon ds-icon-arrows-arrow-right"></i>
+        </ds-button>
+      </ng-template>
+    </div>
+
+    <div class="transfer-list__targets">
+      <ng-template
+        [ngTemplateOutlet]="targetMoveAllTemplate() ?? defaultTargetMoveAllButton"
+        [ngTemplateOutletContext]="{ move: moveToSource.bind(this), moveAll: moveAllToSource.bind(this) }" />
+
+      <ng-template #defaultTargetMoveAllButton>
+        <ds-button
+          variant="secondary"
+          size="sm"
+          (click)="moveAllToSource()">
+          <i class="ds-icon ds-icon-arrows-arrow-left"></i>
+        </ds-button>
+      </ng-template>
+      <div class="transfer-list__controls-title">
+        <div class="inline-container">
+          <ds-monochrome-badge>
+            {{ filteredTargetList().length.toString() }}
+          </ds-monochrome-badge>
+
+          <div data-testid="target-header">
+            {{ targetColumnHeader() }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transfer-list__search-container">
+    <ds-input
+      controlSize="sm"
+      [prepend]="true"
+      [placeholder]="searchPlaceholder()"
+      [formControl]="searchControl">
+      <i
+        prependContent
+        class="ds-icon ds-icon-control-search"></i>
+    </ds-input>
+  </div>
+  <div class="transfer-list__data">
+    <div class="transfer-list__data-source">
+      @for (item of unitedSourceList(); track item.value) {
+        <ds-transfer-list-item
+          data-testid="source-item"
+          type="source"
+          [value]="item"
+          [customTemplates]="customTemplates()"
+          (moveItem)="moveToTarget($event)" />
+      }
+    </div>
+
+    <div class="transfer-list__data-target">
+      @for (item of unitedTargetList(); track item.value) {
+        <ds-transfer-list-item
+          type="target"
+          [value]="item"
+          [customTemplates]="customTemplates()"
+          (moveItem)="moveToSource($event)" />
+      }
+    </div>
+  </div>
+</div>

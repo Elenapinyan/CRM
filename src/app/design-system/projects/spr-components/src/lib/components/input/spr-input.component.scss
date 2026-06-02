@@ -1,0 +1,205 @@
+:host {
+  display: block;
+}
+
+.form-field {
+  --spr-form-field-radius: var(--spr-custom-form-field-radius, var(--spr-control-radius));
+  --spr-form-field-bg: var(--spr-custom-form-field-bg, var(--brd-fill-default-0));
+  --spr-form-field-bg-disabled: var(--spr-custom-form-field-bg-disabled, var(--brd-fill-disabled-250));
+  --spr-form-field-border-color: var(--spr-custom-form-field-border-color, var(--brd-border-default-400));
+  --spr-form-field-border-color-invalid: var(--spr-custom-form-field-border-color-invalid, var(--brd-border-destructive-600));
+  --spr-form-field-border-color-hover: var(--spr-custom-form-field-border-color-hover, var(--brd-fill-accent-hover-base));
+  --spr-form-field-border-color-focus: var(--spr-custom-form-field-border-color-focus, var(--brd-border-accent-hover-base));
+  --spr-form-field-color: var(--spr-custom-form-field-color, var(--brd-text-primary-800));
+  --spr-form-field-color-disabled: var(--spr-custom-form-field-color-disabled, var(--brd-text-default-800));
+  --spr-form-field-placeholder-color: var(--spr-custom-form-field-placeholder-color, var(--brd-text-secondary-500));
+  --spr-form-field-addon-bg: var(-spr-custom-form-field-addon-bg, var(--brd-fill-default-100));
+  --spr-form-field-addon-border-color: var(--spr-custom-form-field-addon-border-color, var(--spr-form-field-border-color));
+  --spr-form-field-addon-border-color-disabled: var(--spr-custom-form-field-addon-border-color-disabled, var(--brd-border-default-400));
+  --spr-form-field-addon-color: var(--spr-custom-form-field-addon-color, var(--brd-icon-default-500));
+  --spr-form-field-appends-color: var(--spr-custom-form-field-appends-color, var(--brd-icon-default-500));
+  --spr-form-field-submit-button-color: var(--spr-custom-form-field-submit-button-color, var(--brd-icon-default-700));
+  --spr-form-field-password-button-color: var(--spr-custom-form-field-password-button-color, var(--brd-icon-default-500));
+
+  display: flex;
+
+  &.control-form--middle {
+    .form-field__input {
+      padding: var(--spr-control-padding-y-md) var(--spr-control-padding-x-md);
+      padding-left: 0;
+      font-size: var(--spr-control-font-size-md);
+
+      &:first-child {
+        padding-inline: var(--spr-control-padding-x-md);
+      }
+    }
+
+    .form-field__addon {
+      padding-inline: var(--spr-control-padding-x-md);
+      font-size: var(--spr-control-font-size-md);
+    }
+
+    .form-field__prepend,
+    .form-field__append {
+      width: 32px;
+      font-size: var(--spr-font-size-16);
+    }
+  }
+
+  &.control-form--large {
+    .form-field__input {
+      padding: var(--spr-control-padding-y-lg) var(--spr-control-padding-x-lg);
+      padding-left: 0;
+      font-size: var(--spr-control-font-size-lg);
+
+      &:first-child {
+        padding-inline: var(--spr-control-padding-x-lg);
+      }
+    }
+
+    .form-field__addon {
+      padding-inline: 11px;
+      font-size: var(--spr-control-font-size-lg);
+    }
+
+    .form-field__prepend,
+    .form-field__append {
+      width: 36px;
+      font-size: var(--spr-font-size-20);
+    }
+  }
+
+  &.form-field--disabled {
+    --spr-form-field-color: var(--spr-form-field-color-disabled);
+
+    .form-field__inner {
+      background-color: var(--spr-form-field-bg-disabled);
+    }
+  }
+
+  &.form-field--rounded {
+    --spr-form-field-radius: 24px;
+  }
+}
+
+.form-field__addon {
+  border: var(--spr-control-border-width) solid var(--spr-form-field-addon-border-color);
+  border-radius: var(--spr-form-field-radius);
+  display: flex;
+  align-items: center;
+  background: var(--spr-form-field-addon-bg);
+  color: var(--spr-form-field-addon-color);
+  flex-shrink: 0;
+  cursor: default;
+
+  &:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+  }
+
+  &:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 0;
+  }
+}
+
+.form-field__inner {
+  flex-grow: 1;
+  display: flex;
+  background-color: var(--spr-form-field-bg);
+  border: var(--spr-control-border-width) solid var(--spr-form-field-border-color);
+  border-radius: var(--spr-form-field-radius);
+  transition: border var(--spr-transition-time) ease;
+
+  &.form-field__inner--addon-start {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  &.form-field__inner--addon-end {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &:hover {
+    &:not(.form-field__inner-invalid, .form-field--disabled &) {
+      border-color: var(--spr-form-field-border-color-hover);
+    }
+  }
+
+  &:has(.form-field__input:focus) {
+    border-color: var(--spr-form-field-border-color-focus);
+    box-shadow: inset 0 0 0 1px var(--spr-form-field-border-color-focus);
+
+    &.form-field__inner-invalid {
+      border-color: var(--spr-form-field-border-color-invalid);
+      box-shadow: inset 0 0 0 1px var(--spr-form-field-border-color-invalid);
+    }
+
+    .form-field__submit-button {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &.form-field__inner-invalid {
+    border-color: var(--spr-form-field-border-color-invalid);
+  }
+}
+
+.form-field__input {
+  flex-grow: 1;
+  background-color: transparent;
+  border: 0;
+  appearance: none;
+  outline: none;
+  z-index: 0;
+  color: var(--spr-form-field-color);
+  line-height: var(--spr-control-line-height);
+  width: 100%;
+
+  &::placeholder {
+    color: var(--spr-form-field-placeholder-color);
+  }
+}
+
+.form-field__prepend,
+.form-field__append {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--spr-custom-form-field-appends-color, var(--spr-form-field-appends-color));
+}
+
+.form-field__prepend--disabled,
+.form-field__append--disabled {
+  pointer-events: none;
+}
+
+.form-field__submit-button {
+  display: none;
+  width: 36px;
+  height: 34px;
+  border: none;
+  color: var(--spr-form-field-submit-button-color);
+  background: transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--spr-transition-time) ease;
+}
+
+.form-field__password-button {
+  width: 44px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--spr-custom-form-field-password-button-color, var(--spr-form-field-password-button-color));
+}

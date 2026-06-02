@@ -1,0 +1,41 @@
+@use '../../../../../styles/typography/body' as body-text;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  padding-block: var(--ds-datepicker-periods-custom-padding-block, 12px);
+  padding-inline: var(--ds-datepicker-periods-custom-padding-inline, 12px);
+  width: var(--ds-datepicker-periods-custom-width, 128px);
+  border-right: 1px solid var(--ds-datepicker-periods-custom-border-color, var(--ds-neutral-150-750));
+}
+
+.datepicker-periods__button {
+  @include body-text.body-font-config('xs-m');
+
+  color: var(--ds-datepicker-period-button-custom-color, var(--ds-neutral-700-400));
+  text-align: left;
+  overflow-wrap: anywhere;
+  padding-inline: var(--ds-datepicker-period-button-custom-padding-inline, 8px);
+  padding-block: var(--ds-datepicker-period-button-custom-padding-block, 6px);
+  border-radius: var(--ds-datepicker-period-button-custom-border-radius, var(--radius-6));
+  background-color: var(--ds-datepicker-period-button-custom-background, transparent);
+
+  &:hover:not(.datepicker-period-button--active) {
+    background-color: var(--ds-datepicker-period-button-custom-background-hover, var(--ds-neutral-150-800));
+  }
+
+  &:focus-visible:not(.datepicker-period-button--active) {
+    z-index: 2;
+    outline: none;
+    background-color: var(--ds-datepicker-period-button-custom-background-focus, var(--ds-neutral-050-700));
+    box-shadow:
+      0 0 0 1px var(--ds-neutral-0-900),
+      0 0 0 3px var(--ds-alpha-blue-060-080);
+  }
+}
+
+.datepicker-periods__button--active {
+  outline: none;
+  color: var(--ds-datepicker-period-button-custom-color, var(--ds-neutral-1000-0));
+  background-color: var(--ds-datepicker-period-button-custom-background-active, var(--ds-neutral-200-800));
+}

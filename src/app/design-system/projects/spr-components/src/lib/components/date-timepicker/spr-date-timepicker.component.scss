@@ -1,0 +1,14 @@
+:host {
+  display: block;
+
+  .is-invalid {
+    background-image: none;
+  }
+
+  .date-timepicker {
+    display: grid;
+    grid-gap: 24px;
+    place-items: flex-end stretch;
+    grid-template-columns: 1fr 120px;
+  }
+}

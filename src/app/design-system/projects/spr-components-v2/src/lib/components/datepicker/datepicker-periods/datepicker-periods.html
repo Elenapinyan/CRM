@@ -1,0 +1,10 @@
+@for (option of list(); track option.value) {
+  <button
+    data-testid="dp-period-item"
+    class="datepicker-periods__button"
+    type="button"
+    (click)="select(option)"
+    [class.datepicker-periods__button--active]="option.value === selectedPeriod()">
+    {{ option.text }}
+  </button>
+}

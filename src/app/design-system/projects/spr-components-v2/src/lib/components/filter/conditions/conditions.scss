@@ -1,0 +1,9 @@
+@use '../../../../../styles/mixins/mixins' as mixins;
+
+:host {
+  @include mixins.flex-container($gap: 8px);
+
+  padding-block: var(--ds-conditions-custom-padding-block, 8px 4px);
+  padding-inline: var(--ds-conditions-custom-padding-inline, 8px);
+  width: 100%;
+}

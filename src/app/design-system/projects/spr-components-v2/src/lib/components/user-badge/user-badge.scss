@@ -1,0 +1,79 @@
+@use '../../../../styles/typography/body' as body-text;
+@use '../../../../styles/mixins/media' as media;
+
+:host {
+  --ds-user-badge-sign-bg: var(--ds-alpha-ww-006-006);
+
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 2px;
+  border-radius: var(--radius-100);
+  color: var(--ds-neutral-0-0);
+  transition: all var(--ds-transition-time);
+  cursor: pointer;
+
+  @include body-text.body-font-config('s');
+
+  &:hover {
+    --ds-user-badge-sign-bg: transparent;
+
+    background-color: var(--ds-alpha-ww-012-012);
+  }
+
+  &:focus-visible {
+    --ds-user-badge-sign-bg: transparent;
+
+    outline: none;
+    background-color: var(--ds-alpha-ww-012-012);
+    box-shadow:
+      0 0 0 2px var(--ds-neutral-900-0),
+      0 0 0 4px var(--alpha-blue-alpha-blue-080);
+  }
+
+  .user-badge__content {
+    display: none;
+    padding-inline-start: 6px;
+
+    @include media.lg {
+      display: block;
+    }
+  }
+
+  .user-badge__image {
+    border-radius: var(--radius-100);
+    background-color: var(--ds-user-badge-sign-bg);
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: background-color var(--ds-transition-time);
+  }
+
+  .user-badge__avatar {
+    display: block;
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border-radius: var(--radius-100);
+    overflow: hidden;
+  }
+
+  .user-badge__sign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-100);
+    border: 1px solid var(--alpha-white-alpha-100);
+    background: linear-gradient(180deg, var(--ds-neutral-0-0) 30.56%, var(--ds-neutral-500-500) 270.83%);
+    box-shadow: 0 1px 6px 0 var(--ds-alpha-bb-006-056);
+    color: var(--ds-neutral-1000-1000);
+
+    @include body-text.body-font-config('xs-sb');
+  }
+}

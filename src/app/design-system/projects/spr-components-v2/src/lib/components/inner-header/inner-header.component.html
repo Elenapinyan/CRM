@@ -1,0 +1,19 @@
+<div
+  class="inner-header"
+  data-testid="inner-header-root"
+  [ngClass]="[variant !== 'default' ? 'inner-header--' + variant : '', withoutBorder ? 'inner-header--no-border' : '']">
+  <div
+    [class.inner-header__title-container]="withStartContent"
+    data-testid="title-container">
+    <h3
+      *ngIf="title"
+      class="inner-header__title"
+      data-testid="header-title">
+      {{ title }}
+    </h3>
+
+    <ng-content select="[start]"></ng-content>
+  </div>
+
+  <ng-content select="[end]"></ng-content>
+</div>

@@ -1,0 +1,31 @@
+import { ChangeDetectorRef, ComponentRef, ElementRef, Injector, NgModuleRef, Type } from '@angular/core';
+import { CreateComponentResult, DynamicComponentConfig, DynamicPosition } from './interfaces';
+import { BaseDynamicElement } from './models';
+import { SprDynamicBaseDirective } from './spr-dynamic-base.directive';
+import * as i0 from "@angular/core";
+export declare class SprDynamicComponentDirective<T = unknown> extends SprDynamicBaseDirective<T> {
+    set sprDynamicComponentPosition(value: DynamicPosition);
+    set sprDynamicComponentCustomContainer(value: ElementRef<HTMLElement> | HTMLElement | undefined);
+    set sprDynamicComponentClass(value: string | undefined);
+    set sprDynamicComponent(value: Type<T> | undefined);
+    dynamicComponentInjector: Injector;
+    private componentPosition?;
+    private componentClass?;
+    private componentContainer?;
+    private dComponentType?;
+    private dElement?;
+    protected readonly cdRef: ChangeDetectorRef;
+    protected readonly ngModuleRef: NgModuleRef<unknown>;
+    private ref?;
+    get componentType(): Type<T> | undefined;
+    get dynamicElement(): BaseDynamicElement | undefined;
+    get componentRef(): ComponentRef<T> | undefined;
+    get sprDynamicComponentClass(): string | undefined;
+    destroy(): void;
+    protected createComponent(config?: DynamicComponentConfig<T>): CreateComponentResult<T> | null;
+    protected createOneComponent(config?: DynamicComponentConfig<T>): void;
+    protected configureManually(config: DynamicComponentConfig<T>): void;
+    private addNgContentAttribute;
+    static ɵfac: i0.ɵɵFactoryDeclaration<SprDynamicComponentDirective<any>, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<SprDynamicComponentDirective<any>, "[sprDynamicComponent]", never, { "sprDynamicComponentPosition": { "alias": "sprDynamicComponentPosition"; "required": false; }; "sprDynamicComponentCustomContainer": { "alias": "sprDynamicComponentCustomContainer"; "required": false; }; "sprDynamicComponentClass": { "alias": "sprDynamicComponentClass"; "required": false; }; "sprDynamicComponent": { "alias": "sprDynamicComponent"; "required": false; }; "dynamicComponentInjector": { "alias": "dynamicComponentInjector"; "required": false; }; }, {}, never, never, true, never>;
+}

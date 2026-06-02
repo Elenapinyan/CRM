@@ -1,0 +1,50 @@
+/* stylelint-disable */
+//These variables can be deleted when bootstrap styles are disabled
+$font-size-sm: 0.75rem;
+$font-size-base: 0.875rem;
+$font-size-lg: 1rem;
+
+$font-family-sans-serif: var(--font-family-sans-serif);
+
+$h1-font-size: var(--spr-font-size-28);
+$h2-font-size: var(--spr-font-size-24);
+$h3-font-size: var(--spr-font-size-20);
+$h4-font-size: var(--spr-font-size-18);
+
+$headings-font-weight: var(--spr-font-weight-semi-bold);
+
+$input-btn-padding-y: 0.4375rem;
+$input-btn-padding-x: 0.9375rem;
+$input-btn-font-family: $font-family-sans-serif;
+$input-btn-font-size: $font-size-base;
+$input-btn-line-height: 1.4286;
+$input-btn-padding-y-lg: 0.6875rem;
+$input-btn-padding-x-lg: 0.9375rem;
+$input-btn-font-size-lg: 0.9375rem;
+
+// used for btn datepicker
+$btn-padding-y: $input-btn-padding-y;
+$btn-padding-x: $input-btn-padding-x;
+$btn-font-family: $input-btn-font-family;
+$btn-font-size: $input-btn-font-size;
+$btn-line-height: $input-btn-line-height;
+$btn-padding-y-lg: $input-btn-padding-y-lg;
+$btn-padding-x-lg: $input-btn-padding-x-lg;
+$btn-font-size-lg: $input-btn-font-size-lg;
+$btn-font-weight: 500;
+$btn-border-radius: var(--bs-border-radius-lg);
+$btn-border-radius-sm: var(--bs-border-radius-lg);
+$btn-border-radius-lg: var(--bs-border-radius-lg);
+
+// used for .form-control datetimepicker
+$input-padding-y: 0.4375rem;
+$input-padding-x: 0.6875rem;
+$input-font-size: $input-btn-font-size;
+$input-line-height: $input-btn-line-height;
+$input-padding-y-lg: 0.6875rem;
+$input-padding-x-lg: 0.6875rem;
+$input-font-size-lg: 1rem;
+$input-color: rgb(var(--spr-grey-750));
+$input-border-color: rgb(var(--spr-grey-150));
+$input-border-radius: var(--bs-border-radius-lg);
+$input-border-radius-lg: var(--bs-border-radius-lg);

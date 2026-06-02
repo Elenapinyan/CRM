@@ -1,0 +1,92 @@
+@let dp = datepicker();
+
+@if (!altSelectors()) {
+  <ds-month-navigation
+    [datepicker]="datepicker()"
+    [month]="datepicker().state.firstDate.month"
+    [year]="datepicker().state.firstDate.year" />
+}
+
+<div
+  class="calendars-wrapper"
+  [formGroup]="formGroup">
+  <div class="calendars-wrapper__holder">
+    @for (month of dp.state.months; track toStringDate(month)) {
+      <div class="calendars-wrapper__section">
+        <div
+          class="custom-navigation"
+          role="group">
+          <ds-button
+            type="button"
+            variant="transparent"
+            [isIcon]="true"
+            size="sm"
+            (click)="navigatePrev(dp)">
+            <i class="ds-icon ds-icon-arrows-chevron-left"></i>
+          </ds-button>
+
+          @if (altSelectors()) {
+            <ds-month-navigation
+              [datepicker]="datepicker()"
+              [month]="datepicker().state.firstDate.month"
+              [year]="datepicker().state.firstDate.year" />
+          } @else {
+            <div class="month-info">{{ dp.i18n.getMonthShortName(month.month) }} {{ month.year }}</div>
+          }
+
+          <ds-button
+            type="button"
+            variant="transparent"
+            [isIcon]="true"
+            size="sm"
+            (click)="navigateNext(dp)">
+            <i class="ds-icon ds-icon-arrows-chevron-right"></i>
+          </ds-button>
+        </div>
+
+        <ngb-datepicker-month
+          data-testid="dp-month"
+          class="border rounded"
+          [month]="month" />
+      </div>
+    }
+  </div>
+
+  @if (timepicker()) {
+    <div class="timepicker">
+      @for (month of dp.state.months; track toStringDate(month); let count = $count; let first = $first; let last = $last) {
+        @if (count > 1) {
+          @if (first) {
+            <ng-template
+              [ngTemplateOutlet]="timeSelector"
+              [ngTemplateOutletContext]="{ $implicit: 'timeFrom', label: translations.startTime }" />
+          }
+
+          @if (last) {
+            <ng-template
+              [ngTemplateOutlet]="timeSelector"
+              [ngTemplateOutletContext]="{ $implicit: 'timeTo', label: translations.endTime }" />
+          }
+        } @else {
+          <ng-template
+            [ngTemplateOutlet]="timeSelector"
+            [ngTemplateOutletContext]="{ $implicit: 'timeFrom' }" />
+        }
+
+        <ng-template
+          #timeSelector
+          let-controlName
+          let-label="label">
+          <div class="timepicker__wrapper">
+            <ds-datepicker-time
+              data-testid="dp-timepicker"
+              [label]="label"
+              [timeMask]="timeMask()"
+              [timePlaceholder]="timePlaceholder()"
+              [formControlName]="controlName" />
+          </div>
+        </ng-template>
+      }
+    </div>
+  }
+</div>

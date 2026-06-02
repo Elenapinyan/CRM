@@ -1,0 +1,54 @@
+@use '../../../../styles/mixins' as mixins;
+
+:host {
+  display: block;
+}
+
+.readonly-field {
+  display: flex;
+  align-items: center;
+  border: var(--spr-control-border-width) solid var(--brd-border-default-400);
+  border-radius: var(--spr-border-radius-m);
+  background: var(--brd-fill-disabled-250);
+  color: var(--brd-text-default-800);
+
+  &.control-form--middle {
+    .readonly-field__inner {
+      padding: var(--spr-control-padding-y-md) var(--spr-control-padding-x-md);
+      font-size: var(--spr-control-font-size-md);
+    }
+
+    .readonly-field__icon {
+      padding-right: var(--spr-control-padding-x-md);
+    }
+  }
+
+  &.control-form--large {
+    .readonly-field__inner {
+      padding: var(--spr-control-padding-y-lg) var(--spr-control-padding-x-lg);
+      font-size: var(--spr-control-font-size-lg);
+    }
+
+    .readonly-field__icon {
+      padding-right: var(--spr-control-padding-x-lg);
+    }
+  }
+}
+
+.readonly-field__inner {
+  @include mixins.text-overflow;
+
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.readonly-field__text {
+  @include mixins.text-overflow;
+
+  min-height: var(--spr-control-line-height);
+  line-height: var(--spr-control-line-height);
+}
+
+.readonly-field__icon {
+  flex-shrink: 0;
+}

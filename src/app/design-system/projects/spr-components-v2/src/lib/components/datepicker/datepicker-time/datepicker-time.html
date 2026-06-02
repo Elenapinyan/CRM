@@ -1,0 +1,17 @@
+@if (label(); as label) {
+  <span
+    data-testid="dp-timepicker-label"
+    class="datepicker-time-label">
+    {{ label }}
+  </span>
+}
+
+<ds-input
+  controlSize="sm"
+  (blurEvent)="onTouched(this.value()!)"
+  [maskito]="timeMask()"
+  [placeholder]="timePlaceholder()"
+  [dropSpecialCharacters]="false"
+  [ngModel]="timeValue()"
+  [ngModelOptions]="{ standalone: true }"
+  (ngModelChange)="timeValue.set($event)" />

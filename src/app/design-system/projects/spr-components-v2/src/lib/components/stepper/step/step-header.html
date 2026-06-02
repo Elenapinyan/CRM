@@ -1,0 +1,54 @@
+@if (step().stepHeaderCustom?.template || customTemplate(); as customTemplateVar) {
+  <ng-template
+    [ngTemplateOutlet]="customTemplateVar"
+    [ngTemplateOutletContext]="{ $implicit: step(), index: index() }" />
+} @else {
+  <div
+    class="step-header__content-holder"
+    (click)="active.emit(step())">
+    <button
+      [attr.tabindex]="isDisabled() ? -1 : 0"
+      type="button"
+      class="step-header__indicator">
+      @if ((isActive() && !isInvalid()) || (!isCompleted() && !isInvalid())) {
+        <div
+          class="step-header--num"
+          data-testid="step-number">
+          {{ index() + 1 }}
+        </div>
+      }
+
+      @if (isCompleted() && !isActive() && !isInvalid()) {
+        <i
+          class="ds-icon ds-icon-control-check"
+          data-testid="step-completed-icon"></i>
+      }
+
+      @if (isInvalid()) {
+        <i
+          class="ds-icon ds-icon-general-error"
+          data-testid="step-error-icon"></i>
+      }
+    </button>
+
+    <div class="step-header__content">
+      <div class="step-header__label">
+        <div class="step-header__label-text-holder">
+          <div
+            class="step-header__label-text"
+            data-testid="step-label">
+            {{ step().label }}
+          </div>
+        </div>
+      </div>
+
+      @if (step().description; as descriptionVar) {
+        <div
+          class="step-header__description"
+          data-testid="step-description">
+          {{ descriptionVar }}
+        </div>
+      }
+    </div>
+  </div>
+}

@@ -1,0 +1,18 @@
+:host {
+  display: block;
+}
+
+.custom-content-grid {
+  display: flex;
+}
+
+.datepicker-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  padding-block: var(--ds-datepicker-footer-actions-custom-padding-block, 12px);
+  padding-inline: var(--ds-datepicker-footer-actions-custom-padding-inline, 8px);
+  background-color: var(--ds-datepicker-footer-actions-custom-background, var(--ds-neutral-050-900));
+  border-top: 1px solid var(--ds-datepicker-footer-actions-custom-border-color, var(--ds-neutral-150-750));
+}

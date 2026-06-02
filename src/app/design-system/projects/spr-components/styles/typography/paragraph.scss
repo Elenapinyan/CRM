@@ -1,0 +1,35 @@
+@use 'sass:map';
+
+$paragraph-texts: (
+  'xl': (
+    'font': var(--spr-font-size-18),
+    'line': var(--spr-line-height-28),
+  ),
+  'l': (
+    'font': var(--spr-font-size-16),
+    'line': var(--spr-line-height-24),
+  ),
+  'm': (
+    'font': var(--spr-font-size-14),
+    'line': var(--spr-line-height-24),
+  ),
+  's': (
+    'font': var(--spr-font-size-12),
+    'line': var(--spr-line-height-20),
+  ),
+);
+
+@mixin paragraph-font-config($size, $font-weight: null) {
+  font-size: map.get($paragraph-texts, $size, 'font');
+  line-height: map.get($paragraph-texts, $size, 'line');
+
+  @if $font-weight {
+    font-weight: $font-weight;
+  }
+}
+
+@each $size in map.keys($paragraph-texts) {
+  .text-paragraph-#{$size} {
+    @include paragraph-font-config($size);
+  }
+}

@@ -1,0 +1,495 @@
+ngb-datepicker.dropdown-menu {
+  min-width: 324px;
+  border: 1px solid #dedfe4;
+  box-shadow: 0 1px 80px 0 rgb(0 0 0 / 0.08);
+
+  .ngb-dp-header {
+    padding: 12px;
+  }
+
+  .ngb-dp-header,
+  .ngb-dp-week.ngb-dp-weekdays,
+  .ngb-dp-month-name {
+    background-color: rgb(var(--spr-grey-50));
+  }
+
+  .ngb-dp-month {
+    width: 100%;
+  }
+
+  .ngb-dp-arrow {
+    border-radius: 36px;
+    height: 36px;
+    width: 36px;
+    flex: 0 0 36px;
+    background: rgb(var(--brd-white));
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+
+    &.ngb-dp-arrow-prev {
+      margin-right: 8px;
+
+      .ngb-dp-navigation-chevron {
+        margin: 0 0 0 3px;
+      }
+    }
+
+    &.ngb-dp-arrow-next {
+      margin-left: 8px;
+
+      .ngb-dp-navigation-chevron {
+        margin: 0 3px 0 0;
+      }
+    }
+  }
+
+  .btn.ngb-dp-arrow-btn {
+    margin: 0;
+    height: 36px;
+    width: 36px;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 36px;
+    border: 1px solid transparent;
+
+    &:hover {
+      border-color: rgb(var(--spr-grey-300));
+
+      .ngb-dp-navigation-chevron {
+        border-color: rgb(var(--spr-grey-300));
+      }
+    }
+
+    &:active {
+      background-color: rgb(var(--spr-grey-30));
+
+      .ngb-dp-navigation-chevron {
+        border-color: rgb(var(--spr-grey-250));
+      }
+    }
+
+    &:disabled,
+    &.disabled {
+      border-color: var(--brd-border-disabled-300);
+      background-color: transparent;
+      color: var(--brd-text-disabled-500);
+      pointer-events: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .ngb-dp-navigation-chevron {
+    border-width: 1.5px 1.5px 0 0;
+    width: 10px;
+    height: 10px;
+    margin: 0;
+    border-color: #b4b7bd;
+    transition: border-color var(--spr-transition-time) ease;
+  }
+
+  .ngb-dp-navigation-select {
+    flex: 1;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  ngb-datepicker-navigation-select > .form-select {
+    flex: 0 0 102px;
+    height: auto;
+    padding: 7px 8px;
+
+    &:hover {
+      border-color: rgb(var(--spr-grey-300));
+    }
+
+    &:focus {
+      border-color: rgb(var(--spr-grey-300));
+      box-shadow: none;
+    }
+  }
+
+  .ngb-dp-weekdays {
+    border-top: 1px solid #dedfe4;
+  }
+
+  .ngb-dp-week {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+
+    &.ngb-dp-weekdays {
+      margin-bottom: 0.5rem;
+    }
+
+    &:last-child {
+      padding-bottom: 0.5rem !important;
+    }
+  }
+
+  .ngb-dp-weekday {
+    font-style: normal;
+    overflow: hidden;
+    color: #acafb6;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 12px 6px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .ngb-dp-day {
+    width: 44px;
+    height: 44px;
+    font-size: var(--spr-font-size-14);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.disabled {
+      opacity: 0.5;
+    }
+
+    &:hover {
+      .btn-light {
+        outline: none;
+        background-color: transparent;
+      }
+    }
+
+    .btn-light {
+      position: relative;
+
+      &.range {
+        color: rgb(var(--brd-white));
+        background-color: rgb(var(--brd-purple-300)) !important;
+      }
+
+      &.faded {
+        color: rgb(var(--spr-grey-750));
+        border-radius: 0;
+        background-color: rgb(var(--brd-purple-300) / 0.2) !important;
+      }
+    }
+  }
+
+  .btn-light,
+  [ngbDatepickerDayView] {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  [ngbDatepickerDayView]:hover:not(.bg-primary),
+  [ngbDatepickerDayView].active:not(.bg-primary) {
+    background-color: transparent;
+    outline: none;
+    border: 1px solid rgb(var(--spr-grey-750));
+  }
+
+  .btn-light.bg-primary {
+    border: 1px solid rgb(var(--spr-grey-750));
+    background-color: rgb(var(--brd-white)) !important;
+    color: rgb(var(--spr-grey-750)) !important;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  .ngb-dp-day .btn-light:hover {
+    border: 1px solid rgb(var(--spr-grey-750));
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+}
+
+.ngb-tp {
+  display: flex;
+  align-items: center;
+}
+
+.ngb-tp-hour,
+.ngb-tp-minute,
+.ngb-tp-second,
+.ngb-tp-meridian {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.ngb-tp-input {
+  display: block;
+  width: 100%;
+  padding: 7px 11px;
+  border: 1px solid rgb(var(--spr-grey-150));
+  border-radius: var(--spr-border-radius-m);
+  background-color: rgb(var(--brd-white));
+  color: rgb(var(--spr-grey-750));
+  font-size: var(--spr-font-size-14);
+  appearance: none;
+  outline: none;
+
+  .invalid-timepicker & {
+    border-color: rgb(var(--brd-red-600));
+
+    &:focus {
+      box-shadow: inset 0 0 0 1px rgb(var(--brd-red-600));
+    }
+  }
+}
+
+.app-date-timepicker {
+  .form-control {
+    padding: 11px;
+    font-size: var(--spr-font-size-16);
+    line-height: var(--spr-line-height-20);
+  }
+}
+
+.ngb-dp-day,
+.ngb-dp-weekday {
+  flex: 1 1 0;
+}
+
+// This code should be added to the components (DateTimepicker, DatePicker, PeriodSelector) after refactor
+// NOTE: need to check if the 'form-control-datepicker' class is used. 'form-select' class is used when selecting a month
+
+.form-control-datepicker,
+.form-select {
+  display: block;
+  width: 100%;
+  border: 1px solid rgb(var(--spr-grey-150));
+  border-radius: var(--spr-border-radius-m);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  background-color: rgb(var(--brd-white));
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.6875rem center;
+  background-size: 16px 12px;
+  color: rgb(var(--spr-grey-850));
+  line-height: var(--spr-line-height-20);
+  cursor: pointer;
+  transition:
+    border var(--spr-transition-time) ease,
+    background-color var(--spr-transition-time) ease;
+  appearance: none;
+
+  &:hover {
+    border: 1px solid rgb(var(--spr-grey-250));
+    background-color: rgb(var(--spr-grey-30));
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  &:focus-visible,
+  &:focus {
+    border: 1px solid rgb(var(--spr-grey-130));
+    background-color: rgb(var(--brd-white));
+    box-shadow:
+      0 1px 2px 0 rgb(0 0 0 / 0.05),
+      0 0 0 2px rgb(0 0 0 / 0.05);
+    outline: none;
+  }
+
+  &:active {
+    border: 1px solid rgb(var(--spr-grey-130));
+    background-color: rgb(var(--spr-grey-50));
+    color: rgb(var(--spr-grey-850) / 0.7);
+  }
+
+  &:disabled {
+    background-color: rgb(var(--spr-grey-50));
+    border: 1px solid rgb(var(--brd-black) / 0.1);
+    color: rgb(var(--spr-grey-750));
+  }
+
+  &.is-invalid {
+    background-size: 24px 24px !important;
+    background-position: right 10px top 10px !important;
+    border: 1px solid rgb(var(--brd-red-600));
+    background-image: none !important;
+    box-shadow: inset 0 0 0 1px rgb(var(--brd-red-600));
+  }
+}
+
+.form-select[disabled] {
+  appearance: none;
+  background-image: none;
+}
+
+// This code should be added to the components DateTimepicker after refactor
+// NOTE: 'form-control' is used on inputs when setting hours and minutes. Check the form-control-grey class and fix form-control-lg, form-control-colored, is-invalid classes
+
+.form-control {
+  line-height: 20px;
+  transition:
+    border var(--spr-transition-time) ease,
+    background-color var(--spr-transition-time) ease;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+
+  &.form-control-grey {
+    border-color: rgb(var(--brd-white) / 0.2);
+    padding-left: 36px;
+    padding-right: 40px;
+    background-color: transparent;
+    color: rgb(var(--brd-white));
+    box-shadow: none;
+
+    &::placeholder {
+      color: #9f99a4;
+    }
+
+    &:focus {
+      border-color: var(--spr-color-auth);
+      box-shadow: inset 0 0 0 1px var(--spr-color-auth);
+
+      + .form-control-icon path {
+        fill: rgb(var(--spr-color-white));
+      }
+    }
+
+    &.is-invalid {
+      background-color: transparent;
+
+      + .form-control-icon path {
+        fill: #de4a4a;
+      }
+    }
+  }
+
+  &.form-select-lg,
+  &.form-control-lg {
+    line-height: 20px;
+    min-height: 44px;
+  }
+
+  &:disabled {
+    background-color: rgb(var(--spr-grey-50));
+    border: 1px solid rgb(var(--brd-black) / 0.1);
+    color: rgb(var(--spr-grey-750));
+  }
+
+  &.is-invalid {
+    background-size: 24px 24px !important;
+    background-position: right 10px top 10px !important;
+    border: 1px solid rgb(var(--brd-red-600));
+    background-image: none !important;
+    box-shadow: inset 0 0 0 1px rgb(var(--brd-red-600));
+  }
+
+  &.form-control-colored {
+    &:hover:not(:disabled) {
+      border-color: var(--spr-theme-color);
+    }
+
+    &:focus {
+      box-shadow: inset 0 0 0 1px var(--spr-theme-color);
+    }
+
+    &::placeholder {
+      color: rgb(var(--spr-grey-750));
+    }
+  }
+
+  &.hidden-input {
+    opacity: 0;
+  }
+}
+
+// When refactoring the datepicker, check the styles with the design
+// NOTE: Now this code doesn't work
+
+.form-control-datepicker {
+  &.is-open {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}
+
+.form-datepicker {
+  &.is-open {
+    .form-control,
+    .btn-calendar {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  }
+}
+
+app-dropdown {
+  .is-open {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}
+
+.form-control-datepicker-open {
+  .btn-calendar,
+  .form-control-datepicker {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}
+
+// When refactoring the datepicker, rewrite the button without using BS
+
+.btn.btn-calendar,
+.btn.btn-deselect {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 0.25rem;
+  height: 44px;
+  width: 44px;
+  min-width: 0;
+  border: none;
+  pointer-events: none;
+  transform: translateY(-50%);
+  color: rgb(var(--brd-gray-500));
+
+  &:hover,
+  &:focus,
+  &:active {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+.btn.btn-deselect {
+  pointer-events: unset;
+}
+
+// This code should be added to the components (DateTimepicker, DatePicker, PeriodSelector) after refactor
+// NOTE: need to check if the 'form-control-icon' class is used.
+
+.input-container {
+  position: relative;
+
+  .form-control-icon {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+  }
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+
+  > :not(:first-child, .dropdown-menu, .valid-tooltip) {
+    margin-left: -1px;
+  }
+}

@@ -1,0 +1,8 @@
+:host {
+  display: block;
+}
+
+.custom-content-grid {
+  display: flex;
+  width: var(--ds-datepicker-single-custom-width, 296px);
+}

@@ -1,0 +1,36 @@
+import { TemplateRef } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { isTemplateRef } from '../../shared/utils/guards.util';
+import { SidebarFooterLink, SidebarNewsBlock, SidebarParentDropdownOption, SidebarParentItem } from './interfaces/sidebar.interface';
+import * as i0 from "@angular/core";
+export declare class DsSidebarComponent {
+    private readonly router;
+    readonly isMenuMode: import("@angular/core").InputSignal<boolean>;
+    readonly isMenuModeCollapsed: import("@angular/core").InputSignal<boolean>;
+    readonly items: import("@angular/core").InputSignal<SidebarParentItem[]>;
+    readonly newsBlock: import("@angular/core").InputSignal<TemplateRef<unknown> | SidebarNewsBlock | undefined>;
+    readonly footerLinks: import("@angular/core").InputSignal<SidebarFooterLink[]>;
+    readonly collapseBreakpoint: import("@angular/core").InputSignal<number>;
+    readonly isMinified: import("@angular/core").ModelSignal<boolean>;
+    readonly parentChange: import("@angular/core").OutputEmitterRef<SidebarParentDropdownOption>;
+    readonly pressMinified: import("@angular/core").OutputEmitterRef<void>;
+    protected readonly selectedParentControl: FormControl<string | null>;
+    protected readonly documentWidth: import("@angular/core").Signal<number>;
+    protected readonly topItems: import("@angular/core").Signal<SidebarParentItem[]>;
+    protected readonly bottomItems: import("@angular/core").Signal<SidebarParentItem[]>;
+    protected readonly isMobileView: import("@angular/core").Signal<boolean>;
+    protected readonly isCollapsed: import("@angular/core").Signal<boolean>;
+    protected readonly isNewsShown: import("@angular/core").WritableSignal<boolean>;
+    protected readonly hasToggled: import("@angular/core").WritableSignal<boolean>;
+    protected readonly isTemplateRef: typeof isTemplateRef;
+    protected readonly parentDropdownOptions: import("@angular/core").Signal<SidebarParentDropdownOption[]>;
+    readonly currentUrl: import("@angular/core").Signal<string>;
+    readonly selectedParentItem: import("@angular/core").Signal<SidebarParentItem | undefined>;
+    constructor();
+    protected preselectParent(): void;
+    protected selectParent(parent: SidebarParentItem): void;
+    protected toggleCollapse(next?: boolean): void;
+    private getSelectedParentItem;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DsSidebarComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DsSidebarComponent, "ds-sidebar", never, { "isMenuMode": { "alias": "isMenuMode"; "required": false; "isSignal": true; }; "isMenuModeCollapsed": { "alias": "isMenuModeCollapsed"; "required": false; "isSignal": true; }; "items": { "alias": "items"; "required": false; "isSignal": true; }; "newsBlock": { "alias": "newsBlock"; "required": false; "isSignal": true; }; "footerLinks": { "alias": "footerLinks"; "required": false; "isSignal": true; }; "collapseBreakpoint": { "alias": "collapseBreakpoint"; "required": false; "isSignal": true; }; "isMinified": { "alias": "isMinified"; "required": false; "isSignal": true; }; }, { "isMinified": "isMinifiedChange"; "parentChange": "parentChange"; "pressMinified": "pressMinified"; }, never, never, true, never>;
+}

@@ -1,0 +1,42 @@
+@use '../../../../styles/typography/body.scss' as body-text;
+
+// default styles for development
+$types: (
+  ('grey', var(--ds-neutral-500-400)),
+  ('pink', var(--ds-accent-pink-500-400)),
+  ('red', var(--ds-accent-red-500-400)),
+  ('orange', var(--ds-accent-orange-500-400)),
+  ('amber', var(--ds-accent-amber-500-400)),
+  ('yellow', var(--ds-accent-yellow-500-400)),
+  ('olive', var(--ds-accent-olive-500-400)),
+  ('green', var(--ds-accent-green-500-400)),
+  ('cyan', var(--ds-accent-cyan-500-400)),
+  ('blue', var(--ds-accent-blue-500-400)),
+  ('purple', var(--ds-accent-purple-500-400))
+);
+
+:host {
+  border: 1px solid var(--ds-neutral-200-700);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 1px 6px 1px 5px;
+  border-radius: var(--radius-6);
+  color: var(--ds-neutral-700-200);
+  background-color: var(--ds-neutral-050-900);
+
+  @include body-text.body-font-config('xs-m');
+}
+
+.status {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-2);
+  border: 1px solid var(--ds-alpha-bw-016-016);
+
+  @each $name, $color in $types {
+    &[data-color='#{$name}'] {
+      background-color: $color;
+    }
+  }
+}

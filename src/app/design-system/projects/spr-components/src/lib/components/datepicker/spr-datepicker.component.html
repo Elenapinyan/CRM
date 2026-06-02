@@ -1,0 +1,71 @@
+<div
+  [class.is-open]="d.isOpen()"
+  class="form-dropdown">
+  <spr-label
+    [label]="label"
+    [inputId]="inputId()"
+    [tooltip]="tooltip"
+    [tooltipClassForLabel]="tooltipClassForLabel"></spr-label>
+
+  <div class="input-container">
+    <input
+      #d="ngbDatepicker"
+      (closed)="cvaOnTouched()"
+      (click)="d.toggle()"
+      [class.is-invalid]="isInvalidControl"
+      [formControl]="control"
+      [id]="inputId()"
+      [value]="control.value || ''"
+      [maxDate]="mappedMaxDate"
+      [minDate]="mappedMinDate"
+      [name]="inputId()"
+      [sprControlSize]="controlSize"
+      [placeholder]="placeholder()"
+      class="form-datepicker-control"
+      ngDefaultControl
+      ngbDatepicker
+      readonly />
+
+    @if (deselect() && control.value) {
+      <button
+        (click)="deselectDate()"
+        [disabled]="control.disabled"
+        class="btn btn-deselect"
+        type="button">
+        <i
+          class="bo-icon-control-cross"
+          style="font-size: 20px"></i>
+      </button>
+    } @else {
+      <button
+        (click)="d.toggle()"
+        [disabled]="control.disabled"
+        class="btn btn-calendar"
+        type="button">
+        <i
+          class="bo-icon-control-calendar"
+          style="font-size: 20px"></i>
+      </button>
+    }
+  </div>
+
+  <ng-template #alternative>
+    <ng-content select="[alternative]"></ng-content>
+  </ng-template>
+
+  @if (description || isInvalidControl) {
+    <div class="form-field-description">
+      @if (description && !isInvalidControl) {
+        <spr-field-description>
+          {{ description }}
+        </spr-field-description>
+      }
+
+      @if (isInvalidControl) {
+        <spr-error>
+          {{ ngControl?.control?.errors | getControlErrorMessage: errorMessagesConfig }}
+        </spr-error>
+      }
+    </div>
+  }
+</div>

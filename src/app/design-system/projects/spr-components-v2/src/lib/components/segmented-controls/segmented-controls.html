@@ -1,0 +1,16 @@
+@if (items(); as itemsValue) {
+  @for (item of itemsValue; track item) {
+    <ds-segmented-control
+      (click)="setActiveItem(item)"
+      (keydown.enter)="setActiveItem(item, $event)"
+      [text]="item.text"
+      [iconStart]="item.iconStart"
+      [iconEnd]="item.iconEnd"
+      [disabled]="item.disabled"
+      [active]="item.id === activeItemId()" />
+
+    @if (item.divider) {
+      <hr class="segmented-controls-divider" />
+    }
+  }
+}

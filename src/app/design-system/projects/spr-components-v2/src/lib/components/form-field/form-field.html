@@ -1,0 +1,25 @@
+@if (label()) {
+  <ds-label
+    [label]="label()"
+    [inputId]="inputId()"
+    [tooltip]="tooltip()"
+    [tooltipClassForLabel]="tooltipClassForLabel() || ''" />
+}
+
+<ng-content />
+
+@if (description() || isInvalid()) {
+  <div class="form-field-description">
+    @if (description() && !isInvalid()) {
+      <ds-field-description>
+        {{ description() }}
+      </ds-field-description>
+    }
+
+    @if (isInvalid()) {
+      <ds-error>
+        {{ control()?.errors | getControlErrorMessage: errorMessages() }}
+      </ds-error>
+    }
+  </div>
+}

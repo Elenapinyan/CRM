@@ -1,0 +1,60 @@
+<div
+  class="toast-content"
+  [class]="(timer$ | async) ? 'toast--autoclose' : 'toast--endless'">
+  @let toast = item();
+  @let toastData = data();
+
+  @if (toastData.icon; as icon) {
+    <div class="toast-content__start">
+      <ng-container *ngTemplateOutlet="icon; context: { $implicit: toast }" />
+    </div>
+  } @else if (toast?.icon) {
+    <i
+      class="toast-content__start"
+      [class]="toast!.icon"></i>
+  }
+
+  <div class="toast-content__end">
+    @if (toastData.header; as header) {
+      <span class="toast-content__header">
+        <ng-container *ngTemplateOutlet="header; context: { $implicit: toast }" />
+      </span>
+    } @else if (toast?.header) {
+      <span
+        class="toast-content__header"
+        [innerHTML]="toast!.header"></span>
+    }
+
+    @if (toastData.description; as description) {
+      <span class="toast-content__body">
+        <ng-container *ngTemplateOutlet="description; context: { $implicit: toast }" />
+      </span>
+    } @else if (toast?.description) {
+      <span
+        class="toast-content__body"
+        [innerHTML]="toast!.description"></span>
+    }
+
+    @if (toastData.footer; as footer) {
+      <span class="toast-content__footer">
+        <ng-container *ngTemplateOutlet="footer; context: { $implicit: toast }" />
+      </span>
+    } @else if (toast?.footer) {
+      <span
+        class="toast-content__footer"
+        [innerHTML]="toast!.footer"></span>
+    }
+  </div>
+
+  <span class="toast__close">
+    <ds-button
+      variant="flat"
+      type="button"
+      size="xs"
+      [isRadius]="true"
+      themeType="alt"
+      (click)="dismiss()">
+      <i class="ds-icon ds-icon-control-cross"></i>
+    </ds-button>
+  </span>
+</div>

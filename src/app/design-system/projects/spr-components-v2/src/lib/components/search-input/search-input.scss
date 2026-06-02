@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.control-field:not(.without-prepend) {
+  --ds-control-field-custom-padding-inline-sm: 0 8px;
+  --ds-control-field-custom-padding-inline-md: 0 12px;
+}
+
+.without-prepend {
+  .control-field__prepend {
+    display: none;
+  }
+}

@@ -1,0 +1,66 @@
+@use '../../../../styles/typography/body' as body-text;
+
+$types: ('primary', 'warning', 'danger', 'success');
+
+:host {
+  // Primary
+  --ds-inline-tip-primary-border-color: var(--ds-neutral-200-750);
+  --ds-inline-tip-primary-background: var(--ds-neutral-100-750);
+  --ds-inline-tip-primary-indicator-background: var(--ds-neutral-400-500);
+
+  // Warning
+  --ds-inline-tip-warning-border-color: var(--ds-accent-amber-100-900);
+  --ds-inline-tip-warning-background: var(--ds-accent-amber-100-950);
+  --ds-inline-tip-warning-indicator-background: var(--ds-accent-orange-400-600);
+
+  // Danger
+  --ds-inline-tip-danger-border-color: var(--ds-accent-red-100-900);
+  --ds-inline-tip-danger-background: var(--ds-accent-red-050-950);
+  --ds-inline-tip-danger-indicator-background: var(--ds-accent-red-400-600);
+
+  // Success
+  --ds-inline-tip-success-border-color: var(--ds-accent-green-100-900);
+  --ds-inline-tip-success-background: var(--ds-accent-green-100-950);
+  --ds-inline-tip-success-indicator-background: var(--ds-accent-green-600-600);
+
+  @include body-text.body-font-config('m');
+
+  position: relative;
+  padding-inline: var(--ds-inline-tip-custom-padding-inline, 16px 0);
+  color: var(--ds-inline-tip-custom-color, var(--ds-neutral-1000-0));
+  background: var(--ds-inline-tip-background, transparent);
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    content: '';
+    width: 4px;
+    border-radius: var(--radius-100);
+    background: var(--ds-inline-tip-indicator-background);
+  }
+
+  @each $name in $types {
+    &.#{$name} {
+      --ds-inline-tip-indicator-background: var(--ds-inline-tip-#{$name}-indicator-background);
+    }
+  }
+
+  &.filled {
+    padding-inline: var(--ds-inline-tip-filled-custom-padding-inline, 28px 12px);
+    padding-block: var(--ds-inline-tip-filled-custom-padding-block, 9px);
+    border: 1px solid var(--ds-inline-tip-border-color);
+    border-radius: var(--ds-inline-tip-custom-border-radius, var(--radius-8));
+    box-shadow: 0 1px 6px 0 var(--ds-alpha-bb-006-056);
+
+    &::after {
+      inset: 9px 0 9px 12px;
+    }
+
+    @each $name in $types {
+      &.#{$name} {
+        --ds-inline-tip-background: var(--ds-inline-tip-#{$name}-background);
+        --ds-inline-tip-border-color: var(--ds-inline-tip-#{$name}-border-color);
+      }
+    }
+  }
+}

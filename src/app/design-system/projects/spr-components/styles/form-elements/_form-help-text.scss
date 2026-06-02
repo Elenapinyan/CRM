@@ -1,0 +1,9 @@
+.form-help-text {
+  font-size: 12px;
+  color: rgb(var(--spr-grey-250));
+  grid-area: icon;
+}
+
+.form-help-text__body {
+  pointer-events: none;
+}

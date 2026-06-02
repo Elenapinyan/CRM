@@ -1,0 +1,185 @@
+:host {
+  display: block;
+  line-height: 1;
+
+  &:not(:has(.label--inline)) {
+    .checkbox-control__label {
+      flex: 1;
+    }
+  }
+
+  ::ng-deep {
+    .label-container {
+      cursor: pointer;
+    }
+  }
+
+  :has(.custom-radio-button:disabled) {
+    ::ng-deep {
+      .label-container {
+        cursor: default;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.radio-button-control {
+  --spr-radio-button-control-decorated-background: var(--brd-fill-default-200);
+  --spr-radio-button-control-decorated-border-color: var(--brd-border-default-300);
+
+  background: var(--spr-radio-button-control-background, transparent);
+  border: 1px solid var(--spr-radio-button-control-border-color, transparent);
+}
+
+.radio-button-control--bottom-margin {
+  margin-bottom: 4px;
+}
+
+.radio-button-control--decorated {
+  --spr-radio-button-control-background: var(--spr-radio-button-control-decorated-background);
+  --spr-radio-button-control-border-color: var(--spr-radio-button-control-decorated-border-color);
+
+  padding: 11px;
+  border-radius: var(--spr-border-radius-m);
+}
+
+// radiobutton styles
+.custom-radio-button {
+  --spr-radio-border-color: var(--brd-border-default-500);
+  --spr-radio-border-color-hover: var(--brd-fill-accent-hover-base);
+  --spr-radio-border-color-active: var(--brd-fill-accent-pressed-light);
+  --spr-radio-border-color-checked: var(--brd-fill-accent-default-light);
+  --spr-radio-border-color-checked-hover: var(--brd-fill-accent-hover-base);
+  --spr-radio-border-color-disabled: var(--brd-fill-accent-disabled);
+  --spr-radio-background-color: var(--brd-fill-default-0);
+  --spr-radio-background-color-disabled: var(--brd-fill-disabled-200);
+  --spr-radio-box-shadow-focus: 0 0 0 4px var(--brd-fill-accent-focus);
+
+  width: 20px;
+  height: 20px;
+  border-radius: var(--spr-border-radius-pill);
+  box-shadow: var(--spr-radio-box-shadow, none);
+  position: relative;
+  cursor: pointer;
+  appearance: none;
+  grid-area: radio-button;
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--spr-radio-border-color);
+    background: var(--spr-radio-background-color);
+    content: '';
+    border-radius: var(--spr-border-radius-pill);
+    transition: border 100ms ease;
+  }
+
+  &::before {
+    position: absolute;
+    content: '';
+    width: 10px;
+    height: 10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: var(--spr-border-radius-pill);
+    background: var(--brd-fill-hover-100);
+    z-index: 2;
+    display: none;
+  }
+
+  &:hover {
+    &:not(:checked, :disabled) {
+      &::after {
+        --spr-radio-border-color: var(--spr-radio-border-color-hover);
+      }
+
+      &::before {
+        display: block;
+      }
+    }
+  }
+
+  &:active {
+    &:not(:checked, :disabled) {
+      &::after {
+        border: 5px solid var(--spr-radio-border-color-active);
+      }
+    }
+  }
+
+  &:focus-visible {
+    --spr-radio-box-shadow: var(--spr-radio-box-shadow-focus);
+
+    outline: none;
+  }
+
+  &:checked {
+    &::after {
+      border: 5px solid var(--spr-radio-border-color-checked);
+    }
+
+    &:hover {
+      &::after {
+        border: 5px solid var(--spr-radio-border-color-checked-hover);
+      }
+    }
+  }
+
+  &:disabled {
+    cursor: default;
+
+    &:not(:checked) {
+      &::after {
+        --spr-radio-background-color: var(--spr-radio-background-color-disabled);
+      }
+    }
+
+    &:checked {
+      &::after {
+        border: 5px solid var(--spr-radio-border-color-disabled);
+      }
+    }
+  }
+}
+
+.radio-check-holder {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  &:has(.radio-check-holder__label) {
+    gap: 8px;
+
+    &:not(:has(.label--inline)) {
+      .radio-check-holder__label {
+        flex: 1;
+      }
+    }
+  }
+
+  &:has(.label-container:hover) {
+    .custom-radio-button {
+      &:not(:checked, :disabled) {
+        &::after {
+          --spr-radio-border-color: var(--spr-radio-border-color-hover);
+        }
+
+        &::before {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &:has(.label-container:active) {
+    .custom-radio-button {
+      &:not(:checked, :disabled) {
+        &::after {
+          border: 5px solid var(--spr-radio-border-color-active);
+        }
+      }
+    }
+  }
+}

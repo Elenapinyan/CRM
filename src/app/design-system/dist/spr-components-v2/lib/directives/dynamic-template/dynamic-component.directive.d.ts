@@ -1,0 +1,33 @@
+import { ChangeDetectorRef, ComponentRef, ElementRef, Injector, NgModuleRef, Type } from '@angular/core';
+import { CreateComponentResult, DynamicComponentConfig, DynamicPosition, DynamicProjection } from './interfaces';
+import { BaseDynamicElement } from './models';
+import { DsDynamicBaseDirective } from './dynamic-base.directive';
+import * as i0 from "@angular/core";
+export declare class DsDynamicComponentDirective<T = unknown> extends DsDynamicBaseDirective<T> {
+    set dsDynamicComponentPosition(value: DynamicPosition);
+    set dsDynamicComponentProjection(value: DynamicProjection);
+    set dsDynamicComponentCustomContainer(value: ElementRef<HTMLElement> | HTMLElement | undefined);
+    set dsDynamicComponentClass(value: string | undefined);
+    set dsDynamicComponent(value: Type<T> | undefined);
+    dynamicComponentInjector: Injector;
+    private componentPosition?;
+    private componentProjection?;
+    private componentClass?;
+    private componentContainer?;
+    private dComponentType?;
+    private dElement?;
+    protected readonly cdRef: ChangeDetectorRef;
+    protected readonly ngModuleRef: NgModuleRef<unknown>;
+    private ref?;
+    get componentType(): Type<T> | undefined;
+    get dynamicElement(): BaseDynamicElement | undefined;
+    get componentRef(): ComponentRef<T> | undefined;
+    get dsDynamicComponentClass(): string | undefined;
+    destroy(): void;
+    protected createComponent(config?: DynamicComponentConfig<T>): CreateComponentResult<T> | null;
+    protected createOneComponent(config?: DynamicComponentConfig<T>): void;
+    protected configureManually(config: DynamicComponentConfig<T>): void;
+    private addNgContentAttribute;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DsDynamicComponentDirective<any>, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<DsDynamicComponentDirective<any>, "[dsDynamicComponent]", never, { "dsDynamicComponentPosition": { "alias": "dsDynamicComponentPosition"; "required": false; }; "dsDynamicComponentProjection": { "alias": "dsDynamicComponentProjection"; "required": false; }; "dsDynamicComponentCustomContainer": { "alias": "dsDynamicComponentCustomContainer"; "required": false; }; "dsDynamicComponentClass": { "alias": "dsDynamicComponentClass"; "required": false; }; "dsDynamicComponent": { "alias": "dsDynamicComponent"; "required": false; }; "dynamicComponentInjector": { "alias": "dynamicComponentInjector"; "required": false; }; }, {}, never, never, true, never>;
+}

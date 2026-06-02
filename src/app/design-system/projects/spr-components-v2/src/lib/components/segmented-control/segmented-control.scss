@@ -1,0 +1,46 @@
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  --ds-icon-color: var(--ds-neutral-600-250);
+  --ds-icon-font-size: var(--ds-font-size-14);
+
+  @include body-text.body-font-config('s-m');
+
+  padding-inline: var(--ds-segmented-control-custom-padding-inline, 8px);
+  padding-block: var(--ds-segmented-control-custom-padding-block, 4px);
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: var(--ds-segmented-control-custom-background, var(--ds-neutral-100-800));
+  border-radius: var(--ds-segmented-control-custom-border-radius, var(--radius-100));
+  color: var(--ds-segmented-control-custom-color, var(--ds-neutral-1000-0));
+  transition: background var(--ds-transition-time) ease;
+
+  &:hover {
+    background: var(--ds-segmented-control-custom-background-hover, var(--ds-neutral-150-750));
+  }
+
+  &:focus-visible {
+    outline: none;
+    background: var(--ds-segmented-control-custom-background-focus, var(--ds-neutral-0-800));
+    box-shadow: var(--ds-segmented-control-box-shadow-focus);
+  }
+
+  &.active {
+    background: var(--ds-segmented-control-custom-background-active, var(--ds-neutral-0-600));
+    box-shadow:
+      0 0 1px 1px var(--ds-alpha-bb-006-040),
+      0 2px 2px 0 var(--ds-alpha-bb-004-040);
+  }
+
+  &.disabled {
+    --ds-icon-color: var(--ds-neutral-500-500);
+
+    color: var(--ds-segmented-control-custom-color-disabled, var(--ds-neutral-500-500));
+    cursor: default;
+    pointer-events: none;
+    background: transparent;
+  }
+}

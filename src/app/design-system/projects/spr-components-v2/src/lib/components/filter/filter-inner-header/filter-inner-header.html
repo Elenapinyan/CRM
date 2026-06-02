@@ -1,0 +1,16 @@
+<div class="filter__menu-inner-header-title">
+  {{ text() }}
+
+  @if (counterValue()) {
+    <ds-badge
+      variant="dark"
+      [content]="counterValue()" />
+  }
+</div>
+
+<ds-button
+  size="md"
+  variant="transparent"
+  (click)="clear()">
+  Clear
+</ds-button>

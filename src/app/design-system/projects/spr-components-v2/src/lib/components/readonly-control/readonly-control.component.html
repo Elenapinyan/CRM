@@ -1,0 +1,17 @@
+<div
+  class="readonly-field"
+  dsLabelPosition="start"
+  [dsLabel]="label()"
+  [tooltip]="tooltip()"
+  [tooltipClassForLabel]="tooltipClassForLabel()"
+  [dsControlSize]="controlSize()">
+  <div class="readonly-field__inner">
+    <div class="readonly-field__text">
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+  <div class="readonly-field__icon">
+    <ng-content select="[icon]"></ng-content>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+@use '../../../../styles/mixins/mixins' as mixins;
+@use '../../../../styles/typography/paragraph.scss' as paragraph-text;
+
+:host {
+  display: flex;
+  flex-direction: column;
+
+  .stepper-body {
+    @include paragraph-text.paragraph-font-config('xl');
+
+    color: var(--ds-neutral-1000-0);
+  }
+
+  .stepper-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .spr-stepper-header--custom {
+    display: flex;
+    gap: 12px;
+    align-items: start;
+    overflow-x: auto;
+
+    @include mixins.scroll-style;
+
+    .step-header {
+      flex: 1;
+    }
+  }
+
+  &.stepper-orientation--vertical {
+    height: 100%;
+
+    .stepper-wrapper {
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      height: 100%;
+    }
+
+    .stepper-body {
+      display: block;
+      padding-inline: var(--ds-stepper-vertical-body-custom-padding-inline, 16px);
+      padding-block: var(--ds-stepper-vertical-body-custom-padding-block, 16px);
+      height: 100%;
+      flex: 1;
+      overflow-y: auto;
+
+      @include mixins.scroll-style;
+    }
+
+    .spr-stepper-header--custom {
+      overflow-y: auto;
+      padding: 16px 26px 0 16px;
+      flex-direction: column;
+      gap: 4px;
+
+      @include mixins.scroll-style;
+
+      .step-header--default-template {
+        display: flex;
+      }
+    }
+  }
+}

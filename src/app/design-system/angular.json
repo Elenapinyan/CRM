@@ -1,0 +1,208 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "spr-components": {
+      "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "standalone": true,
+          "skipTests": true,
+          "changeDetection": "OnPush"
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "projects/spr-components",
+      "sourceRoot": "projects/spr-components/src",
+      "prefix": "spr",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "options": {
+            "project": "projects/spr-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/spr-components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/spr-components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/spr-components/**/*.ts", "projects/spr-components/**/*.html"]
+          }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "styles": ["projects/spr-components/styles/_index.scss"],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/spr-components/.storybook/assets",
+                "output": "assets/"
+              }
+            ],
+            "configDir": "projects/spr-components/.storybook",
+            "browserTarget": "spr-components:build",
+            "compodoc": false,
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "styles": ["projects/spr-components/styles/_index.scss"],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/spr-components/.storybook/assets",
+                "output": "assets/"
+              }
+            ],
+            "configDir": "projects/spr-components/.storybook",
+            "browserTarget": "spr-components:build",
+            "outputDir": "storybook-static",
+            "compodoc": false
+          }
+        }
+      }
+    },
+    "spr-components-v2": {
+      "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "standalone": true,
+          "changeDetection": "OnPush",
+          "type": ""
+        },
+        "@schematics/angular:service": {}
+      },
+      "root": "projects/spr-components-v2",
+      "sourceRoot": "projects/spr-components-v2/src",
+      "prefix": "spr",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "options": {
+            "project": "projects/spr-components-v2/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/spr-components-v2/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/spr-components-v2/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/spr-components-v2/**/*.ts", "projects/spr-components-v2/**/*.html"]
+          }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "styles": [
+              "projects/spr-grid/styles/ag-grid.scss",
+              "projects/spr-components-v2/styles/_index.scss",
+              "projects/spr-components-v2/styles/storybook.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["projects/spr-components-v2/styles"]
+            },
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/spr-components-v2/.storybook/assets",
+                "output": "assets/"
+              }
+            ],
+            "configDir": "projects/spr-components-v2/.storybook",
+            "browserTarget": "spr-components-v2:build",
+            "compodoc": false,
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "styles": [
+              "projects/spr-grid/styles/ag-grid.scss",
+              "projects/spr-components-v2/styles/_index.scss",
+              "projects/spr-components-v2/styles/storybook.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["projects/spr-components-v2/styles"]
+            },
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/spr-components-v2/.storybook/assets",
+                "output": "assets/"
+              }
+            ],
+            "configDir": "projects/spr-components-v2/.storybook",
+            "browserTarget": "spr-components-v2:build",
+            "outputDir": "storybook-static",
+            "compodoc": false
+          }
+        }
+      }
+    },
+    "spr-grid": {
+      "projectType": "library",
+      "root": "projects/spr-grid",
+      "sourceRoot": "projects/spr-grid/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/spr-grid/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/spr-grid/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/spr-grid/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/spr-grid/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/spr-grid/**/*.ts", "projects/spr-grid/**/*.html"],
+            "eslintConfig": "projects/spr-grid/eslint.config.mjs"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "schematicCollections": ["@angular-eslint/schematics"],
+    "analytics": false
+  }
+}

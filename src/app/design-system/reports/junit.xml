@@ -1,0 +1,1319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="566" failures="0" errors="0" time="49.602">
+  <testsuite name="LimiterContainer" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:13" time="10.214" tests="6">
+    <testcase classname="LimiterContainer Model should emit setCollapsedItems method on item added" name="LimiterContainer Model should emit setCollapsedItems method on item added" time="0.168">
+    </testcase>
+    <testcase classname="LimiterContainer Model Items limitation should correctly limit items" name="LimiterContainer Model Items limitation should correctly limit items" time="0.04">
+    </testcase>
+    <testcase classname="LimiterContainer Model Items limitation should not limit if there is enough space" name="LimiterContainer Model Items limitation should not limit if there is enough space" time="0.024">
+    </testcase>
+    <testcase classname="LimiterContainer Model Items returning should correctly return items" name="LimiterContainer Model Items returning should correctly return items" time="0.041">
+    </testcase>
+    <testcase classname="LimiterContainer View should limit on resize" name="LimiterContainer View should limit on resize" time="0.04">
+    </testcase>
+    <testcase classname="LimiterContainer View should return on resize" name="LimiterContainer View should return on resize" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="NumericInputComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:13" time="12.734" tests="13">
+    <testcase classname="NumericInputComponent Model should create component" name="NumericInputComponent Model should create component" time="0.176">
+    </testcase>
+    <testcase classname="NumericInputComponent Model should emit a blur event and mark the control as touched" name="NumericInputComponent Model should emit a blur event and mark the control as touched" time="0.067">
+    </testcase>
+    <testcase classname="NumericInputComponent View should set the value" name="NumericInputComponent View should set the value" time="0.008">
+    </testcase>
+    <testcase classname="NumericInputComponent View should change control size to small" name="NumericInputComponent View should change control size to small" time="0.026">
+    </testcase>
+    <testcase classname="NumericInputComponent View should add placeholder" name="NumericInputComponent View should add placeholder" time="0.03">
+    </testcase>
+    <testcase classname="NumericInputComponent View should accept negative numbers" name="NumericInputComponent View should accept negative numbers" time="0.013">
+    </testcase>
+    <testcase classname="NumericInputComponent View should not accept negative numbers" name="NumericInputComponent View should not accept negative numbers" time="0.034">
+    </testcase>
+    <testcase classname="NumericInputComponent View should change a precision" name="NumericInputComponent View should change a precision" time="0.015">
+    </testcase>
+    <testcase classname="NumericInputComponent View should remove fractional numbers if precision 0" name="NumericInputComponent View should remove fractional numbers if precision 0" time="0.02">
+    </testcase>
+    <testcase classname="NumericInputComponent View should show description" name="NumericInputComponent View should show description" time="0.033">
+    </testcase>
+    <testcase classname="NumericInputComponent View Check step buttons" name="NumericInputComponent View Check step buttons" time="0.088">
+    </testcase>
+    <testcase classname="NumericInputComponent View should show/hide numeric prefix" name="NumericInputComponent View should show/hide numeric prefix" time="0.099">
+    </testcase>
+    <testcase classname="NumericInputComponent View should react on the native input blur event" name="NumericInputComponent View should react on the native input blur event" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprInputComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:13" time="13.228" tests="23">
+    <testcase classname="SprInputComponent Model should create component" name="SprInputComponent Model should create component" time="0.161">
+    </testcase>
+    <testcase classname="SprInputComponent Model should change type from text to password" name="SprInputComponent Model should change type from text to password" time="0.053">
+    </testcase>
+    <testcase classname="SprInputComponent Model should focus manually" name="SprInputComponent Model should focus manually" time="0.028">
+    </testcase>
+    <testcase classname="SprInputComponent Model convertValue() should return string if type is text" name="SprInputComponent Model convertValue() should return string if type is text" time="0.043">
+    </testcase>
+    <testcase classname="SprInputComponent Model convertValue() should convert to number if type is number" name="SprInputComponent Model convertValue() should convert to number if type is number" time="0.086">
+    </testcase>
+    <testcase classname="SprInputComponent Model convertValue() should convert to big.js number if type is bigNumber" name="SprInputComponent Model convertValue() should convert to big.js number if type is bigNumber" time="0.045">
+    </testcase>
+    <testcase classname="SprInputComponent Model convertValue() should emit a blur event and mark the control as touched" name="SprInputComponent Model convertValue() should emit a blur event and mark the control as touched" time="0.014">
+    </testcase>
+    <testcase classname="SprInputComponent View should set the value" name="SprInputComponent View should set the value" time="0.008">
+    </testcase>
+    <testcase classname="SprInputComponent View should show the password button" name="SprInputComponent View should show the password button" time="0.033">
+    </testcase>
+    <testcase classname="SprInputComponent View should change control size to small" name="SprInputComponent View should change control size to small" time="0.065">
+    </testcase>
+    <testcase classname="SprInputComponent View should add addons" name="SprInputComponent View should add addons" time="0.031">
+    </testcase>
+    <testcase classname="SprInputComponent View should add prepend" name="SprInputComponent View should add prepend" time="0.017">
+    </testcase>
+    <testcase classname="SprInputComponent View should add append" name="SprInputComponent View should add append" time="0.023">
+    </testcase>
+    <testcase classname="SprInputComponent View should add append with type button" name="SprInputComponent View should add append with type button" time="0.05">
+    </testcase>
+    <testcase classname="SprInputComponent View should add placeholder" name="SprInputComponent View should add placeholder" time="0.024">
+    </testcase>
+    <testcase classname="SprInputComponent View should add submit button" name="SprInputComponent View should add submit button" time="0.009">
+    </testcase>
+    <testcase classname="SprInputComponent View should toggle password visibility" name="SprInputComponent View should toggle password visibility" time="0.009">
+    </testcase>
+    <testcase classname="SprInputComponent View should accept negative numbers" name="SprInputComponent View should accept negative numbers" time="0.063">
+    </testcase>
+    <testcase classname="SprInputComponent View should not accept negative numbers" name="SprInputComponent View should not accept negative numbers" time="0.078">
+    </testcase>
+    <testcase classname="SprInputComponent View should change a precision" name="SprInputComponent View should change a precision" time="0.012">
+    </testcase>
+    <testcase classname="SprInputComponent View should remove fractional numbers if onlyInteger" name="SprInputComponent View should remove fractional numbers if onlyInteger" time="0.036">
+    </testcase>
+    <testcase classname="SprInputComponent View should show description" name="SprInputComponent View should show description" time="0.036">
+    </testcase>
+    <testcase classname="SprInputComponent View should react on the native input blur event" name="SprInputComponent View should react on the native input blur event" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="DsOpenSubMenuDirective" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:13" time="13.3" tests="12">
+    <testcase classname="DsOpenSubMenuDirective should create test component" name="DsOpenSubMenuDirective should create test component" time="0.454">
+    </testcase>
+    <testcase classname="DsOpenSubMenuDirective should create submenu component on click" name="DsOpenSubMenuDirective should create submenu component on click" time="0.037">
+    </testcase>
+    <testcase classname="DsOpenSubMenuDirective should dismiss submenu if already open on click" name="DsOpenSubMenuDirective should dismiss submenu if already open on click" time="0.104">
+    </testcase>
+    <testcase classname="DsOpenSubMenuDirective should set inputs to SprOpenMenuComponent" name="DsOpenSubMenuDirective should set inputs to SprOpenMenuComponent" time="0.035">
+    </testcase>
+    <testcase classname="DsOpenSubMenuDirective should add classes after view init" name="DsOpenSubMenuDirective should add classes after view init" time="0.004">
+    </testcase>
+    <testcase classname="DsOpenSubMenuDirective customPlacement logic should keep default placement when there is enough space on right and not near left edge" name="DsOpenSubMenuDirective customPlacement logic should keep default placement when there is enough space on right and not near left edge" time="0.026">
+    </testcase>
+    <testcase classname="DsOpenSubMenuDirective customPlacement logic should set placement to left when right side overflows and left has enough space" name="DsOpenSubMenuDirective customPlacement logic should set placement to left when right side overflows and left has enough space" time="0.008">
+    </testcase>
+    <testcase classname="DsOpenSubMenuDirective customPlacement logic should keep default placement when right overflows but left does not have enough space" name="DsOpenSubMenuDirective customPlacement logic should keep default placement when right overflows but left does not have enough space" time="0.029">
+    </testcase>
+    <testcase classname="DsOpenSubMenuDirective customPlacement logic should handle zero width elements" name="DsOpenSubMenuDirective customPlacement logic should handle zero width elements" time="0.021">
+    </testcase>
+    <testcase classname="DsOpenSubMenuDirective customPlacement logic should handle very narrow elements near screen edge" name="DsOpenSubMenuDirective customPlacement logic should handle very narrow elements near screen edge" time="0.019">
+    </testcase>
+    <testcase classname="DsOpenSubMenuDirective customPlacement logic should initialize customPlacement with default placement value" name="DsOpenSubMenuDirective customPlacement logic should initialize customPlacement with default placement value" time="0.031">
+    </testcase>
+    <testcase classname="DsOpenSubMenuDirective should pass customPlacement to SprOpenMenuComponent" name="DsOpenSubMenuDirective should pass customPlacement to SprOpenMenuComponent" time="0.011">
+    </testcase>
+  </testsuite>
+  <testsuite name="AmountPicker" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:13" time="13.73" tests="11">
+    <testcase classname="AmountPicker Model should initialize with default values [0, 100]" name="AmountPicker Model should initialize with default values [0, 100]" time="0.43">
+    </testcase>
+    <testcase classname="AmountPicker ControlValueAccessor (Interaction with Parent) Check valid value from parent" name="AmountPicker ControlValueAccessor (Interaction with Parent) Check valid value from parent" time="0.043">
+    </testcase>
+    <testcase classname="AmountPicker ControlValueAccessor (Interaction with Parent) Check null value from parent (should reset to min/max)" name="AmountPicker ControlValueAccessor (Interaction with Parent) Check null value from parent (should reset to min/max)" time="0.077">
+    </testcase>
+    <testcase classname="AmountPicker Logic &amp; Validation Check start input clamping (cannot be less than min)" name="AmountPicker Logic &amp; Validation Check start input clamping (cannot be less than min)" time="0.03">
+    </testcase>
+    <testcase classname="AmountPicker Logic &amp; Validation Check start input allows crossing end value during typing" name="AmountPicker Logic &amp; Validation Check start input allows crossing end value during typing" time="0.043">
+    </testcase>
+    <testcase classname="AmountPicker Logic &amp; Validation Check end input clamping (cannot be more than max)" name="AmountPicker Logic &amp; Validation Check end input clamping (cannot be more than max)" time="0.063">
+    </testcase>
+    <testcase classname="AmountPicker Logic &amp; Validation Check end input allows crossing start value during typing" name="AmountPicker Logic &amp; Validation Check end input allows crossing start value during typing" time="0.062">
+    </testcase>
+    <testcase classname="AmountPicker Logic &amp; Validation Check blur corrects values (sanity check)" name="AmountPicker Logic &amp; Validation Check blur corrects values (sanity check)" time="0.05">
+    </testcase>
+    <testcase classname="AmountPicker Logic &amp; Validation Check slider interaction updates signals" name="AmountPicker Logic &amp; Validation Check slider interaction updates signals" time="0.056">
+    </testcase>
+    <testcase classname="AmountPicker View Rendering should pass disabled state to children" name="AmountPicker View Rendering should pass disabled state to children" time="0.074">
+    </testcase>
+    <testcase classname="AmountPicker View Rendering should update signal when child component emits change" name="AmountPicker View Rendering should update signal when child component emits change" time="0.048">
+    </testcase>
+  </testsuite>
+  <testsuite name="DsOpenGroupMenuDirective" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:13" time="13.813" tests="9">
+    <testcase classname="DsOpenGroupMenuDirective should create DsOpenGroupMenuDirective instance" name="DsOpenGroupMenuDirective should create DsOpenGroupMenuDirective instance" time="0.445">
+    </testcase>
+    <testcase classname="DsOpenGroupMenuDirective should render title container and chevron on init" name="DsOpenGroupMenuDirective should render title container and chevron on init" time="0.094">
+    </testcase>
+    <testcase classname="DsOpenGroupMenuDirective should toggle isOpen and chevron classes on host click" name="DsOpenGroupMenuDirective should toggle isOpen and chevron classes on host click" time="0.045">
+    </testcase>
+    <testcase classname="DsOpenGroupMenuDirective should emit visibilityChange on toggle" name="DsOpenGroupMenuDirective should emit visibilityChange on toggle" time="0.121">
+    </testcase>
+    <testcase classname="DsOpenGroupMenuDirective should render list and items when opened" name="DsOpenGroupMenuDirective should render list and items when opened" time="0.08">
+    </testcase>
+    <testcase classname="DsOpenGroupMenuDirective should remove list and items when closed" name="DsOpenGroupMenuDirective should remove list and items when closed" time="0.046">
+    </testcase>
+    <testcase classname="DsOpenGroupMenuDirective should close group menu on child click when closeGroupMenuOnChildClick = true and closeEntireMenuOnChildClick = false" name="DsOpenGroupMenuDirective should close group menu on child click when closeGroupMenuOnChildClick = true and closeEntireMenuOnChildClick = false" time="0.041">
+    </testcase>
+    <testcase classname="DsOpenGroupMenuDirective should keep group menu open on child click when closeGroupMenuOnChildClick = false and closeEntireMenuOnChildClick = false" name="DsOpenGroupMenuDirective should keep group menu open on child click when closeGroupMenuOnChildClick = false and closeEntireMenuOnChildClick = false" time="0.067">
+    </testcase>
+    <testcase classname="DsOpenGroupMenuDirective should keep menu open when closeGroupMenuOnChildClick = false" name="DsOpenGroupMenuDirective should keep menu open when closeGroupMenuOnChildClick = false" time="0.027">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprOpenMenuComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:24" time="4.021" tests="7">
+    <testcase classname="SprOpenMenuComponent should open dropdown and detect changes on AfterViewInit" name="SprOpenMenuComponent should open dropdown and detect changes on AfterViewInit" time="0.191">
+    </testcase>
+    <testcase classname="SprOpenMenuComponent should emit closeParentMenuDropdown in sub-menu with closeParentOnClick" name="SprOpenMenuComponent should emit closeParentMenuDropdown in sub-menu with closeParentOnClick" time="0.006">
+    </testcase>
+    <testcase classname="SprOpenMenuComponent should stop event propagation if hasSubMenu is true" name="SprOpenMenuComponent should stop event propagation if hasSubMenu is true" time="0.055">
+    </testcase>
+    <testcase classname="SprOpenMenuComponent should stop event propagation if closeOnClick is false" name="SprOpenMenuComponent should stop event propagation if closeOnClick is false" time="0.037">
+    </testcase>
+    <testcase classname="SprOpenMenuComponent should close dropdown if no subMenu and closeOnClick is true" name="SprOpenMenuComponent should close dropdown if no subMenu and closeOnClick is true" time="0.009">
+    </testcase>
+    <testcase classname="SprOpenMenuComponent should detect subMenuPlacement via type guard" name="SprOpenMenuComponent should detect subMenuPlacement via type guard" time="0.02">
+    </testcase>
+    <testcase classname="SprOpenMenuComponent should add size class" name="SprOpenMenuComponent should add size class" time="0.056">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprSidebarItemComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:13" time="14.551" tests="13">
+    <testcase classname="SprSidebarItemComponent Link Item should render link element for link type item" name="SprSidebarItemComponent Link Item should render link element for link type item" time="0.314">
+    </testcase>
+    <testcase classname="SprSidebarItemComponent Link Item should display item label" name="SprSidebarItemComponent Link Item should display item label" time="0.018">
+    </testcase>
+    <testcase classname="SprSidebarItemComponent Link Item should display icon when iconClass is provided" name="SprSidebarItemComponent Link Item should display icon when iconClass is provided" time="0.01">
+    </testcase>
+    <testcase classname="SprSidebarItemComponent Link Item should display badge with unread count" name="SprSidebarItemComponent Link Item should display badge with unread count" time="0.138">
+    </testcase>
+    <testcase classname="SprSidebarItemComponent Link Item should show badge as dot when collapsed" name="SprSidebarItemComponent Link Item should show badge as dot when collapsed" time="0.021">
+    </testcase>
+    <testcase classname="SprSidebarItemComponent Link Item should apply disabled class when item is disabled" name="SprSidebarItemComponent Link Item should apply disabled class when item is disabled" time="0.036">
+    </testcase>
+    <testcase classname="SprSidebarItemComponent Group Item should toggle open state when clicked" name="SprSidebarItemComponent Group Item should toggle open state when clicked" time="0.135">
+    </testcase>
+    <testcase classname="SprSidebarItemComponent Group Item should hide sub-nav items when collapsed" name="SprSidebarItemComponent Group Item should hide sub-nav items when collapsed" time="0.018">
+    </testcase>
+    <testcase classname="SprSidebarItemComponent Group Item should NOT toggle when disabled and clicked" name="SprSidebarItemComponent Group Item should NOT toggle when disabled and clicked" time="0.024">
+    </testcase>
+    <testcase classname="SprSidebarItemComponent Group Item should NOT toggle isOpen when sidebar is collapsed (uses menu instead)" name="SprSidebarItemComponent Group Item should NOT toggle isOpen when sidebar is collapsed (uses menu instead)" time="0.086">
+    </testcase>
+    <testcase classname="SprSidebarItemComponent Group Item should select first sub-item when not collapsed on click" name="SprSidebarItemComponent Group Item should select first sub-item when not collapsed on click" time="0.09">
+    </testcase>
+    <testcase classname="SprSidebarItemComponent View should apply collapsed class when isCollapsed is true" name="SprSidebarItemComponent View should apply collapsed class when isCollapsed is true" time="0.021">
+    </testcase>
+    <testcase classname="SprSidebarItemComponent View should show dot badge when showDotOnly is true" name="SprSidebarItemComponent View should show dot badge when showDotOnly is true" time="0.019">
+    </testcase>
+  </testsuite>
+  <testsuite name="Selection" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:13" time="14.58" tests="21">
+    <testcase classname="Selection Model should not select item with null value if it is not in an option list" name="Selection Model should not select item with null value if it is not in an option list" time="0.254">
+    </testcase>
+    <testcase classname="Selection Model should select item with null value if it is in options list" name="Selection Model should select item with null value if it is in options list" time="0.038">
+    </testcase>
+    <testcase classname="Selection Model should select items with valueKey" name="Selection Model should select items with valueKey" time="0.066">
+    </testcase>
+    <testcase classname="Selection Model should select items without valueKey" name="Selection Model should select items without valueKey" time="0.113">
+    </testcase>
+    <testcase classname="Selection Model should select multiple items" name="Selection Model should select multiple items" time="0.018">
+    </testcase>
+    <testcase classname="Selection Model should select all items" name="Selection Model should select all items" time="0.035">
+    </testcase>
+    <testcase classname="Selection Model should apply selected items automatically when auto apply enabled" name="Selection Model should apply selected items automatically when auto apply enabled" time="0.01">
+    </testcase>
+    <testcase classname="Selection Model should not apply selected items automatically when auto apply disabled" name="Selection Model should not apply selected items automatically when auto apply disabled" time="0.021">
+    </testcase>
+    <testcase classname="Selection Model should apply selected items manually when auto apply disabled" name="Selection Model should apply selected items manually when auto apply disabled" time="0.011">
+    </testcase>
+    <testcase classname="Selection Model should reset selected items" name="Selection Model should reset selected items" time="0.029">
+    </testcase>
+    <testcase classname="Selection Model should filter options" name="Selection Model should filter options" time="0.007">
+    </testcase>
+    <testcase classname="Selection Model should reset filtering on select option" name="Selection Model should reset filtering on select option" time="0.005">
+    </testcase>
+    <testcase classname="Selection Model should select options on writeValue" name="Selection Model should select options on writeValue" time="0.049">
+    </testcase>
+    <testcase classname="Selection Model should select options on writeValue with valueKey" name="Selection Model should select options on writeValue with valueKey" time="0.015">
+    </testcase>
+    <testcase classname="Selection Model should not select incorrect option on writeValue with valueKey" name="Selection Model should not select incorrect option on writeValue with valueKey" time="0.008">
+    </testcase>
+    <testcase classname="Selection View should render options" name="Selection View should render options" time="0.255">
+    </testcase>
+    <testcase classname="Selection View should render option icon" name="Selection View should render option icon" time="0.043">
+    </testcase>
+    <testcase classname="Selection View should render option text" name="Selection View should render option text" time="0.029">
+    </testcase>
+    <testcase classname="Selection View should render search error message" name="Selection View should render search error message" time="0.035">
+    </testcase>
+    <testcase classname="Selection View should render select-all option" name="Selection View should render select-all option" time="0.164">
+    </testcase>
+    <testcase classname="Selection View should render search" name="Selection View should render search" time="0.163">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprSidebarComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:13" time="14.736" tests="11">
+    <testcase classname="SprSidebarComponent Collapse/Expand should expand sidebar when clicking collapse trigger while collapsed" name="SprSidebarComponent Collapse/Expand should expand sidebar when clicking collapse trigger while collapsed" time="0.582">
+    </testcase>
+    <testcase classname="SprSidebarComponent Collapse/Expand should update collapsed model to true when collapse is toggled" name="SprSidebarComponent Collapse/Expand should update collapsed model to true when collapse is toggled" time="0.076">
+    </testcase>
+    <testcase classname="SprSidebarComponent Parent App Dropdown should render parent dropdown trigger when items are provided" name="SprSidebarComponent Parent App Dropdown should render parent dropdown trigger when items are provided" time="0.018">
+    </testcase>
+    <testcase classname="SprSidebarComponent Parent App Dropdown should not render parent dropdown trigger when no items provided" name="SprSidebarComponent Parent App Dropdown should not render parent dropdown trigger when no items provided" time="0.022">
+    </testcase>
+    <testcase classname="SprSidebarComponent Parent App Dropdown should emit parentChange when selecting new parent" name="SprSidebarComponent Parent App Dropdown should emit parentChange when selecting new parent" time="0.078">
+    </testcase>
+    <testcase classname="SprSidebarComponent Parent App Dropdown should not emit parentChange when selecting the same parent" name="SprSidebarComponent Parent App Dropdown should not emit parentChange when selecting the same parent" time="0.114">
+    </testcase>
+    <testcase classname="SprSidebarComponent Parent App Dropdown should select first sub-item of the parent when selecting a new parent" name="SprSidebarComponent Parent App Dropdown should select first sub-item of the parent when selecting a new parent" time="0.054">
+    </testcase>
+    <testcase classname="SprSidebarComponent Parent App Dropdown should select parent when a menu item is clicked" name="SprSidebarComponent Parent App Dropdown should select parent when a menu item is clicked" time="0.076">
+    </testcase>
+    <testcase classname="SprSidebarComponent News Block should render news block when provided and not collapsed" name="SprSidebarComponent News Block should render news block when provided and not collapsed" time="0.074">
+    </testcase>
+    <testcase classname="SprSidebarComponent News Block should not render news block when collapsed" name="SprSidebarComponent News Block should not render news block when collapsed" time="0.005">
+    </testcase>
+    <testcase classname="SprSidebarComponent News Block should hide news block when close button is clicked" name="SprSidebarComponent News Block should hide news block when close button is clicked" time="0.021">
+    </testcase>
+  </testsuite>
+  <testsuite name="TopBarComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:27" time="2.013" tests="6">
+    <testcase classname="TopBarComponent Model should create component instance" name="TopBarComponent Model should create component instance" time="0.152">
+    </testcase>
+    <testcase classname="TopBarComponent View Check displaying left block (icon)" name="TopBarComponent View Check displaying left block (icon)" time="0.021">
+    </testcase>
+    <testcase classname="TopBarComponent View Check displaying main block (title + subtitle)" name="TopBarComponent View Check displaying main block (title + subtitle)" time="0.01">
+    </testcase>
+    <testcase classname="TopBarComponent View Check displaying end block (buttons)" name="TopBarComponent View Check displaying end block (buttons)" time="0.012">
+    </testcase>
+    <testcase classname="TopBarComponent View Check button outputs" name="TopBarComponent View Check button outputs" time="0.012">
+    </testcase>
+    <testcase classname="TopBarComponent View Check displaying ng-content" name="TopBarComponent View Check displaying ng-content" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="CurrencyInputComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:27" time="2.792" tests="11">
+    <testcase classname="CurrencyInputComponent Model should create component" name="CurrencyInputComponent Model should create component" time="0.103">
+    </testcase>
+    <testcase classname="CurrencyInputComponent View should set the value" name="CurrencyInputComponent View should set the value" time="0.022">
+    </testcase>
+    <testcase classname="CurrencyInputComponent View should change control size to small" name="CurrencyInputComponent View should change control size to small" time="0.013">
+    </testcase>
+    <testcase classname="CurrencyInputComponent View should add placeholder" name="CurrencyInputComponent View should add placeholder" time="0.04">
+    </testcase>
+    <testcase classname="CurrencyInputComponent View should accept negative numbers" name="CurrencyInputComponent View should accept negative numbers" time="0.011">
+    </testcase>
+    <testcase classname="CurrencyInputComponent View should not accept negative numbers" name="CurrencyInputComponent View should not accept negative numbers" time="0.01">
+    </testcase>
+    <testcase classname="CurrencyInputComponent View should change a precision" name="CurrencyInputComponent View should change a precision" time="0.025">
+    </testcase>
+    <testcase classname="CurrencyInputComponent View should remove fractional numbers if precision 0" name="CurrencyInputComponent View should remove fractional numbers if precision 0" time="0.004">
+    </testcase>
+    <testcase classname="CurrencyInputComponent View should show description" name="CurrencyInputComponent View should show description" time="0.01">
+    </testcase>
+    <testcase classname="CurrencyInputComponent View should show/hide currencyPrefix" name="CurrencyInputComponent View should show/hide currencyPrefix" time="0.01">
+    </testcase>
+    <testcase classname="CurrencyInputComponent View should show/hide currencySuffix" name="CurrencyInputComponent View should show/hide currencySuffix" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="SegmentedControl" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:27" time="2.135" tests="7">
+    <testcase classname="SegmentedControl should create" name="SegmentedControl should create" time="0.08">
+    </testcase>
+    <testcase classname="SegmentedControl should show render active state right" name="SegmentedControl should show render active state right" time="0.013">
+    </testcase>
+    <testcase classname="SegmentedControl should show render disabled state right" name="SegmentedControl should show render disabled state right" time="0.016">
+    </testcase>
+    <testcase classname="SegmentedControl should show only label" name="SegmentedControl should show only label" time="0.011">
+    </testcase>
+    <testcase classname="SegmentedControl should show only label and startIcon" name="SegmentedControl should show only label and startIcon" time="0.004">
+    </testcase>
+    <testcase classname="SegmentedControl should show only label and endIcon" name="SegmentedControl should show only label and endIcon" time="0.022">
+    </testcase>
+    <testcase classname="SegmentedControl should show only label and both icons" name="SegmentedControl should show only label and both icons" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="Badge" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:28" time="1.817" tests="7">
+    <testcase classname="Badge Model should create component" name="Badge Model should create component" time="0.071">
+    </testcase>
+    <testcase classname="Badge View should have/not content" name="Badge View should have/not content" time="0.013">
+    </testcase>
+    <testcase classname="Badge View should have/not icon start" name="Badge View should have/not icon start" time="0.013">
+    </testcase>
+    <testcase classname="Badge View should have/not icon end" name="Badge View should have/not icon end" time="0.013">
+    </testcase>
+    <testcase classname="Badge View should change variant" name="Badge View should change variant" time="0.008">
+    </testcase>
+    <testcase classname="Badge View should change radius" name="Badge View should change radius" time="0.004">
+    </testcase>
+    <testcase classname="Badge View should change size" name="Badge View should change size" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="Slider" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:28" time="1.603" tests="10">
+    <testcase classname="Slider Model should create component" name="Slider Model should create component" time="0.104">
+    </testcase>
+    <testcase classname="Slider View Check valid min/max/range" name="Slider View Check valid min/max/range" time="0.021">
+    </testcase>
+    <testcase classname="Slider View Check invalid min" name="Slider View Check invalid min" time="0.023">
+    </testcase>
+    <testcase classname="Slider View Check invalid max" name="Slider View Check invalid max" time="0.006">
+    </testcase>
+    <testcase classname="Slider View Check invalid step (more then max)" name="Slider View Check invalid step (more then max)" time="0.013">
+    </testcase>
+    <testcase classname="Slider View Check invalid step (less then 0)" name="Slider View Check invalid step (less then 0)" time="0.008">
+    </testcase>
+    <testcase classname="Slider View Check invalid value from parent" name="Slider View Check invalid value from parent" time="0.005">
+    </testcase>
+    <testcase classname="Slider View Check invalid range from parent" name="Slider View Check invalid range from parent" time="0.018">
+    </testcase>
+    <testcase classname="Slider View Show hide min/max labels" name="Slider View Show hide min/max labels" time="0.009">
+    </testcase>
+    <testcase classname="Slider View Show hide tick marks" name="Slider View Show hide tick marks" time="0.031">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprTabsComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:27" time="3.322" tests="10">
+    <testcase classname="SprTabsComponent Model should create component" name="SprTabsComponent Model should create component" time="0.109">
+    </testcase>
+    <testcase classname="SprTabsComponent Model should change orientation" name="SprTabsComponent Model should change orientation" time="0.037">
+    </testcase>
+    <testcase classname="SprTabsComponent Model should change destroyOnHide" name="SprTabsComponent Model should change destroyOnHide" time="0.01">
+    </testcase>
+    <testcase classname="SprTabsComponent Model should change animation" name="SprTabsComponent Model should change animation" time="0.011">
+    </testcase>
+    <testcase classname="SprTabsComponent Model should change activeId" name="SprTabsComponent Model should change activeId" time="0.01">
+    </testcase>
+    <testcase classname="SprTabsComponent Model should select tab" name="SprTabsComponent Model should select tab" time="0.019">
+    </testcase>
+    <testcase classname="SprTabsComponent Model should set selected tab by url" name="SprTabsComponent Model should set selected tab by url" time="0.066">
+    </testcase>
+    <testcase classname="SprTabsComponent View should change variant" name="SprTabsComponent View should change variant" time="0.05">
+    </testcase>
+    <testcase classname="SprTabsComponent View should change isTransparentBg" name="SprTabsComponent View should change isTransparentBg" time="0.039">
+    </testcase>
+    <testcase classname="SprTabsComponent View should change type" name="SprTabsComponent View should change type" time="0.044">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprPaginationBarComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:28" time="2.312" tests="10">
+    <testcase classname="SprPaginationBarComponent Model should create component" name="SprPaginationBarComponent Model should create component" time="0.076">
+    </testcase>
+    <testcase classname="SprPaginationBarComponent View should show page size" name="SprPaginationBarComponent View should show page size" time="0.03">
+    </testcase>
+    <testcase classname="SprPaginationBarComponent View should render showing items counter" name="SprPaginationBarComponent View should render showing items counter" time="0.031">
+    </testcase>
+    <testcase classname="SprPaginationBarComponent View should not render showing items counter when paginationParams prop is set" name="SprPaginationBarComponent View should not render showing items counter when paginationParams prop is set" time="0.014">
+    </testcase>
+    <testcase classname="SprPaginationBarComponent View should render page-menu" name="SprPaginationBarComponent View should render page-menu" time="0.007">
+    </testcase>
+    <testcase classname="SprPaginationBarComponent View should render page" name="SprPaginationBarComponent View should render page" time="0.029">
+    </testcase>
+    <testcase classname="SprPaginationBarComponent View should render pages counter" name="SprPaginationBarComponent View should render pages counter" time="0.007">
+    </testcase>
+    <testcase classname="SprPaginationBarComponent View should not render pages counter when paginationParams prop is set" name="SprPaginationBarComponent View should not render pages counter when paginationParams prop is set" time="0.015">
+    </testcase>
+    <testcase classname="SprPaginationBarComponent View should change page to next on click" name="SprPaginationBarComponent View should change page to next on click" time="0.035">
+    </testcase>
+    <testcase classname="SprPaginationBarComponent View should change page to previous on click" name="SprPaginationBarComponent View should change page to previous on click" time="0.017">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprTableComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:27" time="3.83" tests="7">
+    <testcase classname="SprTableComponent Model should create component" name="SprTableComponent Model should create component" time="0.147">
+    </testcase>
+    <testcase classname="SprTableComponent View should show title" name="SprTableComponent View should show title" time="0.057">
+    </testcase>
+    <testcase classname="SprTableComponent View should show pagination bar" name="SprTableComponent View should show pagination bar" time="0.088">
+    </testcase>
+    <testcase classname="SprTableComponent View should show spinner" name="SprTableComponent View should show spinner" time="0.083">
+    </testcase>
+    <testcase classname="SprTableComponent View should change cell-size" name="SprTableComponent View should change cell-size" time="0.032">
+    </testcase>
+    <testcase classname="SprTableComponent View should display rows" name="SprTableComponent View should display rows" time="0.052">
+    </testcase>
+    <testcase classname="SprTableComponent View should display cols" name="SprTableComponent View should display cols" time="0.074">
+    </testcase>
+  </testsuite>
+  <testsuite name="DsOpenMenuFooterDirective" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:30" time="1.181" tests="9">
+    <testcase classname="DsOpenMenuFooterDirective Canceled Output should call host component onCanceled when canceled is emitted" name="DsOpenMenuFooterDirective Canceled Output should call host component onCanceled when canceled is emitted" time="0.079">
+    </testcase>
+    <testcase classname="DsOpenMenuFooterDirective Submitted Output should call host component onSubmitted when submitted is emitted" name="DsOpenMenuFooterDirective Submitted Output should call host component onSubmitted when submitted is emitted" time="0.004">
+    </testcase>
+    <testcase classname="DsOpenMenuFooterDirective Directive Integration with Host should update component signal when canceled is emitted" name="DsOpenMenuFooterDirective Directive Integration with Host should update component signal when canceled is emitted" time="0.011">
+    </testcase>
+    <testcase classname="DsOpenMenuFooterDirective Directive Integration with Host should update component signal when submitted is emitted" name="DsOpenMenuFooterDirective Directive Integration with Host should update component signal when submitted is emitted" time="0.013">
+    </testcase>
+    <testcase classname="DsOpenMenuFooterDirective Directive Integration with Host should independently track canceled and submitted events" name="DsOpenMenuFooterDirective Directive Integration with Host should independently track canceled and submitted events" time="0.01">
+    </testcase>
+    <testcase classname="DsOpenMenuFooterDirective Directive Integration with Host should maintain correct sequence of events" name="DsOpenMenuFooterDirective Directive Integration with Host should maintain correct sequence of events" time="0.004">
+    </testcase>
+    <testcase classname="DsOpenMenuFooterDirective Text Input Types should accept partial text input (submit required)" name="DsOpenMenuFooterDirective Text Input Types should accept partial text input (submit required)" time="0.002">
+    </testcase>
+    <testcase classname="DsOpenMenuFooterDirective Text Input Types should accept null to not render footer" name="DsOpenMenuFooterDirective Text Input Types should accept null to not render footer" time="0.021">
+    </testcase>
+    <testcase classname="DsOpenMenuFooterDirective Directive Selector should apply directive to correct element" name="DsOpenMenuFooterDirective Directive Selector should apply directive to correct element" time="0.016">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprTextareaComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:29" time="1.887" tests="8">
+    <testcase classname="SprTextareaComponent Model should create component" name="SprTextareaComponent Model should create component" time="0.068">
+    </testcase>
+    <testcase classname="SprTextareaComponent Model should focus manually" name="SprTextareaComponent Model should focus manually" time="0.015">
+    </testcase>
+    <testcase classname="SprTextareaComponent Model should emit a blur event and mark the control as touched" name="SprTextareaComponent Model should emit a blur event and mark the control as touched" time="0.011">
+    </testcase>
+    <testcase classname="SprTextareaComponent View should add inputId" name="SprTextareaComponent View should add inputId" time="0.008">
+    </testcase>
+    <testcase classname="SprTextareaComponent View should show maxTextareaLength" name="SprTextareaComponent View should show maxTextareaLength" time="0.02">
+    </testcase>
+    <testcase classname="SprTextareaComponent View should set textarea placeholder" name="SprTextareaComponent View should set textarea placeholder" time="0.019">
+    </testcase>
+    <testcase classname="SprTextareaComponent View should show description" name="SprTextareaComponent View should show description" time="0.007">
+    </testcase>
+    <testcase classname="SprTextareaComponent View should react on the native textarea blur event" name="SprTextareaComponent View should react on the native textarea blur event" time="0.031">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprTwoOptionsSwitcher" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:29" time="1.857" tests="10">
+    <testcase classname="SprTwoOptionsSwitcher Model should create component" name="SprTwoOptionsSwitcher Model should create component" time="0.055">
+    </testcase>
+    <testcase classname="SprTwoOptionsSwitcher Model should init control" name="SprTwoOptionsSwitcher Model should init control" time="0.011">
+    </testcase>
+    <testcase classname="SprTwoOptionsSwitcher Model writeValue() should map startValue to false" name="SprTwoOptionsSwitcher Model writeValue() should map startValue to false" time="0.006">
+    </testcase>
+    <testcase classname="SprTwoOptionsSwitcher Model writeValue() should map endValue to true" name="SprTwoOptionsSwitcher Model writeValue() should map endValue to true" time="0.007">
+    </testcase>
+    <testcase classname="SprTwoOptionsSwitcher Model writeValue() should map unknown value to false" name="SprTwoOptionsSwitcher Model writeValue() should map unknown value to false" time="0.008">
+    </testcase>
+    <testcase classname="SprTwoOptionsSwitcher Model initControlListener() should emit startValue when control value is false" name="SprTwoOptionsSwitcher Model initControlListener() should emit startValue when control value is false" time="0.025">
+    </testcase>
+    <testcase classname="SprTwoOptionsSwitcher Model initControlListener() should emit endValue when control value is true" name="SprTwoOptionsSwitcher Model initControlListener() should emit endValue when control value is true" time="0.006">
+    </testcase>
+    <testcase classname="SprTwoOptionsSwitcher Model should toggle control value" name="SprTwoOptionsSwitcher Model should toggle control value" time="0.006">
+    </testcase>
+    <testcase classname="SprTwoOptionsSwitcher View should disable" name="SprTwoOptionsSwitcher View should disable" time="0.052">
+    </testcase>
+    <testcase classname="SprTwoOptionsSwitcher View should add name and id to input" name="SprTwoOptionsSwitcher View should add name and id to input" time="0.011">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprMultiSwitcherComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:30" time="1.303" tests="8">
+    <testcase classname="SprMultiSwitcherComponent Model should create component" name="SprMultiSwitcherComponent Model should create component" time="0.076">
+    </testcase>
+    <testcase classname="SprMultiSwitcherComponent View should change id" name="SprMultiSwitcherComponent View should change id" time="0.018">
+    </testcase>
+    <testcase classname="SprMultiSwitcherComponent View should render options" name="SprMultiSwitcherComponent View should render options" time="0.006">
+    </testcase>
+    <testcase classname="SprMultiSwitcherComponent View should set isDisabled" name="SprMultiSwitcherComponent View should set isDisabled" time="0.009">
+    </testcase>
+    <testcase classname="SprMultiSwitcherComponent View check is icons not rendered" name="SprMultiSwitcherComponent View check is icons not rendered" time="0.008">
+    </testcase>
+    <testcase classname="SprMultiSwitcherComponent View check is icon rendered" name="SprMultiSwitcherComponent View check is icon rendered" time="0.014">
+    </testcase>
+    <testcase classname="SprMultiSwitcherComponent View should set size" name="SprMultiSwitcherComponent View should set size" time="0.004">
+    </testcase>
+    <testcase classname="SprMultiSwitcherComponent View should set active for item" name="SprMultiSwitcherComponent View should set active for item" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="DsDynamicComponentDirective" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:30" time="1.689" tests="7">
+    <testcase classname="DsDynamicComponentDirective Model should create component" name="DsDynamicComponentDirective Model should create component" time="0.042">
+    </testcase>
+    <testcase classname="DsDynamicComponentDirective View should create dynamic component" name="DsDynamicComponentDirective View should create dynamic component" time="0.008">
+    </testcase>
+    <testcase classname="DsDynamicComponentDirective View should change dynamic element position to start" name="DsDynamicComponentDirective View should change dynamic element position to start" time="0.006">
+    </testcase>
+    <testcase classname="DsDynamicComponentDirective View should change dynamic element position to inside-start" name="DsDynamicComponentDirective View should change dynamic element position to inside-start" time="0.005">
+    </testcase>
+    <testcase classname="DsDynamicComponentDirective View should change dynamic element position to inside-end" name="DsDynamicComponentDirective View should change dynamic element position to inside-end" time="0.027">
+    </testcase>
+    <testcase classname="DsDynamicComponentDirective View should set class" name="DsDynamicComponentDirective View should set class" time="0.006">
+    </testcase>
+    <testcase classname="DsDynamicComponentDirective View should insert element to a custom container" name="DsDynamicComponentDirective View should insert element to a custom container" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprZoomComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:30" time="1.978" tests="10">
+    <testcase classname="SprZoomComponent Model should create component" name="SprZoomComponent Model should create component" time="0.142">
+    </testcase>
+    <testcase classname="SprZoomComponent Model should increase value" name="SprZoomComponent Model should increase value" time="0.022">
+    </testcase>
+    <testcase classname="SprZoomComponent Model should decrease value" name="SprZoomComponent Model should decrease value" time="0.01">
+    </testcase>
+    <testcase classname="SprZoomComponent Model should increase value not more than max" name="SprZoomComponent Model should increase value not more than max" time="0.006">
+    </testcase>
+    <testcase classname="SprZoomComponent Model should decrease value not less than min" name="SprZoomComponent Model should decrease value not less than min" time="0.015">
+    </testcase>
+    <testcase classname="SprZoomComponent View should have value displayed" name="SprZoomComponent View should have value displayed" time="0.017">
+    </testcase>
+    <testcase classname="SprZoomComponent View should increase value when click on button" name="SprZoomComponent View should increase value when click on button" time="0.024">
+    </testcase>
+    <testcase classname="SprZoomComponent View should decrease value when click on button" name="SprZoomComponent View should decrease value when click on button" time="0.014">
+    </testcase>
+    <testcase classname="SprZoomComponent View should call inputValueChanged value when input value" name="SprZoomComponent View should call inputValueChanged value when input value" time="0.038">
+    </testcase>
+    <testcase classname="SprZoomComponent View should call updateValue on blur" name="SprZoomComponent View should call updateValue on blur" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="GroupUnreadCountPipe" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:31" time="0.785" tests="6">
+    <testcase classname="GroupUnreadCountPipe should return null for nullish input" name="GroupUnreadCountPipe should return null for nullish input" time="0.001">
+    </testcase>
+    <testcase classname="GroupUnreadCountPipe should return 0 when no subNavs have unreadCount" name="GroupUnreadCountPipe should return 0 when no subNavs have unreadCount" time="0">
+    </testcase>
+    <testcase classname="GroupUnreadCountPipe should sum unreadCount from direct children" name="GroupUnreadCountPipe should sum unreadCount from direct children" time="0.001">
+    </testcase>
+    <testcase classname="GroupUnreadCountPipe should sum unreadCount from nested children" name="GroupUnreadCountPipe should sum unreadCount from nested children" time="0">
+    </testcase>
+    <testcase classname="GroupUnreadCountPipe should sum unreadCount from deeply nested children" name="GroupUnreadCountPipe should sum unreadCount from deeply nested children" time="0">
+    </testcase>
+    <testcase classname="GroupUnreadCountPipe should return 0 for empty subNavs array" name="GroupUnreadCountPipe should return 0 for empty subNavs array" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprStepper" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:31" time="1.822" tests="9">
+    <testcase classname="SprStepper Model should create mock component" name="SprStepper Model should create mock component" time="0.187">
+    </testcase>
+    <testcase classname="SprStepper Model should create directive" name="SprStepper Model should create directive" time="0.019">
+    </testcase>
+    <testcase classname="SprStepper Model should create stepper component" name="SprStepper Model should create stepper component" time="0.017">
+    </testcase>
+    <testcase classname="SprStepper View Directive should render steps headers" name="SprStepper View Directive should render steps headers" time="0.019">
+    </testcase>
+    <testcase classname="SprStepper View Directive should render step body" name="SprStepper View Directive should render step body" time="0.016">
+    </testcase>
+    <testcase classname="SprStepper View Directive should render step actions" name="SprStepper View Directive should render step actions" time="0.042">
+    </testcase>
+    <testcase classname="SprStepper View Component should render steps headers" name="SprStepper View Component should render steps headers" time="0.016">
+    </testcase>
+    <testcase classname="SprStepper View Component should render step body" name="SprStepper View Component should render step body" time="0.01">
+    </testcase>
+    <testcase classname="SprStepper View Component should render step actions" name="SprStepper View Component should render step actions" time="0.03">
+    </testcase>
+  </testsuite>
+  <testsuite name="DsLabelDirective" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:31" time="1.848" tests="8">
+    <testcase classname="DsLabelDirective Model should create component" name="DsLabelDirective Model should create component" time="0.099">
+    </testcase>
+    <testcase classname="DsLabelDirective View should create label" name="DsLabelDirective View should create label" time="0.063">
+    </testcase>
+    <testcase classname="DsLabelDirective View should remove label" name="DsLabelDirective View should remove label" time="0.006">
+    </testcase>
+    <testcase classname="DsLabelDirective View should add tooltip" name="DsLabelDirective View should add tooltip" time="0.015">
+    </testcase>
+    <testcase classname="DsLabelDirective View should add tooltip class" name="DsLabelDirective View should add tooltip class" time="0.012">
+    </testcase>
+    <testcase classname="DsLabelDirective View should add inputId" name="DsLabelDirective View should add inputId" time="0.013">
+    </testcase>
+    <testcase classname="DsLabelDirective View should change label position to start" name="DsLabelDirective View should change label position to start" time="0.01">
+    </testcase>
+    <testcase classname="DsLabelDirective View should add icons" name="DsLabelDirective View should add icons" time="0.012">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprDynamicElementDirective" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:31" time="1.64" tests="7">
+    <testcase classname="SprDynamicElementDirective Model should create component" name="SprDynamicElementDirective Model should create component" time="0.022">
+    </testcase>
+    <testcase classname="SprDynamicElementDirective View should create dynamic element by name" name="SprDynamicElementDirective View should create dynamic element by name" time="0.009">
+    </testcase>
+    <testcase classname="SprDynamicElementDirective View should change dynamic element position" name="SprDynamicElementDirective View should change dynamic element position" time="0.01">
+    </testcase>
+    <testcase classname="SprDynamicElementDirective View should set text content" name="SprDynamicElementDirective View should set text content" time="0.004">
+    </testcase>
+    <testcase classname="SprDynamicElementDirective View should set id" name="SprDynamicElementDirective View should set id" time="0.008">
+    </testcase>
+    <testcase classname="SprDynamicElementDirective View should set class" name="SprDynamicElementDirective View should set class" time="0.012">
+    </testcase>
+    <testcase classname="SprDynamicElementDirective View should insert element to a custom container" name="SprDynamicElementDirective View should insert element to a custom container" time="0.012">
+    </testcase>
+  </testsuite>
+  <testsuite name="Filters" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:31" time="2.146" tests="9">
+    <testcase classname="Filters Model should compute string value" name="Filters Model should compute string value" time="0.074">
+    </testcase>
+    <testcase classname="Filters Model should compute string[] value" name="Filters Model should compute string[] value" time="0.028">
+    </testcase>
+    <testcase classname="Filters Model should compute string[] value according to maxValuesDisplay" name="Filters Model should compute string[] value according to maxValuesDisplay" time="0.016">
+    </testcase>
+    <testcase classname="Filters Model should apply changes" name="Filters Model should apply changes" time="0.02">
+    </testcase>
+    <testcase classname="Filters Model should reset changes" name="Filters Model should reset changes" time="0.016">
+    </testcase>
+    <testcase classname="Filters Model should disable auto apply" name="Filters Model should disable auto apply" time="0.043">
+    </testcase>
+    <testcase classname="Filters Model should not disable auto apply" name="Filters Model should not disable auto apply" time="0.021">
+    </testcase>
+    <testcase classname="Filters View should show selected value" name="Filters View should show selected value" time="0.04">
+    </testcase>
+    <testcase classname="Filters View should show NotSelected when value is empty" name="Filters View should show NotSelected when value is empty" time="0.026">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprLabelComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:32" time="1.523" tests="8">
+    <testcase classname="SprLabelComponent Model should create component" name="SprLabelComponent Model should create component" time="0.052">
+    </testcase>
+    <testcase classname="SprLabelComponent View should add label text" name="SprLabelComponent View should add label text" time="0.015">
+    </testcase>
+    <testcase classname="SprLabelComponent View should add tooltip" name="SprLabelComponent View should add tooltip" time="0.007">
+    </testcase>
+    <testcase classname="SprLabelComponent View should add inline class" name="SprLabelComponent View should add inline class" time="0.006">
+    </testcase>
+    <testcase classname="SprLabelComponent View should add inputId" name="SprLabelComponent View should add inputId" time="0.012">
+    </testcase>
+    <testcase classname="SprLabelComponent View should add left icon" name="SprLabelComponent View should add left icon" time="0.018">
+    </testcase>
+    <testcase classname="SprLabelComponent View should add right icon" name="SprLabelComponent View should add right icon" time="0.007">
+    </testcase>
+    <testcase classname="SprLabelComponent View should add className" name="SprLabelComponent View should add className" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprConfirmModalComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:32" time="1.817" tests="8">
+    <testcase classname="SprConfirmModalComponent Model should create" name="SprConfirmModalComponent Model should create" time="0.068">
+    </testcase>
+    <testcase classname="SprConfirmModalComponent View should show title" name="SprConfirmModalComponent View should show title" time="0.026">
+    </testcase>
+    <testcase classname="SprConfirmModalComponent View should show bodyMessage" name="SprConfirmModalComponent View should show bodyMessage" time="0.019">
+    </testcase>
+    <testcase classname="SprConfirmModalComponent View should show cancelButtonText" name="SprConfirmModalComponent View should show cancelButtonText" time="0.017">
+    </testcase>
+    <testcase classname="SprConfirmModalComponent View should show confirmButtonText" name="SprConfirmModalComponent View should show confirmButtonText" time="0.013">
+    </testcase>
+    <testcase classname="SprConfirmModalComponent View should call closeAction when close button clicked" name="SprConfirmModalComponent View should call closeAction when close button clicked" time="0.005">
+    </testcase>
+    <testcase classname="SprConfirmModalComponent View should disable confirm button" name="SprConfirmModalComponent View should disable confirm button" time="0.008">
+    </testcase>
+    <testcase classname="SprConfirmModalComponent View should enable confirm button" name="SprConfirmModalComponent View should enable confirm button" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprDatetimepickerComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:13" time="20.277" tests="12">
+    <testcase classname="SprDatetimepickerComponent Model should create component" name="SprDatetimepickerComponent Model should create component" time="0.215">
+    </testcase>
+    <testcase classname="SprDatetimepickerComponent Model should map min date" name="SprDatetimepickerComponent Model should map min date" time="0.007">
+    </testcase>
+    <testcase classname="SprDatetimepickerComponent Model should map max date" name="SprDatetimepickerComponent Model should map max date" time="0.026">
+    </testcase>
+    <testcase classname="SprDatetimepickerComponent Model should map 10 year ago as min date if min date is not provided" name="SprDatetimepickerComponent Model should map 10 year ago as min date if min date is not provided" time="0.01">
+    </testcase>
+    <testcase classname="SprDatetimepickerComponent Model should not map undefined max date" name="SprDatetimepickerComponent Model should not map undefined max date" time="0.025">
+    </testcase>
+    <testcase classname="SprDatetimepickerComponent Model should write value to control" name="SprDatetimepickerComponent Model should write value to control" time="0.009">
+    </testcase>
+    <testcase classname="SprDatetimepickerComponent Model should write nullish value to control" name="SprDatetimepickerComponent Model should write nullish value to control" time="0.007">
+    </testcase>
+    <testcase classname="SprDatetimepickerComponent Model should validate" name="SprDatetimepickerComponent Model should validate" time="0.017">
+    </testcase>
+    <testcase classname="SprDatetimepickerComponent Model should set date to null on deselectDate" name="SprDatetimepickerComponent Model should set date to null on deselectDate" time="0.006">
+    </testcase>
+    <testcase classname="SprDatetimepickerComponent Model should emit dateDeselected on deselectDate" name="SprDatetimepickerComponent Model should emit dateDeselected on deselectDate" time="0.004">
+    </testcase>
+    <testcase classname="SprDatetimepickerComponent Model should update control with string date and emit dateChanged on onDateSelected()" name="SprDatetimepickerComponent Model should update control with string date and emit dateChanged on onDateSelected()" time="0.011">
+    </testcase>
+    <testcase classname="SprDatetimepickerComponent View should disable toggle btn" name="SprDatetimepickerComponent View should disable toggle btn" time="0.044">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprCheckboxComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:32" time="1.423" tests="7">
+    <testcase classname="SprCheckboxComponent Model should create component" name="SprCheckboxComponent Model should create component" time="0.038">
+    </testcase>
+    <testcase classname="SprCheckboxComponent View should add isDecorated class" name="SprCheckboxComponent View should add isDecorated class" time="0.034">
+    </testcase>
+    <testcase classname="SprCheckboxComponent View should add isPartiallyChecked class" name="SprCheckboxComponent View should add isPartiallyChecked class" time="0.016">
+    </testcase>
+    <testcase classname="SprCheckboxComponent View should add inputId" name="SprCheckboxComponent View should add inputId" time="0.027">
+    </testcase>
+    <testcase classname="SprCheckboxComponent View should set tooltip text" name="SprCheckboxComponent View should set tooltip text" time="0.012">
+    </testcase>
+    <testcase classname="SprCheckboxComponent View should set tooltip class" name="SprCheckboxComponent View should set tooltip class" time="0.014">
+    </testcase>
+    <testcase classname="SprCheckboxComponent View should set tooltip placement" name="SprCheckboxComponent View should set tooltip placement" time="0.037">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprDatepickerRangeComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:13" time="20.385" tests="16">
+    <testcase classname="SprDatepickerRangeComponent Model should create component" name="SprDatepickerRangeComponent Model should create component" time="0.239">
+    </testcase>
+    <testcase classname="SprDatepickerRangeComponent Model should not throw if null is passed to writeValue" name="SprDatepickerRangeComponent Model should not throw if null is passed to writeValue" time="0.006">
+    </testcase>
+    <testcase classname="SprDatepickerRangeComponent Model should handle maxRangeInDays correctly" name="SprDatepickerRangeComponent Model should handle maxRangeInDays correctly" time="0.015">
+    </testcase>
+    <testcase classname="SprDatepickerRangeComponent Model should call emit with correct value" name="SprDatepickerRangeComponent Model should call emit with correct value" time="0.006">
+    </testcase>
+    <testcase classname="SprDatepickerRangeComponent Model should correctly set dateFrom and dateTo to control" name="SprDatepickerRangeComponent Model should correctly set dateFrom and dateTo to control" time="0.005">
+    </testcase>
+    <testcase classname="SprDatepickerRangeComponent Model should set selectedRange to item with matching value from selectOptions" name="SprDatepickerRangeComponent Model should set selectedRange to item with matching value from selectOptions" time="0.01">
+    </testcase>
+    <testcase classname="SprDatepickerRangeComponent Model should close datepicker and emit rangeCanceled if showFooter is true" name="SprDatepickerRangeComponent Model should close datepicker and emit rangeCanceled if showFooter is true" time="0.036">
+    </testcase>
+    <testcase classname="SprDatepickerRangeComponent Model should emit rangeConfirmed when onApply is called" name="SprDatepickerRangeComponent Model should emit rangeConfirmed when onApply is called" time="0.013">
+    </testcase>
+    <testcase classname="SprDatepickerRangeComponent Model should call deselectDate when selectedRange changes to NotSelected" name="SprDatepickerRangeComponent Model should call deselectDate when selectedRange changes to NotSelected" time="0.027">
+    </testcase>
+    <testcase classname="SprDatepickerRangeComponent Model should not call deselectDate when selectedRange is not NotSelected" name="SprDatepickerRangeComponent Model should not call deselectDate when selectedRange is not NotSelected" time="0.004">
+    </testcase>
+    <testcase classname="SprDatepickerRangeComponent View should change control size to small" name="SprDatepickerRangeComponent View should change control size to small" time="0.011">
+    </testcase>
+    <testcase classname="SprDatepickerRangeComponent View should disable toggle btn" name="SprDatepickerRangeComponent View should disable toggle btn" time="0.007">
+    </testcase>
+    <testcase classname="SprDatepickerRangeComponent View Should show deselect button when we isDeselectAllowed and selected date" name="SprDatepickerRangeComponent View Should show deselect button when we isDeselectAllowed and selected date" time="0.035">
+    </testcase>
+    <testcase classname="SprDatepickerRangeComponent View Do not show deselect button when we haven`t isDeselectAllowed and selected date" name="SprDatepickerRangeComponent View Do not show deselect button when we haven`t isDeselectAllowed and selected date" time="0.007">
+    </testcase>
+    <testcase classname="SprDatepickerRangeComponent View Should show placeholder when input is readonly" name="SprDatepickerRangeComponent View Should show placeholder when input is readonly" time="0.007">
+    </testcase>
+    <testcase classname="SprDatepickerRangeComponent View Should show mask placeholder when input is not readonly" name="SprDatepickerRangeComponent View Should show mask placeholder when input is not readonly" time="0.022">
+    </testcase>
+  </testsuite>
+  <testsuite name="DropdownComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:33" time="1.59" tests="6">
+    <testcase classname="DropdownComponent Model should iconAddon type guard works" name="DropdownComponent Model should iconAddon type guard works" time="0.164">
+    </testcase>
+    <testcase classname="DropdownComponent Model should textAddon type guard works" name="DropdownComponent Model should textAddon type guard works" time="0.019">
+    </testcase>
+    <testcase classname="DropdownComponent Model should update dropdown value" name="DropdownComponent Model should update dropdown value" time="0.035">
+    </testcase>
+    <testcase classname="DropdownComponent View should show isLoading" name="DropdownComponent View should show isLoading" time="0.015">
+    </testcase>
+    <testcase classname="DropdownComponent View should show icon addonStart" name="DropdownComponent View should show icon addonStart" time="0.008">
+    </testcase>
+    <testcase classname="DropdownComponent View should show text addonStart" name="DropdownComponent View should show text addonStart" time="0.017">
+    </testcase>
+  </testsuite>
+  <testsuite name="ToastsComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:33" time="1.763" tests="4">
+    <testcase classname="ToastsComponent Model should create component instance" name="ToastsComponent Model should create component instance" time="0.095">
+    </testcase>
+    <testcase classname="ToastsComponent Model should emit removeToast method" name="ToastsComponent Model should emit removeToast method" time="0.058">
+    </testcase>
+    <testcase classname="ToastsComponent View should render toasts" name="ToastsComponent View should render toasts" time="0.036">
+    </testcase>
+    <testcase classname="ToastsComponent View should emit removeToast method on click on close icon" name="ToastsComponent View should emit removeToast method on click on close icon" time="0.019">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprStepHeader" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:34" time="1.09" tests="6">
+    <testcase classname="SprStepHeader Model should create component" name="SprStepHeader Model should create component" time="0.127">
+    </testcase>
+    <testcase classname="SprStepHeader View should show num" name="SprStepHeader View should show num" time="0.028">
+    </testcase>
+    <testcase classname="SprStepHeader View should show completed icon" name="SprStepHeader View should show completed icon" time="0.012">
+    </testcase>
+    <testcase classname="SprStepHeader View should show invalid icon" name="SprStepHeader View should show invalid icon" time="0.019">
+    </testcase>
+    <testcase classname="SprStepHeader View should show correct label" name="SprStepHeader View should show correct label" time="0.018">
+    </testcase>
+    <testcase classname="SprStepHeader View should show correct description" name="SprStepHeader View should show correct description" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="DsTransferList" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:33" time="2.504" tests="7">
+    <testcase classname="DsTransferList Model should move one item to targetList" name="DsTransferList Model should move one item to targetList" time="0.316">
+    </testcase>
+    <testcase classname="DsTransferList Model should move all items to targetList" name="DsTransferList Model should move all items to targetList" time="0.048">
+    </testcase>
+    <testcase classname="DsTransferList Model should move one item to sourceList" name="DsTransferList Model should move one item to sourceList" time="0.026">
+    </testcase>
+    <testcase classname="DsTransferList Model should move all items to sourceList" name="DsTransferList Model should move all items to sourceList" time="0.041">
+    </testcase>
+    <testcase classname="DsTransferList View should add source header" name="DsTransferList View should add source header" time="0.018">
+    </testcase>
+    <testcase classname="DsTransferList View should add target header" name="DsTransferList View should add target header" time="0.053">
+    </testcase>
+    <testcase classname="DsTransferList View should filter items" name="DsTransferList View should filter items" time="0.041">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprAlertComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:34" time="1.852" tests="8">
+    <testcase classname="SprAlertComponent Model should create component" name="SprAlertComponent Model should create component" time="0.059">
+    </testcase>
+    <testcase classname="SprAlertComponent Model should emit dismissFinished on animation done" name="SprAlertComponent Model should emit dismissFinished on animation done" time="0.016">
+    </testcase>
+    <testcase classname="SprAlertComponent View should have message" name="SprAlertComponent View should have message" time="0.012">
+    </testcase>
+    <testcase classname="SprAlertComponent View should have new icon class" name="SprAlertComponent View should have new icon class" time="0.01">
+    </testcase>
+    <testcase classname="SprAlertComponent View should have info type" name="SprAlertComponent View should have info type" time="0.017">
+    </testcase>
+    <testcase classname="SprAlertComponent View should have warning type" name="SprAlertComponent View should have warning type" time="0.011">
+    </testcase>
+    <testcase classname="SprAlertComponent View should have danger type" name="SprAlertComponent View should have danger type" time="0.012">
+    </testcase>
+    <testcase classname="SprAlertComponent View should have success type" name="SprAlertComponent View should have success type" time="0.011">
+    </testcase>
+  </testsuite>
+  <testsuite name="MultiSelectDropdownComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:33" time="2.224" tests="5">
+    <testcase classname="MultiSelectDropdownComponent Model should iconAddon type guard works" name="MultiSelectDropdownComponent Model should iconAddon type guard works" time="0.208">
+    </testcase>
+    <testcase classname="MultiSelectDropdownComponent Model should textAddon type guard works" name="MultiSelectDropdownComponent Model should textAddon type guard works" time="0.013">
+    </testcase>
+    <testcase classname="MultiSelectDropdownComponent Model should textAddon type guard works" name="MultiSelectDropdownComponent Model should textAddon type guard works" time="0.012">
+    </testcase>
+    <testcase classname="MultiSelectDropdownComponent View should show selected items under the select" name="MultiSelectDropdownComponent View should show selected items under the select" time="0.051">
+    </testcase>
+    <testcase classname="MultiSelectDropdownComponent View should show isLoading" name="MultiSelectDropdownComponent View should show isLoading" time="0.011">
+    </testcase>
+  </testsuite>
+  <testsuite name="SliderInputDirective" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:35" time="0.944" tests="6">
+    <testcase classname="SliderInputDirective Model should create component" name="SliderInputDirective Model should create component" time="0.035">
+    </testcase>
+    <testcase classname="SliderInputDirective View should change value on change input" name="SliderInputDirective View should change value on change input" time="0.031">
+    </testcase>
+    <testcase classname="SliderInputDirective View should validate value from event if  over then max" name="SliderInputDirective View should validate value from event if  over then max" time="0.003">
+    </testcase>
+    <testcase classname="SliderInputDirective View should validate value from event if less then min" name="SliderInputDirective View should validate value from event if less then min" time="0.016">
+    </testcase>
+    <testcase classname="SliderInputDirective View should validate input value over then max" name="SliderInputDirective View should validate input value over then max" time="0.013">
+    </testcase>
+    <testcase classname="SliderInputDirective View should validate input value less then min" name="SliderInputDirective View should validate input value less then min" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="DateRangeService" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:31" time="4.575" tests="8">
+    <testcase classname="DateRangeService should return null for Lifetime period" name="DateRangeService should return null for Lifetime period" time="0.008">
+    </testcase>
+    <testcase classname="DateRangeService should return correct date range for Today from DateRangeService" name="DateRangeService should return correct date range for Today from DateRangeService" time="0.004">
+    </testcase>
+    <testcase classname="DateRangeService should return correct ISO strings from getDateRangeInModel" name="DateRangeService should return correct ISO strings from getDateRangeInModel" time="0.002">
+    </testcase>
+    <testcase classname="DateRangeService should return correct ISO date strings for Yesterday" name="DateRangeService should return correct ISO date strings for Yesterday" time="0.001">
+    </testcase>
+    <testcase classname="DateRangeService should throw an error for unknown period" name="DateRangeService should throw an error for unknown period" time="0.058">
+    </testcase>
+    <testcase classname="DateRangeService should return correct range for LastMonth" name="DateRangeService should return correct range for LastMonth" time="0.002">
+    </testcase>
+    <testcase classname="DateRangeService should return consistent dates for LastThreeMonth" name="DateRangeService should return consistent dates for LastThreeMonth" time="0.001">
+    </testcase>
+    <testcase classname="DateRangeService should return correct range for LastYear" name="DateRangeService should return correct range for LastYear" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="DsTableDataService" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:35" time="0.781" tests="3">
+    <testcase classname="DsTableDataService Model should inject service" name="DsTableDataService Model should inject service" time="0.008">
+    </testcase>
+    <testcase classname="DsTableDataService Model should find column by key" name="DsTableDataService Model should find column by key" time="0.002">
+    </testcase>
+    <testcase classname="DsTableDataService Model should set sort configuration" name="DsTableDataService Model should set sort configuration" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprButtonComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:35" time="1.404" tests="8">
+    <testcase classname="SprButtonComponent Model should create component" name="SprButtonComponent Model should create component" time="0.038">
+    </testcase>
+    <testcase classname="SprButtonComponent View should change variant" name="SprButtonComponent View should change variant" time="0.006">
+    </testcase>
+    <testcase classname="SprButtonComponent View should change type" name="SprButtonComponent View should change type" time="0.004">
+    </testcase>
+    <testcase classname="SprButtonComponent View should change size" name="SprButtonComponent View should change size" time="0.022">
+    </testcase>
+    <testcase classname="SprButtonComponent View should set id" name="SprButtonComponent View should set id" time="0.004">
+    </testcase>
+    <testcase classname="SprButtonComponent View should disable state" name="SprButtonComponent View should disable state" time="0.003">
+    </testcase>
+    <testcase classname="SprButtonComponent View should change isRadius" name="SprButtonComponent View should change isRadius" time="0.003">
+    </testcase>
+    <testcase classname="SprButtonComponent View should change isBtnSpinner" name="SprButtonComponent View should change isBtnSpinner" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprChipsComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:35" time="1.071" tests="6">
+    <testcase classname="SprChipsComponent Model should create" name="SprChipsComponent Model should create" time="0.055">
+    </testcase>
+    <testcase classname="SprChipsComponent View should change variant" name="SprChipsComponent View should change variant" time="0.017">
+    </testcase>
+    <testcase classname="SprChipsComponent View should change size" name="SprChipsComponent View should change size" time="0.009">
+    </testcase>
+    <testcase classname="SprChipsComponent View should change chips style" name="SprChipsComponent View should change chips style" time="0.005">
+    </testcase>
+    <testcase classname="SprChipsComponent View should change isInteractive" name="SprChipsComponent View should change isInteractive" time="0.009">
+    </testcase>
+    <testcase classname="SprChipsComponent View should change isDisabled" name="SprChipsComponent View should change isDisabled" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="DatepickerDay" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:28" time="8.356" tests="8">
+    <testcase classname="DatepickerDay Model should create" name="DatepickerDay Model should create" time="0.021">
+    </testcase>
+    <testcase classname="DatepickerDay View should add disable class" name="DatepickerDay View should add disable class" time="0.008">
+    </testcase>
+    <testcase classname="DatepickerDay View should add focused class" name="DatepickerDay View should add focused class" time="0.007">
+    </testcase>
+    <testcase classname="DatepickerDay View should add today class" name="DatepickerDay View should add today class" time="0.003">
+    </testcase>
+    <testcase classname="DatepickerDay View should add out class" name="DatepickerDay View should add out class" time="0.005">
+    </testcase>
+    <testcase classname="DatepickerDay View should add range class for range mode" name="DatepickerDay View should add range class for range mode" time="0.011">
+    </testcase>
+    <testcase classname="DatepickerDay View should add range class for non-range mode" name="DatepickerDay View should add range class for non-range mode" time="0.005">
+    </testcase>
+    <testcase classname="DatepickerDay View should add faded class" name="DatepickerDay View should add faded class" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="traversing util of sidebar" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:36" time="0.843" tests="8">
+    <testcase classname="traversing util of sidebar traverseActiveNavItem should find active item at root level" name="traversing util of sidebar traverseActiveNavItem should find active item at root level" time="0.007">
+    </testcase>
+    <testcase classname="traversing util of sidebar traverseActiveNavItem should find active item in nested subNavs" name="traversing util of sidebar traverseActiveNavItem should find active item in nested subNavs" time="0">
+    </testcase>
+    <testcase classname="traversing util of sidebar traverseActiveNavItem should find active item in deeply nested subNavs" name="traversing util of sidebar traverseActiveNavItem should find active item in deeply nested subNavs" time="0.006">
+    </testcase>
+    <testcase classname="traversing util of sidebar traverseActiveNavItem should return undefined when URL does not match any item" name="traversing util of sidebar traverseActiveNavItem should return undefined when URL does not match any item" time="0.001">
+    </testcase>
+    <testcase classname="traversing util of sidebar traverseActiveNavItem should handle URLs with leading slash" name="traversing util of sidebar traverseActiveNavItem should handle URLs with leading slash" time="0.002">
+    </testcase>
+    <testcase classname="traversing util of sidebar traverseActiveNavItem should handle URLs without leading slash" name="traversing util of sidebar traverseActiveNavItem should handle URLs without leading slash" time="0">
+    </testcase>
+    <testcase classname="traversing util of sidebar traverseActiveNavItem should handle case-insensitive URLs" name="traversing util of sidebar traverseActiveNavItem should handle case-insensitive URLs" time="0">
+    </testcase>
+    <testcase classname="traversing util of sidebar traverseActiveNavItem should return undefined for empty items array" name="traversing util of sidebar traverseActiveNavItem should return undefined for empty items array" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="ThemeFacadeService" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:36" time="1.253" tests="5">
+    <testcase classname="ThemeFacadeService should be created" name="ThemeFacadeService should be created" time="0.014">
+    </testcase>
+    <testcase classname="ThemeFacadeService should set theme and save to storage" name="ThemeFacadeService should set theme and save to storage" time="0.016">
+    </testcase>
+    <testcase classname="ThemeFacadeService should update document data and meta tag for dark theme" name="ThemeFacadeService should update document data and meta tag for dark theme" time="0.029">
+    </testcase>
+    <testcase classname="ThemeFacadeService should update document data and meta tag for light theme" name="ThemeFacadeService should update document data and meta tag for light theme" time="0.007">
+    </testcase>
+    <testcase classname="ThemeFacadeService should update document data and meta tag for system theme" name="ThemeFacadeService should update document data and meta tag for system theme" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="ModalService" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:36" time="1.796" tests="6">
+    <testcase classname="ModalService Model should inject service" name="ModalService Model should inject service" time="0.014">
+    </testcase>
+    <testcase classname="ModalService Model should open modal" name="ModalService Model should open modal" time="0.026">
+    </testcase>
+    <testcase classname="ModalService Model should close modal by ref" name="ModalService Model should close modal by ref" time="0.031">
+    </testcase>
+    <testcase classname="ModalService Model should dismiss all modals" name="ModalService Model should dismiss all modals" time="0.017">
+    </testcase>
+    <testcase classname="ModalService Model should return isModalOpened true" name="ModalService Model should return isModalOpened true" time="0.01">
+    </testcase>
+    <testcase classname="ModalService Model should return isModalOpened false" name="ModalService Model should return isModalOpened false" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprUserBadge" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:37" time="1.015" tests="4">
+    <testcase classname="SprUserBadge Model should create component" name="SprUserBadge Model should create component" time="0.033">
+    </testcase>
+    <testcase classname="SprUserBadge View should have content" name="SprUserBadge View should have content" time="0.004">
+    </testcase>
+    <testcase classname="SprUserBadge View should have initials" name="SprUserBadge View should have initials" time="0.004">
+    </testcase>
+    <testcase classname="SprUserBadge View should have img" name="SprUserBadge View should have img" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="InlineTip" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:36" time="1.318" tests="5">
+    <testcase classname="InlineTip Model should create component" name="InlineTip Model should create component" time="0.053">
+    </testcase>
+    <testcase classname="InlineTip View check default type = primary" name="InlineTip View check default type = primary" time="0.004">
+    </testcase>
+    <testcase classname="InlineTip View check default variant = filled" name="InlineTip View check default variant = filled" time="0.015">
+    </testcase>
+    <testcase classname="InlineTip View should change type" name="InlineTip View should change type" time="0.014">
+    </testcase>
+    <testcase classname="InlineTip View should change variant" name="InlineTip View should change variant" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprStatusBadgeComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:37" time="1.022" tests="4">
+    <testcase classname="SprStatusBadgeComponent Model should create component instance" name="SprStatusBadgeComponent Model should create component instance" time="0.043">
+    </testcase>
+    <testcase classname="SprStatusBadgeComponent View should change shape" name="SprStatusBadgeComponent View should change shape" time="0.008">
+    </testcase>
+    <testcase classname="SprStatusBadgeComponent View Check displaying text with [badgeContent] input" name="SprStatusBadgeComponent View Check displaying text with [badgeContent] input" time="0.005">
+    </testcase>
+    <testcase classname="SprStatusBadgeComponent View Check [isFixedSize] right classes" name="SprStatusBadgeComponent View Check [isFixedSize] right classes" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprTabHeaderComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:34" time="4.44" tests="5">
+    <testcase classname="SprTabHeaderComponent Model should create component" name="SprTabHeaderComponent Model should create component" time="0.087">
+    </testcase>
+    <testcase classname="SprTabHeaderComponent View should add &quot;tab-header-link--active&quot; class" name="SprTabHeaderComponent View should add &quot;tab-header-link--active&quot; class" time="0.009">
+    </testcase>
+    <testcase classname="SprTabHeaderComponent View should add &quot;tab-header-link--invalid&quot; class" name="SprTabHeaderComponent View should add &quot;tab-header-link--invalid&quot; class" time="0.012">
+    </testcase>
+    <testcase classname="SprTabHeaderComponent View should disable tab" name="SprTabHeaderComponent View should disable tab" time="0.009">
+    </testcase>
+    <testcase classname="SprTabHeaderComponent View should add routerSettings" name="SprTabHeaderComponent View should add routerSettings" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="SegmentedControls" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:37" time="1.409" tests="2">
+    <testcase classname="SegmentedControls should create" name="SegmentedControls should create" time="0.086">
+    </testcase>
+    <testcase classname="SegmentedControls Active item should be updated by model" name="SegmentedControls Active item should be updated by model" time="0.053">
+    </testcase>
+  </testsuite>
+  <testsuite name="SearchInputComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:34" time="4.662" tests="5">
+    <testcase classname="SearchInputComponent Model should create component" name="SearchInputComponent Model should create component" time="0.098">
+    </testcase>
+    <testcase classname="SearchInputComponent View should set the value" name="SearchInputComponent View should set the value" time="0.024">
+    </testcase>
+    <testcase classname="SearchInputComponent View should change control size to small" name="SearchInputComponent View should change control size to small" time="0.032">
+    </testcase>
+    <testcase classname="SearchInputComponent View should add placeholder" name="SearchInputComponent View should add placeholder" time="0.01">
+    </testcase>
+    <testcase classname="SearchInputComponent View clear button should work" name="SearchInputComponent View clear button should work" time="0.021">
+    </testcase>
+  </testsuite>
+  <testsuite name="DsSidebarMenuOption" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:38" time="1.288" tests="6">
+    <testcase classname="DsSidebarMenuOption Model should create component" name="DsSidebarMenuOption Model should create component" time="0.098">
+    </testcase>
+    <testcase classname="DsSidebarMenuOption Model isExternal should return true for URLs starting with http or https" name="DsSidebarMenuOption Model isExternal should return true for URLs starting with http or https" time="0.01">
+    </testcase>
+    <testcase classname="DsSidebarMenuOption Model isExternal should return true for protocol-relative URLs starting with //" name="DsSidebarMenuOption Model isExternal should return true for protocol-relative URLs starting with //" time="0.004">
+    </testcase>
+    <testcase classname="DsSidebarMenuOption Model isExternal should return false for absolute internal paths" name="DsSidebarMenuOption Model isExternal should return false for absolute internal paths" time="0.004">
+    </testcase>
+    <testcase classname="DsSidebarMenuOption Model isExternal should return false for relative internal paths" name="DsSidebarMenuOption Model isExternal should return false for relative internal paths" time="0.003">
+    </testcase>
+    <testcase classname="DsSidebarMenuOption Model isExternal should return false for an empty string" name="DsSidebarMenuOption Model isExternal should return false for an empty string" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="DsTransferListItem" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:38" time="1.373" tests="3">
+    <testcase classname="DsTransferListItem Model should create component" name="DsTransferListItem Model should create component" time="0.162">
+    </testcase>
+    <testcase classname="DsTransferListItem View should move one item to targetList" name="DsTransferListItem View should move one item to targetList" time="0.014">
+    </testcase>
+    <testcase classname="DsTransferListItem View should toggle children" name="DsTransferListItem View should toggle children" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="MonthNavigation" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:37" time="2.066" tests="3">
+    <testcase classname="MonthNavigation Model should create" name="MonthNavigation Model should create" time="0.264">
+    </testcase>
+    <testcase classname="MonthNavigation Model should have months" name="MonthNavigation Model should have months" time="0.022">
+    </testcase>
+    <testcase classname="MonthNavigation Model should have years" name="MonthNavigation Model should have years" time="0.013">
+    </testcase>
+  </testsuite>
+  <testsuite name="DsToastService" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:39" time="0.886" tests="4">
+    <testcase classname="DsToastService Model should clear all toasts" name="DsToastService Model should clear all toasts" time="0.019">
+    </testcase>
+    <testcase classname="DsToastService Model should remove certain toast" name="DsToastService Model should remove certain toast" time="0.005">
+    </testcase>
+    <testcase classname="DsToastService Model should show toast" name="DsToastService Model should show toast" time="0.002">
+    </testcase>
+    <testcase classname="DsToastService Model should show toast with sanitized footer" name="DsToastService Model should show toast with sanitized footer" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="SelectionFilter" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:38" time="2.207" tests="4">
+    <testcase classname="SelectionFilter should create" name="SelectionFilter should create" time="0.111">
+    </testcase>
+    <testcase classname="SelectionFilter should updateSelectedValue" name="SelectionFilter should updateSelectedValue" time="0.02">
+    </testcase>
+    <testcase classname="SelectionFilter should apply value if disableAutoApply === false" name="SelectionFilter should apply value if disableAutoApply === false" time="0.011">
+    </testcase>
+    <testcase classname="SelectionFilter should not apply value if disableAutoApply === true" name="SelectionFilter should not apply value if disableAutoApply === true" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="FormFieldComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:39" time="1.589" tests="4">
+    <testcase classname="FormFieldComponent Model should create component" name="FormFieldComponent Model should create component" time="0.045">
+    </testcase>
+    <testcase classname="FormFieldComponent View should show label" name="FormFieldComponent View should show label" time="0.029">
+    </testcase>
+    <testcase classname="FormFieldComponent View should show description" name="FormFieldComponent View should show description" time="0.007">
+    </testcase>
+    <testcase classname="FormFieldComponent View should show error" name="FormFieldComponent View should show error" time="0.017">
+    </testcase>
+  </testsuite>
+  <testsuite name="GetControlErrorMessagePipe" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:40" time="0.714" tests="4">
+    <testcase classname="GetControlErrorMessagePipe Model should return null if not control errors" name="GetControlErrorMessagePipe Model should return null if not control errors" time="0.002">
+    </testcase>
+    <testcase classname="GetControlErrorMessagePipe Model should return first founded error" name="GetControlErrorMessagePipe Model should return first founded error" time="0.001">
+    </testcase>
+    <testcase classname="GetControlErrorMessagePipe Model should return Unknown error" name="GetControlErrorMessagePipe Model should return Unknown error" time="0">
+    </testcase>
+    <testcase classname="GetControlErrorMessagePipe Model should return error builded by callback" name="GetControlErrorMessagePipe Model should return error builded by callback" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="ComponentThemeDirective" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:40" time="0.817" tests="1">
+    <testcase classname="ComponentThemeDirective Check [app-theme] attribute" name="ComponentThemeDirective Check [app-theme] attribute" time="0.048">
+    </testcase>
+  </testsuite>
+  <testsuite name="DsLongPressDirective" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:40" time="1.167" tests="2">
+    <testcase classname="DsLongPressDirective should create test component" name="DsLongPressDirective should create test component" time="0.054">
+    </testcase>
+    <testcase classname="DsLongPressDirective should trigger long press event" name="DsLongPressDirective should trigger long press event" time="0.012">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprRadioButtonComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:39" time="1.46" tests="4">
+    <testcase classname="SprRadioButtonComponent Model should create component" name="SprRadioButtonComponent Model should create component" time="0.077">
+    </testcase>
+    <testcase classname="SprRadioButtonComponent View should add isDecorated class" name="SprRadioButtonComponent View should add isDecorated class" time="0.022">
+    </testcase>
+    <testcase classname="SprRadioButtonComponent View should add isBottomMargin class" name="SprRadioButtonComponent View should add isBottomMargin class" time="0.006">
+    </testcase>
+    <testcase classname="SprRadioButtonComponent View should add inputId" name="SprRadioButtonComponent View should add inputId" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="TimeSelector" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:36" time="5.271" tests="5">
+    <testcase classname="TimeSelector Model should create" name="TimeSelector Model should create" time="0.114">
+    </testcase>
+    <testcase classname="TimeSelector Model should parse string time to ngbTime" name="TimeSelector Model should parse string time to ngbTime" time="0.024">
+    </testcase>
+    <testcase classname="TimeSelector View should show label" name="TimeSelector View should show label" time="0.011">
+    </testcase>
+    <testcase classname="TimeSelector View should handle value with mask" name="TimeSelector View should handle value with mask" time="0.012">
+    </testcase>
+    <testcase classname="TimeSelector View should show placeholder" name="TimeSelector View should show placeholder" time="0.013">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprInnerHeaderComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:37" time="4.51" tests="5">
+    <testcase classname="SprInnerHeaderComponent Model should create component" name="SprInnerHeaderComponent Model should create component" time="0.087">
+    </testcase>
+    <testcase classname="SprInnerHeaderComponent View should have startContent" name="SprInnerHeaderComponent View should have startContent" time="0.006">
+    </testcase>
+    <testcase classname="SprInnerHeaderComponent View should have title" name="SprInnerHeaderComponent View should have title" time="0.01">
+    </testcase>
+    <testcase classname="SprInnerHeaderComponent View should change variant" name="SprInnerHeaderComponent View should change variant" time="0.005">
+    </testcase>
+    <testcase classname="SprInnerHeaderComponent View should disable border" name="SprInnerHeaderComponent View should disable border" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="MenuDirective" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:41" time="1.02" tests="3">
+    <testcase classname="MenuDirective should open menu" name="MenuDirective should open menu" time="0.105">
+    </testcase>
+    <testcase classname="MenuDirective should close menu" name="MenuDirective should close menu" time="0.009">
+    </testcase>
+    <testcase classname="MenuDirective should update overlay position on position changes" name="MenuDirective should update overlay position on position changes" time="0.016">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprOpenMenuExtensionDirective" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:41" time="0.968" tests="3">
+    <testcase classname="SprOpenMenuExtensionDirective should create test component" name="SprOpenMenuExtensionDirective should create test component" time="0.03">
+    </testcase>
+    <testcase classname="SprOpenMenuExtensionDirective should dismiss menu and clear componentRef" name="SprOpenMenuExtensionDirective should dismiss menu and clear componentRef" time="0.008">
+    </testcase>
+    <testcase classname="SprOpenMenuExtensionDirective should subscribe to closeDropdown and call dismiss()" name="SprOpenMenuExtensionDirective should subscribe to closeDropdown and call dismiss()" time="0.038">
+    </testcase>
+  </testsuite>
+  <testsuite name="OffCanvasService" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:40" time="1.659" tests="5">
+    <testcase classname="OffCanvasService Model should inject service" name="OffCanvasService Model should inject service" time="0.017">
+    </testcase>
+    <testcase classname="OffCanvasService Model should open offCanvas" name="OffCanvasService Model should open offCanvas" time="0.066">
+    </testcase>
+    <testcase classname="OffCanvasService Model dismiss should call ngbOffcanvas.dismiss with the provided reason" name="OffCanvasService Model dismiss should call ngbOffcanvas.dismiss with the provided reason" time="0.003">
+    </testcase>
+    <testcase classname="OffCanvasService Model isOffCanvasOpened should return true if ngbOffcanvas has open offcanvas" name="OffCanvasService Model isOffCanvasOpened should return true if ngbOffcanvas has open offcanvas" time="0.002">
+    </testcase>
+    <testcase classname="OffCanvasService Model isOffCanvasOpened should return false if ngbOffcanvas has no open offcanvas" name="OffCanvasService Model isOffCanvasOpened should return false if ngbOffcanvas has no open offcanvas" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="ConditionsFilter" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:32" time="9.705" tests="9">
+    <testcase classname="ConditionsFilter Model should apply value automatically" name="ConditionsFilter Model should apply value automatically" time="0.366">
+    </testcase>
+    <testcase classname="ConditionsFilter Model should apply value manually" name="ConditionsFilter Model should apply value manually" time="0.031">
+    </testcase>
+    <testcase classname="ConditionsFilter Model should not apply value when auto apply disabled" name="ConditionsFilter Model should not apply value when auto apply disabled" time="0.048">
+    </testcase>
+    <testcase classname="ConditionsFilter Model should reset value" name="ConditionsFilter Model should reset value" time="0.011">
+    </testcase>
+    <testcase classname="ConditionsFilter Model should generate filter value" name="ConditionsFilter Model should generate filter value" time="0.035">
+    </testcase>
+    <testcase classname="ConditionsFilter View should show equals filter" name="ConditionsFilter View should show equals filter" time="0.037">
+    </testcase>
+    <testcase classname="ConditionsFilter View should show contains filter" name="ConditionsFilter View should show contains filter" time="0.02">
+    </testcase>
+    <testcase classname="ConditionsFilter View should show between filter" name="ConditionsFilter View should show between filter" time="0.059">
+    </testcase>
+    <testcase classname="ConditionsFilter View should show blank filter" name="ConditionsFilter View should show blank filter" time="0.058">
+    </testcase>
+  </testsuite>
+  <testsuite name="Breadcrumbs" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:41" time="1.777" tests="3">
+    <testcase classname="Breadcrumbs Model should create component" name="Breadcrumbs Model should create component" time="0.077">
+    </testcase>
+    <testcase classname="Breadcrumbs View should have items rendered" name="Breadcrumbs View should have items rendered" time="0.009">
+    </testcase>
+    <testcase classname="Breadcrumbs View should disable routing on item click" name="Breadcrumbs View should disable routing on item click" time="0.026">
+    </testcase>
+  </testsuite>
+  <testsuite name="DsOpenMenuDirective" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:41" time="1.608" tests="4">
+    <testcase classname="DsOpenMenuDirective should create test component" name="DsOpenMenuDirective should create test component" time="0.085">
+    </testcase>
+    <testcase classname="DsOpenMenuDirective should open dropdown on click" name="DsOpenMenuDirective should open dropdown on click" time="0.02">
+    </testcase>
+    <testcase classname="DsOpenMenuDirective should close dropdown on second click" name="DsOpenMenuDirective should close dropdown on second click" time="0.007">
+    </testcase>
+    <testcase classname="DsOpenMenuDirective should pass correct inputs to dropdown" name="DsOpenMenuDirective should pass correct inputs to dropdown" time="0.012">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprStatusBadgeComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:42" time="1.24" tests="2">
+    <testcase classname="SprStatusBadgeComponent Model should create component instance" name="SprStatusBadgeComponent Model should create component instance" time="0.054">
+    </testcase>
+    <testcase classname="SprStatusBadgeComponent View should change pointColor" name="SprStatusBadgeComponent View should change pointColor" time="0.015">
+    </testcase>
+  </testsuite>
+  <testsuite name="DatepickerPeriods" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:38" time="4.709" tests="3">
+    <testcase classname="DatepickerPeriods Model should create" name="DatepickerPeriods Model should create" time="0.038">
+    </testcase>
+    <testcase classname="DatepickerPeriods View should render list" name="DatepickerPeriods View should render list" time="0.024">
+    </testcase>
+    <testcase classname="DatepickerPeriods View should add active class" name="DatepickerPeriods View should add active class" time="0.077">
+    </testcase>
+  </testsuite>
+  <testsuite name="BottomBarComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:42" time="1.382" tests="2">
+    <testcase classname="BottomBarComponent Model should create component instance" name="BottomBarComponent Model should create component instance" time="0.085">
+    </testcase>
+    <testcase classname="BottomBarComponent View Check displaying projected content" name="BottomBarComponent View Check displaying projected content" time="0.019">
+    </testcase>
+  </testsuite>
+  <testsuite name="DsSwitcherComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:42" time="1.788" tests="3">
+    <testcase classname="DsSwitcherComponent Model should create component" name="DsSwitcherComponent Model should create component" time="0.044">
+    </testcase>
+    <testcase classname="DsSwitcherComponent View should add inputId" name="DsSwitcherComponent View should add inputId" time="0.019">
+    </testcase>
+    <testcase classname="DsSwitcherComponent View should add isDecorated" name="DsSwitcherComponent View should add isDecorated" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="DsOpenMenuItemDirective" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:43" time="1.328" tests="3">
+    <testcase classname="DsOpenMenuItemDirective should create test component" name="DsOpenMenuItemDirective should create test component" time="0.036">
+    </testcase>
+    <testcase classname="DsOpenMenuItemDirective should bind input values correctly" name="DsOpenMenuItemDirective should bind input values correctly" time="0.004">
+    </testcase>
+    <testcase classname="DsOpenMenuItemDirective should have a valid TemplateRef" name="DsOpenMenuItemDirective should have a valid TemplateRef" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprTogglePeriodSelectorDirective" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:39" time="5.262" tests="1">
+    <testcase classname="SprTogglePeriodSelectorDirective View should open calendar on trigger" name="SprTogglePeriodSelectorDirective View should open calendar on trigger" time="0.588">
+    </testcase>
+  </testsuite>
+  <testsuite name="DsOpenGroupMenuTitleDirective" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:43" time="1.124" tests="2">
+    <testcase classname="DsOpenGroupMenuTitleDirective should create test component" name="DsOpenGroupMenuTitleDirective should create test component" time="0.063">
+    </testcase>
+    <testcase classname="DsOpenGroupMenuTitleDirective should provide a valid TemplateRef" name="DsOpenGroupMenuTitleDirective should provide a valid TemplateRef" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprStepperBody" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:43" time="0.872" tests="1">
+    <testcase classname="SprStepperBody Model should create component" name="SprStepperBody Model should create component" time="0.059">
+    </testcase>
+  </testsuite>
+  <testsuite name="ConditionsFilterBlank" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:35" time="8.989" tests="5">
+    <testcase classname="ConditionsFilterBlank Model should emit value changes" name="ConditionsFilterBlank Model should emit value changes" time="0.343">
+    </testcase>
+    <testcase classname="ConditionsFilterBlank Model should get value from writeValue method" name="ConditionsFilterBlank Model should get value from writeValue method" time="0.039">
+    </testcase>
+    <testcase classname="ConditionsFilterBlank View should show equals filter" name="ConditionsFilterBlank View should show equals filter" time="0.042">
+    </testcase>
+    <testcase classname="ConditionsFilterBlank View should show contains filter" name="ConditionsFilterBlank View should show contains filter" time="0.031">
+    </testcase>
+    <testcase classname="ConditionsFilterBlank View should show between filter" name="ConditionsFilterBlank View should show between filter" time="0.055">
+    </testcase>
+  </testsuite>
+  <testsuite name="ConditionsFilterBetween" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:43" time="1.707" tests="2">
+    <testcase classname="ConditionsFilterBetween should emit value changes" name="ConditionsFilterBetween should emit value changes" time="0.144">
+    </testcase>
+    <testcase classname="ConditionsFilterBetween should get value from writeValue method" name="ConditionsFilterBetween should get value from writeValue method" time="0.052">
+    </testcase>
+  </testsuite>
+  <testsuite name="SliderVisualThumb" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:44" time="0.819" tests="1">
+    <testcase classname="SliderVisualThumb Model should create component" name="SliderVisualThumb Model should create component" time="0.029">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprStep" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:44" time="0.742" tests="1">
+    <testcase classname="SprStep Model should create component" name="SprStep Model should create component" time="0.027">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprReadonlyControlComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:44" time="1.37" tests="1">
+    <testcase classname="SprReadonlyControlComponent Model should create component" name="SprReadonlyControlComponent Model should create component" time="0.026">
+    </testcase>
+  </testsuite>
+  <testsuite name="ThemeStorage" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:41" time="3.697" tests="3">
+    <testcase classname="ThemeStorage should be created" name="ThemeStorage should be created" time="0.022">
+    </testcase>
+    <testcase classname="ThemeStorage should get theme from storage or default to system" name="ThemeStorage should get theme from storage or default to system" time="0.006">
+    </testcase>
+    <testcase classname="ThemeStorage should save theme to storage" name="ThemeStorage should save theme to storage" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="FilterInnerHeader" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:44" time="1.287" tests="1">
+    <testcase classname="FilterInnerHeader should create" name="FilterInnerHeader should create" time="0.047">
+    </testcase>
+  </testsuite>
+  <testsuite name="ConditionsFilterEquals" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:41" time="5.098" tests="3">
+    <testcase classname="ConditionsFilterEquals View should show text control" name="ConditionsFilterEquals View should show text control" time="0.286">
+    </testcase>
+    <testcase classname="ConditionsFilterEquals View should show numeric control" name="ConditionsFilterEquals View should show numeric control" time="0.018">
+    </testcase>
+    <testcase classname="ConditionsFilterEquals View should show date control" name="ConditionsFilterEquals View should show date control" time="0.018">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprStepperHeader" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:44" time="2.818" tests="1">
+    <testcase classname="SprStepperHeader Model should create component" name="SprStepperHeader Model should create component" time="0.05">
+    </testcase>
+  </testsuite>
+  <testsuite name="SprAccordionComponent" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:42" time="5.7" tests="2">
+    <testcase classname="SprAccordionComponent Model should create component" name="SprAccordionComponent Model should create component" time="0.019">
+    </testcase>
+    <testcase classname="SprAccordionComponent View should change type" name="SprAccordionComponent View should change type" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="DsOpenMenuTitleDirective" errors="0" failures="0" skipped="0" timestamp="2026-05-10T12:43:43" time="4.834" tests="2">
+    <testcase classname="DsOpenMenuTitleDirective should create test component" name="DsOpenMenuTitleDirective should create test component" time="0.034">
+    </testcase>
+    <testcase classname="DsOpenMenuTitleDirective should provide a valid TemplateRef" name="DsOpenMenuTitleDirective should provide a valid TemplateRef" time="0.004">
+    </testcase>
+  </testsuite>
+</testsuites>

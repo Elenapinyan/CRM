@@ -1,0 +1,10 @@
+$icon-namespaces:
+  [ 'bo-icon',
+  'ds-icon'];
+
+@each $namespace in $icon-namespaces {
+  [class^='#{$namespace}-']::before,
+  [class*=' #{$namespace}-']::before {
+    display: grid;
+  }
+}

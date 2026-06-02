@@ -1,0 +1,105 @@
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  --brd-bria-half-width: calc(var(--brd-bria-panel-width, 0px) / 2);
+  --brd-toast-transform-positioning: calc(-50% - (var(--brd-bria-half-width)));
+
+  position: fixed;
+  bottom: 8px;
+  left: 50%;
+  z-index: 12000;
+  transform: translateX(var(--brd-toast-transform-positioning));
+  width: 100%;
+  max-width: 400px;
+  border-radius: var(--spr-border-radius-l);
+
+  .login-page & {
+    left: calc(var(--spr-authorization-area-sidebar-width) / 2 + 50%);
+  }
+}
+
+// $brd-color, $bg-color, $color, $icon-color, $border-color
+$color-sheet: (
+  ('danger', var(--brd-fill-destructive-600), var(--brd-text-default-0), var(--brd-icon-default-0), transparent),
+  ('warning', var(--brd-fill-warning-600), var(--brd-text-default-0), var(--brd-icon-default-0), transparent),
+  ('success', var(--brd-fill-success-600), var(--brd-text-default-0), var(--brd-icon-default-0), transparent),
+  ('info', var(--brd-fill-info-0), var(--brd-text-primary-800), var(--brd-icon-default-700), var(--brd-border-info-250))
+);
+
+.toast {
+  @each $brd-color, $bg-color, $color, $icon-color, $border-color in $color-sheet {
+    &.bg-#{$brd-color} {
+      border: 1px solid $border-color;
+      background-color: $bg-color !important;
+      color: $color;
+
+      .toast-icon {
+        color: $icon-color;
+      }
+
+      path {
+        fill: $icon-color; // can be deleted when all projects switch to icon font
+      }
+    }
+  }
+
+  width: 100%;
+  padding: 0;
+  border-radius: var(--spr-border-radius-m);
+  box-shadow: 0 8px 16px 0 rgb(var(--brd-black) / 0.1);
+
+  &.showing {
+    opacity: 0;
+  }
+
+  &:not(.show) {
+    display: none;
+  }
+}
+
+.toast-body {
+  word-wrap: break-word;
+}
+
+.toast__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  overflow: hidden;
+  width: 100%;
+  padding: 12px;
+
+  &:has(+ .toast__footer) {
+    padding: 8px;
+  }
+}
+
+.toast__icon {
+  font-size: var(--spr-font-size-16);
+  width: var(--spr-font-size-16);
+  height: var(--spr-font-size-16);
+}
+
+.toast__text {
+  @include body-text.body-font-config('s', $font-weight: var(--spr-font-weight-medium));
+
+  margin-right: auto;
+  overflow-wrap: anywhere;
+}
+
+.toast__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 24px;
+  font-size: var(--spr-font-size-24);
+  width: var(--spr-font-size-24);
+  height: var(--spr-font-size-24);
+  cursor: pointer;
+}
+
+.toast__footer {
+  padding: 12px;
+  border-top: 1px solid var(--brd-border-divider-300);
+}

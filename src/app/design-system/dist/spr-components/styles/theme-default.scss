@@ -1,0 +1,96 @@
+@use 'palette';
+
+// todo update lh
+// todo update colors after ace
+// todo fix tab layout
+
+:root {
+  // Fonts
+  --font-family-sans-serif:
+    'Inter', system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', 'Arial', 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  // Border-radius
+  --spr-border-radius-xs: 4px;
+  --spr-border-radius-s: 6px;
+  --spr-border-radius-m: 8px;
+  --spr-border-radius-l: 10px;
+  --spr-border-radius-xl: 16px;
+  --spr-border-radius-pill: 500px;
+
+  // Components sizes
+  --spr-sidebar-width: 236px;
+  --spr-authorization-area-sidebar-width: 516px;
+
+  // Default transition time
+  --spr-transition-time: 250ms;
+
+  // Color theme palette
+  --spr-theme-color: rgb(var(--brd-purple-300)); // #A070FE
+
+  // Black&White
+  // NOTICE: these are deprecated variables! Please use --brd-black and --brd-white from palette.scss
+  --spr-black: 19 17 29; // #13111d
+  --spr-white: 255 255 255; // #ffffff
+
+  // greyscale
+  // NOTICE: these are deprecated variables! Please use --brd-gray-* from palette.scss
+  --spr-grey-30: 245 245 245; // #F5F5F5
+  --spr-grey-50: 235 235 235; // #EBEBEB
+  --spr-grey-100: 227 229 233; // #E3E5E9
+  --spr-grey-130: 219 220 225; // #DBDCE1
+  --spr-grey-150: 217 221 224; // #D9DDE0
+  --spr-grey-200: 238 238 238; // #EEE = --brd-gray-200
+  --spr-grey-250: 189 192 197; // #BDC0C5
+  --spr-grey-300: 163 166 171; // #A3A6AB
+  --spr-grey-400: 139 144 153; // #8B9099
+  --spr-grey-500: 158 158 158; // #9E9E9E = --brd-gray-500
+  --spr-grey-550: 110 112 117; // #6E7075
+  --spr-grey-650: 83 85 97; // #535561
+  --spr-grey-700: 97 97 97; // #616161 = --brd-gray-700
+  --spr-grey-750: 67 75 91; // #434B5B
+  --spr-grey-800: 66 66 66; // #424242 = --brd-gray-800
+  --spr-grey-850: 62 64 78; // #3E404E
+  --spr-grey-900: 33 33 33; // #212121 = --brd-gray-900
+
+  // red
+  // NOTICE: these are deprecated variables! Please use --brd-red-* from palette.scss
+  --spr-red-20: 251 236 236; // #FBECEC
+  --spr-red-150: 217 61 61; // #D93D3D
+  --spr-red-200: 213 51 51; // #D53333
+  --spr-red-300: 196 77 80; // #C44D50
+  --spr-red-400: 166 55 55; // #A63737
+  --spr-red-450: 155 52 52; // #9B3434
+  --spr-red-600: 129 41 41; // #812929 = --brd-red-980
+  --spr-red-1000: 222 74 74; // #DE4A4A = --brd-red-600
+
+  // deepblue
+  --spr-deepblue-20: 233 239 255; // #E9EFFF
+  --spr-deepblue-1000: 38 99 255; // #2663FF
+
+  // override bs
+  --bs-body-line-height: 1.4285715; /* stylelint-disable-line */
+  --bs-body-color: rgb(86 98 112);
+  --bs-body-font-size: var(--spr-font-size-14);
+  --bs-border-radius: var(--spr-border-radius-m);
+  --bs-border-radius-xs: var(--spr-border-radius-xs);
+  --bs-border-radius-sm: var(--spr-border-radius-s);
+  --bs-border-radius-md: var(--spr-border-radius-s);
+  --bs-border-radius-lg: var(--spr-border-radius-m);
+  --bs-border-radius-xl: var(--spr-border-radius-l);
+  --bs-border-radius-2xl: var(--spr-border-radius-xl);
+  --bs-border-radius-pill: var(--spr-border-radius-pill);
+
+  // controls
+  --spr-control-padding-y-md: 7px; // minus 1px for border
+  --spr-control-padding-x-md: 8px;
+  --spr-control-padding-y-lg: 11px;
+  --spr-control-padding-x-lg: 8px;
+  --spr-control-font-size-md: var(--spr-font-size-14);
+  --spr-control-font-size-lg: var(--spr-font-size-16);
+  --spr-control-line-height: var(--spr-line-height-20);
+  --spr-control-border-width: 1px;
+  --spr-control-radius: var(--spr-border-radius-m);
+
+  // _root definitions
+}

@@ -1,0 +1,42 @@
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.form-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-dropdown__icon--clear {
+  display: flex;
+  align-items: center;
+}
+
+.selected-values {
+  flex: 1;
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: 6px;
+}
+
+.dropdown-list-container {
+  @include body-text.body-font-config('s');
+
+  width: 100%;
+  overflow: hidden;
+  text-align: left;
+  list-style: none;
+  min-width: var(--ds-drop-down-menu-custom-min-width, 160px);
+  margin: var(--ds-dropdown-margin-positioning, 6px 0 0) !important;
+  padding-inline: var(--ds-drop-down-menu-custom-padding-inline, 3px);
+  padding-block: var(--ds-drop-down-menu-custom-padding-block, 3px 5px);
+  border: 1px solid var(--ds-drop-down-menu-custom-border-color, var(--ds-neutral-150-750));
+  border-radius: var(--ds-drop-down-menu-custom-border-radius, var(--radius-8));
+  background-color: var(--ds-drop-down-menu-custom-background-color, var(--ds-neutral-050-900));
+  box-shadow: var(--ds-drop-down-menu-custom-box-shadow, 0 4px 8px 0 var(--ds-alpha-bb-008-024), 0 8px 16px 0 var(--ds-alpha-bb-004-040));
+}

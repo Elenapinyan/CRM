@@ -1,0 +1,39 @@
+@let sidbarItem = item();
+
+@if (sidbarItem.link; as link) {
+  @if (isExternal(link)) {
+    <a
+      class="sidebar-menu-option"
+      [target]="sidbarItem.target"
+      [href]="sidbarItem.link">
+      <ng-container *ngTemplateOutlet="content" />
+    </a>
+  } @else {
+    <a
+      class="sidebar-menu-option"
+      [target]="sidbarItem.target"
+      [routerLink]="sidbarItem.link">
+      <ng-container *ngTemplateOutlet="content" />
+    </a>
+  }
+} @else {
+  <div class="sidebar-menu-option">
+    <ng-container *ngTemplateOutlet="content" />
+  </div>
+}
+
+<ng-template #content>
+  <div
+    class="sidebar-menu-option__icon"
+    [style.background]="sidbarItem.iconBg">
+    <i
+      class="ds-icon"
+      [class]="sidbarItem.iconClass"></i>
+  </div>
+
+  <span class="open-menu-component__item-text sidebar-menu-option__label">{{ sidbarItem.label }}</span>
+
+  @if (sidbarItem | groupUnreadCount; as count) {
+    <span class="sidebar-menu-option__count">{{ count }}</span>
+  }
+</ng-template>

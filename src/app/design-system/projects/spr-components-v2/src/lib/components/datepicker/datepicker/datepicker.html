@@ -1,0 +1,100 @@
+@if (inline()) {
+  <ngb-datepicker
+    navigation="none"
+    (dateSelect)="selectDate($event)"
+    [contentTemplate]="contentTemplate"
+    [id]="inputId()"
+    [minDate]="ngbMinDate()"
+    [maxDate]="ngbMaxDate()"
+    [outsideDays]="outsideDays()" />
+} @else {
+  <ds-form-field
+    [label]="label()"
+    [description]="description()"
+    [tooltip]="tooltip()"
+    [inputId]="inputId()"
+    [errorMessages]="errorMessages()"
+    [tooltipClassForLabel]="tooltipClassForLabel()"
+    [control]="ngControl?.control"
+    [isInvalid]="isInvalidControl">
+    <div
+      #control
+      class="control-field"
+      [dsControlSize]="controlSize()">
+      <button
+        class="datepicker-open-button control-field__addon"
+        [class.datepicker-open-button--active]="datepicker.isOpen()"
+        type="button"
+        data-testid="dp-toggle"
+        [disabled]="form.disabled"
+        (click)="datepicker.toggle()">
+        <i class="ds-icon ds-icon-control-calendar"></i>
+      </button>
+
+      <input
+        ngbDatepicker
+        #datepicker="ngbDatepicker"
+        (dateSelect)="selectDate($event)"
+        (closed)="apply()"
+        (change)="!inputReadonly() && valueChanged($event)"
+        (click)="inputReadonly() && datepicker.toggle()"
+        [readonly]="inputReadonly()"
+        [placeholder]="inputPlaceholder()"
+        [maskito]="dateParserFormatter?.inputMaskConfig()?.mask(timepicker()) ?? null"
+        [contentTemplate]="contentTemplate"
+        [positionTarget]="customTarget() ?? control"
+        [id]="inputId()"
+        [name]="inputId()"
+        [minDate]="ngbMinDate()"
+        [maxDate]="ngbMaxDate()"
+        [value]="form.getRawValue() | formatDate: timepicker()"
+        [outsideDays]="outsideDays()"
+        data-testid="dp-control"
+        class="control-field__input"
+        aria-label="Value"
+        container="body"
+        autocomplete="off"
+        datepickerClass="ds-component"
+        type="text"
+        navigation="none" />
+
+      @if (isDeselectAllowed() && form.value?.date) {
+        <ds-button
+          (click)="resetValue()"
+          [disabled]="form.disabled"
+          [isIcon]="true"
+          variant="transparent"
+          data-testid="dp-deselect"
+          type="button">
+          <i
+            class="ds-icon-control-cross"
+            style="font-size: 20px"></i>
+        </ds-button>
+      }
+    </div>
+  </ds-form-field>
+}
+
+<ng-template
+  #contentTemplate
+  let-dp>
+  <div class="custom-content-grid">
+    <ds-datepicker-month
+      [datepicker]="dp"
+      [timepicker]="timepicker()"
+      [timeMask]="dateParserFormatter?.inputMaskConfig()?.timeMask ?? null"
+      [timePlaceholder]="dateParserFormatter?.inputMaskConfig()?.timePlaceholder ?? TimePlaceholder.HM"
+      [formControl]="timeControl">
+      <ng-template
+        sprCustomMonthDay
+        let-date
+        let-focused="focused">
+        <ds-datepicker-day
+          [date]="date"
+          [selectedDate]="dateControl.getRawValue()"
+          [focused]="focused"
+          [maxDate]="ngbMaxDate()" />
+      </ng-template>
+    </ds-datepicker-month>
+  </div>
+</ng-template>

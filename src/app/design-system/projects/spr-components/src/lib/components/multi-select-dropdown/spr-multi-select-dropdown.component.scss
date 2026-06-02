@@ -1,0 +1,27 @@
+:host {
+  display: block;
+
+  .trigger {
+    cursor: pointer;
+  }
+}
+
+.form-dropdown {
+  .dropdown-menu {
+    border-radius: var(--spr-border-radius-m);
+    border: 1px solid var(--brd-border-default-300);
+    background: var(--brd-fill-default-0);
+    padding: 12px 12px 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 80px 0 rgb(var(--brd-black) / 0.08);
+    margin: 6px 0 !important;
+
+    .dropdown-item {
+      padding: 8px;
+    }
+
+    .dropdown-item.disabled {
+      pointer-events: none;
+    }
+  }
+}

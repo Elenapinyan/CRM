@@ -1,0 +1,118 @@
+<div class="form-dropdown">
+  <ds-form-field
+    [label]="label"
+    [description]="description ?? ''"
+    [tooltip]="tooltip"
+    [inputId]="inputId()"
+    [errorMessages]="errorMessagesConfig"
+    [tooltipClassForLabel]="tooltipClassForLabel"
+    [control]="ngControl?.control"
+    [isInvalid]="isInvalidControl">
+    <div
+      data-testid="dropdown-toggle"
+      class="control-field"
+      #menuHost
+      (click)="menu.open()"
+      [dsControlSize]="controlSize"
+      [class.control-field--disabled]="ngControl?.disabled"
+      [class.control-field--invalid]="isInvalidControl"
+      [class.control-field--colored]="isColored">
+      <ng-content select="[addonPrefix]">
+        @if (addonStart(); as addonStartValue) {
+          <div
+            class="control-field__addon"
+            data-testid="addon-start">
+            @if (iconAddonTypeGuard(addonStartValue)) {
+              <i
+                data-testid="addon-icon"
+                [class]="addonStartValue.icon"></i>
+            }
+
+            @if (textAddonTypeGuard(addonStartValue)) {
+              <span
+                class="addon-text"
+                data-testid="addon-text">
+                {{ addonStartValue.text }}
+              </span>
+            }
+          </div>
+        }
+      </ng-content>
+
+      <div class="control-field__inner">
+        @if (control.value?.icon) {
+          <span class="control-field__prepend">
+            <i
+              [class]="control.value!.icon"
+              class="ds-icon"></i>
+          </span>
+        }
+
+        <input
+          [dsControlSize]="controlSize"
+          [placeholder]="inputPlaceholder()"
+          [disabled]="control.disabled"
+          [value]="dropdownPlaceholder() && !control.value?.value ? dropdownPlaceholder() : control.value?.text"
+          [id]="inputId()"
+          class="control-field__input"
+          readonly
+          type="text" />
+
+        <ng-content select="[appendSuffix]">
+          <span class="control-field__append">
+            <i class="ds-icon ds-icon-arrows-chevron-up-down"></i>
+          </span>
+        </ng-content>
+      </div>
+
+      @if (addonEnd(); as addonEndValue) {
+        <div
+          class="control-field__addon"
+          data-testid="addon-end">
+          @if (iconAddonTypeGuard(addonEndValue)) {
+            <i
+              data-testid="addon-icon"
+              [class]="addonEndValue.icon"></i>
+          }
+
+          @if (addonEndValue && textAddonTypeGuard(addonEndValue)) {
+            <span
+              class="addon-text"
+              data-testid="addon-text">
+              {{ addonEndValue.text }}
+            </span>
+          }
+        </div>
+      }
+    </div>
+
+    <ng-template
+      sprMenu
+      [host]="menuHost"
+      (menuToggleChange)="onOpenChange($event)"
+      #menu="sprMenu">
+      <div class="dropdown-list-container">
+        <ds-selection
+          [valueKey]="false"
+          [formControl]="control"
+          [withSearch]="withSearch()"
+          [maxDisplayedItems]="maxDisplayedItems()"
+          [itemSizePx]="dropdownItemHeight()"
+          [options]="options()"
+          [searchPlaceholder]="placeholder()"
+          [disableItemMarker]="true"
+          [widthByContent]="widthByContent()"
+          [templates]="customTemplates()"
+          [translations]="translations()"
+          (searchTermChange)="searchControl.patchValue($event)"
+          (valueChanged)="menu.close()"
+          (scrolledToBottom)="onScrolledToBottom()">
+        </ds-selection>
+      </div>
+    </ng-template>
+
+    @if (isLoading()) {
+      <ds-spinner data-testid="spinner" />
+    }
+  </ds-form-field>
+</div>

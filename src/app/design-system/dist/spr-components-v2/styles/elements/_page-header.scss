@@ -1,0 +1,101 @@
+@use '../typography/heading' as heading-text;
+@use '../typography/body' as body-text;
+
+.page-header.ds-component {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-bottom: 1px solid var(--ds-page-header-border-color, transparent);
+  background: var(--ds-page-header-background, transparent);
+  padding: 19px 24px;
+
+  .page-header--filled {
+    --ds-page-header-background: var(--ds-neutral-050-800);
+  }
+
+  .page-header--outlined {
+    --ds-page-header-border-color: var(--ds-neutral-050-750);
+  }
+
+  .page-header__row {
+    --ds-page-header-grid-template: 1fr 1fr;
+
+    display: grid;
+    grid-template-columns: var(--ds-page-header-grid-custom-template, var(--ds-page-header-grid-template));
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-width: 0;
+
+    > :last-child {
+      justify-self: end;
+    }
+  }
+
+  .page-header__row--auto-first {
+    --ds-page-header-grid-custom-template: auto 1fr;
+
+    > :last-child {
+      min-width: 0;
+    }
+  }
+
+  .page-header__row--auto-second {
+    --ds-page-header-grid-custom-template-columns: 1fr auto;
+
+    > :first-child {
+      min-width: 0;
+    }
+  }
+
+  .page-header__col {
+    --ds-page-header-col-gap: 8px;
+
+    display: flex;
+    align-items: center;
+    gap: var(--ds-page-header-col-gap);
+  }
+
+  .page-header__col--gap-md {
+    --ds-page-header-col-gap: 12px;
+  }
+
+  .page-header__col--gap-lg {
+    --ds-page-header-col-gap: 16px;
+  }
+
+  .page-header__title {
+    @include heading-text.heading-font-config('m');
+
+    display: flex;
+    align-items: center;
+    gap: var(--ds-page-header-col-gap);
+    color: var(--ds-neutral-1000-0);
+
+    .ds-icon {
+      color: var(--ds-page-header-icon-custom-color, var(--ds-accent-green-800-500));
+    }
+  }
+
+  .page-header__badge-list {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .page-header__controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .page-header__info {
+    @include body-text.body-font-config('xs-m');
+
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    color: var(--ds-neutral-600-400);
+  }
+}

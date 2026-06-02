@@ -1,0 +1,69 @@
+@let item = value();
+@let isParent = isParentItem(item) && item.children.length;
+
+<div
+  class="transfer-list__data-item"
+  [class]="'transfer-list__data-' + type() + '-item'"
+  [class.child]="!isParent">
+  <div class="inline-container">
+    <ng-template
+      [ngTemplateOutlet]="contentTemplate() ?? defaultContent"
+      [ngTemplateOutletContext]="{ $implicit: item, move: move.bind(this) }" />
+
+    <ng-template #defaultContent>
+      @if (item.icon) {
+        <i
+          class="transfer-list-icon-sm"
+          [class]="item.icon"></i>
+      }
+
+      <div
+        class="transfer-list__data-item-header"
+        data-testid="list-toggle"
+        (click)="isParent && toggleChildren()">
+        @if (isParent) {
+          @if (isOpened()) {
+            <i class="bo-icon-arrows-chevron-up"></i>
+          } @else {
+            <i class="bo-icon-arrows-chevron-down"></i>
+          }
+        }
+
+        {{ item.name }}
+      </div>
+    </ng-template>
+  </div>
+
+  <spr-button
+    data-testid="btn-move"
+    variant="outline"
+    size="sm"
+    [isIcon]="true"
+    (click)="move(item)">
+    <ng-template
+      [ngTemplateOutlet]="iconTemplate() ?? defaultButtonIcon"
+      [ngTemplateOutletContext]="{ $implicit: item, move: move.bind(this) }" />
+
+    <ng-template #defaultButtonIcon>
+      @if (type() === 'source') {
+        <i class="transfer-list-icon-md bo-icon-arrows-chevron-right"></i>
+      } @else {
+        <i class="transfer-list-icon-md bo-icon-arrows-chevron-left"></i>
+      }
+    </ng-template>
+  </spr-button>
+</div>
+
+@if (isParent) {
+  <div
+    class="transfer-list__data-item-children"
+    [class.opened]="isOpened()">
+    @for (child of item.children; track child.value) {
+      <spr-transfer-list-item
+        [value]="child"
+        [type]="type()"
+        [customTemplates]="customTemplates()"
+        (moveItem)="move($event)" />
+    }
+  </div>
+}

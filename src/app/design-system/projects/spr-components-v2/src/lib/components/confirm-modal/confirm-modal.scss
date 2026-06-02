@@ -1,0 +1,11 @@
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  display: block;
+}
+
+.confirmation-message {
+  @include body-text.body-font-config('m');
+
+  color: var(--ds-confirmation-message-custom-color, var(--ds-neutral-1000-0));
+}

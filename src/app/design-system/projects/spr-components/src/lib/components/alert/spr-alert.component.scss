@@ -1,0 +1,104 @@
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  ::ng-deep {
+    .alert-dismissible {
+      --brd-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414'/%3e%3c/svg%3e");
+
+      .btn-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        width: 38px;
+        height: 46px;
+        padding: 16px 12px;
+        background: transparent var(--brd-btn-close-bg) center/14px auto no-repeat;
+        color: rgb(var(--brd-black));
+        opacity: 0.5;
+
+        &:hover {
+          opacity: 0.75;
+        }
+
+        &:focus {
+          opacity: 1;
+        }
+
+        &:disabled,
+        &.disabled {
+          pointer-events: none;
+          user-select: none;
+          opacity: 0.25;
+        }
+      }
+    }
+  }
+
+  .alert {
+    --brd-alert-bg: transparent;
+    --brd-alert-color: inherit;
+    --brd-info-bg-subtle: var(--brd-fill-info-0);
+    --brd-info-text-emphasis: var(--brd-text-primary-800);
+    --brd-info-border-subtle: var(--brd-border-info-250);
+    --brd-danger-bg-subtle: var(--brd-fill-destructive-100);
+    --brd-danger-text-emphasis: var(--brd-text-destructive-900);
+    --brd-danger-border-subtle: transparent;
+    --brd-warning-bg-subtle: rgb(var(--brd-orange-100));
+    --brd-warning-text-emphasis: rgb(var(--brd-orange-900));
+    --brd-warning-border-subtle: transparent;
+    --brd-success-bg-subtle: rgb(var(--brd-green-100));
+    --brd-success-text-emphasis: rgb(var(--brd-green-900));
+    --brd-success-border-subtle: transparent;
+
+    @include body-text.body-font-config('s');
+
+    position: relative;
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    padding: 13px 12px;
+    border: 1px solid var(--brd-alert-border-color);
+    border-radius: var(--spr-border-radius-m);
+    background-color: var(--brd-alert-bg);
+    color: var(--brd-alert-color);
+
+    .icon,
+    .bo-icon {
+      margin-top: 2px;
+      font-size: var(--spr-font-size-16);
+    }
+  }
+
+  .alert-info {
+    --brd-alert-color: var(--brd-info-text-emphasis);
+    --brd-alert-bg: var(--brd-info-bg-subtle);
+    --brd-alert-border-color: var(--brd-info-border-subtle);
+  }
+
+  .alert-success {
+    --brd-alert-color: var(--brd-success-text-emphasis);
+    --brd-alert-bg: var(--brd-success-bg-subtle);
+    --brd-alert-border-color: var(--brd-success-border-subtle);
+  }
+
+  .alert-warning {
+    --brd-alert-color: var(--brd-warning-text-emphasis);
+    --brd-alert-bg: var(--brd-warning-bg-subtle);
+    --brd-alert-border-color: var(--brd-warning-border-subtle);
+  }
+
+  .alert-danger {
+    --brd-alert-color: var(--brd-danger-text-emphasis);
+    --brd-alert-bg: var(--brd-danger-bg-subtle);
+    --brd-alert-border-color: var(--brd-danger-border-subtle);
+  }
+
+  .alert-dismissible {
+    padding-right: 42px;
+  }
+}

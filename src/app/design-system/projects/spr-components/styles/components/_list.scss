@@ -1,0 +1,39 @@
+@use '../typography/body' as body-text;
+@use '../mixins' as mixins;
+
+.spr-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.spr-list__item {
+  @include mixins.flex-container($gap: 8px);
+
+  padding: 12px 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--brd-border-divider-300);
+  }
+}
+
+.spr-list__item-header {
+  @include body-text.body-font-config('s');
+
+  color: var(--brd-text-secondary-600);
+}
+
+.spr-list__item-value {
+  @include mixins.flex-container($gap: 4px);
+}
+
+.spr-list__item-value-main {
+  @include body-text.body-font-config('s');
+
+  color: var(--brd-text-primary-800);
+}
+
+.spr-list__item-value-caption {
+  @include body-text.body-font-config('xs');
+
+  color: var(--brd-text-secondary-500);
+}

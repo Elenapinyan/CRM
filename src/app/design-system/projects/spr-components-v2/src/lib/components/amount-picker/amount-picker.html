@@ -1,0 +1,43 @@
+<div class="amount-picker">
+  <div class="amount-picker__row">
+    <ds-currency-input
+      #startInputModel="ngModel"
+      data-testid="start-input"
+      controlSize="sm"
+      [currencyPrefix]="currencyPrefix()"
+      [currencySuffix]="currencySuffix()"
+      [precision]="precision()"
+      [disabled]="isDisabled()"
+      [ngModel]="startValue()"
+      (ngModelChange)="onStartInputChange($event)"
+      (blur)="onBlur()">
+    </ds-currency-input>
+
+    <span class="amount-picker__separator">—</span>
+
+    <ds-currency-input
+      #endInputModel="ngModel"
+      data-testid="end-input"
+      controlSize="sm"
+      [currencyPrefix]="currencyPrefix()"
+      [currencySuffix]="currencySuffix()"
+      [precision]="precision()"
+      [disabled]="isDisabled()"
+      [ngModel]="endValue()"
+      (ngModelChange)="onEndInputChange($event)"
+      (blur)="onBlur()">
+    </ds-currency-input>
+  </div>
+
+  <ds-slider
+    data-testid="slider"
+    [isRange]="true"
+    [min]="min()"
+    [max]="max()"
+    [step]="step()"
+    [showMinMaxLabels]="true"
+    [disabled]="isDisabled()"
+    [ngModel]="sliderValue()"
+    (ngModelChange)="onSliderChange($event)">
+  </ds-slider>
+</div>

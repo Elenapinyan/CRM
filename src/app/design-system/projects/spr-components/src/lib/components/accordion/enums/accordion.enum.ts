@@ -1,0 +1,6 @@
+export enum AccordionType {
+  Default = 'default',
+  Nested = 'nested',
+  Flexible = 'flexible',
+  Custom = 'custom',
+}

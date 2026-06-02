@@ -1,0 +1,115 @@
+<div
+  class="form-field"
+  [sprControlSize]="controlSize"
+  [class.form-field--disabled]="ngControl?.disabled"
+  [class.form-field--rounded]="rounded"
+  [sprLabel]="label"
+  sprLabelPosition="start"
+  [tooltip]="tooltip"
+  [tooltipClassForLabel]="tooltipClassForLabel"
+  [inputId]="inputId()">
+  <div
+    *ngIf="addonStart"
+    class="form-field__addon">
+    <i
+      *ngIf="iconAddonTypeGuard(addonStart)"
+      [class]="addonStart.icon"
+      style="font-size: 20px"></i>
+    <span
+      *ngIf="textAddonTypeGuard(addonStart)"
+      class="addon-text"
+      >{{ addonStart.text }}</span
+    >
+  </div>
+
+  <div
+    class="form-field__inner"
+    [class.form-field__inner-invalid]="isInvalidControl"
+    [class.form-field__inner--addon-start]="addonStart"
+    [class.form-field__inner--addon-end]="addonEnd">
+    <span
+      *ngIf="prepend"
+      class="form-field__prepend"
+      [class.form-field__prepend--disabled]="ngControl?.disabled">
+      <ng-content select="[prependContent]"></ng-content>
+    </span>
+
+    <input
+      #inputElement
+      [class.control-form--colored]="isColored"
+      [class.addon-start]="addonStart"
+      [class.addon-end]="addonEnd"
+      [class.prepend]="prepend"
+      [class.append]="append"
+      [formControl]="control"
+      [id]="inputId()"
+      [name]="inputId()"
+      [ngClass]="inputClass"
+      [placeholder]="placeholder"
+      [type]="displayedInputType"
+      [maxlength]="maxLength || null"
+      (blur)="onBlur($event)"
+      autocomplete="off"
+      class="form-field__input"
+      [readOnly]="readOnly"
+      ngDefaultControl />
+
+    <span
+      *ngIf="append && type !== 'password' && !isSubmitStrategy"
+      class="form-field__append"
+      [class.form-field__append--disabled]="ngControl?.disabled">
+      <ng-content select="[appendContent]"></ng-content>
+    </span>
+
+    <button
+      *ngIf="type === 'password'"
+      class="form-field__password-button"
+      type="button"
+      [disabled]="!!ngControl?.disabled"
+      (click)="togglePasswordVisibility()">
+      <i
+        [class]="isPasswordVisible ? 'bo-icon-control-eye-on' : 'bo-icon-control-eye-off'"
+        style="font-size: 20px"></i>
+    </button>
+
+    <button
+      *ngIf="isSubmitStrategy"
+      class="form-field__submit-button"
+      [disabled]="!!ngControl?.disabled"
+      (mousedown)="submitValue()">
+      <i
+        class="bo-icon-arrows-corner-down-left"
+        style="font-size: 20px"></i>
+    </button>
+  </div>
+
+  <div
+    *ngIf="addonEnd"
+    class="form-field__addon">
+    <i
+      *ngIf="iconAddonTypeGuard(addonEnd)"
+      [class]="addonEnd.icon"
+      style="font-size: 20px"></i>
+    <span
+      *ngIf="textAddonTypeGuard(addonEnd)"
+      class="addon-text"
+      >{{ addonEnd.text }}</span
+    >
+  </div>
+</div>
+
+@if (description || isInvalidControl) {
+  <div class="form-field-description">
+    @if (description && !isInvalidControl) {
+      <spr-field-description class="input-description">
+        {{ description }}
+      </spr-field-description>
+    }
+
+    @if (isInvalidControl) {
+      <spr-error>
+        {{ ngControl?.control?.errors | getControlErrorMessage: errorMessagesConfig }}
+      </spr-error>
+    }
+  </div>
+}

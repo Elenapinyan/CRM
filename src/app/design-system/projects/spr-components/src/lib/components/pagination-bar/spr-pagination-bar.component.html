@@ -1,0 +1,97 @@
+<div class="pagination-bar">
+  <div class="pagination-bar__holder">
+    <ngb-pagination
+      [collectionSize]="collectionSize | collectionSize: paginationParams : page : size"
+      [boundaryLinks]="withBoundaryLinks"
+      [disabled]="isLoading"
+      [page]="page + 1"
+      [pageSize]="size"
+      [rotate]="false"
+      [maxSize]="maxPages"
+      (pageChange)="onPageChange($event)">
+      <ng-template [ngIf]="paginationParams">
+        <ng-template
+          let-currentPage
+          ngbPaginationPages>
+          <li class="ngb-custom-pages-item">
+            <input
+              #i
+              (blur)="onPageChange(+i.value)"
+              (keyup.enter)="onPageChange(+i.value)"
+              [value]="currentPage"
+              [disabled]="(!paginationParams.hasNext && !paginationParams.hasPrevious) || isPaginationInputDisabled"
+              class="pagination-bar__input"
+              id="paginationInput"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              [min]="1"
+              [max]="paginationParams.hasNext ? currentPage + 1 : currentPage"
+              type="number" />
+          </li>
+        </ng-template>
+      </ng-template>
+      <ng-template ngbPaginationFirst>
+        <i class="bo-icon-arrows-chevron-double-left arrow-icon"></i>
+      </ng-template>
+      <ng-template ngbPaginationPrevious>
+        <i class="bo-icon-arrows-chevron-left arrow-icon"></i>
+      </ng-template>
+      <ng-template ngbPaginationNext>
+        <i class="bo-icon-arrows-chevron-right arrow-icon"></i>
+      </ng-template>
+      <ng-template ngbPaginationLast>
+        <i class="bo-icon-arrows-chevron-double-right arrow-icon"></i>
+      </ng-template>
+    </ngb-pagination>
+
+    @if (paginationWithPageSize) {
+      <spr-page-size-selector
+        [disabled]="isLoading"
+        [ngModel]="size"
+        (ngModelChange)="onSizeChange($event)"></spr-page-size-selector>
+    }
+  </div>
+
+  @if (withExportSection) {
+    <div class="btn-group-holder">
+      <span class="label-form">{{ exportLabel }}</span>
+
+      <spr-button
+        [disabled]="(!collectionSize && !paginationParams) || isLoading || !isFullField"
+        variant="outline"
+        size="sm"
+        (click)="exportAsFormat(exportFormats.XLS)"
+        type="button">
+        XLS
+      </spr-button>
+
+      <spr-button
+        [disabled]="(!collectionSize && !paginationParams) || isLoading || !isFullField"
+        variant="outline"
+        size="sm"
+        (click)="exportAsFormat(exportFormats.CSV)"
+        type="button">
+        CSV
+      </spr-button>
+    </div>
+  }
+
+  @if (withSearch) {
+    <spr-input
+      [prepend]="true"
+      [append]="true"
+      [placeholder]="searchPlaceholder"
+      [formControl]="searchControl">
+      <i
+        prependContent
+        class="bo-icon-control-search"></i>
+
+      @if (searchControl.value) {
+        <i
+          appendContent
+          class="bo-icon-control-cross"
+          (click)="clearSearch()"></i>
+      }
+    </spr-input>
+  }
+</div>

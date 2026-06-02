@@ -1,0 +1,126 @@
+@if (withSearch()) {
+  <div class="selection-list-container-header">
+    <ds-search-input
+      data-testid="search-input"
+      [isClientSearchNavigation]="false"
+      controlSize="sm"
+      (mousedown)="$event.stopImmediatePropagation()"
+      [ngModel]="searchTerm()"
+      (ngModelChange)="searchTerm.set($event)"
+      [placeholder]="searchPlaceholder()" />
+  </div>
+}
+
+@if (searchTerm() && !filteredOptions().length) {
+  @if (templatesMap().get('search-error'); as template) {
+    <ng-template
+      [ngTemplateOutlet]="template"
+      [ngTemplateOutletContext]="{
+        $implicit: {
+          title: translations()[translationKeys.SEARCH_ERROR_TITLE],
+          subtitle: translations()[translationKeys.SEARCH_ERROR_SUBTITLE],
+        },
+      }" />
+  } @else {
+    <div
+      data-testid="search-error"
+      class="search-error-message">
+      <div class="search-error-message__title">{{ translations()[translationKeys.SEARCH_ERROR_TITLE] }}</div>
+      <div class="search-error-message__subtitle">{{ translations()[translationKeys.SEARCH_ERROR_SUBTITLE] }}</div>
+    </div>
+  }
+}
+
+<cdk-virtual-scroll-viewport
+  data-testid="scroll-viewport"
+  class="selection-list-viewport"
+  sprDynamicWidth
+  [dynamicWidthEnabled]="widthByContent()"
+  [style.min-height.px]="viewportMinHeightPx()"
+  [itemSize]="itemSizePx()"
+  [minBufferPx]="bufferSizePx()"
+  [maxBufferPx]="bufferSizePx()"
+  (scrolledIndexChange)="onScrolledIndexChange($event)">
+  <div class="viewport-content">
+    @if (isShowSelectAllOption()) {
+      <div
+        class="selection-item-wrapper"
+        [style.height.px]="itemSizePx()"
+        (click)="selectAll()">
+        @if (templatesMap().get('select-all'); as template) {
+          <ng-template
+            [ngTemplateOutlet]="template"
+            [ngTemplateOutletContext]="{
+              $implicit: { text: translations()[translationKeys.SELECT_ALL] },
+              isSelected: isAllOptionsSelected(),
+            }" />
+        } @else {
+          <div
+            data-testid="select-all-option"
+            class="selection-item"
+            [class.selected]="isAllOptionsSelected()"
+            (mousedown)="$event.stopImmediatePropagation()">
+            <ds-checkbox
+              class="selection-item__control"
+              [isPartiallyChecked]="isPartiallyChecked()"
+              [ngModel]="isAllOptionsSelected() || isPartiallyChecked()" />
+            {{ translations()[translationKeys.SELECT_ALL] }}
+          </div>
+        }
+      </div>
+    }
+
+    <ng-container *cdkVirtualFor="let option of searchStrategy() === 'local' ? filteredOptions() : options()">
+      <div
+        class="selection-item-wrapper"
+        [style.height.px]="itemSizePx()"
+        (click)="select(option)">
+        @if (templatesMap().get('option'); as template) {
+          <ng-template
+            [ngTemplateOutlet]="template"
+            [ngTemplateOutletContext]="{ $implicit: option, isSelected: option | isSelected: selectedOptions() }" />
+        } @else {
+          <ng-template
+            [ngTemplateOutlet]="dropdownItemTemplate"
+            [ngTemplateOutletContext]="{ $implicit: option }" />
+        }
+      </div>
+    </ng-container>
+  </div>
+</cdk-virtual-scroll-viewport>
+
+<ng-template
+  #dropdownItemTemplate
+  let-option>
+  <div
+    data-testid="option"
+    [class]="['selection-item', option.class ?? '']"
+    [class.disabled]="option?.isDisabled"
+    [class.selected]="option | isSelected: selectedOptions()"
+    (mousedown)="$event.stopImmediatePropagation()">
+    @if (multiselect()) {
+      <ds-checkbox
+        class="selection-item__control"
+        [ngModel]="option | isSelected: selectedOptions()" />
+    } @else if (!disableItemMarker()) {
+      <ds-radio-button
+        class="selection-item__control"
+        [isBottomMargin]="false"
+        [value]="option"
+        [ngModel]="selectedOptions()?.[0]" />
+    }
+
+    @if (option.icon) {
+      <i
+        data-testid="option-icon"
+        [class]="option.icon"
+        class="ds-icon"></i>
+    }
+
+    <span
+      data-testid="option-text"
+      class="selection-item__value"
+      >{{ option.text }}</span
+    >
+  </div>
+</ng-template>

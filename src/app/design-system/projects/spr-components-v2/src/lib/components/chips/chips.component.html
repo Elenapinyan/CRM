@@ -1,0 +1,22 @@
+@if (isInteractive) {
+  <button
+    data-testid="chips-element"
+    class="chips"
+    [disabled]="isDisabled"
+    [class]="['chips--' + variant, 'chips--' + size, 'chips--' + chipsStyle]"
+    [class.chips--selected]="isSelected">
+    <ng-container *ngTemplateOutlet="ngContainerTemplate"></ng-container>
+  </button>
+} @else {
+  <span
+    data-testid="chips-element"
+    class="chips"
+    [class]="['chips--' + variant, 'chips--' + size, 'chips--' + chipsStyle]"
+    [class.chips--selected]="isSelected">
+    <ng-container *ngTemplateOutlet="ngContainerTemplate"></ng-container>
+  </span>
+}
+
+<ng-template #ngContainerTemplate>
+  <ng-content></ng-content>
+</ng-template>

@@ -1,0 +1,151 @@
+<div
+  class="control-field"
+  data-testid="input-wrapper"
+  [dsControlSize]="controlSize"
+  [class.control-field--disabled]="ngControl?.disabled"
+  [class.control-field--rounded]="rounded()"
+  [class.control-field--invalid]="isInvalidControl"
+  [class.control-field--colored]="isColored"
+  [dsLabel]="label"
+  dsLabelPosition="start"
+  [tooltip]="tooltip"
+  [tooltipClassForLabel]="tooltipClassForLabel"
+  [inputId]="inputId()">
+  @if (addonStart(); as addonStart) {
+    <label
+      [for]="inputId()"
+      class="control-field__addon"
+      data-testid="addon-start">
+      @if (iconAddonTypeGuard(addonStart)) {
+        <i
+          [class]="addonStart.icon"
+          class="control-field__addon-icon"></i>
+      }
+
+      @if (textAddonTypeGuard(addonStart)) {
+        <span class="control-field__addon-text">
+          {{ addonStart.text }}
+        </span>
+      }
+    </label>
+  }
+
+  <div class="control-field__inner">
+    @if (prepend()) {
+      <label
+        [for]="inputId()"
+        class="control-field__prepend"
+        data-testid="input-prepend">
+        <ng-content select="[prependContent]"></ng-content>
+      </label>
+    }
+
+    <input
+      #inputElement
+      data-testid="input-element"
+      [formControl]="control"
+      [id]="inputId()"
+      [name]="inputId()"
+      [ngClass]="inputClass"
+      [placeholder]="placeholder()"
+      [type]="displayedInputType"
+      [maskito]="maskito()"
+      [maxlength]="maxLength() || null"
+      (blur)="onBlur($event)"
+      autocomplete="off"
+      class="control-field__input"
+      [readOnly]="readOnly()"
+      ngDefaultControl />
+
+    <ng-template #appendTemplate>
+      <ng-content select="[appendContent]"></ng-content>
+    </ng-template>
+
+    @if (append() && type() !== 'password' && !isSubmitStrategy()) {
+      @switch (appendType()) {
+        @case ('label') {
+          <label
+            [for]="inputId()"
+            class="control-field__append"
+            data-testid="input-append">
+            <ng-template [ngTemplateOutlet]="appendTemplate"></ng-template>
+          </label>
+        }
+        @case ('button') {
+          <div
+            class="control-field__append"
+            data-testid="input-append">
+            <ds-button
+              (click)="appendClick.emit()"
+              [isIcon]="true"
+              size="xs"
+              type="button"
+              variant="transparent">
+              <ng-template [ngTemplateOutlet]="appendTemplate"></ng-template>
+            </ds-button>
+          </div>
+        }
+      }
+    }
+
+    @if (type() === 'password') {
+      <button
+        class="control-field__password-button"
+        data-testid="password-toggle-button"
+        type="button"
+        [disabled]="!!ngControl?.disabled"
+        (click)="togglePasswordVisibility()">
+        <i
+          [class]="isPasswordVisible ? 'ds-icon-control-eye-on' : 'ds-icon-control-eye-off'"
+          class="control-field__addon-icon"></i>
+      </button>
+    }
+
+    @if (isSubmitStrategy()) {
+      <button
+        class="control-field__submit-button"
+        data-testid="submit-button"
+        [disabled]="!!ngControl?.disabled"
+        (mousedown)="submitValue()">
+        <i class="control-field__submit-button-icon ds-icon-arrows-corner-down-left"></i>
+      </button>
+    }
+  </div>
+
+  @if (addonEnd(); as addonEnd) {
+    <label
+      [for]="inputId()"
+      class="control-field__addon"
+      data-testid="addon-end">
+      @if (iconAddonTypeGuard(addonEnd)) {
+        <i
+          [class]="addonEnd.icon"
+          class="control-field__addon-icon"></i>
+      }
+
+      @if (textAddonTypeGuard(addonEnd)) {
+        <span class="control-field__addon-text">
+          {{ addonEnd.text }}
+        </span>
+      }
+    </label>
+  }
+</div>
+
+@if (description || isInvalidControl) {
+  <div class="form-field-description">
+    @if (description && !isInvalidControl) {
+      <ds-field-description
+        class="input-description"
+        data-testid="input-description">
+        {{ description }}
+      </ds-field-description>
+    }
+
+    @if (isInvalidControl) {
+      <ds-error>
+        {{ ngControl?.control?.errors | getControlErrorMessage: errorMessagesConfig }}
+      </ds-error>
+    }
+  </div>
+}

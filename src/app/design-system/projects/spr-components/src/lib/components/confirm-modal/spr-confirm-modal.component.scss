@@ -1,0 +1,14 @@
+:host {
+  display: block;
+
+  .modal-body {
+    white-space: pre-line;
+  }
+}
+
+.confirmation-message {
+  color: var(--brd-text-default-800);
+  font-size: var(--spr-font-size-15);
+  line-height: var(--spr-line-height-20);
+  letter-spacing: 0.15px;
+}

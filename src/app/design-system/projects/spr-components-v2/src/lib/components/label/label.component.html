@@ -1,0 +1,39 @@
+<div
+  class="label-form-row"
+  data-testid="label-row"
+  [class.label-form-row--reverse]="isLabelReverse"
+  [ngClass]="className">
+  <label
+    [attr.for]="inputId"
+    class="label-container"
+    data-testid="label-element"
+    (click)="onLabelClick($event)">
+    <i
+      *ngIf="leftIcon"
+      data-testid="left-icon"
+      [class]="leftIcon"></i>
+
+    <span
+      *ngIf="label"
+      class="label-form"
+      data-testid="label-text">
+      {{ label }}
+    </span>
+
+    <i
+      *ngIf="rightIcon"
+      data-testid="right-icon"
+      [class]="rightIcon"></i>
+  </label>
+
+  <small
+    *ngIf="tooltip"
+    class="tooltip-container"
+    data-testid="tooltip-container"
+    container="body"
+    [placement]="['auto']"
+    [ngbTooltip]="tooltip"
+    [tooltipClass]="tooltipClassForLabel">
+    <i class="ds-icon ds-icon-general-info info-icon"></i>
+  </small>
+</div>

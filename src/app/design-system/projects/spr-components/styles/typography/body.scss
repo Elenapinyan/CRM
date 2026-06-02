@@ -1,0 +1,55 @@
+@use 'sass:map';
+
+$body-texts: (
+  'xxxl': (
+    'font': var(--spr-font-size-32),
+    'line': var(--spr-line-height-40),
+  ),
+  'xxl': (
+    'font': var(--spr-font-size-24),
+    'line': var(--spr-line-height-32),
+  ),
+  'xl': (
+    'font': var(--spr-font-size-20),
+    'line': var(--spr-line-height-24),
+  ),
+  'l': (
+    'font': var(--spr-font-size-16),
+    'line': var(--spr-line-height-20),
+  ),
+  'm': (
+    'font': var(--spr-font-size-15),
+    'line': var(--spr-line-height-20),
+  ),
+  's': (
+    'font': var(--spr-font-size-14),
+    'line': var(--spr-line-height-20),
+  ),
+  'xs': (
+    'font': var(--spr-font-size-12),
+    'line': var(--spr-line-height-16),
+  ),
+  'xs-uppercase': (
+    'font': var(--spr-font-size-13),
+    'line': var(--spr-line-height-20),
+  ),
+);
+
+@mixin body-font-config($size, $font-weight: null) {
+  font-size: map.get($body-texts, $size, 'font');
+  line-height: map.get($body-texts, $size, 'line');
+
+  @if $font-weight {
+    font-weight: $font-weight;
+  }
+
+  @if $size == 'xs-uppercase' {
+    text-transform: uppercase;
+  }
+}
+
+@each $size in map.keys($body-texts) {
+  .text-body-#{$size} {
+    @include body-font-config($size);
+  }
+}

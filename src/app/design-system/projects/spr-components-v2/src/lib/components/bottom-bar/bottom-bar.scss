@@ -1,0 +1,31 @@
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  display: inline-flex;
+  gap: 8px;
+  background: var(--ds-neutral-0-900);
+  color: var(--ds-neutral-600-300);
+  padding: 6px 8px;
+  border-radius: var(--radius-12);
+  box-shadow:
+    0 2px 4px 0 var(--ds-alpha-bb-004-024),
+    0 0 20px 0 var(--ds-alpha-bb-006-056);
+
+  ::ng-deep {
+    .bottom-bar__label {
+      @include body-text.body-font-config('s-m');
+
+      display: flex;
+      gap: 4px;
+      color: var(--ds-neutral-600-300);
+      padding: 8px 0 8px 8px;
+    }
+
+    .bottom-bar__divider {
+      width: 1px;
+      background-color: var(--ds-neutral-100-700);
+      margin-block: 4px;
+      border: none;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@let dismissibleVar = dismissible();
+@let titleVar = title();
+@let messageVar = message();
+
+<div class="alert__icon">
+  <i
+    class="ds-icon"
+    data-testid="alert-icon"
+    [class]="iconClass()"></i>
+</div>
+
+<div
+  class="alert__content"
+  [class.alert__content--with-title]="!!titleVar">
+  @if (messageVar) {
+    <div class="alert__content-holder">
+      @if (titleVar) {
+        <div class="alert__title">{{ titleVar }}</div>
+      }
+
+      <div
+        class="alert__content-text"
+        data-testid="alert-content-text"
+        [innerHTML]="messageVar"></div>
+    </div>
+  }
+
+  <ng-content />
+</div>
+
+@if (dismissibleVar) {
+  <div class="alert__button-close">
+    <i
+      class="ds-icon ds-icon-control-cross"
+      (click)="dismiss()"></i>
+  </div>
+}
+
+@if (this.autoclose() && timerPercent$) {
+  <div
+    [style.width.%]="timerPercent$ | async"
+    class="alert__progress"></div>
+}

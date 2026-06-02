@@ -1,0 +1,219 @@
+@use '../../styles/typography/body' as body-text;
+
+.control-action {
+  --ds-label-custom-cursor: pointer;
+  --ds-label-custom-color: var(--ds-neutral-1000-0);
+  --ds-label-custom-container-left-gap: 8px;
+  --ds-label-custom-padding-inline: 0;
+  --ds-control-action-btn-cursor: pointer;
+  --ds-control-action-background-color: transparent;
+  --ds-control-action-opacity: 0;
+  --ds-control-action-box-shadow: none;
+  --ds-control-action-border-radius: 0;
+  --ds-control-action-padding: 0;
+  --ds-control-action-border-width: 0;
+  --ds-control-action-outline: none;
+  --ds-control-action-outline-offset: 1px;
+  --ds-control-action-switcher-width: 18px;
+  --ds-control-action-switcher-height: 18px;
+
+  // Control action state default
+  --ds-control-action-btn-border-color: var(--ds-control-action-btn-custom-border-color, var(--ds-neutral-200-750));
+  --ds-control-action-btn-background-color: var(--ds-control-action-btn-custom-background-color, var(--ds-neutral-050-700));
+  --ds-control-action-btn-box-shadow: var(--ds-control-action-btn-custom-box-shadow, none);
+
+  // Control action state hover
+  --ds-control-action-btn-border-color-hover: var(--ds-control-action-btn-custom-border-color, var(--ds-neutral-200-750));
+  --ds-control-action-btn-background-color-hover: var(--ds-control-action-btn-custom-background-color, var(--ds-neutral-150-600));
+  --ds-control-action-btn-box-shadow-hover: var(--ds-control-action-btn-custom-box-shadow, none);
+
+  // Control action state focus
+  --ds-control-action-btn-border-color-focus: var(--ds-control-action-btn-custom-border-color, var(--ds-neutral-200-750));
+  --ds-control-action-btn-background-color-focus: var(--ds-control-action-btn-custom-background-color, var(--ds-neutral-050-700));
+  --ds-control-action-btn-box-shadow-focus: var(--ds-control-action-btn-custom-box-shadow, none);
+
+  // Control action state disabled
+  --ds-control-action-btn-border-color-disabled: var(--ds-control-action-btn-custom-border-color, var(--ds-neutral-100-750));
+  --ds-control-action-btn-background-color-disabled: var(--ds-control-action-btn-custom-background-color, var(--ds-neutral-100-750));
+  --ds-control-action-btn-box-shadow-disabled: var(--ds-control-action-btn-custom-box-shadow, none);
+
+  // Control action state checked
+  --ds-control-action-btn-border-color-checked: var(--ds-control-action-btn-custom-border-color, var(--ds-neutral-1000-600));
+  --ds-control-action-btn-background-color-checked: var(--ds-control-action-btn-custom-background-color, var(--ds-neutral-050-700));
+  --ds-control-action-btn-box-shadow-checked: var(
+    --ds-control-action-btn-custom-box-shadow,
+    0 1px 0 0 var(--ds-alpha-ww-024-010) inset,
+    0 1px 2px 0 var(--ds-alpha-bb-012-040)
+  );
+
+  // Control action state checked hover
+  --ds-control-action-btn-border-color-checked-hover: var(--ds-control-action-btn-custom-border-color, var(--ds-neutral-1000-600));
+  --ds-control-action-btn-background-color-checked-hover: var(--ds-control-action-btn-custom-background-color, var(--ds-neutral-700-500));
+  --ds-control-action-btn-box-shadow-checked-hover: var(
+    --ds-control-action-btn-custom-box-shadow,
+    0 1px 0 0 var(--ds-alpha-ww-024-010) inset,
+    0 1px 2px 0 var(--ds-alpha-bb-012-040)
+  );
+
+  // Control action state checked focus
+  --ds-control-action-btn-border-color-checked-focus: var(--ds-control-action-btn-custom-border-color, var(--ds-neutral-1000-600));
+  --ds-control-action-btn-background-color-checked-focus: var(--ds-control-action-btn-custom-background-color, var(--ds-neutral-800-600));
+  --ds-control-action-btn-box-shadow-checked-focus: var(
+    --ds-control-action-btn-custom-box-shadow,
+    0 1px 0 0 var(--ds-alpha-ww-024-010) inset,
+    0 1px 2px 0 var(--ds-alpha-bb-012-040)
+  );
+
+  // Control action state checked disabled
+  --ds-control-action-btn-border-color-checked-disabled: var(
+    --ds-control-action-btn-custom-border-color-checked-disabled,
+    var(--ds-neutral-400-700)
+  );
+  --ds-control-action-btn-background-color-checked-disabled: var(
+    --ds-control-action-btn-custom-background-color-checked-disabled,
+    var(--ds-neutral-400-700)
+  );
+  --ds-control-action-btn-box-shadow-checked-disabled: var(
+    --ds-control-action-btn-custom-box-shadow-checked-disabled,
+    0 1px 0 0 var(--ds-alpha-ww-024-010) inset,
+    0 1px 2px 0 var(--ds-alpha-bb-012-040)
+  );
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-label-custom-container-left-gap);
+  padding: var(--ds-control-action-padding);
+  background-color: var(--ds-control-action-background-color);
+  box-shadow: var(--ds-control-action-box-shadow);
+  border-radius: var(--ds-control-action-border-radius);
+  border: var(--ds-control-action-border-width) solid var(--ds-control-action-border-color);
+  position: relative;
+  outline: 2px solid var(--ds-control-action-outline);
+  outline-offset: var(--ds-control-action-outline-offset);
+  transition:
+    background-color var(--ds-transition-time),
+    border-color var(--ds-transition-time),
+    box-shadow var(--ds-transition-time),
+    outline var(--ds-transition-time);
+
+  @include body-text.body-font-config('s');
+
+  &:has(:checked) {
+    --ds-control-action-opacity: 1;
+    --ds-control-action-btn-box-shadow: var(--ds-control-action-btn-box-shadow-checked);
+
+    &:not(.control-action--disabled) {
+      --ds-control-action-border-color: var(--ds-neutral-1000-500);
+      --ds-control-action-btn-background-color: var(--ds-neutral-800-600);
+      --ds-control-action-btn-border-color: var(--ds-neutral-1000-600);
+    }
+
+    &:hover {
+      --ds-control-action-btn-background-color: var(--ds-neutral-700-500);
+    }
+  }
+}
+
+.control-action--bottom-margin {
+  margin-bottom: 4px;
+}
+
+.control-action--decorated {
+  --ds-label-container-padding-inline-start: 29px;
+  --ds-label-container-padding-inline-end: 29px;
+  --ds-label-container-padding-block: 7px;
+  --ds-control-action-background-color: var(--ds-neutral-0-800);
+  --ds-control-action-border-color: var(--ds-neutral-0-800);
+  --ds-control-action-box-shadow: 0 0 1px 1px var(--ds-alpha-bb-006-040), 0 2px 2px 0 var(--ds-alpha-bb-004-040);
+  --ds-control-action-border-radius: var(--radius-8);
+  --ds-control-action-padding: 0 10px;
+  --ds-control-action-border-width: 1px;
+  --ds-control-action-outline-offset: 2px;
+
+  &:not(:has(ds-label)) {
+    --ds-control-action-padding: 7px 9px;
+  }
+
+  &:has(.control-action__input:focus-visible) {
+    --ds-control-action-outline: var(--ds-alpha-blue-060-080);
+
+    .control-action__input {
+      --ds-control-action-btn-box-shadow: var(--ds-control-action-btn-box-shadow-checked-focus);
+
+      outline: none;
+    }
+  }
+}
+
+.control-action--disabled {
+  --ds-label-custom-cursor: default;
+  --ds-label-custom-pointer-events: none;
+  --ds-label-custom-color: var(--ds-neutral-500-400);
+  --ds-control-action-border-color: transparent;
+  --ds-control-action-btn-cursor: default;
+  --ds-control-action-btn-border-color: var(--ds-control-action-btn-border-color-disabled);
+  --ds-control-action-btn-background-color: var(--ds-control-action-btn-background-color-disabled);
+  --ds-control-action-btn-box-shadow: var(--ds-control-action-btn-box-shadow-disabled);
+
+  .control-action__input:checked {
+    --ds-control-action-btn-border-color: var(--ds-control-action-btn-border-color-checked-disabled);
+    --ds-control-action-btn-background-color: var(--ds-control-action-btn-background-color-checked-disabled);
+    --ds-control-action-btn-box-shadow: var(--ds-control-action-btn-box-shadow-checked-disabled);
+  }
+
+  &:has(.control-action__input:checked) {
+    --ds-control-action-border-color: var(--ds-neutral-1000-500);
+  }
+}
+
+.control-action__input {
+  width: var(--ds-control-action-switcher-width);
+  height: var(--ds-control-action-switcher-height);
+  margin: 1px;
+  position: relative;
+  appearance: none;
+  cursor: var(--ds-control-action-btn-cursor);
+  box-shadow: var(--ds-control-action-btn-box-shadow, none);
+  background-color: var(--ds-control-action-btn-background-color);
+  border: 1px solid var(--ds-control-action-btn-border-color);
+  border-radius: var(--ds-control-action-input-border-radius);
+  outline: 2px solid var(--ds-control-action-outline);
+  outline-offset: 1px;
+  transition:
+    background-color var(--ds-transition-time),
+    border-color var(--ds-transition-time),
+    box-shadow var(--ds-transition-time),
+    outline var(--ds-transition-time);
+
+  &:hover {
+    &:not(:checked, :disabled) {
+      --ds-control-action-btn-border-color: var(--ds-control-action-btn-border-color-hover);
+      --ds-control-action-btn-background-color: var(--ds-control-action-btn-background-color-hover);
+      --ds-control-action-btn-box-shadow: var(--ds-control-action-btn-box-shadow-hover);
+    }
+  }
+
+  &:focus-visible {
+    --ds-control-action-btn-border-color: var(--ds-control-action-btn-border-color-focus);
+    --ds-control-action-btn-background-color: var(--ds-control-action-btn-background-color-focus);
+    --ds-control-action-btn-box-shadow: var(--ds-control-action-btn-box-shadow-focus);
+    --ds-control-action-outline: var(--ds-alpha-blue-060-080);
+  }
+
+  &:checked {
+    &:hover {
+      &:not(:disabled) {
+        --ds-control-action-btn-border-color: var(--ds-control-action-btn-border-color-checked-hover);
+        --ds-control-action-btn-background-color: var(--ds-control-action-btn-background-color-checked-hover);
+        --ds-control-action-btn-box-shadow: var(--ds-control-action-btn-box-shadow-checked-hover);
+      }
+    }
+
+    &:focus-visible {
+      --ds-control-action-btn-border-color: var(--ds-control-action-btn-border-color-checked-focus);
+      --ds-control-action-btn-background-color: var(--ds-control-action-btn-background-color-checked-focus);
+      --ds-control-action-btn-box-shadow: var(--ds-control-action-btn-box-shadow-checked-focus);
+      --ds-control-action-outline: var(--ds-alpha-blue-060-080);
+    }
+  }
+}

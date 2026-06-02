@@ -1,0 +1,30 @@
+@use '../../styles/typography/body' as body-text;
+
+ngb-datepicker.dropdown-menu {
+  min-width: var(--ds-datepicker-custom-min-width, 296px);
+}
+
+.ngb-dp-header {
+  &:empty {
+    display: none;
+  }
+}
+
+.datepicker-open-button {
+  margin: 0;
+  padding: 0;
+  cursor: pointer !important;
+  border-radius: var(--radius-5) 0 0 var(--radius-5);
+  box-shadow: none;
+
+  &:hover:not(:focus-visible) {
+    color: var(--ds-datepicker-open-button-custom-color-hover, var(--ds-neutral-600-300));
+  }
+
+  &:focus-visible,
+  &--active {
+    outline: none;
+    color: var(--ds-datepicker-open-button-custom-color-focus, var(--ds-neutral-0-1000)) !important;
+    background-color: var(--ds-datepicker-open-button-custom-background-focus, var(--ds-accent-blue-400-300));
+  }
+}

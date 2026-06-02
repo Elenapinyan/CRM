@@ -1,0 +1,23 @@
+@if (iconStart(); as iconStartValue) {
+  <i
+    data-testid="icon-start"
+    class="ds-icon icon-start"
+    [ngClass]="iconStartValue"></i>
+}
+
+<ng-content>
+  @if (text(); as textValue) {
+    <span
+      class="text"
+      data-testid="control-text">
+      {{ textValue }}
+    </span>
+  }
+</ng-content>
+
+@if (iconEnd(); as iconEndValue) {
+  <i
+    data-testid="icon-end"
+    class="ds-icon icon-end"
+    [ngClass]="iconEndValue"></i>
+}

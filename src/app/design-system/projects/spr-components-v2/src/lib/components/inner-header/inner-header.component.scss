@@ -1,0 +1,57 @@
+@use '../../../../styles/mixins/mixins' as mixins;
+@use '../../../../styles/typography/heading' as heading-text;
+
+:host {
+  display: block;
+}
+
+.inner-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: var(--ds-inner-header-custom-padding-inline, 24px);
+  padding-block: var(--ds-inner-header-custom-padding-block, 8px);
+  background: var(--ds-inner-header-background, transparent);
+  border-bottom: 1px solid var(--ds-inner-header-custom-border-color, var(--ds-neutral-150-1000));
+  box-shadow: var(--ds-inner-header-custom-box-shadow, 0 1px 0 0 var(--ds-neutral-050-750));
+  color: var(--ds-inner-header-custom-color, var(--ds-neutral-1000-0));
+  min-height: var(--ds-inner-header-min-height, 52px);
+}
+
+.inner-header--background {
+  --ds-inner-header-background: var(--ds-neutral-050-800);
+
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.inner-header--no-padding-inline {
+  padding-inline: 0;
+}
+
+.inner-header--large {
+  --ds-inner-header-min-height: 56px;
+}
+
+.inner-header--no-border {
+  border: none;
+  box-shadow: none;
+}
+
+.inner-header__title {
+  @include heading-text.heading-font-config('xs');
+
+  .inner-header--large & {
+    @include heading-text.heading-font-config('s');
+  }
+
+  margin: 0;
+  letter-spacing: var(--ds-inner-header-letter-spacing, 0);
+  text-transform: var(--ds-inner-header-text-transform, none);
+}
+
+.inner-header__title-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

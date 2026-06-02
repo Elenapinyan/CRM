@@ -1,0 +1,83 @@
+@let item = value();
+@let isParent = isParentItem(item) && item.children.length;
+
+<div
+  tabindex="0"
+  class="transfer-list__data-item"
+  [class]="'transfer-list__data-' + type() + '-item'"
+  [class.child]="!isParent">
+  <div class="transfer-list__data-item-content">
+    <ng-template
+      [ngTemplateOutlet]="contentTemplate() ?? defaultContent"
+      [ngTemplateOutletContext]="{ $implicit: item, move: move.bind(this) }" />
+
+    <ng-template #defaultContent>
+      @if (item.icon) {
+        <!-- TODO: unnecessary class (bo-icon) will need to be removed once the updates for the icon library are added. -->
+        <i
+          class="ds-icon"
+          [class]="item.icon"></i>
+      }
+
+      @if (isParent) {
+        <button
+          class="transfer-list__data-item-header"
+          data-testid="list-toggle"
+          (click)="toggleChildren()">
+          @if (isOpened()) {
+            <!-- TODO: unnecessary classes (bo-icon-arrows-chevron-up, bo-icon) will need to be removed once the updates for the icon library are added. -->
+            <i class="ds-icon ds-icon-arrows-chevron-up"></i>
+          } @else {
+            <!-- TODO: unnecessary classes (bo-icon-arrows-chevron-down, bo-icon) will need to be removed once the updates for the icon library are added. -->
+            <i class="ds-icon ds-icon-arrows-chevron-down"></i>
+          }
+
+          {{ item.name }}
+        </button>
+      } @else {
+        <div
+          class="transfer-list__data-item-header"
+          data-testid="list-toggle">
+          {{ item.name }}
+        </div>
+      }
+    </ng-template>
+  </div>
+
+  <div class="transfer-list__data-item-action">
+    <ds-button
+      data-testid="btn-move"
+      variant="transparent"
+      size="sm"
+      [isIcon]="true"
+      (click)="move(item)">
+      <ng-template
+        [ngTemplateOutlet]="iconTemplate() ?? defaultButtonIcon"
+        [ngTemplateOutletContext]="{ $implicit: item, move: move.bind(this) }" />
+
+      <ng-template #defaultButtonIcon>
+        @if (type() === 'source') {
+          <!-- TODO: unnecessary classes (bo-icon-arrows-arrow-right, bo-icon) will need to be removed once the updates for the icon library are added. -->
+          <i class="ds-icon ds-icon-arrows-arrow-right"></i>
+        } @else {
+          <!-- TODO: unnecessary classes (bo-icon-arrows-arrow-left, bo-icon) will need to be removed once the updates for the icon library are added. -->
+          <i class="ds-icon ds-icon-arrows-arrow-left"></i>
+        }
+      </ng-template>
+    </ds-button>
+  </div>
+</div>
+
+@if (isParent) {
+  <div
+    class="transfer-list__data-item-children"
+    [class.transfer-list__data-item-children--open]="isOpened()">
+    @for (child of item.children; track child.value) {
+      <ds-transfer-list-item
+        [value]="child"
+        [type]="type()"
+        [customTemplates]="customTemplates()"
+        (moveItem)="move($event)" />
+    }
+  </div>
+}

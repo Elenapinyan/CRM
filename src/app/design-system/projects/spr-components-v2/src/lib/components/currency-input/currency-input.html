@@ -1,0 +1,63 @@
+<div
+  class="control-field"
+  data-testid="currency-input-wrapper"
+  [dsLabel]="label"
+  dsLabelPosition="start"
+  [tooltip]="tooltip"
+  [tooltipClassForLabel]="tooltipClassForLabel"
+  [inputId]="inputId()"
+  [dsControlSize]="controlSize"
+  [class.control-field--disabled]="ngControl?.disabled"
+  [class.control-field--invalid]="isInvalidControl"
+  [class.control-field--colored]="isColored">
+  @if (currencyPrefix(); as prefix) {
+    <label
+      [for]="inputId()"
+      class="control-field__addon"
+      data-testid="currency-prefix"
+      >{{ prefix }}</label
+    >
+  }
+
+  <input
+    class="control-field__input"
+    data-testid="currency-input"
+    type="text"
+    #inputElement
+    [formControl]="control"
+    [id]="inputId()"
+    [name]="inputId()"
+    [ngClass]="inputClass"
+    [placeholder]="placeholder()"
+    [maxlength]="maxLength()"
+    [readOnly]="readOnly()"
+    (blur)="cvaOnTouched()"
+    ngDefaultControl />
+
+  @if (currencySuffix(); as suffix) {
+    <label
+      [for]="inputId()"
+      class="control-field__addon"
+      data-testid="currency-suffix"
+      >{{ suffix }}</label
+    >
+  }
+</div>
+
+@if (description || isInvalidControl) {
+  <div class="form-field-description">
+    @if (description && !isInvalidControl) {
+      <ds-field-description
+        class="input-description"
+        data-testid="currency-description">
+        {{ description }}
+      </ds-field-description>
+    }
+
+    @if (isInvalidControl) {
+      <ds-error>
+        {{ ngControl?.control?.errors | getControlErrorMessage: errorMessagesConfig }}
+      </ds-error>
+    }
+  </div>
+}

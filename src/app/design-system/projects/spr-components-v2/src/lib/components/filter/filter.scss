@@ -1,0 +1,132 @@
+@use '../../../../styles/mixins/mixins' as mixins;
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  display: inline-flex;
+}
+
+.filter__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding-inline: var(--ds-filter-wrapper-custom-padding-inline, 12px);
+  padding-block: var(--ds-filter-wrapper-custom-padding-block, 8px);
+  border-radius: var(--ds-filter-wrapper-custom-border-radius, var(--radius-8));
+  background-color: var(--ds-filter-wrapper-custom-background-color, var(--ds-neutral-100-800));
+  box-shadow:
+    0 1px 1px 1px var(--ds-alpha-bb-000-040),
+    0 0 2px 0 var(--ds-alpha-bb-012-040);
+  transition: background-color var(--ds-transition-time) ease;
+
+  &:hover {
+    background-color: var(--ds-filter-wrapper-custom-background-color-hover, var(--ds-neutral-150-750));
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 2px 0 var(--ds-alpha-bb-008-064),
+      0 0 0 1px var(--ds-neutral-0-900),
+      0 0 0 3px var(--ds-alpha-blue-060-080);
+  }
+}
+
+.filter__wrapper--active {
+  background-color: var(--ds-filter-menu-wrapper-custom-background-active, var(--ds-neutral-100-800));
+}
+
+.filter__value-container {
+  @include mixins.inline-container($gap: 17px);
+  @include body-text.body-font-config('s-m');
+}
+
+.filter__label {
+  position: relative;
+  color: var(--ds-filter-label-custom-color, var(--ds-neutral-600-300));
+
+  &::after {
+    position: absolute;
+    content: '';
+    inset: 0 auto;
+    right: -9px;
+    width: 1px;
+    background-color: var(--ds-filter-label-separator-custom-color, var(--ds-neutral-200-700));
+  }
+
+  .filter__wrapper--active & {
+    color: var(--ds-filter-label-custom-color-active, var(--ds-neutral-500-400));
+  }
+}
+
+.filter__value {
+  white-space: nowrap;
+  color: var(--ds-filter-value-custom-color, var(--ds-neutral-900-0));
+
+  .filter__wrapper--active & {
+    color: var(--ds-filter-value-custom-color-active, var(--ds-neutral-500-400));
+  }
+}
+
+.filter__toggle {
+  --ds-icon-font-size: 16px;
+
+  display: inline-flex;
+  color: var(--ds-filter-toggle-custom-color, var(--ds-neutral-500-400));
+  cursor: pointer;
+
+  &:hover {
+    color: var(--ds-filter-toggle-custom-color-hover, var(--ds-neutral-600-300));
+  }
+
+  .filter__wrapper--active & {
+    color: var(--ds-filter-toggle-custom-color-active, var(--ds-neutral-400-600));
+  }
+}
+
+.filter__menu-wrapper {
+  --ds-filter-menu-wrapper-padding-inline: 4px;
+  --ds-filter-menu-wrapper-padding-block: 4px;
+
+  min-width: 100%; // 262px;
+  padding-inline: var(--ds-filter-menu-wrapper-custom-padding-inline, var(--ds-filter-menu-wrapper-padding-inline));
+  padding-block: var(--ds-filter-menu-wrapper-custom-padding-block, var(--ds-filter-menu-wrapper-padding-block));
+  border-radius: var(--radius-8);
+  border: 1px solid var(--ds-filter-menu-wrapper-custom-border-color, var(--ds-neutral-150-750));
+  background-color: var(--ds-filter-menu-wrapper-custom-background, var(--ds-neutral-050-900));
+  box-shadow:
+    0 4px 8px 0 var(--ds-alpha-bb-008-024),
+    0 8px 16px 0 var(--ds-alpha-bb-004-040);
+
+  &:has(.filter__footer) {
+    padding-bottom: 0;
+  }
+
+  &:has(ds-datepicker-range, ds-datepicker):not(:has(ds-conditions)) {
+    padding: 0;
+
+    .filter__footer {
+      margin-top: 0;
+    }
+  }
+}
+
+.filter__menu-inner-header {
+  padding-inline: var(--ds-filter-menu-inner-header-custom-padding-inline, 8px);
+  padding-block: var(--ds-filter-menu-inner-header-custom-padding-block, 4px 8px);
+  margin-inline: calc(-1 * var(--ds-filter-menu-wrapper-padding-inline));
+  border-bottom: 1px solid var(--ds-filter-menu-inner-header-custom-border-color, var(--ds-neutral-150-750));
+  color: var(--ds-filter-menu-inner-header-custom-color, var(--ds-neutral-1000-0));
+}
+
+.filter__footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-end;
+  padding-inline: var(--ds-filter-footer-custom-padding-inline, 8px);
+  padding-block: var(--ds-filter-footer-custom-padding-block, 12px);
+  margin-top: 8px;
+  border-top: 1px solid var(--ds-filter-footer-custom-border-color, var(--ds-neutral-150-750));
+  margin-inline: calc(-1 * var(--ds-filter-menu-wrapper-padding-inline));
+}

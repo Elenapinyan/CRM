@@ -1,0 +1,31 @@
+import { EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
+import { DropdownOption } from '../../../../shared';
+import { DateRange, PeriodSelectorVariantType } from '../../interfaces/period-selector.interface';
+import { SprBasePeriodSelector } from '../../spr-base-period-selector.directive';
+import { PeriodVariants } from '../../enums/period-selector-variants.enum';
+import * as i0 from "@angular/core";
+export declare class SprPeriodSelectorComponent extends SprBasePeriodSelector implements OnChanges {
+    set selectOptions(list: DropdownOption[]);
+    selectedRange: PeriodSelectorVariantType | null;
+    selectedRangeChange: EventEmitter<PeriodSelectorVariantType | null>;
+    dateDeselected: import("@angular/core").OutputEmitterRef<void>;
+    dateSelected: import("@angular/core").OutputEmitterRef<NgbDate>;
+    isDeselectAllowed: import("@angular/core").InputSignal<boolean>;
+    dropdownNotSelectedText: import("@angular/core").InputSignal<string>;
+    inputPlaceholder: import("@angular/core").InputSignal<string>;
+    markDisabledFn: import("@angular/core").InputSignal<(date: NgbDate) => boolean>;
+    selectOptionList: DropdownOption[];
+    protected readonly PeriodVariants: typeof PeriodVariants;
+    private readonly emptyDateRange;
+    selectedDateRange: DropdownOption;
+    private readonly customDateRange;
+    ngOnChanges(changes: SimpleChanges): void;
+    onDateSelection(date: NgbDate, custom?: boolean): void;
+    writeValue(value: DateRange | null): void;
+    deselectDate(): void;
+    selectOption(option: DropdownOption): void;
+    private updateDateRange;
+    static ɵfac: i0.ɵɵFactoryDeclaration<SprPeriodSelectorComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<SprPeriodSelectorComponent, "spr-period-selector", never, { "selectOptions": { "alias": "selectOptions"; "required": false; }; "selectedRange": { "alias": "selectedRange"; "required": false; }; "isDeselectAllowed": { "alias": "isDeselectAllowed"; "required": false; "isSignal": true; }; "dropdownNotSelectedText": { "alias": "dropdownNotSelectedText"; "required": false; "isSignal": true; }; "inputPlaceholder": { "alias": "inputPlaceholder"; "required": false; "isSignal": true; }; "markDisabledFn": { "alias": "markDisabledFn"; "required": false; "isSignal": true; }; }, { "selectedRangeChange": "selectedRangeChange"; "dateDeselected": "dateDeselected"; "dateSelected": "dateSelected"; }, never, never, true, never>;
+}

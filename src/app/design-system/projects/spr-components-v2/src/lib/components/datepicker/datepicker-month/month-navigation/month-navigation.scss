@@ -1,0 +1,14 @@
+:host {
+  display: block;
+}
+
+.calendar-selectors {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding-block: var(--ds-calendar-selectors-custom-padding-block, 8px);
+  padding-inline: var(--ds-calendar-selectors-custom-padding-inline, 12px);
+  border-bottom: 1px solid var(--ds-calendar-selectors-custom-border-color, var(--ds-neutral-150-750));
+}

@@ -1,0 +1,19 @@
+@use '../../../../../styles/typography/heading' as heading-text;
+
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: var(--ds-filter-inner-header-custom-padding-inline, 12px 4px);
+  padding-block: var(--ds-filter-inner-header-custom-padding-block, 4px 4px);
+  margin-inline: calc(-1 * var(--ds-filter-menu-wrapper-padding-inline));
+}
+
+.filter__menu-inner-header-title {
+  @include heading-text.heading-font-config('xxs');
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--ds-filter-menu-inner-header-title-custom-color, var(--ds-neutral-500-400));
+}

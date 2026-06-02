@@ -1,0 +1,34 @@
+<div
+  class="label-form-row"
+  [class.label-form-row--reverse]="isLabelReverse"
+  [ngClass]="className">
+  <label
+    [attr.for]="inputId"
+    class="label-container"
+    (click)="onLabelClick($event)">
+    @if (leftIcon) {
+      <i [class]="leftIcon"></i>
+    }
+
+    @if (label) {
+      <span class="label-form">
+        {{ label }}
+      </span>
+    }
+
+    @if (rightIcon) {
+      <i [class]="rightIcon"></i>
+    }
+  </label>
+
+  @if (tooltip) {
+    <small
+      class="tooltip-container"
+      [container]="tooltipContainer"
+      [placement]="['auto']"
+      [ngbTooltip]="tooltip"
+      [tooltipClass]="tooltipClassForLabel">
+      <i class="bo-icon-general-info info-icon"></i>
+    </small>
+  }
+</div>

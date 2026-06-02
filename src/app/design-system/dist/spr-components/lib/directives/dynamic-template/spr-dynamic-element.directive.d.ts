@@ -1,0 +1,33 @@
+import { ElementRef, TemplateRef } from '@angular/core';
+import { DynamicElementConfig, DynamicPosition } from './interfaces';
+import { BaseDynamicElement } from './models';
+import { SprDynamicBaseDirective } from './spr-dynamic-base.directive';
+import * as i0 from "@angular/core";
+export declare class SprDynamicElementDirective<T = unknown> extends SprDynamicBaseDirective<T> {
+    set sprDynamicElementId(value: string | undefined);
+    set sprDynamicElementPosition(value: DynamicPosition);
+    set sprDynamicElementClass(value: string | undefined);
+    set sprDynamicElementName(value: string | undefined);
+    set sprDynamicElementContent(value: string | TemplateRef<T> | undefined);
+    set sprDynamicElementCustomContainer(value: ElementRef<HTMLElement> | HTMLElement | undefined);
+    inputId?: string;
+    private dElement?;
+    private dElementName?;
+    private dElementId?;
+    private dElementPosition;
+    private dElementContent?;
+    private dElementContainer?;
+    get sprDynamicElementName(): string | undefined;
+    protected get dynamicElement(): BaseDynamicElement | undefined;
+    protected get position(): DynamicPosition;
+    protected configureManually(config: DynamicElementConfig<T>): void;
+    protected setContent(el: HTMLElement, value: string | TemplateRef<T> | undefined): void;
+    protected setId(el: HTMLElement, value: string): void;
+    protected removeId(el: HTMLElement): void;
+    protected setFor(el: HTMLElement, value: string): void;
+    protected setTextContent(el: HTMLElement, value: string): void;
+    protected setTempateContent(el: HTMLElement, value: TemplateRef<T>): void;
+    protected createElement(): HTMLElement;
+    static ɵfac: i0.ɵɵFactoryDeclaration<SprDynamicElementDirective<any>, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<SprDynamicElementDirective<any>, "[sprDynamicElement]", never, { "sprDynamicElementId": { "alias": "sprDynamicElementId"; "required": false; }; "sprDynamicElementPosition": { "alias": "sprDynamicElementPosition"; "required": false; }; "sprDynamicElementClass": { "alias": "sprDynamicElementClass"; "required": false; }; "sprDynamicElementName": { "alias": "sprDynamicElementName"; "required": false; }; "sprDynamicElementContent": { "alias": "sprDynamicElementContent"; "required": false; }; "sprDynamicElementCustomContainer": { "alias": "sprDynamicElementCustomContainer"; "required": false; }; "inputId": { "alias": "inputId"; "required": false; }; }, {}, never, never, true, never>;
+}

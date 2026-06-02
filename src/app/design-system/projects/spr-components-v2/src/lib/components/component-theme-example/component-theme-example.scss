@@ -1,0 +1,24 @@
+:host {
+  padding: 20px;
+  border: 1px solid chocolate;
+  position: relative;
+  margin-top: 20px;
+  background-color: var(--ds-accent-blue-100-900);
+  color: var(--ds-accent-blue-900-100);
+}
+
+.theme-desc {
+  position: absolute;
+  bottom: 100%;
+  right: -1px;
+  padding: 5px 10px;
+  background-color: chocolate;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+p {
+  margin-top: 20px;
+  margin-bottom: 0;
+}

@@ -1,0 +1,15 @@
+<div
+  (mouseenter)="hoveredDate.set(date())"
+  (mouseleave)="hoveredDate.set(null)"
+  [class.faded]="isFaded()"
+  [class.range]="isRange()"
+  [class.out]="isOutOfRange()"
+  [class.disabled-date]="isDisabled()"
+  [class.focused]="focused()"
+  [class.today]="isTodayDate()"
+  data-testid="dp-day"
+  class="datepicker-day__button">
+  <span class="datepicker-day__button-text">
+    {{ date().day }}
+  </span>
+</div>

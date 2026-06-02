@@ -1,0 +1,100 @@
+@use '../../../../../styles/mixins/mixins' as mixins;
+@use '../../../../../styles/typography/body' as body-text;
+
+:host {
+  --brd-transfer-list-item-background-hover: var(--brd-neutral-100-700);
+  --brd-transfer-list-data-item-color: var(--brd-neutral-1000-0);
+  --brd-transfer-list-data-item-padding-inline: 16px;
+  --brd-transfer-list-data-item-padding-block: 8px;
+
+  display: block;
+}
+
+.transfer-list__data-item-content {
+  @include mixins.inline-container($gap: 6px);
+}
+
+.transfer-list__data-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--brd-transfer-list-data-item-custom-color, var(--brd-transfer-list-data-item-color));
+  background-color: var(--brd-transfer-list-item-background, transparent);
+  transition: background-color var(--spr-transition-time) ease;
+
+  &:hover {
+    --brd-transfer-list-item-background: var(--brd-transfer-list-item-background-hover);
+  }
+
+  &:focus-visible {
+    box-shadow:
+      0 0 0 1px var(--brd-neutral-0-900),
+      inset 0 0 0 2px var(--brd-alpha-blue-060-080);
+    outline: none;
+  }
+
+  &:hover &-action,
+  &:focus-within &-action {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.transfer-list__data-item-action {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--spr-transition-time) ease;
+}
+
+.transfer-list__data-item-header {
+  @include mixins.inline-container($gap: 6px);
+  @include body-text.body-font-config('m');
+
+  color: var(--brd-transfer-list-data-item-custom-color, var(--brd-transfer-list-data-item-color));
+
+  &:focus-visible {
+    box-shadow:
+      0 0 0 1px var(--brd-neutral-0-900),
+      0 0 0 3px var(--brd-alpha-blue-060-080);
+    outline: none;
+  }
+}
+
+.transfer-list__data-item-children {
+  display: none;
+
+  .transfer-list__data-source-item.child {
+    padding-left: 58px;
+  }
+
+  .transfer-list__data-target-item.child {
+    padding-right: 58px;
+  }
+}
+
+.transfer-list__data-item-children--open {
+  display: block;
+}
+
+.transfer-list__data-source-item {
+  padding-inline: var(--brd-transfer-list-data-source-item-custom-padding-inline, var(--brd-transfer-list-data-item-padding-inline));
+  padding-block: var(--brd-transfer-list-data-source-item-custom-padding-block, var(--brd-transfer-list-data-item-padding-block));
+}
+
+.transfer-list__data-target-item {
+  padding-inline: var(--brd-transfer-list-data-source-item-custom-padding-inline, var(--brd-transfer-list-data-item-padding-inline));
+  padding-block: var(--brd-transfer-list-data-source-item-custom-padding-block, var(--brd-transfer-list-data-item-padding-block));
+  flex-direction: row-reverse;
+
+  .transfer-list__data-item-header {
+    flex-direction: row-reverse;
+  }
+
+  .inline-container {
+    flex-direction: row-reverse;
+  }
+}
+
+.inline-container {
+  @include mixins.inline-container($gap: 8px);
+}

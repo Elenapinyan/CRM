@@ -1,0 +1,79 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Getting started/Developing" />
+
+# Developing
+
+<br></br>> This guide explains how to install and use the internal **Workspace Design System** component library from our private Nexus
+repository.
+
+<br></br>
+
+### 🔐 Step 1: Authenticate with the Private Registry
+
+Before installing the library, you must authenticate with our private npm registry:
+
+```
+npm login --registry=https://repo.spribe.io/repository/npm-group/
+```
+
+You will be prompted to enter the following:
+
+- **Username**: your Spribe username
+- **Password**: your personal access password
+
+### ⚙️ Step 2: Configure `.npmrc` in Your Project
+
+To ensure that npm fetches `@platform-workspace` packages from our internal registry, you must add the following line to your project's `.npmrc` file:
+
+```
+@platform-workspace:registry=https://repo.spribe.io/repository/npm-group/
+```
+
+If the `.npmrc` file does not exist in your project's root directory, create it manually.
+
+### 📦 Step 3: Install the Design System
+
+Once authenticated and configured, install the design system using:
+
+```
+npm install @platform-workspace/design-system-v2
+```
+
+This will download and add the component library to your project's dependencies.
+
+### 🚀 Step 4: Start Using Components in Angular
+
+```
+import { DsButton } from '@platform-workspace/design-system-v2';
+
+@Component({
+selector: 'app-demo',
+template: `<ds-button label="Click me" (click)="onClick()"></ds-button>`,
+standalone: true,
+imports: [DsButton],
+})
+export class DemoComponent {
+  onClick() {
+    console.log('Button clicked!');
+  }
+}
+```
+
+### ❓ Common Issues
+
+<br></br>
+
+#### Authentication Errors
+
+> Make sure your `.npmrc` file is correctly configured.
+> Ensure you are logged in using the correct registry URL.
+
+#### Components Not Rendering
+
+> Verify the component is imported in the `imports` array.
+> Make sure your project supports standalone components (Angular 14+).
+
+#### Where to get help
+
+> Reach out to the design system maintainers or platform team via Slack or internal documentation.

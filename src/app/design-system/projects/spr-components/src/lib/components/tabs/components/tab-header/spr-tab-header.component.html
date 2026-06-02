@@ -1,0 +1,29 @@
+<button
+  *ngIf="routerSettings; else defaultHeaderButtonTemplate"
+  [queryParamsHandling]="routerSettings.queryParamsHandling"
+  [queryParams]="routerSettings.queryParams"
+  [routerLink]="routerSettings.routerLink"
+  [fragment]="routerSettings.fragment"
+  [class.is-active]="isActive"
+  [class.invalid]="isInvalid"
+  [disabled]="isDisabled"
+  class="tab-header-link"
+  type="button">
+  <ng-container [ngTemplateOutlet]="ngContentTemplate"></ng-container>
+</button>
+
+<!-- Templates -->
+<ng-template #defaultHeaderButtonTemplate>
+  <button
+    [class.is-active]="isActive"
+    [class.invalid]="isInvalid"
+    [disabled]="isDisabled"
+    class="tab-header-link"
+    type="button">
+    <ng-container [ngTemplateOutlet]="ngContentTemplate"></ng-container>
+  </button>
+</ng-template>
+
+<ng-template #ngContentTemplate>
+  <ng-content></ng-content>
+</ng-template>

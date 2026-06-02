@@ -1,0 +1,34 @@
+<div
+  class="two-options-switcher-control"
+  [class.disabled]="control.disabled">
+  <div class="two-options-switcher-control__holder">
+    <spr-label
+      [class.label-active]="!control.value"
+      [inputId]="inputId + '-start'"
+      [tooltip]="tooltipStart()"
+      [tooltipClassForLabel]="tooltipClassForLabel"
+      [label]="labelStart()"
+      (click)="controlToggle(false)">
+    </spr-label>
+
+    <label class="two-options-switcher-control__toggle">
+      <input
+        class="form-two-options-switcher"
+        type="checkbox"
+        [formControl]="control"
+        [attr.name]="inputId()"
+        [attr.id]="inputId()"
+        (blur)="cvaOnTouched()" />
+      <span class="slider"></span>
+    </label>
+
+    <spr-label
+      [class.label-active]="control.value"
+      [inputId]="inputId + '-end'"
+      [tooltip]="tooltipEnd()"
+      [tooltipClassForLabel]="tooltipClassForLabel"
+      [label]="labelEnd()"
+      (click)="controlToggle(true)">
+    </spr-label>
+  </div>
+</div>

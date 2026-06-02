@@ -1,0 +1,33 @@
+import { ElementRef, TemplateRef } from '@angular/core';
+import { DynamicElementConfig, DynamicPosition } from './interfaces';
+import { BaseDynamicElement } from './models';
+import { DsDynamicBaseDirective } from './dynamic-base.directive';
+import * as i0 from "@angular/core";
+export declare class DsDynamicElementDirective<T = unknown> extends DsDynamicBaseDirective<T> {
+    set dsDynamicElementId(value: string | undefined);
+    set dsDynamicElementPosition(value: DynamicPosition);
+    set dsDynamicElementClass(value: string | undefined);
+    set dsDynamicElementName(value: string | undefined);
+    set dsDynamicElementContent(value: string | TemplateRef<T> | undefined);
+    set dsDynamicElementCustomContainer(value: ElementRef<HTMLElement> | HTMLElement | undefined);
+    inputId?: string;
+    private dElement?;
+    private dElementName?;
+    private dElementId?;
+    private dElementPosition;
+    private dElementContent?;
+    private dElementContainer?;
+    get dsDynamicElementName(): string | undefined;
+    protected get dynamicElement(): BaseDynamicElement | undefined;
+    protected get position(): DynamicPosition;
+    protected configureManually(config: DynamicElementConfig<T>): void;
+    protected setContent(el: HTMLElement, value: string | TemplateRef<T> | undefined): void;
+    protected setId(el: HTMLElement, value: string): void;
+    protected removeId(el: HTMLElement): void;
+    protected setFor(el: HTMLElement, value: string): void;
+    protected setTextContent(el: HTMLElement, value: string): void;
+    protected setTempateContent(el: HTMLElement, value: TemplateRef<T>): void;
+    protected createElement(): HTMLElement;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DsDynamicElementDirective<any>, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<DsDynamicElementDirective<any>, "[dsDynamicElement]", never, { "dsDynamicElementId": { "alias": "dsDynamicElementId"; "required": false; }; "dsDynamicElementPosition": { "alias": "dsDynamicElementPosition"; "required": false; }; "dsDynamicElementClass": { "alias": "dsDynamicElementClass"; "required": false; }; "dsDynamicElementName": { "alias": "dsDynamicElementName"; "required": false; }; "dsDynamicElementContent": { "alias": "dsDynamicElementContent"; "required": false; }; "dsDynamicElementCustomContainer": { "alias": "dsDynamicElementCustomContainer"; "required": false; }; "inputId": { "alias": "inputId"; "required": false; }; }, {}, never, never, true, never>;
+}

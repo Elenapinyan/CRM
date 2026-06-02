@@ -1,0 +1,21 @@
+:host {
+  --ds-control-action-input-border-radius: var(--radius-4);
+
+  display: inline-flex;
+}
+
+.control-action__input-holder {
+  position: relative;
+  font-size: var(--ds-font-size-12);
+  width: 20px;
+  height: 20px;
+  color: var(--ds-control-action-custom-btn-color, var(--ds-neutral-0-0));
+}
+
+.ds-icon {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}

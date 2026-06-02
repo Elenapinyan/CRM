@@ -1,0 +1,42 @@
+@use '../mixins/mixins' as mixins;
+
+.scrollable-container {
+  flex: auto;
+  height: 100%;
+  overflow: hidden auto;
+  scrollbar-gutter: stable;
+  @include mixins.scroll-style;
+}
+
+.flex-container {
+  @include mixins.flex-container;
+}
+
+.flex-container__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 0 -16px;
+  padding: 16px 16px 0;
+  border-top: 1px solid rgb(var(--ds-grey-130));
+}
+
+.inline-container {
+  @include mixins.inline-container;
+}
+
+.btn-group-holder {
+  @include mixins.btn-group-holder;
+
+  display: flex;
+  align-items: center;
+
+  .form-label,
+  .label-form {
+    margin: 0;
+  }
+}
+
+.badge-items-list {
+  @include mixins.inline-container($gap: 4px);
+}

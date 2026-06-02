@@ -1,0 +1,55 @@
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  &:not(.label--inline) {
+    display: flex;
+  }
+
+  &.label--inline {
+    display: inline-flex;
+  }
+}
+
+.label-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  cursor: var(--ds-label-custom-cursor, default);
+  pointer-events: var(--ds-label-custom-pointer-events, auto);
+  color: var(--ds-label-custom-color, var(--ds-neutral-500-300));
+  margin-inline: calc((var(--ds-label-custom-container-left-gap, 0) + var(--ds-label-container-padding-inline-start, 0px)) * -1)
+    calc(var(--ds-label-container-padding-inline-end, 0px) * -1);
+  padding-inline: calc(var(--ds-label-custom-container-left-gap, 0) + var(--ds-label-container-padding-inline-start, 0px))
+    var(--ds-label-container-padding-inline-end, 0);
+  padding-block: var(--ds-label-container-padding-block, 0);
+}
+
+.label-form {
+  @include body-text.body-font-config('m');
+}
+
+.label-form-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding-inline: var(--ds-label-custom-padding-inline, 4px);
+}
+
+.label-form-row--reverse {
+  flex-direction: row-reverse;
+
+  .label-container {
+    flex-direction: row-reverse;
+  }
+}
+
+.tooltip-container {
+  cursor: pointer;
+}
+
+.info-icon {
+  --ds-icon-font-size: var(--ds-font-size-16);
+  --ds-icon-color: var(--ds-neutral-500-500);
+}

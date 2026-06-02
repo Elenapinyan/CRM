@@ -1,0 +1,37 @@
+<div
+  data-testid="checkbox-wrapper"
+  [class.partially-checked]="isPartiallyChecked"
+  class="control-action__input-holder"
+  [dsLabel]="label"
+  [dsLabelPosition]="isLabelReverse ? 'start' : 'end'"
+  [dsLabelLeftIcon]="leftIcon"
+  [dsLabelRightIcon]="rightIcon"
+  [dsLabelIsInline]="isInline"
+  [shouldStopLabelClickEventPropagation]="shouldStopLabelClickEventPropagation"
+  [inputId]="inputId()"
+  [tooltip]="tooltip"
+  [tooltipClassForLabel]="tooltipClassForLabel"
+  container="body"
+  [placement]="tooltipPlacement"
+  [ngbTooltip]="checkboxTooltip"
+  [tooltipClass]="tooltipClass"
+  dsLabelClass="control-action__label">
+  <input
+    data-testid="checkbox-input"
+    class="control-action__input"
+    type="checkbox"
+    [formControl]="control"
+    (click)="$event.stopPropagation()"
+    (blur)="cvaOnTouched()"
+    ngDefaultControl
+    [attr.name]="inputId()"
+    [attr.id]="inputId()" />
+  @if (isPartiallyChecked) {
+    <i class="ds-icon ds-icon-control-minus"></i>
+  }
+
+  @if (control.value && !isPartiallyChecked) {
+    <i class="ds-icon ds-icon-control-check"></i>
+  }
+</div>
+<ng-content></ng-content>

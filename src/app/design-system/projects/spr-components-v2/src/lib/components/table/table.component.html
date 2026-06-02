@@ -1,0 +1,90 @@
+<ds-inner-header
+  data-testid="table-inner-header"
+  *ngIf="title"
+  [title]="title"
+  [withoutBorder]="true"
+  [variant]="'large'">
+</ds-inner-header>
+
+<div class="brd-table-flex-container">
+  <ng-container
+    *ngIf="withPagination"
+    [ngTemplateOutlet]="paginationTemplate"
+    [ngTemplateOutletContext]="{ withSearch }"></ng-container>
+
+  <section class="brd-table-container">
+    <table
+      class="brd-table"
+      data-testid="data-table"
+      [ngClass]="['brd-table--' + cellSize, isHovering ? 'brd-table--with-hover' : '']">
+      <thead>
+        <tr class="brd-table__tr">
+          <ng-container *ngFor="let column of displayedColumns">
+            <ng-container
+              *ngIf="column.columnKey | getHeaderTemplate: headerTemplates as headerTemplate; else defaultHeaderTemplate"
+              [ngTemplateOutletContext]="{ $implicit: column }"
+              [ngTemplateOutlet]="headerTemplate"></ng-container>
+
+            <ng-template
+              #defaultHeaderTemplate
+              [dsTableHeader]="displayedRows[0]"
+              [columnKey]="column.columnKey">
+              <th
+                dsTableHeaderCell
+                data-testid="table-head-cell">
+                {{ column.text }}
+              </th>
+            </ng-template>
+          </ng-container>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr
+          *ngFor="let row of displayedRows; let rowIndex = index"
+          class="brd-table__tr"
+          data-testid="table-body-row"
+          (click)="rowClicked.emit(row)">
+          <ng-container *ngFor="let column of displayedColumns">
+            <ng-container
+              *ngIf="column.columnKey | getRowTemplate: rowTemplates as rowTemplate; else defaultRowTemplate"
+              [ngTemplateOutletContext]="{ $implicit: row, rowIndex }"
+              [ngTemplateOutlet]="rowTemplate"></ng-container>
+
+            <ng-template
+              #defaultRowTemplate
+              [dsTableRow]="displayedRows[0]"
+              [columnKey]="column.columnKey">
+              <td dsTableDataCell>
+                {{ row[column.columnKey] }}
+              </td>
+            </ng-template>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <ng-container
+    *ngIf="withPagination"
+    [ngTemplateOutlet]="paginationTemplate"
+    [ngTemplateOutletContext]="{ withSearch: false }"></ng-container>
+</div>
+
+<ds-spinner
+  *ngIf="isLoading"
+  data-testid="loading-spinner"></ds-spinner>
+
+<ng-template
+  #paginationTemplate
+  let-withSearch="withSearch">
+  <ds-pagination-bar
+    data-testid="pagination-bar"
+    [paginationParams]="paginationParams"
+    [page]="page"
+    [size]="size"
+    [total]="collectionSize"
+    (paginationChanges)="onUpdatePageSize($event)"
+    (searchValue)="onSearch($event)">
+  </ds-pagination-bar>
+</ng-template>

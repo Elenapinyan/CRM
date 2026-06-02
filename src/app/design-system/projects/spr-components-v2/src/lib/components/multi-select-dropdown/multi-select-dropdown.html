@@ -1,0 +1,134 @@
+<div class="form-dropdown">
+  <ds-form-field
+    [label]="label"
+    [description]="description ?? ''"
+    [tooltip]="tooltip"
+    [inputId]="inputId()"
+    [errorMessages]="errorMessagesConfig"
+    [tooltipClassForLabel]="tooltipClassForLabel"
+    [control]="ngControl?.control"
+    [isInvalid]="isInvalidControl">
+    <div
+      #menuHost
+      data-testid="dropdown-toggle"
+      class="control-field"
+      (click)="menu.open()"
+      [dsControlSize]="controlSize"
+      [class.control-field--disabled]="control?.disabled"
+      [class.control-field--invalid]="isInvalidControl"
+      [class.control-field--colored]="isColored">
+      @if (addonStart(); as addon) {
+        <div class="control-field__addon">
+          @if (iconAddonTypeGuard(addon)) {
+            <i [class]="addon.icon"></i>
+          }
+
+          @if (textAddonTypeGuard(addon)) {
+            <span class="addon-text">{{ addon.text }}</span>
+          }
+        </div>
+      }
+
+      <div class="control-field__inner">
+        <input
+          [dsControlSize]="controlSize"
+          [placeholder]="inputPlaceholder()"
+          [disabled]="control.disabled"
+          [value]="control.value.length ? control.value.length + ' Selected' : dropdownPlaceholder()"
+          class="control-field__input"
+          readonly
+          type="text" />
+        @if (control.value.length) {
+          <div class="form-dropdown__icon--clear">
+            <ds-button
+              (click)="resetValue($event)"
+              [isIcon]="true"
+              size="xs"
+              type="button"
+              variant="transparent">
+              <i class="ds-icon ds-icon-control-cross"></i>
+            </ds-button>
+          </div>
+        }
+        <span class="control-field__append">
+          <i class="ds-icon ds-icon-arrows-chevron-up-down"></i>
+        </span>
+      </div>
+
+      @if (addonEnd(); as addon) {
+        <div class="control-field__addon">
+          @if (iconAddonTypeGuard(addon)) {
+            <i [class]="addon.icon"></i>
+          }
+
+          @if (textAddonTypeGuard(addon)) {
+            <span class="addon-text">{{ addon.text }}</span>
+          }
+        </div>
+      }
+    </div>
+
+    <ng-template
+      sprMenu
+      [host]="menuHost"
+      (menuToggleChange)="onOpenChange($event)"
+      #menu="sprMenu">
+      <div class="dropdown-list-container">
+        <ds-selection
+          [valueKey]="false"
+          [multiselect]="true"
+          [formControl]="control"
+          [withSearch]="withSearch()"
+          [maxDisplayedItems]="maxDisplayedItems()"
+          [itemSizePx]="dropdownItemHeight()"
+          [options]="options()"
+          [searchPlaceholder]="searchPlaceholder()"
+          [widthByContent]="widthByContent()"
+          [templates]="customTemplates()"
+          [translations]="translations()"
+          [disableSelectAllOption]="!isSelectedAllOption()"
+          (searchTermChange)="searchControl.patchValue($event)"
+          (scrolledToBottom)="onScrolledToBottom()" />
+      </div>
+    </ng-template>
+
+    @if (control.value.length) {
+      <div
+        class="selected-values"
+        [sprLimiterContainer]="chipsToRender()"
+        (collapsedItems)="addCollapsedItems($event)">
+        @for (option of chipsToRender(); track option) {
+          <div *sprLimiterItem="option">
+            <ds-chips
+              [isDisabled]="control.disabled"
+              [isInteractive]="true"
+              size="sm">
+              {{ option.text }}
+
+              <i
+                class="ds-icon ds-icon-control-cross"
+                (click)="remove(option)"></i>
+            </ds-chips>
+          </div>
+        }
+
+        @if (hiddenChipsCount() > 0) {
+          <div
+            sprLimiterCounter
+            [placement]="['bottom', 'top']"
+            container="body"
+            tooltipClass="ds-component"
+            [ngbTooltip]="collapsedItemsNames()">
+            <ds-chips size="sm">
+              {{ '+' + hiddenChipsCount() }}
+            </ds-chips>
+          </div>
+        }
+      </div>
+    }
+
+    <ds-spinner
+      *ngIf="isLoading()"
+      data-testid="spinner" />
+  </ds-form-field>
+</div>

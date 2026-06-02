@@ -1,0 +1,31 @@
+import { AfterViewInit, EventEmitter, QueryList } from '@angular/core';
+import { DsOpenMenuItemDirective } from '../open-menu-item';
+import { DsOpenGroupMenuTitleDirective } from '../open-group-menu-title';
+import * as i0 from "@angular/core";
+export declare class DsOpenGroupMenuDirective implements AfterViewInit {
+    closeEntireMenuOnChildClick: boolean;
+    closeGroupMenuOnChildClick: boolean;
+    visibilityChange: EventEmitter<boolean>;
+    items: QueryList<DsOpenMenuItemDirective>;
+    title?: DsOpenGroupMenuTitleDirective;
+    private readonly liElements;
+    private listElement;
+    private chevronElement;
+    private isOpened;
+    private readonly parentMenuItem;
+    private readonly openMenuDirective;
+    private readonly elementRef;
+    private readonly renderer2;
+    get isOpen(): boolean;
+    onClick(): void;
+    ngAfterViewInit(): void;
+    private showItems;
+    private hideItems;
+    private renderTitle;
+    private createChevronElement;
+    private changeChevronClassesByOpenStatus;
+    private addClasses;
+    private removeClasses;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DsOpenGroupMenuDirective, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<DsOpenGroupMenuDirective, "[dsOpenGroupMenu]", never, { "closeEntireMenuOnChildClick": { "alias": "closeEntireMenuOnChildClick"; "required": false; }; "closeGroupMenuOnChildClick": { "alias": "closeGroupMenuOnChildClick"; "required": false; }; }, { "visibilityChange": "visibilityChange"; }, ["title", "items"], never, true, never>;
+}

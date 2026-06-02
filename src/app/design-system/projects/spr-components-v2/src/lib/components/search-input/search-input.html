@@ -1,0 +1,93 @@
+<div
+  class="control-field"
+  data-testid="search-input-wrapper"
+  [dsLabel]="label"
+  (keydown.arrowup)="$event.preventDefault(); changeActiveRange(false)"
+  (keydown.arrowdown)="$event.preventDefault(); changeActiveRange(true)"
+  dsLabelPosition="start"
+  [tooltip]="tooltip"
+  [tooltipClassForLabel]="tooltipClassForLabel"
+  [inputId]="inputId()"
+  [dsControlSize]="controlSize"
+  [class.without-prepend]="!prependContent.childElementCount"
+  [class.control-field--disabled]="ngControl?.disabled"
+  [class.control-field--invalid]="isInvalidControl"
+  [class.control-field--colored]="isColored">
+  <div class="control-field__inner">
+    <label
+      #prependContent
+      [for]="inputId()"
+      class="control-field__prepend">
+      <ng-content select="[prependContent]"></ng-content>
+    </label>
+
+    <input
+      class="control-field__input"
+      data-testid="search-input"
+      type="text"
+      #inputElement
+      [formControl]="control"
+      [id]="inputId()"
+      [name]="inputId()"
+      [ngClass]="inputClass"
+      [placeholder]="placeholder()"
+      (blur)="cvaOnTouched()"
+      ngDefaultControl />
+
+    @if (control.value) {
+      @if (isClientSearchNavigation()) {
+        <div class="control-field__counter">
+          {{ activeRangeIndex() + 1 }} of {{ ranges().length }}
+
+          <div class="control-field__counter-button-holder">
+            <ds-button
+              variant="transparent"
+              size="sm"
+              (keydown.enter)="changeActiveRange(false)"
+              (click)="changeActiveRange(false)">
+              <i class="ds-icon ds-icon-arrows-chevron-up"></i>
+            </ds-button>
+
+            <ds-button
+              variant="transparent"
+              size="sm"
+              (keydown.enter)="changeActiveRange(true)"
+              (click)="changeActiveRange(true)">
+              <i class="ds-icon ds-icon-arrows-chevron-down"></i>
+            </ds-button>
+          </div>
+        </div>
+      }
+
+      <div class="control-field__append">
+        <ds-button
+          data-testid="search-clear-button"
+          (click)="control.reset()"
+          [isIcon]="true"
+          size="xs"
+          type="button"
+          variant="transparent">
+          <i
+            class="ds-icon-control-cross"
+            style="font-size: 16px"></i>
+        </ds-button>
+      </div>
+    }
+  </div>
+</div>
+
+@if (description || isInvalidControl) {
+  <div class="form-field-description">
+    @if (description && !isInvalidControl) {
+      <ds-field-description class="input-description">
+        {{ description }}
+      </ds-field-description>
+    }
+
+    @if (isInvalidControl) {
+      <ds-error>
+        {{ ngControl?.control?.errors | getControlErrorMessage: errorMessagesConfig }}
+      </ds-error>
+    }
+  </div>
+}

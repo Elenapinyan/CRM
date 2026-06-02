@@ -1,0 +1,15 @@
+<ng-template #stepsTemplate>
+  @for (step of stepper.steps; track step; let i = $index) {
+    <ds-step-header
+      [index]="i"
+      [isActive]="stepper.selectedIndex === i"
+      [isCompleted]="step.completed || step.state === 'done'"
+      [isInvalid]="step.invalid() || step.state === 'error'"
+      [isDisabled]="step.disabled()"
+      [step]="step"
+      [customTemplate]="stepHeaderCustom?.template"
+      (active)="activateStep(i)" />
+  }
+</ng-template>
+
+<ng-template [ngTemplateOutlet]="stepsTemplate" />

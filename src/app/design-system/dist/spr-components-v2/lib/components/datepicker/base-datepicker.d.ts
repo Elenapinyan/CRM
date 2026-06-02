@@ -1,0 +1,54 @@
+import { InputSignal, Signal } from '@angular/core';
+import { FormBuilder, FormControl, ValidationErrors } from '@angular/forms';
+import { NgbDate, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { BaseControlValueAccessor } from '../../shared/utils';
+import { ControlSize } from '../../shared/interfaces/controls-size.interface';
+import * as i0 from "@angular/core";
+export type BaseDatepicker<DateType = unknown, TimeType = unknown> = {
+    inputReadonly: InputSignal<boolean>;
+    timepicker: InputSignal<boolean>;
+    minDate: InputSignal<Date | NgbDateStruct | string | null | undefined>;
+    maxDate: InputSignal<Date | NgbDateStruct | string | null | undefined>;
+    customTarget: Signal<string | HTMLElement | null>;
+    dateControl: FormControl<DateType | null>;
+    timeControl: FormControl<TimeType | null>;
+    toggle(): void;
+    setCustomTemplateTarget(element: HTMLElement): void;
+    selectDate(date: NgbDate): void;
+    resetValue(): void;
+    apply(): void;
+};
+export declare abstract class SprBaseDatepicker<ControlType = unknown, DateType = unknown, TimeType = unknown> extends BaseControlValueAccessor<ControlType> implements BaseDatepicker<DateType, TimeType> {
+    private readonly datepicker;
+    protected readonly formBuilder: FormBuilder;
+    protected readonly form: import("@angular/forms").FormGroup<{
+        date: FormControl<DateType | null>;
+        time: FormControl<TimeType | null>;
+    }>;
+    label: InputSignal<string>;
+    isColored: InputSignal<boolean>;
+    description: InputSignal<string>;
+    tooltip: InputSignal<string | null>;
+    inputId: InputSignal<string>;
+    errorMessages: InputSignal<Partial<Record<string, import("@platform-workspace/design-system-v2").ErrorMessageValue>>>;
+    inputReadonly: InputSignal<boolean>;
+    timepicker: InputSignal<boolean>;
+    controlSize: InputSignal<ControlSize>;
+    minDate: InputSignal<string | Date | NgbDateStruct | null | undefined>;
+    maxDate: InputSignal<string | Date | NgbDateStruct | null | undefined>;
+    outsideDays: InputSignal<"visible" | "hidden" | "collapsed">;
+    customTarget: import("@angular/core").WritableSignal<string | HTMLElement | null>;
+    protected readonly ngbMinDate: Signal<NgbDate>;
+    protected readonly ngbMaxDate: Signal<NgbDate>;
+    get dateControl(): FormControl<DateType | null>;
+    get timeControl(): FormControl<TimeType | null>;
+    validate(): ValidationErrors | null;
+    toggle(): void;
+    setCustomTemplateTarget(element: HTMLElement): void;
+    setDisabledState(isDisabled: boolean): void;
+    abstract selectDate(date: NgbDate): void;
+    abstract resetValue(): void;
+    abstract apply(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<SprBaseDatepicker<any, any, any>, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<SprBaseDatepicker<any, any, any>, never, never, { "label": { "alias": "label"; "required": false; "isSignal": true; }; "isColored": { "alias": "isColored"; "required": false; "isSignal": true; }; "description": { "alias": "description"; "required": false; "isSignal": true; }; "tooltip": { "alias": "tooltip"; "required": false; "isSignal": true; }; "inputId": { "alias": "inputId"; "required": false; "isSignal": true; }; "errorMessages": { "alias": "errorMessages"; "required": false; "isSignal": true; }; "inputReadonly": { "alias": "inputReadonly"; "required": false; "isSignal": true; }; "timepicker": { "alias": "timepicker"; "required": false; "isSignal": true; }; "controlSize": { "alias": "controlSize"; "required": false; "isSignal": true; }; "minDate": { "alias": "minDate"; "required": false; "isSignal": true; }; "maxDate": { "alias": "maxDate"; "required": false; "isSignal": true; }; "outsideDays": { "alias": "outsideDays"; "required": false; "isSignal": true; }; }, {}, never, never, true, never>;
+}

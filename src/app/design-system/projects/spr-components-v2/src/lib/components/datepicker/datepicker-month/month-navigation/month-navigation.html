@@ -1,0 +1,18 @@
+<div class="calendar-selectors">
+  <ds-dropdown
+    controlSize="sm"
+    container="body"
+    [options]="months()"
+    [ngModel]="month()"
+    (mousedown)="$event.preventDefault(); $event.stopImmediatePropagation()"
+    [ngModelOptions]="{ standalone: true }"
+    (ngModelChange)="navigate(year(), $event)" />
+
+  <ds-dropdown
+    controlSize="sm"
+    container="body"
+    [options]="years()"
+    [ngModel]="year()"
+    [ngModelOptions]="{ standalone: true }"
+    (ngModelChange)="navigate($event, month())" />
+</div>

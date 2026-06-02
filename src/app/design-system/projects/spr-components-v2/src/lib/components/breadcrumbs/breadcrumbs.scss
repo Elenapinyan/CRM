@@ -1,0 +1,55 @@
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  @include body-text.body-font-config('s');
+
+  display: flex;
+  gap: 4px;
+  overflow: hidden;
+  color: var(--ds-neutral-500-400);
+
+  &:has(.breadcrumbs__root) {
+    .breadcrumb-item:first-child::before {
+      display: none;
+    }
+  }
+
+  .breadcrumbs--menu {
+    cursor: pointer;
+  }
+
+  .breadcrumbs__collapsed-trigger {
+    cursor: pointer;
+  }
+
+  .breadcrumbs-container {
+    display: flex;
+    white-space: nowrap;
+    gap: 4px;
+    overflow: hidden;
+    width: 100%;
+
+    .breadcrumb-item {
+      &::before {
+        content: '/';
+        color: var(--ds-neutral-400-400);
+        padding-inline-end: 4px;
+      }
+    }
+  }
+
+  .breadcrumb-item {
+    transition: color var(--ds-transition-time);
+    white-space: nowrap;
+
+    &:hover {
+      color: var(--ds-accent-blue-500-400);
+    }
+
+    &--active {
+      color: var(--ds-neutral-1000-0);
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+}

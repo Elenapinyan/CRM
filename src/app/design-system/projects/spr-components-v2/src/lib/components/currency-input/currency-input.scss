@@ -1,0 +1,9 @@
+:host {
+  --ds-control-field-custom-text-alignment: end;
+  --ds-control-field-custom-padding-inline-md: 12px;
+  --ds-control-field-custom-padding-inline-sm: 8px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

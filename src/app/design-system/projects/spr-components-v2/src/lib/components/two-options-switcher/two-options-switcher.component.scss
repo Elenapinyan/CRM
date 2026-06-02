@@ -1,0 +1,86 @@
+:host {
+  display: block;
+  line-height: 1;
+}
+
+// switcher styles
+.form-two-options-switcher {
+  --ds-two-options-switcher-background: var(--ds-neutral-400-600);
+  --ds-two-options-switcher-background-disabled: var(--ds-neutral-400-700);
+  --ds-two-options-switcher-background-hover: var(--ds-neutral-300-500);
+  --ds-two-options-switcher-background-focus: var(--ds-neutral-300-500);
+  --ds-two-options-switcher-thumb-background: var(--ds-neutral-600-250);
+  --ds-two-options-switcher-thumb-background-disabled: var(--ds-neutral-300-500);
+
+  width: 36px;
+  height: 7px;
+  margin: 0;
+  position: relative;
+  cursor: pointer;
+  appearance: none;
+  background-color: var(--ds-two-options-switcher-background);
+  border-radius: var(--radius-8);
+  grid-area: switcher;
+  transition: background-color var(--ds-transition-time);
+
+  &::after {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: 1;
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: var(--ds-two-options-switcher-thumb-background);
+    box-shadow: var(--ds-two-options-switcher-thumb-box-shadow);
+    border-radius: var(--radius-100);
+    transform: translateX(0) translateY(-50%);
+    transition: transform var(--ds-transition-time) ease-in-out;
+  }
+
+  // switcher states
+  &:hover:not(:disabled, :focus-visible) {
+    --ds-two-options-switcher-background: var(--ds-two-options-switcher-background-hover);
+  }
+
+  &:focus-visible {
+    --ds-two-options-switcher-background: var(--ds-two-options-switcher-background-focus);
+
+    outline: none;
+  }
+
+  &:disabled {
+    --ds-two-options-switcher-background: var(--ds-two-options-switcher-background-disabled);
+
+    pointer-events: none;
+
+    &::after {
+      --ds-two-options-switcher-thumb-background: var(--ds-two-options-switcher-thumb-background-disabled);
+    }
+  }
+
+  &:checked {
+    &::after {
+      transform: translateX(calc(100% + 4px)) translateY(-50%);
+    }
+  }
+}
+
+.two-options-switcher-control__holder {
+  --ds-custom-label-cursor: pointer;
+
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+
+  &:has(.form-two-options-switcher:disabled) {
+    --ds-custom-lable-cursor: default;
+    --ds-custom-label-pointer-events: none;
+  }
+}
+
+.two-options-switcher-control__toggle {
+  display: flex;
+  align-items: center;
+}

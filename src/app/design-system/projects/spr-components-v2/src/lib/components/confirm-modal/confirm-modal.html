@@ -1,0 +1,65 @@
+<ds-base-modal-content
+  [headerVariant]="modalData.headerVariant ?? 'default'"
+  [footerVariant]="modalData.footerVariant ?? 'default'">
+  <ng-container header>
+    <div class="modal-header__row">
+      <h4
+        class="modal-header__title"
+        id="modal-header__title"
+        data-testid="modal-title">
+        {{ modalData.title }}
+      </h4>
+
+      <div class="modal-header__actions">
+        @if (modalSettings?.keyboard) {
+          <ds-badge
+            content="Esc"
+            variant="neutral" />
+        }
+
+        <button
+          type="button"
+          class="close-modal-button"
+          aria-describedby="modal-header__title"
+          data-testid="modal-close-button"
+          (click)="closeAction()">
+          <i class="ds-icon ds-icon-control-cross"></i>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container body>
+    <div class="grid-container">
+      @if (hasBodyTemplate(modalData)) {
+        <ng-container *ngTemplateOutlet="modalData.body; context: { $implicit: modalData.context }"></ng-container>
+      } @else {
+        <div class="confirmation-message">
+          <div data-testid="modal-body-message">{{ modalData.body }}</div>
+        </div>
+      }
+    </div>
+  </ng-container>
+  @if (!modalData.hideFooter) {
+    <ng-container footer>
+      <div class="modal-footer__items-group">
+        <ds-button
+          variant="secondary"
+          size="lg"
+          data-testid="modal-cancel-button"
+          (click)="closeAction(false)">
+          {{ modalData.cancelButtonText }}
+        </ds-button>
+
+        <ds-button
+          variant="main"
+          size="lg"
+          data-testid="modal-confirm-button"
+          [disabled]="modalData.disabledConfirmButton || false"
+          (click)="closeAction(true)">
+          {{ modalData.confirmButtonText }}
+        </ds-button>
+      </div>
+    </ng-container>
+  }
+</ds-base-modal-content>

@@ -1,0 +1,20 @@
+<button
+  *ngIf="isInteractive"
+  class="chips"
+  [disabled]="isDisabled"
+  [ngClass]="'chips--' + variant + ' ' + 'chips--' + size + ' ' + 'chips--' + chipsStyle"
+  [class.chips--selected]="isSelected">
+  <ng-container *ngTemplateOutlet="ngContainerTemplate"></ng-container>
+</button>
+
+<span
+  *ngIf="!isInteractive"
+  class="chips"
+  [class]="'chips--' + variant + ' ' + 'chips--' + size + ' ' + 'chips--' + chipsStyle"
+  [class.chips--selected]="isSelected">
+  <ng-container *ngTemplateOutlet="ngContainerTemplate"></ng-container>
+</span>
+
+<ng-template #ngContainerTemplate>
+  <ng-content></ng-content>
+</ng-template>

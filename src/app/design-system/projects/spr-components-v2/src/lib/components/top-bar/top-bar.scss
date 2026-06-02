@@ -1,0 +1,57 @@
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  position: relative;
+  z-index: 1;
+  background: var(--ds-neutral-900-050);
+  padding: 8px 16px;
+  border-radius: var(--radius-12);
+  box-shadow: var(--ds-top-bar-component-box-shadow);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    z-index: -1;
+    border: 1px solid transparent;
+    border-radius: var(--radius-12);
+    background: var(--ds-panel-border);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+  }
+}
+
+.default-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.default-content__title {
+  @include body-text.body-font-config('l-m');
+
+  color: var(--ds-neutral-0-1000);
+}
+
+.default-content__subtitle {
+  @include body-text.body-font-config('s');
+
+  color: var(--ds-neutral-300-600);
+}
+
+.default-content__start {
+  flex-shrink: 0;
+  font-size: var(--ds-font-size-20);
+  color: var(--ds-neutral-0-1000);
+}
+
+.default-content__main {
+  flex: 1;
+}
+
+.default-content__end {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

@@ -1,0 +1,72 @@
+:host {
+  --ds-slider-thumb-knob-size: 20px;
+
+  position: absolute;
+  display: flex;
+  left: calc(var(--ds-slider-thumb-size) / 2 * -1);
+  width: var(--ds-slider-thumb-size);
+  height: var(--ds-slider-thumb-size);
+  transform: translateX(-50%);
+  border-radius: var(--radius-100);
+  transition: background-color var(--ds-transition-time) ease;
+
+  &:hover,
+  &.hovered {
+    background-color: var(--ds-slider-thumb-knob-custom-background-color-hovered, var(--ds-alpha-bw-016-016));
+  }
+
+  &.focused {
+    background-color: var(--ds-slider-thumb-knob-custom-background-color-focused, var(--ds-alpha-bw-016-016));
+  }
+}
+
+.thumb-knob {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--ds-slider-thumb-knob-custom-width, var(--ds-slider-thumb-knob-size));
+  height: var(--ds-slider-thumb-knob-custom-height, var(--ds-slider-thumb-knob-size));
+  background-color: var(--ds-slider-thumb-knob-custom-background-color, var(--ds-neutral-1000-0));
+  border-radius: var(--ds-slider-thumb-knob-custom-border-radius, var(--radius-100));
+  box-shadow: var(
+    --ds-slider-thumb-knob-custom-box-shadow,
+    0 4px 8px 0 var(--ds-alpha-bb-008-024),
+    0 8px 16px 0 var(--ds-alpha-bb-004-040)
+  );
+}
+
+.value-indicator {
+  position: absolute;
+  left: 50%;
+  top: -30px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  min-width: var(--ds-slider-value-indicator-custom-min-width, 43px);
+  padding-inline: var(--ds-slider-value-indicator-custom-padding-inline, 2px);
+  padding-block: var(--ds-slider-value-indicator-custom-padding-block, 4px);
+  color: var(--ds-slider-value-indicator-custom-color, var(--ds-neutral-0-1000));
+  background-color: var(--ds-slider-value-indicator-custom-background-color, var(--ds-neutral-500-300));
+  border-radius: var(--ds-slider-value-indicator-custom-border-radius, var(--radius-4));
+  transition: opacity var(--ds-transition-time) ease;
+
+  &::after {
+    position: absolute;
+    content: '';
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--ds-slider-value-indicator-custom-background-color-triangle, var(--ds-neutral-500-300));
+  }
+
+  :host.focused & {
+    opacity: 1;
+    visibility: visible;
+  }
+}

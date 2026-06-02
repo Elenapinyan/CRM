@@ -1,0 +1,50 @@
+@let decreaseDisabled = value() === min() || disabled();
+
+<ds-button
+  data-testid="zoom-decrease-btn"
+  class="zoom-decrease-btn"
+  variant="flat"
+  [isIcon]="true"
+  [disabled]="decreaseDisabled"
+  (keydown.enter)="$event.preventDefault(); decrease()"
+  (click)="decrease()">
+  <i class="ds-icon-control-minus"></i>
+</ds-button>
+<div class="zoom-input-holder">
+  <ds-input
+    data-testid="zoom-input"
+    type="number"
+    class="zoom-input"
+    [isNegativeNumbersAcceptable]="true"
+    [disabled]="disabled()"
+    [controlSize]="'sm'"
+    [ngModel]="inputValue()"
+    (keydown.enter)="updateValue()"
+    (ngModelChange)="inputValueChanged($event)"
+    (blurEvent)="updateValue()"></ds-input>
+
+  <div
+    data-testid="zoom-value-display"
+    class="zoom-input-placeholder"
+    [class.zoom-input-placeholder--invisible]="inputValue() !== null">
+    @let unitVar = unit();
+
+    <span>{{ value() }}</span>
+
+    @if (unitVar) {
+      {{ unitVar }}
+    }
+  </div>
+</div>
+
+@let increaseDisabled = value() === max() || disabled();
+<ds-button
+  data-testid="zoom-increase-btn"
+  class="zoom-increase-btn"
+  variant="flat"
+  [isIcon]="true"
+  [disabled]="increaseDisabled"
+  (keydown.enter)="$event.preventDefault(); increase()"
+  (click)="increase()">
+  <i class="ds-icon-control-plus"></i>
+</ds-button>

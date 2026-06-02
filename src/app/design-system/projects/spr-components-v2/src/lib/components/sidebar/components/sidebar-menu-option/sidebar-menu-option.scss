@@ -1,0 +1,34 @@
+@use '../../../../../../styles/mixins/mixins' as mixins;
+@use '../../../../../../styles/typography/body.scss' as body-text;
+
+.sidebar-menu-option {
+  @include mixins.inline-container($display: flex, $gap: 10px);
+}
+
+.sidebar-menu-option__icon {
+  --ds-icon-font-size: var(--ds-font-size-18);
+
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--ds-sidebar-app-selector-icon-size) + 6px);
+  height: calc(var(--ds-sidebar-app-selector-icon-size) + 6px);
+  border-radius: var(--ds-border-radius-s);
+  color: var(--ds-neutral-0-0);
+}
+
+.sidebar-menu-option__label {
+  @include body-text.body-font-config('s');
+
+  flex: 1;
+  color: var(--ds-sidebar-menu-option-label-custom-color, var(--ds-sidebar-menu-option-label-color));
+}
+
+.sidebar-menu-option__count {
+  @include body-text.body-font-config('s');
+
+  padding-inline: var(--ds-sidebar-menu-option-count-custom-padding-inline, 2px);
+  padding-block: var(--ds-sidebar-menu-option-count-custom-padding-block, 2px);
+  color: var(--ds-sidebar-menu-option-count-custom-color, var(--ds-sidebar-menu-option-label-color));
+}

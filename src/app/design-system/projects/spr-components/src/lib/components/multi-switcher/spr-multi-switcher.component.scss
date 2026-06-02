@@ -1,0 +1,5 @@
+@use '../../../../styles/components/tabs' as tabs;
+
+:host {
+  @include tabs.tab-level-3;
+}

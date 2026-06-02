@@ -1,0 +1,79 @@
+<ng-container [formGroup]="control">
+  <div
+    [class.is-open]="date.isOpen()"
+    class="date-timepicker">
+    <div class="date-timepicker__item">
+      <spr-label
+        [label]="label"
+        [inputId]="inputId()"
+        [tooltip]="tooltip"
+        [tooltipClassForLabel]="tooltipClassForLabel" />
+
+      <div class="input-container">
+        <input
+          #date="ngbDatepicker"
+          (click)="date.toggle()"
+          (closed)="cvaOnTouched()"
+          [class.is-invalid]="isInvalidControl"
+          [id]="inputId()"
+          [name]="inputId()"
+          [sprControlSize]="controlSize"
+          [minDate]="mappedMinDate"
+          [maxDate]="mappedMaxDate"
+          [placeholder]="placeholder()"
+          (dateSelect)="onDateSelected($event)"
+          aria-label="Value"
+          class="form-datepicker-control"
+          formControlName="date"
+          ngbDatepicker
+          readonly
+          type="text" />
+
+        @if (isDeselectAllowed() && control.value?.date) {
+          <button
+            (click)="deselectDate()"
+            [disabled]="control.disabled"
+            class="btn btn-deselect"
+            type="button">
+            <i
+              class="bo-icon-control-cross"
+              style="font-size: 20px"></i>
+          </button>
+        } @else {
+          <button
+            (click)="date.toggle()"
+            [disabled]="control.disabled"
+            class="btn btn-calendar"
+            type="button">
+            <i
+              class="bo-icon-control-calendar"
+              style="font-size: 20px"></i>
+          </button>
+        }
+      </div>
+    </div>
+    <div class="date-timepicker__item">
+      <ngb-timepicker
+        [class.invalid-timepicker]="isInvalidControl"
+        [spinners]="false"
+        (focusout)="cvaOnTouched()"
+        formControlName="time"></ngb-timepicker>
+    </div>
+  </div>
+</ng-container>
+
+@if (description || isInvalidControl) {
+  <div class="form-field-description">
+    @if (description && !isInvalidControl) {
+      <spr-field-description>
+        {{ description }}
+      </spr-field-description>
+    }
+
+    @if (isInvalidControl) {
+      <spr-error>
+        {{ ngControl?.control?.errors | getControlErrorMessage: errorMessagesConfig }}
+      </spr-error>
+    }
+  </div>
+}

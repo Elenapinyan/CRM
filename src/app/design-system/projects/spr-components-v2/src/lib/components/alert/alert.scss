@@ -1,0 +1,107 @@
+@use '../../../../styles/typography/body' as body-text;
+
+$types: ('info', 'success', 'warning', 'danger');
+
+:host {
+  display: block;
+
+  &.alert--dismissible {
+    .alert__button-close {
+      color: var(--ds-neutral-400-400);
+      font-size: var(--ds-font-size-16);
+
+      .ds-icon {
+        cursor: pointer;
+
+        &:hover {
+          color: var(--ds-neutral-900-050);
+        }
+      }
+    }
+  }
+
+  &.alert {
+    --ds-alert-color: inherit;
+    --ds-alert-background: transparent;
+    --ds-alert-box-shadow: none;
+
+    // Info
+    --ds-alert-info-icon-color: var(--ds-neutral-400-400);
+    --ds-alert-info-background: var(--ds-neutral-050-900);
+
+    // Success
+    --ds-alert-success-icon-color: var(--ds-accent-green-500-400);
+    --ds-alert-success-background: var(--ds-neutral-050-900);
+
+    // Warning
+    --ds-alert-warning-icon-color: var(--ds-accent-orange-500-400);
+    --ds-alert-warning-background: var(--ds-neutral-050-900);
+
+    // Danger
+    --ds-alert-danger-icon-color: var(--ds-accent-red-500-400);
+    --ds-alert-danger-background: var(--ds-neutral-050-900);
+
+    @include body-text.body-font-config('xs');
+
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid var(--ds-neutral-150-800);
+    border-radius: var(--radius-8);
+    color: var(--ds-neutral-700-200);
+    box-shadow: var(--ds-alert-component-box-shadow);
+
+    @each $name in $types {
+      &.alert--#{$name} {
+        background: var(--ds-alert-#{$name}-background);
+
+        .alert__icon {
+          color: var(--ds-alert-#{$name}-icon-color);
+        }
+      }
+    }
+
+    &:not(.alert--custom-content) {
+      .alert__content {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}
+
+.alert__content {
+  flex: 1;
+}
+
+.alert__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--ds-neutral-800-100);
+  transition: width 500ms linear;
+  width: 100%;
+}
+
+.alert__content--with-title {
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  .alert__content-holder {
+    width: 100%;
+  }
+}
+
+.alert__title {
+  @include body-text.body-font-config('xs-m');
+
+  color: var(--ds-neutral-900-050);
+}
+
+.alert__icon {
+  font-size: var(--ds-font-size-16);
+}

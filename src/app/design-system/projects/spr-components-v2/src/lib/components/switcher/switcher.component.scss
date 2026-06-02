@@ -1,0 +1,89 @@
+:host {
+  --ds-control-action-input-border-radius: var(--radius-100);
+  --ds-control-action-btn-border-color: var(--ds-neutral-250-700);
+  --ds-control-action-btn-background-color: var(--ds-neutral-200-700);
+  --ds-control-action-btn-box-shadow: 0 2px 4px 0 var(--ds-alpha-bb-004-024) inset;
+  --ds-control-action-btn-border-color-hover: var(--ds-neutral-300-600);
+  --ds-control-action-btn-background-color-hover: var(--ds-neutral-300-600);
+  --ds-control-action-btn-box-shadow-hover: 0 2px 4px 0 var(--ds-alpha-bb-004-024) inset;
+  --ds-control-action-btn-border-color-focus: var(--ds-neutral-250-700);
+  --ds-control-action-btn-background-color-focus: var(--ds-neutral-200-700);
+  --ds-control-action-btn-box-shadow-focus: 0 2px 4px 0 var(--ds-alpha-bb-004-004) inset;
+  --ds-control-action-btn-border-color-disabled: var(--ds-neutral-300-600);
+  --ds-control-action-btn-background-color-disabled: var(--ds-neutral-0-0);
+  --ds-control-action-btn-box-shadow-disabled: none;
+
+  // Control action state checked
+  --ds-control-action-btn-border-color-checked: var(--ds-neutral-800-500);
+  --ds-control-action-btn-background-color-checked: var(--ds-neutral-800-500);
+  --ds-control-action-btn-box-shadow-checked: 0 1px 2px 0 var(--ds-alpha-bb-012-040);
+
+  // Control action state checked hover
+  --ds-control-action-btn-border-color-checked-hover: var(--ds-neutral-800-500);
+  --ds-control-action-btn-background-color-checked-hover: var(--ds-neutral-800-500);
+  --ds-control-action-btn-box-shadow-checked-hover: 0 1px 2px 0 var(--ds-alpha-bb-012-040);
+
+  // Control action state checked focus
+  --ds-control-action-btn-border-color-checked-focus: var(--ds-neutral-800-500);
+  --ds-control-action-btn-background-color-checked-focus: var(--ds-neutral-800-500);
+  --ds-control-action-btn-box-shadow-checked-focus: 0 1px 2px 0 var(--ds-alpha-bb-012-040);
+
+  // Control action state checked disabled
+  --ds-control-action-btn-border-color-checked-disabled: var(--ds-neutral-300-700);
+  --ds-control-action-btn-background-color-checked-disabled: var(--ds-neutral-300-700);
+  --ds-control-action-btn-box-shadow-checked-disabled: 0 1px 2px 0 var(--ds-alpha-bb-012-040);
+  --ds-control-action-switcher-indicator-background-color: var(--ds-neutral-0-500);
+  --ds-control-action-switcher-indicator-box-shadow: var(--ds-alpha-bb-016-024);
+
+  display: var(--ds-switcher-custom-display, inline-flex);
+  justify-content: var(--ds-switcher-custom-justify-content, space-between);
+  line-height: 1;
+
+  &.control-action--disabled {
+    --ds-control-action-btn-background-color: var(--ds-neutral-0-0);
+    --ds-control-action-btn-box-shadow: none;
+    --ds-control-action-switcher-indicator-background-color: var(--ds-neutral-300-500);
+    --ds-control-action-switcher-indicator-box-shadow: var(--ds-alpha-bb-006-006);
+  }
+}
+
+.control-action__input--switcher {
+  appearance: none;
+
+  &::after {
+    content: '';
+    width: var(--ds-control-action-pin-size);
+    height: var(--ds-control-action-pin-size);
+    display: block;
+    border-radius: var(--radius-100);
+    background-color: var(--ds-control-action-switcher-indicator-background-color);
+    box-shadow: 0 1px 2px 0 var(--ds-control-action-switcher-indicator-box-shadow);
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: calc(var(--ds-control-action-pin-size) / 2 + 1px);
+    transform: translate(-50%, -50%);
+    transition: inset-inline-start var(--ds-transition-time);
+  }
+
+  &:checked {
+    &::after {
+      --ds-control-action-switcher-indicator-background-color: var(--ds-neutral-0-0);
+
+      inset-inline-start: calc(var(--ds-control-action-pin-size) / 2 + var(--ds-control-action-pin-offset));
+    }
+  }
+}
+
+.control-field--small {
+  --ds-control-action-switcher-width: 28px;
+  --ds-control-action-switcher-height: 16px;
+  --ds-control-action-pin-size: 12px;
+  --ds-control-action-pin-offset: 13px;
+}
+
+.control-field--middle {
+  --ds-control-action-switcher-width: 32px;
+  --ds-control-action-switcher-height: 18px;
+  --ds-control-action-pin-size: 14px;
+  --ds-control-action-pin-offset: 15px;
+}

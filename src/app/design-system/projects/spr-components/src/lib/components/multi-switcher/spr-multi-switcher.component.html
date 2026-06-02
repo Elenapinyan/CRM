@@ -1,0 +1,13 @@
+<ul
+  [id]="switcherId"
+  class="tab-level-3-list">
+  <li
+    *ngFor="let option of options"
+    [class.tab-level-3-list__item--active]="currentSelectedValue === option.value"
+    [class.tab-level-3-list__item--error]="isError"
+    [class.tab-level-3-list__item--disabled]="isDisabled"
+    class="tab-level-3-list__item"
+    (click)="onSwitcherChange(option.value)">
+    {{ option.text }}
+  </li>
+</ul>

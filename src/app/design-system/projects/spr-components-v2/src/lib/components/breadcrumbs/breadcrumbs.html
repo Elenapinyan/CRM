@@ -1,0 +1,49 @@
+@if (items()?.[0]; as item) {
+  <a
+    *sprLimiterItem="item"
+    class="breadcrumb-item"
+    data-testid="breadcrumb-item"
+    (click)="handleClick(item)"
+    [routerLink]="disableRouting() ? null : item.path">
+    <span>{{ item.name }}</span>
+  </a>
+}
+
+@if (collapsedItems().length) {
+  <div
+    class="breadcrumbs__root"
+    dsOpenMenu>
+    <span class="breadcrumbs__collapsed-trigger">...</span>
+
+    @for (item of collapsedItems(); track item.name) {
+      <ng-template sprOpenMenuItem>
+        <a
+          class="breadcrumb-item"
+          (click)="handleClick(item)"
+          [routerLink]="disableRouting() ? null : item.path">
+          <span>{{ item.name }}</span>
+        </a>
+      </ng-template>
+    }
+  </div>
+}
+
+@let restItems = items()?.length ? items().slice(1) : [];
+
+<div
+  class="breadcrumbs-container"
+  direction="rtl"
+  [sprLimiterContainer]="restItems"
+  (collapsedItems)="addCollapsedItems($event)">
+  @for (item of restItems; track item.name; let last = $last) {
+    <a
+      *sprLimiterItem="item"
+      class="breadcrumb-item"
+      [class.breadcrumb-item--active]="last"
+      data-testid="breadcrumb-item"
+      (click)="handleClick(item)"
+      [routerLink]="disableRouting() ? null : item.path">
+      <span>{{ item.name }}</span>
+    </a>
+  }
+</div>

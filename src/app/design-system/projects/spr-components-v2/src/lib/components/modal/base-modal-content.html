@@ -1,0 +1,15 @@
+<header
+  class="modal-header"
+  [class]="'modal-header--' + headerVariant()">
+  <ng-content select="[header]"></ng-content>
+</header>
+
+<main class="modal-body">
+  <ng-content select="[body]"></ng-content>
+</main>
+
+<footer
+  class="modal-footer"
+  [class]="'modal-footer--' + footerVariant()">
+  <ng-content select="[footer]"></ng-content>
+</footer>

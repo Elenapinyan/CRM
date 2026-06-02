@@ -1,0 +1,160 @@
+@let navItem = item();
+@let nestMultiplierPx = 14;
+@let iconArrowCornerDownRightSize = 20;
+@let tooltipPlacement = isCollapsed() ? 'right-top' : 'top-left';
+
+@if (navItem.type === 'link') {
+  <a
+    class="sidebar-item-link"
+    data-testid="sidebar-item-link"
+    routerLinkActive="sidebar-item-link--active"
+    [routerLinkActiveOptions]="{ exact: false }"
+    [routerLink]="navItem.isDisabled ? undefined : navItem.link"
+    [class.sidebar-item-link--collapsed]="isCollapsed()"
+    [class.sidebar-item-link--disabled]="navItem.isDisabled"
+    [class.sidebar-item-link--subnav]="nestingLevel() > 0"
+    [target]="navItem.target"
+    [dsTooltipIfTruncated]="!isCollapsed()"
+    [ngbTooltip]="navItem.label"
+    triggers="hover"
+    [container]="'body'"
+    [placement]="tooltipPlacement"
+    tooltipClass="tooltip--sm ds-component"
+    triggers="hover">
+    @if (nestingLevel() > 0 && isRouteActive(navItem)) {
+      <i
+        data-testid="sidebar-item-active-icon"
+        [style.font-size.px]="iconArrowCornerDownRightSize"
+        [style.left.px]="nestMultiplierPx * nestingLevel()"
+        class="ds-icon ds-icon-arrows-corner-down-right sidebar-item-link__active-icon"></i>
+    }
+
+    @if (navItem.iconClass) {
+      <span
+        class="sidebar-item-link__icon"
+        data-testid="sidebar-item-icon">
+        <i
+          class="ds-icon"
+          [ngClass]="navItem.iconClass"></i>
+      </span>
+    }
+
+    <div
+      #itemLabelElement
+      class="sidebar-item-link__label"
+      data-testid="sidebar-item-label">
+      {{ navItem.label }}
+    </div>
+
+    @if (navItem.unreadCount) {
+      <span
+        class="sidebar-item-link__badge"
+        data-testid="sidebar-item-badge"
+        [class.sidebar-item-link__badge--dot]="navItem.showDotOnly || isCollapsed()"
+        [class.sidebar-item-link__badge--dot-floating]="isCollapsed()"
+        [class.sidebar-item-link__badge--number]="!isCollapsed() && !navItem.showDotOnly">
+        @if (!isCollapsed() && !navItem.showDotOnly) {
+          {{ navItem.unreadCount || 0 }}
+        }
+      </span>
+    }
+  </a>
+} @else if (navItem.type === 'group') {
+  @let isGroupWithActiveRoute = navItem | isGroupActive: currentUrl();
+  <button
+    type="button"
+    class="sidebar-item-group"
+    data-testid="sidebar-item-group"
+    [dsTooltipIfTruncated]="!isCollapsed()"
+    [ngbTooltip]="navItem.label"
+    triggers="hover"
+    [container]="'body'"
+    [placement]="tooltipPlacement"
+    tooltipClass="tooltip--sm ds-component"
+    triggers="hover"
+    [class.sidebar-item--active]="isCollapsed() && (navItem | isGroupActive: currentUrl())"
+    [class.sidebar-item-group--collapsed]="isCollapsed()"
+    [class.sidebar-item-group--disabled]="navItem.isDisabled"
+    [class.sidebar-item-link--active]="isCollapsed() && isGroupWithActiveRoute"
+    [menuPlacement]="['right-top']"
+    [dsOpenMenu]="isCollapsed() && !!navItem.subNavs?.length"
+    [menuExtraClasses]="['sidebar-sub-item-list']"
+    (click)="onToggle()">
+    <div class="sidebar-item-group__content">
+      @if (navItem.iconClass) {
+        <span
+          class="sidebar-item-link__icon"
+          data-testid="sidebar-item-icon">
+          <i
+            class="ds-icon"
+            [ngClass]="navItem.iconClass"></i>
+        </span>
+      }
+
+      <span
+        #itemLabelElement
+        class="sidebar-item-link__label"
+        data-testid="sidebar-item-label">
+        {{ navItem.label }}
+      </span>
+
+      @let isTopmostGroupUnread = nestingLevel() === 0 && (navItem.subNavs | groupUnreadCount);
+      @if (isTopmostGroupUnread) {
+        <span
+          [class.sidebar-item-link__badge--dot-floating]="isCollapsed()"
+          class="sidebar-item-link__badge sidebar-item-link__badge--dot"
+          data-testid="sidebar-item-badge">
+        </span>
+      }
+    </div>
+
+    <ng-template dsOpenMenuTitle>
+      {{ navItem.label }}
+    </ng-template>
+
+    <!-- render menu when collapsed for group item -->
+    @if (isCollapsed()) {
+      @for (subNav of navItem.subNavs; track subNav.label) {
+        @if (subNav.type === 'link') {
+          <ng-template
+            sprOpenMenuItem
+            [isActive]="isRouteActive(subNav)"
+            [isDisabled]="!!subNav.isDisabled">
+            <a
+              class="sidebar-menu-item__link open-menu-component__action"
+              [routerLink]="subNav.isDisabled ? undefined : subNav.link"
+              data-testid="sidebar-menu-item">
+              <div class="open-menu-component__item-text">
+                {{ subNav.label }}
+              </div>
+
+              @if ((subNav.unreadCount ?? 0) > 0) {
+                <span
+                  class="sidebar-item__badge sidebar-item__badge--number"
+                  data-testid="sidebar-item-badge">
+                  {{ subNav.unreadCount }}
+                </span>
+              }
+            </a>
+          </ng-template>
+        }
+      }
+    }
+  </button>
+
+  @if (navItem.subNavs?.length && isOpen() && !isCollapsed()) {
+    <ul
+      class="sidebar__sub-nav"
+      data-testid="sidebar-sub-nav">
+      @for (subNav of navItem.subNavs; track subNav.label) {
+        <li>
+          <ds-sidebar-item
+            [currentUrl]="currentUrl()"
+            [nestingLevel]="nestingLevel() + 1"
+            [item]="subNav"
+            [isCollapsed]="isCollapsed()" />
+        </li>
+      }
+    </ul>
+  }
+}

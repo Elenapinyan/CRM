@@ -1,0 +1,13 @@
+<div class="stepper-wrapper">
+  @if (customHeader) {
+    <div class="spr-stepper-header--custom">
+      <ng-template [ngTemplateOutlet]="customHeader.templateRef"></ng-template>
+    </div>
+  } @else {
+    <ds-stepper-header />
+  }
+
+  <ds-stepper-body />
+</div>
+
+<ng-content select="[sprStepperActions]" />

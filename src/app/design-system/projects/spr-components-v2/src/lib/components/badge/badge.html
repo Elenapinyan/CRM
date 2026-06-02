@@ -1,0 +1,27 @@
+@let iconVar = icon();
+
+@if (iconVar) {
+  <i
+    class="badge__icon badge__icon--start"
+    data-testid="badge-icon-start"
+    [class]="iconVar"></i>
+}
+
+@let contentVar = content();
+
+@if (contentVar) {
+  <div
+    class="badge__content"
+    data-testid="badge-content">
+    {{ contentVar }}
+  </div>
+}
+
+@let iconEndVar = iconEnd();
+
+@if (iconEndVar) {
+  <i
+    class="badge__icon badge__icon--end"
+    data-testid="badge-icon-end"
+    [class]="iconEndVar"></i>
+}

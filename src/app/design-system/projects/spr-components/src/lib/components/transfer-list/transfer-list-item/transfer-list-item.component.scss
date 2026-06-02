@@ -1,0 +1,70 @@
+@use '../../../../../styles/mixins' as mixins;
+
+:host {
+  .transfer-list-icon-md {
+    font-size: var(--spr-font-size-18);
+  }
+
+  .transfer-list-icon-sm {
+    font-size: var(--spr-font-size-16);
+  }
+
+  .transfer-list__data-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition:
+      background var(--spr-transition-time) ease,
+      color var(--spr-transition-time) ease;
+
+    &:hover {
+      --spr-button-form-background: var(--spr-transfer-list-item-background-hover);
+
+      background: var(--spr-transfer-list-item-background-hover);
+    }
+
+    .transfer-list__data-item-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  .transfer-list__data-item-children {
+    overflow: hidden;
+    height: 0;
+
+    &.opened {
+      height: auto;
+    }
+
+    .transfer-list__data-source-item.child {
+      padding-left: 42px;
+    }
+
+    .transfer-list__data-target-item.child {
+      padding-right: 42px;
+    }
+  }
+
+  .transfer-list__data-source-item {
+    padding: 3px 4px 3px 16px;
+  }
+
+  .transfer-list__data-target-item {
+    padding: 3px 16px 3px 4px;
+    flex-direction: row-reverse;
+
+    .transfer-list__data-item-header {
+      flex-direction: row-reverse;
+    }
+
+    .inline-container {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .inline-container {
+    @include mixins.inline-container($gap: 8px);
+  }
+}

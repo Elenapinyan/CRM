@@ -1,0 +1,16 @@
+@use '../../../../styles/typography/body.scss' as body-text;
+
+:host {
+  display: block;
+}
+
+.error-message {
+  @include body-text.body-font-config('xs');
+
+  display: block;
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: var(--spr-border-radius-xs);
+  background-color: var(--brd-text-destructive-600);
+  color: var(--brd-text-default-0);
+}

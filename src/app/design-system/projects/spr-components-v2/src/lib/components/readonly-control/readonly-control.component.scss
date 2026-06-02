@@ -1,0 +1,68 @@
+@use '../../../../styles/mixins/mixins' as mixins;
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.readonly-field {
+  --ds-icon-font-size: var(--ds-font-size-16);
+
+  display: flex;
+  align-items: stretch;
+  background: var(--ds-readonly-field-custom-background-disabled, var(--ds-neutral-100-800));
+  border: 1px solid var(--ds-readonly-field-custom-border-color-disabled, var(--ds-neutral-100-800));
+  border-radius: var(--ds-readonly-field-custom-border-radius, var(--radius-6));
+  box-shadow: none;
+}
+
+.control-field--middle {
+  --ds-readonly-field-padding-block: 12px;
+  --ds-readonly-field-padding-inline: 12px;
+  --ds-readonly-field-icon-min-width: 44px;
+
+  @include body-text.body-font-config('l-m');
+}
+
+.control-field--small {
+  --ds-readonly-field-padding-block: 8px;
+  --ds-readonly-field-padding-inline: 8px;
+  --ds-readonly-field-icon-min-width: 34px;
+
+  @include body-text.body-font-config('m-m');
+}
+
+.readonly-field__inner {
+  @include mixins.text-overflow;
+
+  flex-grow: 1;
+  min-width: 0;
+  padding-block: var(--ds-readonly-field-inner-custom-padding-block, var(--ds-readonly-field-padding-block));
+  padding-inline: var(--ds-readonly-field-inner-custom-padding-inline, var(--ds-readonly-field-padding-inline));
+}
+
+.readonly-field__text {
+  @include mixins.text-overflow;
+
+  min-height: 20px;
+  line-height: var(--ds-line-height-20);
+  color: var(--ds-neutral-1000-0);
+}
+
+.readonly-field__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ds-readonly-field-icon-custom-color, var(--ds-neutral-500-400));
+  flex-shrink: 0;
+  cursor: default;
+  min-width: var(--ds-readonly-field-icon-custom-min-width, var(--ds-readonly-field-icon-min-width));
+  padding-block: var(--ds-readonly-field-icon-custom-padding-block, 0);
+  padding-inline: var(--ds-readonly-field-icon-custom-padding-inline, 6px);
+
+  &:empty {
+    display: none;
+  }
+}

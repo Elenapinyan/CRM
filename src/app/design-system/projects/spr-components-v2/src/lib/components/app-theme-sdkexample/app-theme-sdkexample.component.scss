@@ -1,0 +1,14 @@
+:host {
+  padding: 20px;
+  display: block;
+}
+
+:host-context([app-theme='dark']) {
+  background-color: #18181b;
+  color: #fff;
+}
+
+:host-context([app-theme='light']) {
+  background-color: #fff;
+  color: #000;
+}

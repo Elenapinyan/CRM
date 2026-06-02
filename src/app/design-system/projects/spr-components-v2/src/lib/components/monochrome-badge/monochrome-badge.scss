@@ -1,0 +1,33 @@
+@use '../../../../styles/typography/body.scss' as body-text;
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 4px;
+  padding: 1px 4px;
+  border: 1px solid var(--ds-neutral-200-1000);
+  background-color: var(--ds-neutral-100-800);
+  color: var(--ds-neutral-800-100);
+
+  @include body-text.body-font-config('xs-m');
+
+  &.monochrome-badge--circle {
+    border-radius: var(--radius-100);
+  }
+
+  &.monochrome-badge--square {
+    border-radius: var(--radius-5);
+  }
+
+  &.monochrome-badge--fixed {
+    padding: 1px;
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+    font-size: var(--ds-font-size-12);
+    font-weight: var(--ds-font-weight-semi-bold);
+    box-shadow: var(--ds-monochrome-box-shadow);
+  }
+}

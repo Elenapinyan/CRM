@@ -1,0 +1,32 @@
+@switch (type()) {
+  @case (types.DATE) {
+    <ds-datepicker
+      data-testid="date"
+      class="equals-control"
+      controlSize="sm"
+      [placeholder]="translations()[placeholderKeys.FILTER]"
+      [ngModel]="value()"
+      required
+      (ngModelChange)="value.set($event); onChange($event)" />
+  }
+  @case (types.NUMERIC) {
+    <ds-numeric-input
+      data-testid="numeric"
+      class="equals-control"
+      controlSize="sm"
+      [placeholder]="translations()[placeholderKeys.FILTER]"
+      [ngModel]="value()"
+      required
+      (ngModelChange)="value.set($event); onChange($event)" />
+  }
+  @case (types.TEXT) {
+    <ds-input
+      data-testid="text"
+      class="equals-control"
+      controlSize="sm"
+      [placeholder]="translations()[placeholderKeys.FILTER]"
+      [ngModel]="value()"
+      required
+      (ngModelChange)="value.set($event); onChange($event)" />
+  }
+}

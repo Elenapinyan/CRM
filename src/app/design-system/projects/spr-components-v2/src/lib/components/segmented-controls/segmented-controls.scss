@@ -1,0 +1,15 @@
+:host {
+  display: inline-flex;
+  gap: 4px;
+  padding-inline: var(--ds-segmented-controls-custom-padding-inline, 2px);
+  padding-block: var(--ds-segmented-controls-custom-padding-block, 2px);
+  background: var(--ds-segmented-controls-custom-background, var(--ds-neutral-100-800));
+  border-radius: var(--ds-segmented-controls-custom-border-radius, var(--radius-100));
+
+  .segmented-controls-divider {
+    width: 1px;
+    background-color: var(--ds-neutral-200-700);
+    margin-block: 6px;
+    border: none;
+  }
+}

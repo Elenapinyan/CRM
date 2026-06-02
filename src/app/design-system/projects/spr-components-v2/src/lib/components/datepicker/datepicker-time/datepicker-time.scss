@@ -1,0 +1,17 @@
+@use '../../../../../styles/typography/body' as body-text;
+
+:host {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  ds-input {
+    flex: 1;
+  }
+}
+
+.datepicker-time-label {
+  @include body-text.body-font-config('s-m');
+
+  color: var(--ds-neutral-600-300);
+}

@@ -1,0 +1,32 @@
+import { DestroyRef, OnChanges, OnInit, QueryList, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
+import { SprTabContentDirective } from './directives/spr-tab-content.directive';
+import { SprTabHeaderDirective } from './directives/spr-tab-header.directive';
+import { TabConfigGuard, TabsOrientation, TabType, TabVariant } from './interfaces';
+import * as i0 from "@angular/core";
+export declare class SprTabsComponent<Type extends TabType, Config extends TabConfigGuard<Type>> implements OnChanges, OnInit {
+    private readonly router;
+    private readonly destroyRef;
+    orientation: TabsOrientation;
+    variant: TabVariant;
+    type: Type;
+    isTransparentBg: boolean;
+    destroyOnHide: boolean;
+    animation: boolean;
+    isSticky: boolean;
+    activeId?: any;
+    tabsConfig: Config[];
+    readonly tabHeaderTemplates?: QueryList<SprTabHeaderDirective<Type, Config>>;
+    readonly tabContentTemplates?: QueryList<SprTabContentDirective<Type, Config>>;
+    private readonly setSelectedTab;
+    private readonly ngbNav;
+    constructor(router: Router, destroyRef: DestroyRef);
+    ngOnChanges(changes: SimpleChanges): void;
+    ngOnInit(): void;
+    onSetSelectedTab(event: unknown): void;
+    select(id: any): void;
+    private setSelectedTabByUrl;
+    private subscribeToRouterEvents;
+    static ɵfac: i0.ɵɵFactoryDeclaration<SprTabsComponent<any, any>, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<SprTabsComponent<any, any>, "spr-tabs", never, { "orientation": { "alias": "orientation"; "required": false; }; "variant": { "alias": "variant"; "required": false; }; "type": { "alias": "type"; "required": false; }; "isTransparentBg": { "alias": "isTransparentBg"; "required": false; }; "destroyOnHide": { "alias": "destroyOnHide"; "required": false; }; "animation": { "alias": "animation"; "required": false; }; "isSticky": { "alias": "isSticky"; "required": false; }; "activeId": { "alias": "activeId"; "required": false; }; "tabsConfig": { "alias": "tabsConfig"; "required": false; }; }, { "setSelectedTab": "setSelectedTab"; }, ["tabHeaderTemplates", "tabContentTemplates"], never, true, never>;
+}

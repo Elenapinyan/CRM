@@ -1,0 +1,24 @@
+<div
+  class="switcher-control"
+  [class.disabled]="control.disabled"
+  [class.switcher-control--decorated]="isDecorated">
+  <div
+    class="switcher-control__holder"
+    sprLabelContainer
+    sprLabelPosition="end"
+    sprLabelDefaultClass="switcher-control__label"
+    [sprLabelDefaultPosition]="isLabelReverse ? 'inside-start' : 'inside-end'"
+    [sprLabel]="secondLabel"
+    [tooltip]="secondTooltip"
+    [tooltipClassForLabel]="tooltipClassForLabel"
+    [inputId]="inputId()">
+    <input
+      class="form-switcher"
+      type="checkbox"
+      [formControl]="control"
+      (blur)="cvaOnTouched()"
+      ngDefaultControl
+      [attr.name]="inputId()"
+      [attr.id]="inputId()" />
+  </div>
+</div>

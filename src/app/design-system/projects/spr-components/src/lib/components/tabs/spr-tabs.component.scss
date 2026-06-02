@@ -1,0 +1,95 @@
+:host {
+  --spr-tab-content-background: var(--brd-fill-default-0);
+  --spr-tab-content-background-transparent: transparent;
+  --spr-tabs-container-height: 52px;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.tabs {
+  display: grid;
+  overflow: auto hidden;
+
+  &:has(.tabs--level-third) {
+    padding-inline: 16px;
+  }
+
+  &.sticky-tabs {
+    position: sticky;
+    top: 0;
+    z-index: 1054;
+    height: var(--spr-tabs-container-height);
+  }
+}
+
+.tab-content {
+  flex-grow: 1;
+  padding: 0;
+  background: var(--spr-tab-content-background);
+
+  &--transparent {
+    background: var(--spr-tab-content-background-transparent);
+  }
+}
+
+.nav-link {
+  display: block;
+
+  &:focus-visible {
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+// tabs variants
+.tabs--level-first,
+.tabs--level-second,
+.tabs--level-third {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.tabs--level-first {
+  --spr-tabs-level-first-background: var(--brd-fill-default-100);
+  --spr-tabs-level-first-border-bottom-color: var(--brd-border-default-300);
+  --spr-tabs-level-first-link-background-hover: var(--brd-fill-hover-200);
+  --spr-tabs-level-first-link-background-focus: var(--brd-fill-pressed-200);
+  --spr-tabs-level-first-link-background-active: var(--brd-fill-active-0);
+  --spr-tabs-level-first-link-border-color-hover: transparent transparent var(--brd-border-hover-300);
+  --spr-tabs-level-first-link-border-color-focus: transparent;
+  --spr-tabs-level-first-link-border-color-active: var(--brd-border-active-300) var(--brd-border-active-300) var(--brd-border-default-0);
+  --spr-tabs-link-padding-block: 9px;
+  --spr-tabs-link-padding-inline: 15px;
+
+  padding: 12px 16px 0;
+  background: var(--spr-tabs-level-first-background);
+  border-bottom: 1px solid var(--spr-tabs-level-first-border-bottom-color);
+}
+
+.tabs--level-second {
+  --spr-tabs-level-second-border-bottom-color: var(--brd-border-default-300);
+  --spr-tabs-level-second-link-border-radius-active: 2px 2px 0 0;
+  --spr-tabs-level-second-link-border-color-active: var(--brd-fill-accent-active-base);
+  --spr-tabs-link-padding-block: 11px;
+  --spr-tabs-link-padding-inline: 16px;
+
+  padding: 9px 16px 0;
+  border-bottom: 1px solid var(--spr-tabs-level-second-border-bottom-color);
+}
+
+.tabs--level-third {
+  --spr-tabs-level-third-link-background-hover: var(--brd-fill-hover-200);
+  --spr-tabs-level-third-link-background-active: var(--brd-fill-default-0);
+  --spr-tabs-link-padding-block: 4px;
+  --spr-tabs-link-padding-inline: 12px;
+
+  border-radius: var(--spr-border-radius-pill);
+  border: 1px solid var(--brd-border-default-300);
+  background: var(--brd-fill-default-100);
+  width: fit-content;
+  padding-left: 0;
+}

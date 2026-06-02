@@ -1,0 +1,99 @@
+@let params = paginationParams();
+
+<div class="paginator-section">
+  <div class="paginator-section__item">
+    <button
+      type="button"
+      data-testid="page-size-menu"
+      class="paginator-section__item-menu"
+      dsOpenMenu>
+      <div class="paginator-section__item-menu-holder">
+        <span data-testid="page-size">{{ size() }}</span>
+
+        <!-- TODO: unnecessary class (bo-icon-arrows-chevron-up-down) will need to be removed once the updates for the icon library are added. -->
+        <i class="ds-icon ds-icon-arrows-chevron-up-down bo-icon-arrows-chevron-up-down paginator-toggle"></i>
+      </div>
+
+      @for (size of sizes(); track size) {
+        <ng-template sprOpenMenuItem>
+          <div (click)="changeSize(size)">
+            {{ size }}
+          </div>
+        </ng-template>
+      }
+    </button>
+
+    {{ rowsPerPageTranslation() }}
+  </div>
+
+  @if (!params) {
+    <div
+      data-testid="showing-items"
+      class="paginator-section__item paginator-section__item-secondary">
+      {{ showingTranslation() }}
+    </div>
+  }
+</div>
+
+@let pagesLength = pages().length;
+
+<div class="paginator-section">
+  <div class="paginator-section__item">
+    @if (params) {
+      <span data-testid="page">{{ page() + 1 }}</span>
+    } @else {
+      <button
+        type="button"
+        data-testid="page-menu"
+        class="paginator-section__item-menu"
+        dsOpenMenu>
+        <div class="paginator-section__item-menu-holder">
+          {{ page() + 1 }}
+
+          @if (pagesLength > 1) {
+            <!-- TODO: unnecessary class (bo-icon-arrows-chevron-up-down) will need to be removed once the updates for the icon library are added. -->
+            <i class="ds-icon ds-icon-arrows-chevron-up-down bo-icon-arrows-chevron-up-down paginator-toggle"></i>
+          }
+        </div>
+
+        @for (page of pages(); track page) {
+          <ng-template sprOpenMenuItem>
+            <div (click)="changePage(page)">
+              {{ page + 1 }}
+            </div>
+          </ng-template>
+        }
+      </button>
+    }
+
+    @if (!params) {
+      <span data-testid="pages-counter">{{ pagesSectionTranslation() }}</span>
+    }
+  </div>
+
+  <div class="paginator-section__item">
+    @let prevDisabled = !!params ? !params.hasPrevious : pagesLength === 1 || page() === 0;
+    @let nextDisabled = !!params ? !params.hasNext : pagesLength <= 1 || page() === pagesLength - 1;
+
+    <ds-button
+      (click)="changePage(page() - 1)"
+      data-testid="control-prev"
+      variant="flat"
+      [isIcon]="true"
+      size="lg"
+      [disabled]="disabled() || prevDisabled">
+      <!-- TODO: unnecessary class (bo-icon-arrows-chevron-left) will need to be removed once the updates for the icon library are added. -->
+      <i class="ds-icon ds-icon-arrows-chevron-left bo-icon-arrows-chevron-left"></i>
+    </ds-button>
+    <ds-button
+      (click)="changePage(page() + 1)"
+      data-testid="control-next"
+      variant="flat"
+      [isIcon]="true"
+      size="lg"
+      [disabled]="disabled() || nextDisabled">
+      <!-- TODO: unnecessary class (bo-icon-arrows-chevron-right) will need to be removed once the updates for the icon library are added. -->
+      <i class="ds-icon ds-icon-arrows-chevron-right bo-icon-arrows-chevron-right"></i>
+    </ds-button>
+  </div>
+</div>

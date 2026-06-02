@@ -1,0 +1,36 @@
+<div class="theme-desc">
+  Parent theme: <b>{{ themeType() || 'unset' }}</b>
+</div>
+
+<h3>Theme for component:</h3>
+
+<p>Unseted theme Type will inherit theme from closest parent (<b>it's default value</b>):</p>
+<span dsStatusBadge>Inhereted from parent</span>
+
+<p><b>themeType="alt"</b> inverse root theme to component</p>
+<span
+  dsStatusBadge
+  themeType="alt"
+  >Inverted theme (light to dark | dark to light)</span
+>
+
+<p><b>themeType="root"</b> ignore parent theme and take theme from currently selected for root (body element)</p>
+<span
+  dsStatusBadge
+  themeType="root"
+  >Taken from root</span
+>
+
+<p><b>themeType="light"</b> ignore everything and set light theme for component</p>
+<span
+  dsStatusBadge
+  themeType="light"
+  >Force light theme</span
+>
+
+<p><b>themeType="dark"</b> ignore everything and set dark theme for component</p>
+<span
+  dsStatusBadge
+  themeType="dark"
+  >Force dark theme</span
+>

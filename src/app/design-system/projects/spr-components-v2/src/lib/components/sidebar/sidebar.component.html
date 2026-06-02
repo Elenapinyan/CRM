@@ -1,0 +1,191 @@
+@if (isMenuMode()) {
+  <ng-container *ngTemplateOutlet="parentMemu; context: { $implicit: isMenuModeCollapsed }" />
+} @else {
+  <aside
+    class="sidebar"
+    data-testid="sidebar"
+    [class.sidebar--collapsed]="isCollapsed()">
+    <div
+      class="sidebar__container"
+      data-testid="sidebar-container">
+      @if (parentDropdownOptions().length > 0) {
+        <ng-container *ngTemplateOutlet="parentMemu; context: { $implicit: isCollapsed }" />
+      }
+
+      @if (selectedParentControl.value) {
+        <nav class="sidebar__nav">
+          <ul class="sidebar__nav-list">
+            @for (item of selectedParentItem()?.subNavs ?? []; track item.label) {
+              <li class="sidebar__nav-list-item">
+                <ds-sidebar-item
+                  class="sidebar__item"
+                  [item]="item"
+                  [currentUrl]="currentUrl()"
+                  [isCollapsed]="isCollapsed()" />
+              </li>
+            }
+          </ul>
+        </nav>
+      }
+
+      @let news = newsBlock();
+      @if (!isCollapsed() && news) {
+        <div
+          class="sidebar-news"
+          data-testid="news-section"
+          [class.sidebar-news--hidden]="!isNewsShown()">
+          <ng-container *ngTemplateOutlet="isTemplateRef(news) ? news : defaultNews; context: { $implicit: news }" />
+        </div>
+
+        <ng-template
+          #defaultNews
+          let-newsItem>
+          @if (newsItem) {
+            <div
+              class="sidebar-news__card"
+              data-testid="news-card">
+              <button
+                (click)="isNewsShown.set(false)"
+                data-testid="news-close"
+                class="sidebar-news__close-button"
+                type="button">
+                <i class="ds-icon ds-icon-control-cross"></i>
+              </button>
+              <div class="sidebar-news__image-wrapper">
+                <img
+                  class="sidebar-news__image"
+                  [src]="newsItem.imageUrl"
+                  [alt]="newsItem.title" />
+              </div>
+
+              <div class="sidebar-news__body">
+                <div class="sidebar-news__title">{{ newsItem.title }}</div>
+                @if (newsItem.link && newsItem.description) {
+                  <a
+                    class="sidebar-news__cta"
+                    [href]="newsItem.link">
+                    {{ newsItem.description }}
+                    <i class="ds-icon ds-icon-arrows-arrow-right"></i>
+                  </a>
+                }
+              </div>
+            </div>
+          }
+        </ng-template>
+      }
+    </div>
+
+    <footer
+      class="sidebar__footer"
+      [class.is-toggled]="hasToggled()">
+      @let tooltipPlacement = isCollapsed() ? 'right-top' : 'top-left';
+
+      @if (footerLinks().length) {
+        <div class="sidebar__footer-links">
+          @for (footerLink of footerLinks(); track footerLink.link) {
+            @if (footerLink.link) {
+              <button
+                type="button"
+                [ngbTooltip]="footerLink.tooltip"
+                triggers="hover"
+                [container]="'body'"
+                [placement]="tooltipPlacement"
+                tooltipClass="tooltip--sm ds-component"
+                class="sidebar__toggle-button"
+                data-testid="footer-link"
+                [routerLink]="footerLink.link"
+                routerLinkActive="sidebar__toggle-button--active"
+                [routerLinkActiveOptions]="{ exact: false }">
+                <i
+                  class="ds-icon sidebar__toggle-icon"
+                  [class]="footerLink.iconClass"></i>
+              </button>
+            } @else if (footerLink.onClick) {
+              <button
+                type="button"
+                [ngbTooltip]="footerLink.tooltip"
+                triggers="hover"
+                [container]="'body'"
+                [placement]="tooltipPlacement"
+                (click)="footerLink.onClick()"
+                tooltipClass="tooltip--sm ds-component"
+                class="sidebar__toggle-button"
+                data-testid="footer-link">
+                <i
+                  class="ds-icon sidebar__toggle-icon"
+                  [class]="footerLink.iconClass"></i>
+              </button>
+            }
+          }
+        </div>
+      }
+
+      <div class="sidebar__toggle-button-container">
+        <button
+          [class.sidebar__toggle-button--collapsed]="isCollapsed()"
+          type="button"
+          class="sidebar__toggle-button"
+          data-testid="collapse-trigger"
+          (click)="toggleCollapse()">
+          <i class="ds-icon ds-icon-control-menu-collapse sidebar__toggle-icon"></i>
+        </button>
+      </div>
+    </footer>
+  </aside>
+}
+
+<ng-template
+  #parentMemu
+  let-isCollapsed>
+  <button
+    type="button"
+    class="sidebar-app-selector"
+    [class.sidebar-app-selector--small]="isCollapsed()"
+    [class.sidebar-app-selector--loading]="false"
+    data-testid="parent-dropdown"
+    [menuPlacement]="isCollapsed() ? ['right-top'] : ['bottom-start']"
+    [menuContainer]="null"
+    dsOpenMenu>
+    <div class="sidebar-app-selector__content">
+      <!-- TODO: moved to next iteration
+           @if (selectedParentItem()?.isLoading) {
+            <span class="sidebar-app-selector__spinner">
+              &lt;!&ndash; TODO: actual spinner icon &ndash;&gt;
+              <i class="ds-icon ds-icon-chips-new-fill"></i>
+            </span>
+          }-->
+      <div
+        class="sidebar-app-selector__icon"
+        [class.sidebar-app-selector__icon--no-background]="!selectedParentItem()?.iconBg"
+        [style.background]="selectedParentItem()?.iconBg">
+        <i
+          class="ds-icon"
+          [class]="selectedParentItem()?.iconClass"></i>
+      </div>
+
+      @if (!isCollapsed()) {
+        <div class="sidebar-app-selector__label">{{ selectedParentItem()?.label }}</div>
+        <i class="ds-icon ds-icon-arrows-chevron-up-down sidebar-app-selector__chevron"></i>
+      }
+    </div>
+
+    @for (item of topItems(); track item.value; let last = $last) {
+      <ng-template
+        [isActive]="item.value === selectedParentControl.value"
+        [sprOpenMenuItem]="item.label"
+        (clicked)="selectParent(item)"
+        [hasBottomSplitter]="last && !!bottomItems().length">
+        <ds-sidebar-menu-option [item]="item" />
+      </ng-template>
+    }
+
+    @for (item of bottomItems(); track item.value) {
+      <ng-template
+        [isActive]="item.value === selectedParentControl.value"
+        [sprOpenMenuItem]="item.label"
+        (clicked)="selectParent(item)">
+        <ds-sidebar-menu-option [item]="item" />
+      </ng-template>
+    }
+  </button>
+</ng-template>

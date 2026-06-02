@@ -1,0 +1,125 @@
+@use '../mixins/mixins' as mixins;
+@use '../typography/heading.scss' as heading-text;
+
+.offcanvas.ds-component {
+  position: fixed;
+  top: 0;
+  right: var(--ds-bria-panel-width, 0);
+  bottom: 0;
+  z-index: 1045;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  max-width: 100%;
+  background-color: var(--ds-neutral-0-900);
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+  visibility: hidden;
+
+  &.showing,
+  &.show:not(.hiding) {
+    transform: none;
+  }
+
+  &.showing,
+  &.hiding,
+  &.show {
+    visibility: visible;
+  }
+
+  .canvas-header__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-inline: var(--ds-off-canvas-header-padding-inline);
+    padding-block: var(--ds-off-canvas-header-padding-block);
+    min-height: 63px;
+  }
+
+  .canvas-header__items-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .canvas-header__items-group {
+    @include mixins.inline-container;
+  }
+
+  .canvas-header__title {
+    @include heading-text.heading-font-config('m');
+
+    color: var(--ds-neutral-1000-0);
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .canvas-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .canvas-footer__items-group {
+    @include mixins.inline-container($gap: 8px);
+
+    margin-left: auto;
+  }
+
+  .close-modal-button {
+    --ds-icon-font-size: 24px;
+
+    display: grid;
+    place-content: center;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-4);
+    background-color: transparent;
+    outline: none;
+    color: var(--ds-neutral-400-500);
+    transition: background-color var(--ds-transition-time) ease;
+
+    &:only-child {
+      margin-left: auto;
+    }
+
+    &:hover {
+      color: var(--ds-neutral-700-200);
+    }
+
+    &:focus-visible {
+      color: var(--ds-neutral-400-500);
+      background-color: var(--ds-neutral-050-900);
+      box-shadow:
+        0 0 0 1px var(--ds-neutral-0-900),
+        0 0 0 3px var(--ds-alpha-blue-060-080);
+    }
+
+    &:disabled {
+      color: var(--ds-neutral-250-700);
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}
+
+.offcanvas-backdrop.ds-component {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background: var(--ds-alpha-bb-072-072);
+  backdrop-filter: blur(2px);
+
+  &.fade,
+  &.show {
+    opacity: 1;
+  }
+}

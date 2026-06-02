@@ -1,0 +1,29 @@
+<div
+  class="radio-button-control"
+  [class.radio-button-control--decorated]="isDecorated"
+  [class.radio-button-control--bottom-margin]="isBottomMargin">
+  <div class="radio-check-holder">
+    <input
+      (blur)="cvaOnTouched()"
+      [formControl]="control"
+      [id]="inputId()"
+      [name]="inputId() ?? ''"
+      [value]="value"
+      class="custom-radio-button"
+      type="radio"
+      [sprLabel]="label"
+      [sprLabelPosition]="isLabelReverse ? 'start' : 'end'"
+      [sprLabelLeftIcon]="leftIcon"
+      [sprLabelRightIcon]="rightIcon"
+      [sprLabelIsInline]="isInline"
+      [inputId]="inputId()"
+      [tooltip]="tooltip"
+      [tooltipClassForLabel]="tooltipClassForLabel"
+      sprLabelClass="radio-check-holder__label" />
+
+    <ng-content></ng-content>
+  </div>
+  <ng-template #alternative>
+    <ng-content select="[alternative]"></ng-content>
+  </ng-template>
+</div>

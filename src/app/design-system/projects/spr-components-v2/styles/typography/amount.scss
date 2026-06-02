@@ -1,0 +1,31 @@
+@use 'sass:map';
+
+$amount-texts: (
+  'l': (
+    'font': var(--ds-font-size-18),
+    'line': var(--ds-line-height-28),
+  ),
+  'm': (
+    'font': var(--ds-font-size-15),
+    'line': var(--ds-line-height-20),
+  ),
+  's': (
+    'font': var(--ds-font-size-14),
+    'line': var(--ds-line-height-20),
+  ),
+  'xs': (
+    'font': var(--ds-font-size-12),
+    'line': var(--ds-line-height-16),
+  ),
+);
+
+@mixin amount-font-config($size) {
+  font-size: map.get($amount-texts, $size, 'font');
+  line-height: map.get($amount-texts, $size, 'line');
+}
+
+@each $size in map.keys($amount-texts) {
+  .text-amount-#{$size} {
+    @include amount-font-config($size);
+  }
+}

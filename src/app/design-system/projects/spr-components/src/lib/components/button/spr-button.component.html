@@ -1,0 +1,11 @@
+<button
+  [id]="buttonId"
+  [disabled]="disabled"
+  [type]="type"
+  [attr.form]="formId"
+  [ngClass]="variant | sprButtonClasses: size : isIcon : isRadius"
+  [sprBtnSpinner]="isBtnSpinner">
+  <ng-content select="[start]"></ng-content>
+  <ng-content></ng-content>
+  <ng-content select="[end]"></ng-content>
+</button>

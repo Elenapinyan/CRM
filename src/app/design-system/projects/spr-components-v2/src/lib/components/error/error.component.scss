@@ -1,0 +1,14 @@
+@use '../../../../styles/typography/body.scss' as body-text;
+
+:host {
+  display: block;
+}
+
+.error-message {
+  @include body-text.body-font-config('xs');
+
+  display: block;
+  width: fit-content;
+  padding: 0 4px;
+  color: var(--ds-accent-red-600-300);
+}

@@ -1,0 +1,71 @@
+:host {
+  display: block;
+}
+
+.input-group--with-select {
+  .form-control-datepicker,
+  .form-datepicker-control {
+    border-radius: var(--spr-border-radius-m) 0 0 var(--spr-border-radius-m) !important;
+
+    &--full-rounded {
+      border-radius: var(--spr-border-radius-m) !important;
+    }
+  }
+
+  .input-container {
+    flex: auto;
+  }
+
+  .btn {
+    border-radius: 0 var(--spr-border-radius-m) var(--spr-border-radius-m) 0 !important;
+  }
+}
+
+.dropdown-toggle {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  &::after {
+    display: none;
+  }
+}
+
+.dropdown-block {
+  &.is-open {
+    .dropdown-toggle {
+      pointer-events: none;
+      opacity: 0.4;
+    }
+  }
+}
+
+.default-period-selector-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+
+  &.left-footer-position {
+    justify-content: flex-start;
+  }
+}
+
+.display-hidden {
+  visibility: hidden;
+}
+
+.form-datepicker-period-control {
+  position: relative;
+
+  .text-for-measurement {
+    visibility: hidden;
+  }
+
+  .text-for-view {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 11px;
+  }
+}

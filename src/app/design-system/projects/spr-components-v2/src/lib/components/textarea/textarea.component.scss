@@ -1,0 +1,19 @@
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  --ds-control-field-custom-padding-block-md: 8px;
+  --ds-control-field-custom-padding-inline-md: 8px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.control-field__textarea-count {
+  @include body-text.body-font-config('xs');
+
+  display: block;
+  text-align: right;
+  color: var(--ds-neutral-600-250);
+  padding: 0 4px;
+}

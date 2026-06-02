@@ -1,0 +1,27 @@
+<ag-grid-angular
+  class="ag-grid-component__content"
+  [class]="classes()"
+  [suppressRowHoverHighlight]="!isRowHovered()"
+  [rowData]="rowData()"
+  [rowSelection]="rowSelection"
+  [suppressCellFocus]="true"
+  [gridOptions]="gridOptions"
+  [defaultColDef]="defaultColDef"
+  [pagination]="true"
+  [columnDefs]="columnDefsWithCustomTemplate()" />
+
+<ng-template
+  #actionTemplate
+  let-value
+  let-data="data">
+  <ds-button
+    (click)="editSeoPage(data)"
+    variant="outline"
+    size="sm"
+    [isIcon]="true"
+    type="button">
+    <i
+      class="bo-icon bo-icon-control-edit"
+      start></i>
+  </ds-button>
+</ng-template>

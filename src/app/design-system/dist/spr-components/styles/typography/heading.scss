@@ -1,0 +1,52 @@
+@use 'sass:map';
+
+$heading-texts: (
+  'xl': (
+    'font': var(--spr-font-size-32),
+    'line': var(--spr-line-height-40),
+  ),
+  'l': (
+    'font': var(--spr-font-size-28),
+    'line': var(--spr-line-height-36),
+  ),
+  'm': (
+    'font': var(--spr-font-size-24),
+    'line': var(--spr-line-height-32),
+  ),
+  's': (
+    'font': var(--spr-font-size-20),
+    'line': var(--spr-line-height-24),
+  ),
+  'xs': (
+    'font': var(--spr-font-size-16),
+    'line': var(--spr-line-height-24),
+  ),
+  'xxs': (
+    'font': var(--spr-font-size-13),
+    'line': var(--spr-line-height-16),
+  ),
+  'xxxs': (
+    'font': var(--spr-font-size-12),
+    'line': var(--spr-line-height-16),
+  ),
+);
+
+@mixin heading-font-weight() {
+  font-weight: var(--spr-font-weight-semi-bold);
+}
+
+@mixin heading-font-config($size) {
+  font-size: map.get($heading-texts, $size, 'font');
+  line-height: map.get($heading-texts, $size, 'line');
+  @include heading-font-weight;
+
+  @if $size == 'xxs' or $size == 'xxxs' {
+    text-transform: uppercase;
+  }
+}
+
+@each $size in map.keys($heading-texts) {
+  .text-heading-#{$size} {
+    @include heading-font-config($size);
+  }
+}

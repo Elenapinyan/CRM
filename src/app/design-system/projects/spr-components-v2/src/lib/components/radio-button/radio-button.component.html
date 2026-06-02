@@ -1,0 +1,19 @@
+<input
+  (blur)="cvaOnTouched()"
+  [formControl]="control"
+  [id]="inputId()"
+  [name]="name ?? inputId()"
+  [value]="value"
+  class="control-action__input"
+  type="radio"
+  [dsLabel]="label"
+  [dsLabelPosition]="isLabelReverse ? 'start' : 'end'"
+  [dsLabelLeftIcon]="leftIcon"
+  [dsLabelRightIcon]="rightIcon"
+  [dsLabelIsInline]="isInline"
+  [inputId]="inputId()"
+  [tooltip]="tooltip"
+  [tooltipClassForLabel]="tooltipClassForLabel"
+  dsLabelClass="control-action__label" />
+
+<ng-content></ng-content>

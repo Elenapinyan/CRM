@@ -1,0 +1,36 @@
+<div
+  class="two-options-switcher-control"
+  data-testid="switcher-root"
+  [class.disabled]="control.disabled">
+  <div class="two-options-switcher-control__holder">
+    <ds-label
+      [class.label-active]="!control.value"
+      [inputId]="inputId + '-start'"
+      [tooltip]="tooltipStart()"
+      [tooltipClassForLabel]="tooltipClassForLabel"
+      [label]="labelStart()"
+      (click)="controlToggle(false)">
+    </ds-label>
+
+    <label class="two-options-switcher-control__toggle">
+      <input
+        class="form-two-options-switcher"
+        data-testid="switcher-input"
+        type="checkbox"
+        [formControl]="control"
+        [attr.name]="inputId()"
+        [attr.id]="inputId()"
+        (blur)="cvaOnTouched()" />
+      <span class="slider"></span>
+    </label>
+
+    <ds-label
+      [class.label-active]="control.value"
+      [inputId]="inputId + '-end'"
+      [tooltip]="tooltipEnd()"
+      [tooltipClassForLabel]="tooltipClassForLabel"
+      [label]="labelEnd()"
+      (click)="controlToggle(true)">
+    </ds-label>
+  </div>
+</div>

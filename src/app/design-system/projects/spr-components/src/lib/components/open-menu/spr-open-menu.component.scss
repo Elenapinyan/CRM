@@ -1,0 +1,152 @@
+@use '../../../../styles/typography/body' as body-text;
+@use '../../../../styles/typography/heading' as heading-text;
+
+:host {
+  display: block;
+}
+
+.open-menu-component {
+  --brd-open-menu-component-gap: 8px;
+  --brd-open-menu-component-item-bg: var(--brd-fill-default-0);
+  --brd-open-menu-component-item-color: var(--brd-text-primary-800);
+
+  padding: 0;
+  overflow: auto;
+  min-width: 200px;
+  max-width: 400px;
+  max-height: 500px;
+
+  &.with-sub-menu {
+    overflow: unset;
+    max-height: unset;
+  }
+}
+
+.open-menu-component__title {
+  @include heading-text.heading-font-config('xxs');
+
+  margin: 0;
+  padding: var(--brd-open-menu-component-gap) 12px 4px;
+  color: rgb(var(--brd-text-secondary-600));
+}
+
+.open-menu-component__list {
+  margin: 0;
+  padding: var(--brd-open-menu-component-gap) 0;
+  list-style: none;
+}
+
+.open-menu-component__item {
+  @include body-text.body-font-config('s');
+
+  position: relative;
+  padding: var(--brd-open-menu-component-gap);
+  background-color: var(--brd-open-menu-component-item-bg);
+  color: var(--brd-open-menu-component-item-color);
+  white-space: wrap;
+
+  &:hover,
+  &:focus {
+    --brd-open-menu-component-item-bg: var(--brd-fill-hover-200);
+
+    cursor: pointer;
+  }
+
+  &.active,
+  &:active {
+    --brd-open-menu-component-item-bg: var(--brd-fill-accent-selected);
+  }
+
+  &.disabled,
+  &:disabled {
+    --brd-open-menu-component-item-bg: var(--brd-fill-disabled-0);
+    --brd-open-menu-component-item-color: var(--brd-text-disabled-500);
+
+    pointer-events: none;
+  }
+
+  &.with-sub-menu {
+    padding: 0;
+  }
+}
+
+.open-menu-component__item--top-splitter,
+.open-menu-component__item--bottom-splitter {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+  }
+}
+
+.open-menu-component__item--top-splitter {
+  margin-top: calc(2 * var(--brd-open-menu-component-gap));
+
+  &::before {
+    top: calc(var(--brd-open-menu-component-gap) * -1);
+    border-top: 1px solid var(--brd-border-default-300);
+  }
+}
+
+.open-menu-component__item--bottom-splitter {
+  margin-bottom: calc(2 * var(--brd-open-menu-component-gap));
+
+  &::after {
+    bottom: calc(var(--brd-open-menu-component-gap) * -1);
+    border-top: 1px solid var(--brd-border-default-300);
+  }
+}
+
+.open-menu-component__item--destructive:not(.disabled) {
+  --brd-open-menu-component-item-color: var(--brd-text-destructive-600);
+}
+
+::ng-deep .open-menu-component__action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  span {
+    display: block;
+    flex: 1;
+  }
+}
+
+// Styles for Menu as SubMenu
+.sub-menu {
+  position: absolute;
+}
+
+.sub-menu--top {
+  top: 0;
+}
+
+.sub-menu--right {
+  right: 0;
+}
+
+.sub-menu--left {
+  left: 0;
+}
+
+/** This class is made in order to add paddings at the 'appOpenSubMenu' not at 'ngbDropdownItem',
+  because we listen @HostListener('click') mouseEnterListener at appOpenSubMenu which is under the ngbDropdownItem,
+  so if we click on ngbDropdownItem - @HostListener('click') mouseEnterListener will not be triggered.
+**/
+
+::ng-deep.spr-sub-menu-list-item-padding-class {
+  padding: var(--brd-open-menu-component-gap);
+}

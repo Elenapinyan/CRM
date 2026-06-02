@@ -1,0 +1,47 @@
+:host {
+  display: block;
+}
+
+.input-group--with-select {
+  .form-control-datepicker,
+  .form-datepicker-control {
+    border-radius: var(--spr-border-radius-m) 0 0 var(--spr-border-radius-m) !important;
+  }
+
+  .input-container {
+    flex: auto;
+  }
+
+  .btn {
+    border-radius: 0 var(--spr-border-radius-m) var(--spr-border-radius-m) 0 !important;
+  }
+}
+
+.dropdown-toggle {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  &::after {
+    display: none;
+  }
+}
+
+.default-period-selector-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+
+  &.left-footer-position {
+    justify-content: flex-start;
+  }
+}
+
+.control-form--hidden-input {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+}

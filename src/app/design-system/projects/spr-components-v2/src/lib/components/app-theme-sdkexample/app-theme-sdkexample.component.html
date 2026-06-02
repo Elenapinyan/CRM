@@ -1,0 +1,9 @@
+<h3>Select theme for the Application</h3>
+
+@for (theme of themes; track theme) {
+  <ds-radio-button
+    [formControl]="control"
+    [value]="theme"
+    [label]="theme + ' Theme' | titlecase"
+    [isInline]="true" />
+}

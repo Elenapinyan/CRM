@@ -1,0 +1,58 @@
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  --brd-input-description-custom-color: var(--brd-text-primary-800);
+
+  display: block;
+}
+
+.form-field-textarea {
+  --spr-form-field-textarea-radius: var(--spr-control-radius);
+  --spr-form-field-textarea-bg: var(--brd-fill-default-0);
+  --spr-form-field-textarea-bg-disabled: var(--brd-fill-disabled-250);
+  --spr-form-field-textarea-border-color: var(--brd-border-default-400);
+  --spr-form-field-textarea-border-color-invalid: var(--brd-border-destructive-600);
+  --spr-form-field-textarea-border-color-hover: var(--brd-fill-accent-hover-base);
+  --spr-form-field-textarea-color: var(--brd-text-default-800);
+  --spr-form-field-placeholder-color: var(--brd-text-secondary-500);
+
+  @include body-text.body-font-config('s');
+
+  display: block;
+  width: 100%;
+  padding: 12px 8px;
+  border: 1px solid var(--spr-form-field-textarea-border-color);
+  border-radius: var(--spr-form-field-textarea-radius);
+  box-shadow: 0 1px 2px 0 rgb(var(--brd-black) / 0.05);
+  outline: none;
+  background-color: var(--spr-form-field-textarea-bg);
+  color: var(--spr-form-field-textarea-color);
+  transition: border var(--spr-transition-time) ease;
+
+  &:hover,
+  &:focus {
+    border-color: var(--spr-form-field-textarea-border-color-hover);
+  }
+
+  &.is-invalid {
+    border-color: var(--spr-form-field-textarea-border-color-invalid);
+  }
+
+  &:disabled {
+    background-color: var(--spr-form-field-textarea-bg-disabled);
+    border-color: var(--spr-form-field-textarea-border-color);
+    resize: none;
+  }
+
+  &.control-form--large {
+    font-size: var(--spr-control-font-size-lg);
+  }
+}
+
+.form-field-textarea__count {
+  @include body-text.body-font-config('s');
+
+  display: block;
+  text-align: right;
+  color: var(--brd-text-secondary-500);
+}

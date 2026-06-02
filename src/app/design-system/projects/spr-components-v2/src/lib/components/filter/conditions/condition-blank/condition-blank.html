@@ -1,0 +1,46 @@
+<ng-container [formGroup]="form">
+  <div class="conditions-filter-blank">
+    <ds-radio-button
+      name="blank-radio"
+      formControlName="operator"
+      [value]="operators.AND"
+      [label]="translations()[operators.AND]" />
+
+    <ds-radio-button
+      name="blank-radio"
+      formControlName="operator"
+      [value]="operators.OR"
+      [label]="translations()[operators.OR]" />
+  </div>
+
+  <ds-dropdown
+    controlSize="sm"
+    [withSearch]="false"
+    [options]="options()"
+    formControlName="condition" />
+
+  @switch (form.getRawValue().condition) {
+    @case (conditions.EQUALS) {
+      <ds-conditions-filter-equals
+        data-testid="condition-equals"
+        [type]="type()"
+        [translations]="translations()"
+        formControlName="conditionValue" />
+    }
+
+    @case (conditions.CONTAINS) {
+      <ds-input
+        data-testid="condition-contains"
+        formControlName="conditionValue"
+        controlSize="sm"
+        [placeholder]="translations()[placeholderKeys.FILTER]" />
+    }
+
+    @case (conditions.BETWEEN) {
+      <ds-conditions-filter-between
+        data-testid="condition-between"
+        [translations]="translations()"
+        formControlName="conditionValue" />
+    }
+  }
+</ng-container>

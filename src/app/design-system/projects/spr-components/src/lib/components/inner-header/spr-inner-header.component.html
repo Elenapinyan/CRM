@@ -1,0 +1,13 @@
+<div [class.inner-header__title-container]="withStartContent">
+  @if (title) {
+    <h3
+      data-testid="header-title"
+      class="inner-header__title">
+      {{ title }}
+    </h3>
+  }
+
+  <ng-content select="[start]" />
+</div>
+
+<ng-content select="[end]" />

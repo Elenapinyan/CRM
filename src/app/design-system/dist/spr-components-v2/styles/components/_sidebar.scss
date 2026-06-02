@@ -1,0 +1,8 @@
+:root {
+  --ds-sidebar-item-link-height: 34px;
+}
+
+.sidebar-sub-item-list {
+  --ds-open-menu-component-custom-width: 216px;
+  --ds-dropdown-margin-positioning: calc(var(--ds-sidebar-item-link-height) * -1) 0 0 6px;
+}

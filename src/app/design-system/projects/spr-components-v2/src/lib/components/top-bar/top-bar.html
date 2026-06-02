@@ -1,0 +1,68 @@
+<ng-content>
+  <div class="default-content">
+    @if (iconName(); as iconName) {
+      <div
+        class="default-content__start"
+        data-testid="top-bar-start">
+        <i
+          [class]="iconName"
+          data-testid="top-bar-icon"></i>
+      </div>
+    }
+
+    @let titleValue = title();
+    @let subtitleValue = subtitle();
+
+    @if (titleValue || subtitleValue) {
+      <div
+        class="default-content__main"
+        data-testid="top-bar-main">
+        @if (titleValue) {
+          <div
+            class="default-content__title"
+            data-testid="top-bar-title">
+            {{ titleValue }}
+          </div>
+        }
+        @if (subtitleValue) {
+          <div
+            class="default-content__subtitle"
+            data-testid="top-bar-subtitle">
+            {{ subtitleValue }}
+          </div>
+        }
+      </div>
+    }
+
+    @let declineBtnValue = declineBtn();
+    @let confirmBtnValue = confirmBtn();
+
+    @if (declineBtnValue || confirmBtnValue) {
+      <div
+        class="default-content__end"
+        data-testid="top-bar-end">
+        @if (declineBtnValue) {
+          <ds-button
+            data-testid="top-bar-decline-btn"
+            themeType="alt"
+            (click)="onDecline()"
+            variant="secondary"
+            type="button">
+            {{ declineBtnValue }}
+          </ds-button>
+        }
+        @if (confirmBtnValue) {
+          <ds-button
+            data-testid="top-bar-confirm-btn"
+            themeType="alt"
+            (click)="onConfirm()"
+            variant="main"
+            type="button">
+            <i class="ds-icon ds-icon-control-check"></i>
+            {{ confirmBtnValue }}
+          </ds-button>
+        }
+      </div>
+    }
+  </div>
+</ng-content>

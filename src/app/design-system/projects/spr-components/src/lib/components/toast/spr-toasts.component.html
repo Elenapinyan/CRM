@@ -1,0 +1,29 @@
+@for (toast of (toastService.toasts$ | async) || []; track toast.message) {
+  <ngb-toast
+    [autohide]="toast.options.autohide !== false"
+    [delay]="toast.options.delay || 5000"
+    [class]="classes[toast.context]"
+    (hidden)="toastService.remove(toast)"
+    (mouseenter)="toast.options.autohide = false"
+    (mouseleave)="toast.options.autohide = true">
+    <div class="toast__content">
+      <i
+        class="toast__icon"
+        [class]="'ds-icon-' + icons[toast.context]"></i>
+      <span
+        class="toast__text"
+        [innerHTML]="toast.message"></span>
+      <span class="toast__close">
+        <i
+          class="ds-icon-control-cross"
+          (click)="toastService.remove(toast)"></i>
+      </span>
+    </div>
+
+    @if (toast.options.footerMessage) {
+      <div
+        [innerHTML]="toast.options.footerMessage"
+        class="toast__footer"></div>
+    }
+  </ngb-toast>
+}

@@ -1,0 +1,29 @@
+@use 'mixins/mixins' as mixins;
+
+:root {
+  --ds-sidebar-container-background-image-light: url('../assets/images/sidebar-light.png');
+  --ds-sidebar-container-background-image-dark: url('../assets/images/sidebar-dark.png');
+}
+
+.storybook-title {
+  color: var(--ds-neutral-600-300);
+  margin-bottom: 10px;
+}
+
+.storybook-button {
+  color: var(--ds-neutral-600-300);
+}
+
+.storybook-section {
+  margin-bottom: 20px;
+}
+
+.storybook-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.open-menu-component__item-text {
+  @include mixins.line-clamp(2);
+}

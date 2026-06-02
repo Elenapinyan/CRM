@@ -1,0 +1,12 @@
+@use '../../../../styles/typography/body.scss' as body-text;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.form-input-description {
+  @include body-text.body-font-config('xs');
+
+  color: var(--brd-input-description-custom-color, var(--brd-text-secondary-500));
+}

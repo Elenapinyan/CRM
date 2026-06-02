@@ -1,0 +1,215 @@
+@mixin scroll-style() {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--ds-neutral-200-700);
+    border-radius: 6px;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--ds-neutral-300-600);
+  }
+}
+
+@mixin scroll-style-x() {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--ds-neutral-200-700);
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--ds-neutral-300-600);
+    cursor: pointer;
+  }
+}
+
+@mixin text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin game-image {
+  .game-image {
+    display: flex;
+    flex-direction: column;
+    max-width: 48px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .game-image__media {
+    max-width: 100%;
+    max-height: 48px;
+    border-radius: var(--ds-border-radius-xs);
+  }
+}
+
+@mixin toggle-button {
+  padding: 12px;
+  border: none;
+  border-radius: var(--ds-border-radius-pill);
+  background-color: transparent;
+  outline: none;
+  color: var(--ds-icon-default-800);
+  transition:
+    background var(--ds-transition-time) ease,
+    opacity var(--ds-transition-time) ease;
+
+  &:hover {
+    background-color: rgb(var(--ds-white));
+    opacity: 0.4;
+  }
+
+  &:not(.collapsed) {
+    .caret-icon {
+      transform: rotate(-180deg);
+    }
+  }
+
+  .caret-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    font-size: var(--ds-font-size-20);
+    transition: transform var(--ds-transition-time) ease;
+  }
+}
+
+@mixin flex-component-height {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@mixin flex-container($gap: 16px, $flex-direction: column) {
+  gap: $gap;
+  flex-direction: $flex-direction;
+  display: flex;
+}
+
+@mixin inline-container($gap: 8px, $display: inline-flex, $flex-wrap: nowrap) {
+  gap: $gap;
+  display: $display;
+  flex-wrap: $flex-wrap;
+  align-items: center;
+  vertical-align: middle;
+}
+
+@mixin btn-group-holder($gap: 8px, $justify-content: flex-end) {
+  justify-content: $justify-content;
+  gap: $gap;
+}
+
+@mixin main-area-container {
+  .block-body__main-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .block-body__main-area-header {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0 20px;
+  }
+
+  .block-body__main-area-content:not(:only-child) {
+    margin-bottom: 16px;
+  }
+
+  .block-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin: 0 -16px -24px;
+    padding: 16px 20px;
+    background: var(--offcanvas-footer-bg-custom, var(--ds-fill-default-200));
+    border-top: 1px solid rgb(var(--ds-grey-130));
+  }
+}
+
+@mixin grid-container {
+  display: grid;
+  gap: var(--ds-grid-container-gap, 16px);
+  padding: var(--ds-grid-container-padding-block, 16px) var(--ds-grid-container-padding-inline, 16px);
+
+  &.grid-container--bottom-border {
+    border-bottom: 1px solid var(--ds-border-divider-300);
+  }
+}
+
+@mixin grid-columns($columns: 1, $gapX: 24px, $gapY: 16px) {
+  gap: $gapY $gapX;
+  grid-template-columns: repeat(auto-fill, minmax(calc(100% / $columns - $gapX * ($columns - 1) / $columns), 1fr));
+}
+
+@mixin grid-list {
+  .grid-list {
+    display: grid;
+    row-gap: 16px;
+
+    &--align-top {
+      place-items: start flex-start;
+    }
+
+    &--align-center {
+      place-items: center flex-start;
+    }
+
+    &--align-bottom {
+      place-items: end flex-start;
+    }
+
+    &__item {
+      display: grid;
+      width: 100%;
+    }
+
+    $grid-columns-options: 2, 3, 4, 5;
+
+    @each $col in $grid-columns-options {
+      &--columns-#{$col} {
+        @include grid-columns($col);
+      }
+    }
+  }
+}
+
+@mixin line-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+@mixin reset-list($margin: 0, $padding: 0, $list-style: none) {
+  margin: $margin;
+  padding: $padding;
+  list-style: $list-style;
+}

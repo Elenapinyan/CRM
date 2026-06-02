@@ -1,0 +1,29 @@
+:host {
+  --ds-radio-indicator-box-shadow: var(--ds-alpha-bb-088-024);
+  --ds-control-action-input-border-radius: var(--radius-100);
+
+  display: inline-flex;
+
+  &.control-action--disabled {
+    .control-action__input:checked {
+      --ds-radio-indicator-box-shadow: 0 1px 2px 0 var(--ds-alpha-bb-016-016);
+    }
+  }
+}
+
+.control-action__input {
+  &::before {
+    position: absolute;
+    content: '';
+    width: 10px;
+    height: 10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: var(--radius-10);
+    background: var(--ds-neutral-0-0);
+    z-index: 2;
+    opacity: var(--ds-control-action-opacity);
+    box-shadow: 0 1px 2px 0 var(--ds-radio-indicator-box-shadow);
+  }
+}

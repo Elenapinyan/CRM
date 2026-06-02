@@ -1,0 +1,31 @@
+<div
+  class="checkbox-control"
+  [class.disabled]="control.disabled"
+  [class.checkbox-control--decorated]="isDecorated">
+  <div class="checkbox-control__holder">
+    <input
+      class="form-checkbox"
+      type="checkbox"
+      [class.partially-checked]="isPartiallyChecked"
+      [formControl]="control"
+      (blur)="cvaOnTouched()"
+      ngDefaultControl
+      [attr.name]="inputId()"
+      [attr.id]="inputId()"
+      [sprLabel]="label"
+      [sprLabelPosition]="isLabelReverse ? 'start' : 'end'"
+      [sprLabelLeftIcon]="leftIcon"
+      [sprLabelRightIcon]="rightIcon"
+      [sprLabelIsInline]="isInline"
+      [inputId]="inputId()"
+      [tooltip]="tooltip"
+      [tooltipClassForLabel]="tooltipClassForLabel"
+      [shouldStopLabelClickEventPropagation]="shouldStopLabelClickEventPropagation"
+      container="body"
+      [placement]="tooltipPlacement"
+      [ngbTooltip]="checkboxTooltip"
+      [tooltipClass]="tooltipClass"
+      sprLabelClass="checkbox-control__label" />
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+@use '../../../../styles/mixins/mixins' as mixins;
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.selection-item__control {
+  pointer-events: none;
+}
+
+.selection-item-wrapper {
+  display: inline-flex;
+}
+
+.selection-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 100%;
+  width: 100%;
+  padding-inline: var(--ds-selection-item-custom-padding-inline, 8px);
+  padding-block: var(--ds-selection-item-custom-padding-block, 6px);
+  color: var(--ds-selection-item-custom-color, var(--ds-neutral-1000-0));
+
+  &:hover,
+  &:focus,
+  &.active,
+  &:active {
+    cursor: pointer;
+    background-color: var(--ds-selection-item-custom-background-color-hover, var(--ds-neutral-150-700));
+  }
+
+  &.disabled,
+  &:disabled {
+    pointer-events: none;
+    color: var(--ds-selection-item-custom-color-disabled, var(--ds-neutral-500-500));
+    background-color: transparent;
+  }
+}
+
+.selection-list-viewport {
+  @include mixins.scroll-style;
+
+  overflow-y: auto;
+  flex: 1;
+  height: 100%;
+}
+
+.viewport-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-error-message {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 4px;
+  padding-inline: var(--ds-search-error-message-custom-padding-inline, 4px);
+  padding-block: var(--ds-search-error-message-custom-padding-block, 24px 16px);
+  max-width: var(--ds-search-error-message-custom-max-width, 252px);
+}
+
+.search-error-message__title {
+  @include body-text.body-font-config('m-m');
+
+  color: var(--ds-search-error-message-title-custom-color, var(--ds-neutral-1000-0));
+}
+
+.search-error-message__subtitle {
+  @include body-text.body-font-config('s');
+
+  color: var(--ds-search-error-message-subtitle-custom-color, var(--ds-neutral-500-400));
+}
+
+.selection-list-container-header {
+  --ds-control-field-custom-background: transparent;
+  --ds-control-field-custom-background-hover: transparent;
+  --ds-control-field-custom-border-color: transparent;
+  --ds-control-field-custom-box-shadow: none;
+
+  margin-inline: calc(-1 * var(--ds-filter-menu-wrapper-padding-inline));
+  padding-inline: var(--ds-selection-list-container-header-custom-padding-inline, 4px);
+  border-bottom: 1px solid var(--ds-selection-list-container-header-custom-border-color, var(--ds-neutral-150-750));
+}

@@ -1,0 +1,47 @@
+<spr-base-modal-content>
+  <ng-container header>
+    <h4
+      class="modal-header__title"
+      id="modal-header__title">
+      {{ modalData.title }}
+    </h4>
+    <button
+      type="button"
+      class="close-modal-button"
+      aria-describedby="modal-header__title"
+      (click)="closeAction(false)">
+      <i class="bo-icon bo-icon-control-cross"></i>
+    </button>
+  </ng-container>
+
+  <ng-container body>
+    <div class="grid-container">
+      @if (hasBodyTemplate(modalData)) {
+        <ng-container *ngTemplateOutlet="modalData.body; context: { $implicit: modalData.context }"></ng-container>
+      } @else {
+        <div
+          data-testid="modal-body-message"
+          class="confirmation-message">
+          {{ modalData.body }}
+        </div>
+      }
+    </div>
+  </ng-container>
+  @if (!modalData.hideFooter) {
+    <ng-container footer>
+      <spr-button
+        variant="outline"
+        size="sm"
+        (click)="closeAction(false)">
+        {{ modalData.cancelButtonText }}
+      </spr-button>
+      <spr-button
+        variant="accent"
+        size="sm"
+        [disabled]="modalData.disabledConfirmButton || false"
+        (click)="closeAction(true)">
+        {{ modalData.confirmButtonText }}
+      </spr-button>
+    </ng-container>
+  }
+</spr-base-modal-content>

@@ -1,0 +1,19 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/spr-components",
+  "assets": [
+    {
+      "input": "styles",
+      "glob": "**/*",
+      "output": "styles"
+    },
+    {
+      "input": "assets/fonts",
+      "glob": "**/*",
+      "output": "assets/fonts"
+    }
+  ],
+  "lib": {
+    "entryFile": "src/public-api.ts"
+  }
+}

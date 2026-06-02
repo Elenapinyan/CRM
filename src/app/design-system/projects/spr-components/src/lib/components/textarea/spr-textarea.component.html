@@ -1,0 +1,36 @@
+<textarea
+  #textareaElement
+  (blur)="onBlur($event)"
+  [class.control-form--colored]="isColored"
+  [class.is-invalid]="isInvalidControl"
+  [sprControlSize]="controlSize"
+  [placeholder]="placeholder"
+  [formControl]="control"
+  [sprLabel]="label"
+  sprLabelPosition="start"
+  [tooltip]="tooltip"
+  [tooltipClassForLabel]="tooltipClassForLabel"
+  [inputId]="inputId()"
+  [id]="inputId()"
+  [name]="inputId()"
+  [rows]="rowsCount"
+  autocomplete="off"
+  class="form-field-textarea"></textarea>
+
+<div class="form-field-description">
+  <div class="form-field-description__container">
+    <spr-field-description *ngIf="description && !isInvalidControl">
+      {{ description }}
+    </spr-field-description>
+
+    <spr-error *ngIf="isInvalidControl">
+      {{ ngControl?.control?.errors | getControlErrorMessage: errorMessagesConfig }}
+    </spr-error>
+  </div>
+
+  <span
+    *ngIf="maxTextareaLength"
+    class="form-field-textarea__count"
+    >{{ (control.value?.length || 0) + '/' + maxTextareaLength }}</span
+  >
+</div>

@@ -1,0 +1,124 @@
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  display: block;
+}
+
+.multi-switcher {
+  // Sizes
+  --ds-icon-font-size: var(--ds-font-size-20);
+  --ds-multi-switcher-min-width: 148px;
+  --ds-multi-switcher-min-width-sm: 88px;
+  --ds-multi-switcher-padding-inline: 16px;
+  --ds-multi-switcher-padding-inline-sm: 10px;
+  --ds-multi-switcher-padding-block: 9px;
+  --ds-multi-switcher-padding-block-sm: 5px;
+
+  // Colors
+  --ds-multi-switcher-color: var(--ds-neutral-600-300);
+  --ds-multi-switcher-color-selected: var(--ds-neutral-0-0);
+  --ds-multi-switcher-color-disabled: var(--ds-neutral-500-400);
+  --ds-multi-switcher-border-color: var(--ds-neutral-250-600);
+  --ds-multi-switcher-border-color-disabled: var(--ds-neutral-250-600);
+
+  // Backgrounds
+  --ds-multi-switcher-background: transparent;
+  --ds-multi-switcher-background-hover: var(--ds-neutral-150-700);
+  --ds-multi-switcher-background-focus: var(--ds-neutral-0-900);
+  --ds-multi-switcher-background-selected: var(--ds-neutral-500-700);
+  --ds-multi-switcher-background-selected-hover: var(--ds-neutral-700-600);
+  --ds-multi-switcher-background-selected-disabled: var(--ds-neutral-200-700);
+
+  display: flex;
+  align-items: center;
+}
+
+.multi-switcher__item {
+  @include body-text.body-font-config('s');
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  color: var(--ds-multi-switcher-custom-color, var(--ds-multi-switcher-color));
+  padding-inline: var(--ds-multi-switcher-custom-padding-inline, var(--ds-multi-switcher-padding-inline));
+  padding-block: var(--ds-multi-switcher-custom-padding-block, var(--ds-multi-switcher-padding-block));
+  border: 1px solid var(--ds-multi-switcher-custom-border-color, var(--ds-multi-switcher-border-color));
+  background: var(--ds-multi-switcher-custom-background, var(--ds-multi-switcher-background));
+  min-width: var(--ds-multi-switcher-custom-min-width, var(--ds-multi-switcher-min-width));
+  margin-left: -1px;
+  transition:
+    background var(--ds-transition-time) ease,
+    color var(--ds-transition-time) ease;
+
+  &:first-child {
+    border-radius: var(--radius-2) 0 0 var(--radius-2);
+  }
+
+  &:last-child {
+    border-radius: 0 var(--radius-2) var(--radius-2) 0;
+  }
+
+  &:hover {
+    --ds-multi-switcher-background: var(--ds-multi-switcher-custom-background-hover, var(--ds-multi-switcher-background-hover));
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:focus-visible:not(.multi-switcher__item--selected) {
+    --ds-multi-switcher-border-color: transparent;
+    --ds-multi-switcher-background: var(--ds-multi-switcher-custom-background-focus, var(--ds-multi-switcher-background-focus));
+
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: '';
+      inset: 0;
+      box-shadow:
+        0 0 0 1px var(--ds-neutral-0-900),
+        0 0 0 3px var(--ds-alpha-blue-060-080);
+      border-radius: var(--radius-2);
+    }
+  }
+}
+
+// Modifiers
+.multi-switcher__item--disabled {
+  --ds-multi-switcher-border-color: var(--ds-multi-switcher-custom-border-color-disabled, var(--ds-multi-switcher-border-color-disabled));
+  --ds-multi-switcher-color: var(--ds-multi-switcher-custom-color-disabled, var(--ds-multi-switcher-color-disabled));
+
+  pointer-events: none;
+  cursor: default;
+}
+
+.multi-switcher__item--selected {
+  --ds-multi-switcher-color: var(--ds-multi-switcher-custom-color-selected, var(--ds-multi-switcher-color-selected));
+  --ds-multi-switcher-background: var(--ds-multi-switcher-custom-background-selected, var(--ds-multi-switcher-background-selected));
+  --ds-multi-switcher-border-color: transparent;
+
+  &:hover {
+    --ds-multi-switcher-background: var(
+      --ds-multi-switcher-custom-background-selected-hover,
+      var(--ds-multi-switcher-background-selected-hover)
+    );
+  }
+
+  &.multi-switcher__item--disabled {
+    --ds-multi-switcher-background: var(
+      --ds-multi-switcher-custom-background-selected-disabled,
+      var(--ds-multi-switcher-background-selected-disabled)
+    );
+    --ds-multi-switcher-color: var(--ds-multi-switcher-custom-color-disabled, var(--ds-multi-switcher-color-disabled));
+  }
+}
+
+.multi-switcher__item--sm {
+  --ds-multi-switcher-padding-inline: var(--ds-multi-switcher-padding-inline-sm);
+  --ds-multi-switcher-padding-block: var(--ds-multi-switcher-padding-block-sm);
+
+  min-width: var(--ds-multi-switcher-custom-min-width-sm, var(--ds-multi-switcher-min-width-sm));
+}

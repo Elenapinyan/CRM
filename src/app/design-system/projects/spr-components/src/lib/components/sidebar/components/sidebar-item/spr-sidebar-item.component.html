@@ -1,0 +1,32 @@
+<a
+  [routerLink]="item().routerLink"
+  [class.active-sub]="isOpen()"
+  class="sidebar__link"
+  routerLinkActive="active"
+  (click)="onToggle()">
+  @if (item().iconName) {
+    <i
+      class="sidebar__item--icon"
+      [ngClass]="[item().iconName]"></i>
+  }
+
+  <span>{{ item().label }}</span>
+
+  @if (item().subNavs?.length) {
+    <i
+      class="sidebar__item--icon btn-icon bo-icon-arrows-chevron-down"
+      [class.rotated]="isOpen()"></i>
+  }
+</a>
+
+@if (item().subNavs?.length && isOpen()) {
+  <ul
+    class="sidebar__sub-nav"
+    [class.active-sub]="isOpen()">
+    @for (subNav of item().subNavs; track subNav.label) {
+      <li>
+        <spr-sidebar-item [item]="subNav" />
+      </li>
+    }
+  </ul>
+}

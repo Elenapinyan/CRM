@@ -1,0 +1,78 @@
+<div
+  class="control-field"
+  data-testid="numeric-input-wrapper"
+  [dsLabel]="label"
+  dsLabelPosition="start"
+  [tooltip]="tooltip"
+  [tooltipClassForLabel]="tooltipClassForLabel"
+  [inputId]="inputId()"
+  [dsControlSize]="controlSize"
+  [class.control-field--disabled]="ngControl?.disabled"
+  [class.control-field--invalid]="isInvalidControl"
+  [class.control-field--colored]="isColored">
+  @if (numericPrefix(); as prefix) {
+    <label
+      [for]="inputId()"
+      class="control-field__addon"
+      data-testid="numeric-prefix"
+      >{{ prefix }}</label
+    >
+  }
+
+  <input
+    class="control-field__input"
+    data-testid="numeric-input"
+    type="text"
+    #inputElement
+    [formControl]="control"
+    [id]="inputId()"
+    [name]="inputId()"
+    [ngClass]="inputClass"
+    [placeholder]="placeholder()"
+    [maxlength]="maxLength()"
+    [readOnly]="readOnly()"
+    (blur)="onBlur($event)"
+    ngDefaultControl />
+
+  <div class="control-field__stepper">
+    @let stepValue = step();
+
+    <button
+      data-testid="step-down-button"
+      (keydown.enter)="changeStep(-stepValue)"
+      (sprLongPress)="changeStep(-stepValue)"
+      (click)="changeStep(-stepValue)"
+      type="button"
+      class="control-field__stepper-button">
+      <i class="ds-icon ds-icon-control-minus"></i>
+    </button>
+
+    <button
+      data-testid="step-up-button"
+      (keydown.enter)="changeStep(+stepValue)"
+      (sprLongPress)="changeStep(+stepValue)"
+      (click)="changeStep(+stepValue)"
+      type="button"
+      class="control-field__stepper-button">
+      <i class="ds-icon ds-icon-control-plus"></i>
+    </button>
+  </div>
+</div>
+
+@if (description || isInvalidControl) {
+  <div class="form-field-description">
+    @if (description && !isInvalidControl) {
+      <ds-field-description
+        class="input-description"
+        data-testid="numeric-description">
+        {{ description }}
+      </ds-field-description>
+    }
+
+    @if (isInvalidControl) {
+      <ds-error>
+        {{ ngControl?.control?.errors | getControlErrorMessage: errorMessagesConfig }}
+      </ds-error>
+    }
+  </div>
+}

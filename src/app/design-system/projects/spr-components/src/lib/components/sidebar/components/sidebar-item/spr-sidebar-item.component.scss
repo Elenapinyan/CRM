@@ -1,0 +1,104 @@
+@use '../../../../../../styles/typography/body.scss' as body-text;
+
+.btn-icon {
+  position: relative;
+  margin-left: auto;
+}
+
+.sidebar__item--icon {
+  color: var(--brd-icon-default-500);
+  font-size: var(--spr-font-size-20);
+}
+
+.sidebar__link {
+  @include body-text.body-font-config('m', var(--spr-font-weight-medium));
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 8px 12px 16px;
+  border-radius: var(--spr-border-radius-l);
+  color: var(--brd-text-secondary-600);
+  text-decoration: none;
+  letter-spacing: 0.15px;
+  transition:
+    background var(--spr-transition-time) easy,
+    color var(--spr-transition-time) easy;
+
+  &:hover {
+    background: var(--brd-fill-hover-200);
+    color: var(--brd-text-hover-800);
+    transition:
+      color var(--spr-transition-time) ease,
+      background var(--spr-transition-time) ease;
+
+    .sidebar__item--icon {
+      color: var(--brd-icon-default-700);
+    }
+  }
+
+  &:active {
+    background: var(--brd-fill-pressed-300);
+    color: var(--brd-text-hover-800);
+  }
+
+  &.active,
+  &.active:hover,
+  &.active-sub,
+  &.active-sub:hover {
+    box-shadow: 0 2px 10px 0 rgb(var(--brd-black) / 0.05);
+    background: var(--brd-fill-default-0);
+    color: var(--brd-text-primary-800);
+    transition:
+      color var(--spr-transition-time) ease,
+      background var(--spr-transition-time) ease;
+
+    .sidebar__item--icon {
+      color: var(--brd-fill-accent-default-base);
+      transition:
+        color var(--spr-transition-time) ease,
+        transform var(--spr-transition-time) ease;
+    }
+  }
+
+  &.active-sub {
+    .btn-icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.active-sub + .sidebar__sub-nav {
+    display: block;
+  }
+}
+
+.sidebar__sub-nav {
+  display: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 8px 0 1px 36px;
+  list-style: none;
+
+  .sidebar__item {
+    margin-bottom: 2px;
+  }
+
+  .sidebar__link {
+    padding: 8px 8px 8px 16px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 50%;
+      left: -20px;
+      width: 16px;
+      height: 44px;
+      border: 1px solid var(--brd-border-default-400);
+      border-top: none;
+      border-right: none;
+      border-radius: 0 0 0 var(--spr-border-radius-s);
+    }
+  }
+}

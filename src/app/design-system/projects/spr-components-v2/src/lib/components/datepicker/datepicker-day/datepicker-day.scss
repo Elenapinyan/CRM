@@ -1,0 +1,73 @@
+:host {
+  display: block;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  .datepicker-day__button {
+    position: relative;
+    width: var(--ds-datepicker-day-button-custom-width, 32px);
+    height: var(--ds-datepicker-day-button-custom-height, 32px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--ds-datepicker-day-button-custom-border-radius, var(--radius-6));
+
+    &:hover {
+      background-color: var(--ds-datepicker-day-button-custom-background-hover, var(--ds-neutral-150-750));
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &.today {
+      .datepicker-day__button-text {
+        position: relative;
+
+        &::after {
+          position: absolute;
+          content: '';
+          bottom: -5px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: var(--ds-datepicker-current-day-bullet-custom-width, 3px);
+          height: var(--ds-datepicker-current-day-bullet-custom-height, 3px);
+          border-radius: var(--radius-100);
+          background-color: var(--ds-datepicker-current-day-bullet-custom-background, var(--ds-neutral-1000-0));
+        }
+      }
+    }
+
+    &.range {
+      color: var(--ds-datepicker-day-button-range-custom-color, var(--ds-neutral-0-0));
+      background-color: var(--ds-datepicker-day-button-range-custom-background, var(--ds-neutral-800-500)) !important;
+
+      &:not(.faded) {
+        .datepicker-day__button-text {
+          &::after {
+            background-color: var(--ds-datepicker-current-day-bullet-custom-background-range, var(--ds-neutral-0-0));
+          }
+        }
+      }
+    }
+
+    &.faded {
+      color: var(--ds-datepicker-day-button-faded-custom-color, var(--ds-neutral-1000-0));
+      background-color: var(--ds-datepicker-day-button-faded-custom-background, var(--ds-neutral-150-750)) !important;
+
+      &:hover {
+        background-color: var(--ds-datepicker-day-button-faded-custom-background-hover, var(--ds-neutral-200-700)) !important;
+      }
+
+      &.focused {
+        background-color: var(--ds-datepicker-day-button-faded-custom-background-focus, var(--ds-neutral-200-800)) !important;
+      }
+    }
+
+    &.out {
+      cursor: not-allowed;
+    }
+  }
+}

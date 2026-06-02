@@ -1,0 +1,40 @@
+<div
+  [ngClass]="{
+    'sub-menu': type() === 'sub-menu',
+    'sub-menu--top': type() === 'sub-menu' && subMenuPlacementTypeGuard(placement()!) && placement() === 'top',
+    'sub-menu--right': type() === 'sub-menu' && subMenuPlacementTypeGuard(placement()!) && placement() === 'right',
+    'sub-menu--left': type() === 'sub-menu' && subMenuPlacementTypeGuard(placement()!) && placement() === 'left',
+  }"
+  [placement]="placement()!"
+  [autoClose]="autoClose()"
+  [container]="menuContainer()"
+  ngbDropdown>
+  <div ngbDropdownToggle></div>
+
+  <div
+    class="open-menu-component"
+    [class.with-sub-menu]="withSubMenu()"
+    ngbDropdownMenu>
+    @if (title()) {
+      <h3 class="open-menu-component__title">
+        <ng-container [ngTemplateOutlet]="title()!.templateRef"></ng-container>
+      </h3>
+    }
+
+    <ul class="open-menu-component__list">
+      @for (item of items(); track item) {
+        <li
+          ngbDropdownItem
+          [class.with-sub-menu]="item.hasSubMenu()"
+          [class.open-menu-component__item--top-splitter]="item.hasTopSplitter()"
+          [class.open-menu-component__item--bottom-splitter]="item.hasBottomSplitter()"
+          [class.disabled]="item.isDisabled()"
+          [ngClass]="item.extraClasses()"
+          class="open-menu-component__item"
+          (click)="onSelect($event, item.hasSubMenu())">
+          <ng-container [ngTemplateOutlet]="item.templateRef"></ng-container>
+        </li>
+      }
+    </ul>
+  </div>
+</div>

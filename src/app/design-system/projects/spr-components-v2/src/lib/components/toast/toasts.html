@@ -1,0 +1,49 @@
+@for (toast of toasts(); track toast.id; let index = $index) {
+  <ds-toast
+    data-testid="toast-item"
+    [item]="toast"
+    [autoclose]="toast.options.autohide !== false"
+    [delay]="toast.options.delay || 5"
+    [class]="toast.type ? classes[toast.type] : null"
+    (dismissed)="removeToast(toast)">
+    @if (isTemplateRef(toast.header)) {
+      <ng-template
+        dsToastTemplate="header"
+        let-item>
+        <ng-template
+          [ngTemplateOutlet]="toast.header"
+          [ngTemplateOutletContext]="{ $implicit: item, index }" />
+      </ng-template>
+    }
+
+    @if (toast.description && isTemplateRef(toast.description)) {
+      <ng-template
+        dsToastTemplate="description"
+        let-item>
+        <ng-template
+          [ngTemplateOutlet]="toast.description"
+          [ngTemplateOutletContext]="{ $implicit: item, index }" />
+      </ng-template>
+    }
+
+    @if (toast.footer && isTemplateRef(toast.footer)) {
+      <ng-template
+        dsToastTemplate="footer"
+        let-item>
+        <ng-template
+          [ngTemplateOutlet]="toast.footer"
+          [ngTemplateOutletContext]="{ $implicit: item, index }" />
+      </ng-template>
+    }
+
+    @if (toast.icon && isTemplateRef(toast.icon)) {
+      <ng-template
+        dsToastTemplate="icon"
+        let-item>
+        <ng-template
+          [ngTemplateOutlet]="toast.icon"
+          [ngTemplateOutletContext]="{ $implicit: item, index }" />
+      </ng-template>
+    }
+  </ds-toast>
+}

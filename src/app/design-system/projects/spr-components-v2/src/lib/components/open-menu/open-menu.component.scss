@@ -1,0 +1,287 @@
+@use '../../../../styles/mixins/mixins' as mixins;
+@use '../../../../styles/typography/body' as body-text;
+@use '../../../../styles/typography/heading' as heading-text;
+
+:host {
+  display: block;
+}
+
+.open-menu-component {
+  --ds-open-menu-component-width: auto;
+  --ds-open-menu-component-fixed-width-md: 250px;
+  --ds-open-menu-component-padding-inline: 3px;
+  --ds-open-menu-component-padding-block: 3px 5px;
+  --ds-open-menu-component-border-color: var(--ds-neutral-700-700);
+  --ds-open-menu-component-box-shadow: 0 1px 6px 0 var(--ds-alpha-bb-040-064);
+  --ds-open-menu-component-background: var(--ds-neutral-900-900);
+  --ds-open-group-menu-title-container-background-active: var(--ds-neutral-750-750);
+  --ds-open-group-menu-list-background: var(--ds-neutral-900-900);
+  --ds-open-menu-component-item-background: var(--ds-open-menu-component-background);
+  --ds-open-menu-component-item-background-hover: var(--ds-neutral-750-750);
+  --ds-open-menu-component-item-background-active: var(--ds-neutral-700-700);
+  --ds-open-menu-component-item-background-disabled: var(--ds-neutral-900-900);
+  --ds-open-menu-component-title-background: var(--ds-open-menu-component-background);
+  --ds-open-menu-component-title-color: var(--ds-neutral-400-400);
+  --ds-open-menu-component-item-color: var(--ds-neutral-0-0);
+  --ds-open-menu-component-item-color-disabled: var(--ds-neutral-500-500);
+  --ds-open-menu-component-item-color-destructive: var(--ds-accent-red-600-300);
+  --ds-open-menu-component-item-padding-inline: 8px;
+  --ds-open-menu-component-item-padding-block: 6px;
+  --ds-open-menu-component-item-group-padding-inline: 35px 8px;
+
+  overflow: auto;
+  width: var(--ds-open-menu-component-custom-width, var(--ds-open-menu-component-width));
+  max-width: 600px;
+  padding-inline: var(--ds-open-menu-component-custom-padding-inline, var(--ds-open-menu-component-padding-inline));
+  padding-block: var(--ds-open-menu-component-custom-padding-block, var(--ds-open-menu-component-padding-block));
+  border: 1px solid var(--ds-open-menu-component-custom-border-color, var(--ds-open-menu-component-border-color));
+  background-color: var(--ds-open-menu-component-custom-background, var(--ds-open-menu-component-background));
+  box-shadow: var(--ds-open-menu-component-custom-box-shadow, var(--ds-open-menu-component-box-shadow));
+
+  &.with-sub-menu {
+    overflow: unset;
+    max-height: unset;
+  }
+
+  &.with-footer {
+    padding-bottom: 0;
+  }
+}
+
+.open-menu-component--width-md {
+  --ds-open-menu-component-width: var(--ds-open-menu-component-fixed-width-md);
+}
+
+.open-menu-component__search {
+  --ds-control-field-custom-background: transparent;
+  --ds-control-field-custom-background-hover: transparent;
+  --ds-control-field-custom-border-color: transparent;
+  --ds-control-field-custom-box-shadow: none;
+  --ds-control-field-custom-box-shadow-focus: none;
+  --ds-control-field-custom-color: var(--ds-neutral-0-0);
+
+  position: relative;
+  margin-bottom: 8px;
+  padding-bottom: 3px;
+
+  &::after {
+    position: absolute;
+    content: '';
+    inset: 100% -3px -3px 0;
+    border-bottom: 1px solid var(--ds-neutral-1000-1000);
+    box-shadow: 0 1px 0 0 var(--ds-neutral-800-800);
+  }
+}
+
+.open-menu-component__title {
+  @include heading-text.heading-font-config('xxs');
+
+  margin: 0;
+  padding-inline: var(--ds-open-menu-component-title-custom-padding-inline, 8px);
+  padding-block: var(--ds-open-menu-component-title-custom-padding-block, 4px);
+  color: var(--ds-open-menu-component-custom-title-color, var(--ds-open-menu-component-title-color));
+  background-color: var(--ds-open-menu-component-custom-title-background, var(--ds-open-menu-component-title-background));
+}
+
+.open-menu-component__list {
+  @include mixins.scroll-style;
+  @include mixins.reset-list;
+
+  max-height: var(--ds-open-menu-component-list-custom-max-height, 380px);
+  overflow: hidden auto;
+  scrollbar-color: var(--ds-neutral-700-700) transparent !important;
+}
+
+// Styles for Menu as SubMenu
+.sub-menu {
+  position: absolute;
+}
+
+.sub-menu--top {
+  top: 0;
+}
+
+.sub-menu--right {
+  right: 0;
+}
+
+.sub-menu--left {
+  left: 0;
+}
+
+/** This class is made in order to add paddings at the 'appOpenSubMenu' not at 'ngbDropdownItem',
+  because we listen @HostListener('click') mouseEnterListener at appOpenSubMenu which is under the ngbDropdownItem,
+  so if we click on ngbDropdownItem - @HostListener('click') mouseEnterListener will not be triggered.
+**/
+
+::ng-deep .ds-component {
+  .open-menu-component__action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
+
+    span {
+      display: block;
+      flex: 1;
+    }
+  }
+
+  .open-group-menu-title-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding-inline: var(--ds-open-group-menu-title-container-custom-padding-inline, var(--ds-open-menu-component-item-padding-inline));
+    padding-block: var(--ds-open-group-menu-title-container-custom-padding-block, var(--ds-open-menu-component-item-padding-block));
+    border-radius: var(--radius-6);
+  }
+
+  .open-group-menu-list {
+    @include mixins.reset-list;
+
+    background-color: var(--ds-open-group-menu-list-custom-background, var(--ds-open-group-menu-list-background));
+  }
+
+  .open-menu-component__item {
+    --ds-icon-font-size: var(--ds-font-size-18);
+    --ds-icon-color: var(--ds-neutral-200-200);
+
+    @include body-text.body-font-config('s');
+
+    position: relative;
+    display: block;
+    place-items: normal;
+    padding-inline: var(--ds-open-menu-component-item-custom-padding-inline, var(--ds-open-menu-component-item-padding-inline));
+    padding-block: var(--ds-open-menu-component-item-custom-padding-block, var(--ds-open-menu-component-item-padding-block));
+    background-color: var(--ds-open-menu-component-item-custom-background, var(--ds-open-menu-component-item-background));
+    color: var(--ds-open-menu-component-item-custom-color, var(--ds-open-menu-component-item-color));
+    border-radius: var(--radius-6);
+    white-space: wrap;
+
+    &:has(.open-menu-component__item--group) {
+      &:hover,
+      &:focus {
+        cursor: default;
+        background-color: transparent;
+      }
+
+      &.with-sub-menu {
+        --ds-icon-color: var(--ds-neutral-200-200);
+      }
+
+      .open-group-menu-title-container {
+        background-color: var(
+          --ds-open-group-menu-title-container-custom-background-active,
+          var(--ds-open-group-menu-title-container-background-active)
+        );
+      }
+    }
+
+    &:hover,
+    &:focus {
+      outline: none;
+      cursor: pointer;
+      background-color: var(--ds-open-menu-component-item-custom-background-hover, var(--ds-open-menu-component-item-background-hover));
+    }
+
+    &.active,
+    &:active {
+      background-color: var(--ds-open-menu-component-item-custom-background-active, var(--ds-open-menu-component-item-background-active));
+    }
+
+    &.disabled,
+    &:disabled {
+      --ds-icon-color: var(--ds-neutral-500-500);
+
+      background-color: var(
+        --ds-open-menu-component-item-custom-background-disabled,
+        var(--ds-open-menu-component-item-background-disabled)
+      );
+      color: var(--ds-open-menu-component-item-custom-color-disabled, var(--ds-open-menu-component-item-color-disabled));
+      pointer-events: none;
+    }
+
+    &.with-sub-menu {
+      --ds-icon-color: var(--ds-neutral-600-600);
+
+      padding: 0;
+
+      &:hover,
+      &:focus {
+        --ds-icon-color: var(--ds-neutral-200-200);
+      }
+    }
+  }
+
+  .open-menu-component__item--group {
+    padding-inline: var(--ds-open-menu-component-item-group-custom-padding-inline, var(--ds-open-menu-component-item-group-padding-inline));
+    padding-block: var(--ds-open-menu-component-item-group-custom-padding-block, var(--ds-open-menu-component-item-padding-block));
+  }
+
+  .open-menu-component__item-holder {
+    padding-inline: var(--ds-open-sub-menu-component-item-custom-padding-inline, var(--ds-open-menu-component-item-padding-inline));
+    padding-block: var(--ds-open-sub-menu-component-item-custom-padding-block, var(--ds-open-menu-component-item-padding-block));
+  }
+
+  .open-menu-component__item-text {
+    @include mixins.line-clamp(2);
+  }
+
+  .open-menu-component__item--top-splitter,
+  .open-menu-component__item--bottom-splitter {
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      right: calc(-1 * var(--ds-open-menu-component-padding-inline));
+      left: calc(-1 * var(--ds-open-menu-component-padding-inline));
+      pointer-events: none;
+    }
+  }
+
+  .open-menu-component__item--top-splitter {
+    margin-top: calc(2 * var(--ds-open-menu-component-item-padding-block));
+
+    &::before {
+      top: calc(var(--ds-open-menu-component-item-padding-block) * -1);
+      border-top: 1px solid var(--ds-open-menu-component-item-top-splitter-custom-border-color, var(--ds-neutral-800-800));
+    }
+  }
+
+  .open-menu-component__item--bottom-splitter {
+    margin-bottom: calc(2 * var(--ds-open-menu-component-item-padding-block));
+
+    &::after {
+      bottom: calc(var(--ds-open-menu-component-item-padding-block) * -1);
+      border-top: 1px solid var(--ds-open-menu-component-item-bottom-splitter-custom-border-color, var(--ds-neutral-800-800));
+    }
+  }
+
+  .open-menu-component__item--destructive:not(.disabled) {
+    color: var(--ds-open-menu-component-item-custom-color-destructive, var(--ds-open-menu-component-item-color-destructive));
+  }
+
+  .open-menu-component__item--group-first {
+    margin-top: 10px;
+  }
+}
+
+.open-menu-component__footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  padding-block: var(--ds-open-menu-component-footer-custom-padding-block, 12px);
+  padding-inline: var(--ds-open-menu-component-footer-custom-padding-inline, 8px);
+  margin-inline: calc(-1 * var(--ds-open-menu-component-padding-inline));
+  border-top: 1px solid var(--ds-open-menu-component-border-color);
+}

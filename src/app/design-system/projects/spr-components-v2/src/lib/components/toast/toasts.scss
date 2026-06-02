@@ -1,0 +1,24 @@
+@use '../../../../styles/mixins/media' as media;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: var(--ds-toast-inset, auto auto 20px 50%);
+  transform: translateX(var(--ds-toast-translate-x, -50%));
+  z-index: 12000;
+  gap: 8px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: var(--ds-border-radius-l);
+
+  @include media.lg {
+    --ds-toast-inset: 68px calc(28px + var(--ds-bria-panel-width, 0px)) auto auto;
+    --ds-toast-translate-x: 0;
+  }
+
+  // should be removed in the future
+  .login-page & {
+    left: calc(var(--ds-authorization-area-sidebar-width) / 2 + 50%);
+  }
+}

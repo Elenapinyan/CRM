@@ -1,0 +1,50 @@
+@use '../../../../styles/typography/body.scss' as body-text;
+
+:host {
+  --ds-control-field-custom-border-color: none;
+  --ds-control-field-custom-border-radius: 0;
+  --ds-control-field-custom-padding-block-md: 8px;
+  --ds-control-field-custom-padding-inline-md: 4px;
+  --ds-control-field-custom-box-shadow: none;
+  --ds-control-field-custom-border-color-focus: none;
+  --ds-control-field-custom-box-shadow-focus: none;
+  --ds-control-field-custom-background: none;
+  --ds-control-field-custom-background-hover: none;
+
+  display: inline-flex;
+
+  @include body-text.body-font-config('s-m');
+}
+
+.zoom-input-holder {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.zoom-input {
+  grid-area: overlap;
+  width: min-content;
+  min-width: 45px;
+  text-align: center;
+
+  &:focus-within + .zoom-input-placeholder {
+    opacity: 0.5;
+
+    &.zoom-input-placeholder--invisible {
+      opacity: 0;
+    }
+  }
+}
+
+.zoom-input-placeholder {
+  grid-area: overlap;
+  height: 100%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 4px;
+  color: var(--ds-zoom-input-placeholder-custom-color, var(--ds-neutral-1000-0));
+  transition: opacity var(--ds-transition-time);
+}

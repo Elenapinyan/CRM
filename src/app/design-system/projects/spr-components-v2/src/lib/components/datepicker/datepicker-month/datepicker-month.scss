@@ -1,0 +1,123 @@
+@use '../../../../../styles/typography/body' as body-text;
+
+:host {
+  ngb-datepicker-month {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .calendars-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .calendars-wrapper__holder {
+    display: flex;
+  }
+
+  .calendars-wrapper__section {
+    width: 100%;
+    padding-block: var(--ds-calendars-wrapper-section-custom-padding-block, 8px);
+    padding-inline: var(--ds-calendars-wrapper-section-custom-padding-inline, 12px);
+
+    &:first-child:not(:only-child) {
+      border-right: 1px solid var(--ds-calendars-wrapper-section-custom-border-color, var(--ds-neutral-150-750));
+    }
+  }
+}
+
+.timepicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-block: var(--ds-timepicker-custom-padding-block, 8px);
+  padding-inline: var(--ds-timepicker-custom-padding-inline, 12px);
+  border-top: 1px solid var(--ds-timepicker-custom-border-color, var(--ds-neutral-150-750));
+}
+
+.timepicker__wrapper {
+  flex: 1;
+}
+
+.custom-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-block: var(--ds-custom-navigation-custom-padding-block, 4px);
+  padding-inline: var(--ds-custom-navigation-custom-padding-inline, 4px);
+  margin-bottom: var(--ds-custom-navigation-custom-margin-bottom, 8px);
+  background-color: var(--ds-custom-navigation-custom-background, var(--ds-neutral-100-800));
+  border-radius: var(--ds-custom-navigation-custom-border-radius, var(--radius-6));
+}
+
+.month-info {
+  @include body-text.body-font-config('xs-m');
+
+  color: var(--ds-month-info-custom-color, var(--ds-neutral-1000-0));
+}
+
+::ng-deep ngb-datepicker-month {
+  .ngb-dp-header {
+    padding: 0;
+  }
+
+  .ngb-dp-header,
+  .ngb-dp-week.ngb-dp-weekdays,
+  .ngb-dp-month-name {
+    gap: 8px;
+    border: none;
+    border-radius: inherit;
+    background-color: transparent;
+  }
+
+  .ngb-dp-week {
+    gap: 8px;
+    border-radius: inherit;
+  }
+
+  .ngb-dp-weekday {
+    @include body-text.body-font-config('xs-m');
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ds-date-picker-weekday-custom-color, var(--ds-neutral-500-500));
+    font-style: normal;
+    overflow: hidden;
+    padding-block: var(--ds-date-picker-weekday-custom-padding-block, 6px);
+    padding-inline: var(--ds-date-picker-weekday-custom-padding-inline, 9px);
+    width: var(--ds-date-picker-weekday-custom-width, 32px);
+    height: var(--ds-date-picker-weekday-custom-height, 32px);
+  }
+
+  .ngb-dp-day {
+    @include body-text.body-font-config('xs-m');
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    color: var(--ds-date-picker-day-custom-color, var(--ds-neutral-1000-0));
+    width: var(--ds-date-picker-day-custom-width, 32px);
+    height: var(--ds-date-picker-day-custom-height, 32px);
+
+    &.disabled {
+      color: var(--ds-date-picker-day-disabled-custom-color, var(--ds-neutral-400-600));
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow:
+        0 0 0 1px var(--ds-neutral-0-900),
+        0 0 0 3px var(--ds-alpha-blue-060-080);
+      border-radius: var(--radius-6);
+    }
+  }
+
+  .ngb-dp-day,
+  .ngb-dp-weekday {
+    flex: 1 1 auto;
+  }
+}

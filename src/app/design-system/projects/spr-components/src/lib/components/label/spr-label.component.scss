@@ -1,0 +1,65 @@
+@use '../../../../styles/typography/body' as body-text;
+
+:host {
+  &:not(.label--inline) {
+    display: flex;
+  }
+
+  &.label--inline {
+    display: inline-flex;
+  }
+
+  &.label-active {
+    .label-form {
+      color: var(--brd-fill-accent-default-light);
+    }
+  }
+}
+
+.label-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  cursor: var(--spr-custom-label-cursor, default);
+  pointer-events: var(--spr-custom-label-pointer-events, auto);
+}
+
+.label-form {
+  @include body-text.body-font-config('s', $font-weight: var(--spr-font-weight-regular));
+
+  color: var(--spr-custom-label-color, rgb(var(--brd-gray-800)));
+}
+
+.label-form-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+
+  &:has(.label-form) {
+    margin-bottom: 4px;
+  }
+}
+
+.label-form-row--reverse {
+  flex-direction: row-reverse;
+
+  .label-container {
+    flex-direction: row-reverse;
+  }
+}
+
+:host-context(.radio-button-control, .checkbox-control, .switcher-control, .two-options-switcher-control) {
+  .label-form-row {
+    margin: 0;
+  }
+
+  .label-form {
+    padding-right: 0;
+  }
+}
+
+.info-icon {
+  font-size: var(--spr-font-size-16);
+}

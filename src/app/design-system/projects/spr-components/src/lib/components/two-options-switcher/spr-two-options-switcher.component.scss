@@ -1,0 +1,105 @@
+:host {
+  display: block;
+  line-height: 1;
+}
+
+// switcher styles
+.form-two-options-switcher {
+  --spr-two-options-switcher-background: var(--brd-fill-default-300);
+  --spr-two-options-switcher-background-disabled: var(--brd-border-disabled-300);
+  --spr-two-options-switcher-box-shadow-focus: 0 0 0 4px var(--brd-fill-accent-focus);
+  --spr-two-options-switcher-thumb-border-color: var(--brd-border-default-500);
+  --spr-two-options-switcher-thumb-border-color-hover: var(--brd-border-hover-600);
+  --spr-two-options-switcher-thumb-border-color-active: var(--brd-border-pressed-400);
+  --spr-two-options-switcher-thumb-border-color-disabled: var(--brd-fill-disabled-250);
+  --spr-two-options-switcher-thumb-background: var(--brd-fill-default-0);
+  --spr-two-options-switcher-thumb-background-disabled: var(--brd-fill-disabled-250);
+  --spr-two-options-switcher-thumb-box-shadow: 0 1px 2px 0 rgb(var(--brd-black) / 0.05);
+
+  width: 36px;
+  height: 7px;
+  margin: 0;
+  position: relative;
+  cursor: pointer;
+  appearance: none;
+  background: var(--spr-two-options-switcher-background);
+  border-radius: var(--spr-border-radius-pill);
+  transition: background 0.15s ease-in-out;
+  grid-area: switcher;
+
+  &::after {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--spr-two-options-switcher-thumb-border-color);
+    background: var(--spr-two-options-switcher-thumb-background);
+    box-shadow: var(--spr-two-options-switcher-thumb-box-shadow);
+    border-radius: var(--spr-border-radius-pill);
+    transform: translateX(0) translateY(-50%);
+    transition:
+      transform 0.15s ease-in-out,
+      border 0.15s ease-in-out;
+    z-index: 1;
+  }
+
+  // switcher states
+  &:hover:not(:disabled, :focus-visible) {
+    &::after {
+      --spr-two-options-switcher-thumb-border-color: var(--spr-two-options-switcher-thumb-border-color-hover);
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    &::after {
+      --spr-two-options-switcher-thumb-box-shadow: var(--spr-two-options-switcher-box-shadow-focus);
+    }
+  }
+
+  &:active:not(:disabled, :focus-visible) {
+    &::after {
+      --spr-two-options-switcher-thumb-border-color: var(--spr-two-options-switcher-thumb-border-color-active);
+      --spr-two-options-switcher-thumb-box-shadow: none;
+    }
+  }
+
+  &:disabled {
+    --spr-two-options-switcher-background: var(--spr-two-options-switcher-background-disabled);
+
+    pointer-events: none;
+
+    &::after {
+      --spr-two-options-switcher-thumb-background: var(--spr-two-options-switcher-thumb-background-disabled);
+      --spr-two-options-switcher-thumb-border-color: var(--spr-two-options-switcher-thumb-border-color-disabled);
+    }
+  }
+
+  &:checked {
+    &::after {
+      transform: translateX(calc(100% - 4px)) translateY(-50%);
+    }
+  }
+}
+
+.two-options-switcher-control__holder {
+  --spr-custom-label-cursor: pointer;
+
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+
+  &:has(.form-two-options-switcher:disabled) {
+    --spr-custom-lable-cursor: default;
+    --spr-custom-label-pointer-events: none;
+  }
+}
+
+.two-options-switcher-control__toggle {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,83 @@
+@use 'palette';
+
+// todo update lh
+// todo update colors after ace
+// todo fix tab layout
+
+:root {
+  // Fonts
+  --font-family-sans-serif:
+    'Inter', system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', 'Arial', 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  // Border-radius
+  --ds-border-radius-xs: 4px;
+  --ds-border-radius-s: 6px;
+  --ds-border-radius-m: 8px;
+  --ds-border-radius-l: 10px;
+  --ds-border-radius-xl: 16px;
+  --ds-border-radius-pill: 500px;
+
+  // Components sizes
+  --ds-sidebar-width: 236px;
+  --ds-authorization-area-sidebar-width: 516px;
+
+  // Default transition time
+  --ds-transition-time: 250ms;
+
+  // Color theme palette
+  --ds-theme-color: rgb(var(--ds-purple-300)); // #A070FE
+
+  // Black&White
+  // NOTICE: these are deprecated variables! Please use --ds-black and --ds-white from palette.scss
+  --ds-black: 19 17 29; // #13111d
+  --ds-white: 255 255 255; // #ffffff
+
+  // greyscale
+  // NOTICE: these are deprecated variables! Please use --ds-gray-* from palette.scss
+  --ds-grey-30: 245 245 245; // #F5F5F5
+  --ds-grey-50: 235 235 235; // #EBEBEB
+  --ds-grey-100: 227 229 233; // #E3E5E9
+  --ds-grey-130: 219 220 225; // #DBDCE1
+  --ds-grey-150: 217 221 224; // #D9DDE0
+  --ds-grey-200: 238 238 238; // #EEE = --ds-gray-200
+  --ds-grey-250: 189 192 197; // #BDC0C5
+  --ds-grey-300: 163 166 171; // #A3A6AB
+  --ds-grey-400: 139 144 153; // #8B9099
+  --ds-grey-500: 158 158 158; // #9E9E9E = --ds-gray-500
+  --ds-grey-550: 110 112 117; // #6E7075
+  --ds-grey-650: 83 85 97; // #535561
+  --ds-grey-700: 97 97 97; // #616161 = --ds-gray-700
+  --ds-grey-750: 67 75 91; // #434B5B
+  --ds-grey-800: 66 66 66; // #424242 = --ds-gray-800
+  --ds-grey-850: 62 64 78; // #3E404E
+  --ds-grey-900: 33 33 33; // #212121 = --ds-gray-900
+
+  // red
+  // NOTICE: these are deprecated variables! Please use --ds-red-* from palette.scss
+  --ds-red-20: 251 236 236; // #FBECEC
+  --ds-red-150: 217 61 61; // #D93D3D
+  --ds-red-200: 213 51 51; // #D53333
+  --ds-red-300: 196 77 80; // #C44D50
+  --ds-red-400: 166 55 55; // #A63737
+  --ds-red-450: 155 52 52; // #9B3434
+  --ds-red-600: 129 41 41; // #812929 = --ds-red-980
+  --ds-red-1000: 222 74 74; // #DE4A4A = --ds-red-600
+
+  // deepblue
+  --ds-deepblue-20: 233 239 255; // #E9EFFF
+  --ds-deepblue-1000: 38 99 255; // #2663FF
+
+  // override bs
+  --bs-body-line-height: 1.4285715; /* stylelint-disable-line */
+  --bs-body-color: rgb(86 98 112);
+  --bs-body-font-size: var(--ds-font-size-14);
+  --bs-border-radius: var(--ds-border-radius-m);
+  --bs-border-radius-xs: var(--ds-border-radius-xs);
+  --bs-border-radius-sm: var(--ds-border-radius-s);
+  --bs-border-radius-md: var(--ds-border-radius-s);
+  --bs-border-radius-lg: var(--ds-border-radius-m);
+  --bs-border-radius-xl: var(--ds-border-radius-l);
+  --bs-border-radius-2xl: var(--ds-border-radius-xl);
+  --bs-border-radius-pill: var(--ds-border-radius-pill);
+}

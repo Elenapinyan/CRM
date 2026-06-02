@@ -1,0 +1,30 @@
+import { EventEmitter, QueryList } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { TransferListItem, TransferListOutput, TransferListOutputSingle } from './interfaces/transfer-list.interface';
+import { SprTransferListTemplateDirective } from './directives/spr-transfer-list-template.directive';
+import * as i0 from "@angular/core";
+export declare class SprTransferListComponent {
+    sourceList: TransferListItem[];
+    targetList: TransferListItem[];
+    visibleHeader: string;
+    countriesHeader: string;
+    sourceColumnHeader: string;
+    targetColumnHeader: string;
+    searchPlaceholder: string;
+    disabledItems: string[];
+    enabledItems: string[];
+    disabled: boolean;
+    movedSingle: EventEmitter<TransferListOutputSingle>;
+    movedAll: EventEmitter<TransferListOutput>;
+    customTemplates?: QueryList<SprTransferListTemplateDirective>;
+    private readonly filteredListPipe;
+    searchControl: FormControl<string>;
+    moveToTarget(item: TransferListItem): void;
+    moveToSource(item: TransferListItem): void;
+    moveAllToTarget(): void;
+    moveAllToSource(): void;
+    trackByName(index: number, item: TransferListItem): string;
+    private getFilteredList;
+    static ɵfac: i0.ɵɵFactoryDeclaration<SprTransferListComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<SprTransferListComponent, "spr-transfer-list", never, { "sourceList": { "alias": "sourceList"; "required": false; }; "targetList": { "alias": "targetList"; "required": false; }; "visibleHeader": { "alias": "visibleHeader"; "required": false; }; "countriesHeader": { "alias": "countriesHeader"; "required": false; }; "sourceColumnHeader": { "alias": "sourceColumnHeader"; "required": false; }; "targetColumnHeader": { "alias": "targetColumnHeader"; "required": false; }; "searchPlaceholder": { "alias": "searchPlaceholder"; "required": false; }; "disabledItems": { "alias": "disabledItems"; "required": false; }; "enabledItems": { "alias": "enabledItems"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; }, { "movedSingle": "movedSingle"; "movedAll": "movedAll"; }, ["customTemplates"], never, true, never>;
+}

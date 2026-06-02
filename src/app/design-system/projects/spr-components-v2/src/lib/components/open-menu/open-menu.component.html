@@ -1,0 +1,82 @@
+<div
+  [ngClass]="{
+    'sub-menu': type() === 'sub-menu',
+    'sub-menu--top': type() === 'sub-menu' && subMenuPlacementTypeGuard(placement()!) && placement() === 'top',
+    'sub-menu--right': type() === 'sub-menu' && subMenuPlacementTypeGuard(placement()!) && placement() === 'right',
+    'sub-menu--left': type() === 'sub-menu' && subMenuPlacementTypeGuard(placement()!) && placement() === 'left',
+  }"
+  [placement]="placement()!"
+  [autoClose]="autoClose()"
+  [container]="menuContainer()"
+  dropdownClass="ds-component"
+  ngbDropdown>
+  <div ngbDropdownToggle></div>
+
+  <div
+    data-testid="open-menu-component"
+    class="open-menu-component ds-component"
+    [class.with-sub-menu]="withSubMenu()"
+    [class.with-footer]="footer()"
+    [class]="'open-menu-component--width-' + size()"
+    [ngClass]="menuExtraClasses()"
+    ngbDropdownMenu>
+    @if (title()) {
+      <h3 class="open-menu-component__title">
+        <ng-container [ngTemplateOutlet]="title()!.templateRef"></ng-container>
+      </h3>
+    }
+
+    @let menuDir = menu();
+    @if (withSearch() && menuDir) {
+      <div class="open-menu-component__search">
+        <ds-input
+          controlSize="sm"
+          themeType="dark"
+          (mousedown)="$event.stopImmediatePropagation()"
+          [formControl]="menuDir.searchControl"
+          [placeholder]="searchPlaceholder()" />
+      </div>
+    }
+
+    <ul
+      #listItem
+      class="open-menu-component__list">
+      @for (item of items(); track item) {
+        <li
+          ngbDropdownItem
+          [class.active]="item.isActive()"
+          [class.with-sub-menu]="item.hasSubMenu()"
+          [class.open-menu-component__item--top-splitter]="item.hasTopSplitter()"
+          [class.open-menu-component__item--bottom-splitter]="item.hasBottomSplitter()"
+          [class.disabled]="item.isDisabled()"
+          [ngClass]="item.extraClasses()"
+          class="open-menu-component__item"
+          (click)="onSelect($event, item)">
+          <ng-container [ngTemplateOutlet]="item.templateRef"></ng-container>
+        </li>
+      }
+    </ul>
+
+    @let text = footer()?.text();
+    @if (text) {
+      <div class="open-menu-component__footer">
+        @if (text?.cancel) {
+          <ds-button
+            themeType="dark"
+            variant="secondary"
+            size="md"
+            (click)="onCancelClick()">
+            {{ text.cancel }}
+          </ds-button>
+        }
+        <ds-button
+          themeType="dark"
+          variant="main"
+          size="md"
+          (click)="onSubmitClick()">
+          {{ text.submit }}
+        </ds-button>
+      </div>
+    }
+  </div>
+</div>

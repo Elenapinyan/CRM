@@ -1,0 +1,67 @@
+<div [class.is-open]="datepicker.isOpen()">
+  <div class="dp-hidden position-absolute input-group">
+    <input
+      #datepicker="ngbDatepicker"
+      [class.is-invalid]="isInvalidControl"
+      [dayTemplate]="dayTemplate"
+      [disabled]="control.disabled"
+      [displayMonths]="2"
+      [id]="inputId()"
+      [maxDate]="maxDate"
+      [startDate]="control.value.dateFrom || startDate"
+      [footerTemplate]="footerTemplate"
+      (dateSelect)="onDateSelection($event)"
+      (closed)="onClose(datepicker)"
+      (navigate)="onNavigate($event)"
+      class="control-form control-form--hidden-input"
+      container="body"
+      autoClose="outside"
+      name="datepicker"
+      ngbDatepicker
+      outsideDays="hidden"
+      tabindex="-1" />
+
+    <ng-template
+      #dayTemplate
+      let-date
+      let-focused="focused">
+      <span
+        [class.disabled-date]="date | isDisabledDate: maxDate"
+        [class.faded]="(date | isHovered: $any(control.value) : hoveredDate) || (date | isInside: $any(control.value))"
+        [class.focused]="focused"
+        [class.range]="date | isRange: $any(control.value) : hoveredDate"
+        (mouseenter)="setHoveredDate(date)"
+        (mouseleave)="setHoveredDate(null)"
+        class="btn-light">
+        {{ date.day }}
+      </span>
+    </ng-template>
+  </div>
+
+  <ng-template #footerTemplate>
+    <ng-container *ngIf="fullFooterSettings.showFooter">
+      <div *ngIf="fullFooterSettings.templateRef; else defaultPeriodSelectorFooterActions">
+        <ng-container [ngTemplateOutlet]="fullFooterSettings.templateRef"></ng-container>
+      </div>
+
+      <ng-template #defaultPeriodSelectorFooterActions>
+        <div
+          [class.left-footer-position]="fullFooterSettings.position === 'left'"
+          class="default-period-selector-footer-actions">
+          <spr-button
+            variant="outline"
+            size="sm"
+            (click)="onClose(datepicker, true)"
+            >{{ fullFooterSettings.cancelButtonText }}</spr-button
+          >
+
+          <spr-button
+            size="sm"
+            (click)="onApply(); onClose(datepicker, true)"
+            >{{ fullFooterSettings.applyButtonText }}</spr-button
+          >
+        </div>
+      </ng-template>
+    </ng-container>
+  </ng-template>
+</div>
